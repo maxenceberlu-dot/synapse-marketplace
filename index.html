@@ -3,26 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Synapse — Marketplace d'applications d'engagement collaborateur</title>
-  <meta name="description" content="Synapse est la marketplace d'applications d'engagement collaborateur. Quiz, pronostics, defis sportifs, innovation et plus. Compatible Teams, Slack, SharePoint, Viva, Deel et Staffbase.">
+  <title>Pulse — The Employee Engagement Platform</title>
+  <meta name="description" content="Pulse est la plateforme d'engagement collaborateur. Quiz, pronostics, défis sportifs, innovation et plus. +50 applications compatibles Teams, Slack, SharePoint, Viva, Deel et Staffbase.">
   <meta name="keywords" content="engagement collaborateur, applications entreprise, employee engagement, marketplace, Staffbase, Microsoft Teams, Slack, Viva, SharePoint, Deel, quiz entreprise, wellness challenge, innovation, secret santa">
-  <meta name="author" content="Synapse Labs">
+  <meta name="author" content="Pulse">
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="M8yUKmI0qzoqaZgdOxR5fHTUQc-TNc3SOsai8DvuyHc" />
-  <link rel="canonical" href="https://synapse-marketplace-six.vercel.app/">
+  <link rel="canonical" href="https://pulsework.app/">
+  <link rel="alternate" hreflang="fr" href="https://pulsework.app/">
+  <link rel="alternate" hreflang="x-default" href="https://pulsework.app/">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://synapse-marketplace-six.vercel.app/">
-  <meta property="og:title" content="Synapse — Marketplace d'applications d'engagement collaborateur">
-  <meta property="og:description" content="Decouvrez la marketplace d'applications d'engagement collaborateur. Quiz, pronostics, defis sportifs, innovation. Compatible Teams, Slack, SharePoint, Viva, Deel et Staffbase.">
-  <meta property="og:site_name" content="Synapse Marketplace">
+  <meta property="og:url" content="https://pulsework.app/">
+  <meta property="og:title" content="Pulse — The Employee Engagement Platform">
+  <meta property="og:description" content="Pulse, la plateforme d'engagement collaborateur. +50 applications : quiz, pronostics, défis sportifs, innovation. Compatible Teams, Slack, SharePoint, Viva, Deel et Staffbase.">
+  <meta property="og:site_name" content="Pulse">
   <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://pulsework.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Pulse — The Employee Engagement Platform">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Synapse — Marketplace d'applications d'engagement collaborateur">
-  <meta name="twitter:description" content="Decouvrez la marketplace d'applications d'engagement collaborateur. Compatible Teams, Slack, SharePoint, Viva, Deel et Staffbase.">
+  <meta name="twitter:title" content="Pulse — The Employee Engagement Platform">
+  <meta name="twitter:description" content="Pulse, la plateforme d'engagement collaborateur. +50 applications compatibles Teams, Slack, SharePoint, Viva, Deel et Staffbase.">
+  <meta name="twitter:image" content="https://pulsework.app/og-image.png">
+  <meta name="twitter:image:alt" content="Pulse — The Employee Engagement Platform">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1476,24 +1486,177 @@
     ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
   </style>
 
-  <!-- Structured Data -->
+  <!-- Structured Data: Organization -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Synapse Marketplace",
-    "url": "https://synapse-marketplace-six.vercel.app",
-    "description": "Marketplace d'applications d'engagement collaborateur. Compatible Microsoft Teams, Slack, SharePoint, Viva, Deel et Staffbase.",
+    "@type": "Organization",
+    "name": "Pulse",
+    "url": "https://pulsework.app",
+    "description": "Plateforme d'engagement collaborateur pour les entreprises.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "url": "https://pulsework.app/contact.html",
+      "availableLanguage": ["French", "English"]
+    }
+  }
+  </script>
+
+  <!-- Structured Data: WebSite with SearchAction -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Pulse",
+    "url": "https://pulsework.app",
+    "description": "Plateforme d'engagement collaborateur. Compatible Microsoft Teams, Slack, SharePoint, Viva, Deel et Staffbase.",
+    "inLanguage": "fr"
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://pulsework.app/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: SoftwareApplication - Prono Coupe du Monde -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Prono Coupe du Monde 2026",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
+    "description": "Application de pronostics pour la Coupe du Monde FIFA 2026. Fédérez vos collaborateurs autour du mondial avec des classements en temps réel.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "421",
+      "bestRating": "5"
+    },
     "offers": {
       "@type": "Offer",
       "category": "Employee Engagement"
     },
     "author": {
       "@type": "Organization",
-      "name": "Synapse Labs",
-      "url": "https://synapse-marketplace-six.vercel.app"
+      "name": "Pulse"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: SoftwareApplication - Quiz Master -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Quiz Master",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Créez et partagez des quiz interactifs en entreprise. Plus de 10 000 questions disponibles, mode solo et duel entre collègues.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "312",
+      "bestRating": "5"
+    },
+    "offers": {
+      "@type": "Offer",
+      "category": "Employee Engagement"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Pulse"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: SoftwareApplication - Wellness Challenge -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Wellness Challenge",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Web",
+    "description": "Lancez des défis sportifs collectifs en entreprise. Connexion avec Apple Health, Google Fit, Fitbit et Garmin.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "256",
+      "bestRating": "5"
+    },
+    "offers": {
+      "@type": "Offer",
+      "category": "Employee Wellness"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Pulse"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: SoftwareApplication - Innovation Challenge -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Innovation Challenge",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Transformez la créativité de vos collaborateurs en projets concrets. Soumission d'idées, votes et suivi jusqu'au déploiement.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "reviewCount": "128",
+      "bestRating": "5"
+    },
+    "offers": {
+      "@type": "Offer",
+      "category": "Innovation Management"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Pulse"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: SoftwareApplication - Secret Santa -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Secret Santa",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Organisez votre Secret Santa d'entreprise sans effort. Tirage au sort automatique, listes de souhaits et messagerie anonyme.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "189",
+      "bestRating": "5"
+    },
+    "offers": {
+      "@type": "Offer",
+      "category": "Employee Engagement"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Pulse"
     }
   }
   </script>
@@ -1512,9 +1675,9 @@
   <nav class="nav" id="nav">
     <a href="#" class="nav-logo">
       <div class="nav-logo-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <svg viewBox="0 0 24 24"><defs><linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e84393"/><stop offset="50%" stop-color="#fd79a8"/><stop offset="100%" stop-color="#6c5ce7"/></linearGradient></defs><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#heartGrad)" opacity="0.9"/><path d="M5 12h3l1.5-3 2 6 1.5-4.5 1 1.5H18" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <span class="nav-logo-text">synapse</span>
+      <span class="nav-logo-text">pulse</span>
     </a>
     <ul class="nav-links">
       <li><a href="#apps">Applications</a></li>
@@ -1528,6 +1691,7 @@
     </div>
   </nav>
 
+  <main>
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-badge">
@@ -1535,11 +1699,11 @@
       <span class="hero-badge-highlight">Nouveau</span>
     </div>
     <h1 class="hero-title">
-      Engagez vos equipes<br>
+      Engagez vos équipes<br>
       <span class="gradient-text">comme jamais.</span>
     </h1>
     <p class="hero-subtitle">
-      Decouvrez la marketplace d'applications d'engagement collaborateur.
+      The employee engagement platform. +50 applications pour engager, fédérer et connecter vos équipes.
       Compatible avec Staffbase, Microsoft Teams, Slack, Viva, SharePoint et Deel.
     </p>
     <div class="hero-actions">
@@ -1708,7 +1872,7 @@
           <div class="app-icon" style="background: linear-gradient(135deg, #a29bfe, #6c5ce7);">&#x1F9E0;</div>
           <div class="app-card-meta">
             <div class="app-card-name">Quiz Master</div>
-            <div class="app-card-publisher">par Synapse Labs</div>
+            <div class="app-card-publisher">par Pulse</div>
           </div>
           <span class="app-card-badge badge-popular">Populaire</span>
         </div>
@@ -1750,7 +1914,7 @@
           <div class="app-icon" style="background: linear-gradient(135deg, #00cec9, #00b894);">&#x1F3C3;</div>
           <div class="app-card-meta">
             <div class="app-card-name">Wellness Challenge</div>
-            <div class="app-card-publisher">par Synapse Labs</div>
+            <div class="app-card-publisher">par Pulse</div>
           </div>
           <span class="app-card-badge badge-trending">Tendance</span>
         </div>
@@ -1792,7 +1956,7 @@
           <div class="app-icon" style="background: linear-gradient(135deg, #fdcb6e, #e17055);">&#x1F4A1;</div>
           <div class="app-card-meta">
             <div class="app-card-name">Innovation Challenge</div>
-            <div class="app-card-publisher">par Synapse Labs</div>
+            <div class="app-card-publisher">par Pulse</div>
           </div>
           <span class="app-card-badge badge-new">Nouveau</span>
         </div>
@@ -1834,7 +1998,7 @@
           <div class="app-icon" style="background: linear-gradient(135deg, #fd79a8, #e84393);">&#x1F381;</div>
           <div class="app-card-meta">
             <div class="app-card-name">Secret Santa</div>
-            <div class="app-card-publisher">par Synapse Labs</div>
+            <div class="app-card-publisher">par Pulse</div>
           </div>
           <span class="app-card-badge badge-popular">Populaire</span>
         </div>
@@ -1931,7 +2095,80 @@
     </div>
   </div>
 
+  <!-- SEO: App details for search engines (hidden, accessible to crawlers) -->
+  <noscript>
+    <section>
+      <article>
+        <h2>Prono Coupe du Monde 2026</h2>
+        <p>Fédérez l'ensemble de vos collaborateurs autour de la Coupe du Monde FIFA 2026 avec notre application de pronostics. Chaque employé peut pronostiquer les résultats des matchs, suivre son classement en temps réel et compétitionner avec ses collègues.</p>
+        <ul>
+          <li>Pronostics pour les 104 matchs du mondial</li>
+          <li>Classement en temps réel par équipe, département et global</li>
+          <li>Système de points configurable</li>
+          <li>Notifications push via Teams, Slack ou Staffbase</li>
+          <li>Dashboard analytique complet pour les équipes RH</li>
+          <li>Support multilingue (FR, EN, DE, ES)</li>
+        </ul>
+        <p>Note : 4.9/5 (421 avis) — Par Pulse</p>
+      </article>
+      <article>
+        <h2>Quiz Master</h2>
+        <p>Créez et partagez des quiz interactifs sur l'entreprise, l'actualité et la culture générale. Une bibliothèque de plus de 10 000 questions disponibles, avec la possibilité de créer vos propres quiz personnalisés.</p>
+        <ul>
+          <li>Bibliothèque de 10 000+ questions catégorisées</li>
+          <li>Éditeur de quiz intuitif pour créer vos propres questions</li>
+          <li>Mode solo et mode duel entre collègues</li>
+          <li>Quiz hebdomadaires automatiques</li>
+          <li>Classements et badges de récompense</li>
+          <li>Intégration calendrier Teams, Outlook ou Staffbase</li>
+        </ul>
+        <p>Note : 4.9/5 (312 avis) — Par Pulse</p>
+      </article>
+      <article>
+        <h2>Wellness Challenge</h2>
+        <p>Lancez des défis sportifs collectifs pour promouvoir le bien-être au travail. Challenge de pas, running, vélo, fitness — connectez vos trackers d'activité et compétitionnez en équipe.</p>
+        <ul>
+          <li>Défis de pas, running, vélo et fitness</li>
+          <li>Connexion avec Apple Health, Google Fit, Fitbit, Garmin</li>
+          <li>Challenges par équipe ou individuels</li>
+          <li>Tableau de bord bien-être avec métriques de progression</li>
+          <li>Système de badges et récompenses</li>
+          <li>Intégration avec Teams, Slack, Viva et SharePoint</li>
+        </ul>
+        <p>Note : 4.8/5 (256 avis) — Par Pulse</p>
+      </article>
+      <article>
+        <h2>Innovation Challenge</h2>
+        <p>Transformez la créativité de vos collaborateurs en projets concrets. Les employés soumettent leurs idées, les collègues votent et commentent. Les meilleures idées sont accompagnées jusqu'à leur mise en œuvre.</p>
+        <ul>
+          <li>Soumission d'idées avec description et médias</li>
+          <li>Système de vote et de commentaires</li>
+          <li>Pipeline de suivi : idée, évaluation, prototype, déploiement</li>
+          <li>Jury configurable avec évaluation multicritère</li>
+          <li>Gamification : badges Innovateur, Visionnaire</li>
+          <li>Export et reporting pour la direction innovation</li>
+        </ul>
+        <p>Note : 4.6/5 (128 avis) — Par Pulse</p>
+      </article>
+      <article>
+        <h2>Secret Santa</h2>
+        <p>Organisez votre Secret Santa d'entreprise sans aucun effort. Tirage au sort automatique, listes de souhaits, messagerie anonyme entre participants et rappels automatiques.</p>
+        <ul>
+          <li>Tirage au sort automatique et équitable</li>
+          <li>Listes de souhaits personnalisables</li>
+          <li>Messagerie anonyme entre Secret Santas</li>
+          <li>Budget configurable par l'administrateur</li>
+          <li>Rappels automatiques avant la date limite</li>
+          <li>Mode multi-groupes (par équipe, département)</li>
+        </ul>
+        <p>Note : 5.0/5 (189 avis) — Par Pulse</p>
+      </article>
+    </section>
+  </noscript>
+
   <!-- Footer -->
+  </main>
+
   <footer class="footer">
     <div class="footer-grid">
       <div class="footer-brand">
@@ -1939,9 +2176,9 @@
           <div class="nav-logo-icon">
             <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
           </div>
-          <span class="nav-logo-text">synapse</span>
+          <span class="nav-logo-text">pulse</span>
         </a>
-        <p>La marketplace d'applications d'engagement collaborateur. Compatible avec Teams, Slack, Viva, SharePoint, Deel et Staffbase.</p>
+        <p>The employee engagement platform. +50 applications pour engager, fédérer et connecter vos équipes.</p>
       </div>
       <div class="footer-col">
         <h4>Produit</h4>
@@ -1968,7 +2205,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Synapse. Tous droits reserves.</p>
+      <p>&copy; 2026 Pulse. Tous droits réservés.</p>
       <div class="footer-socials">
         <a href="#" title="LinkedIn">in</a>
         <a href="#" title="Twitter">X</a>
@@ -1994,7 +2231,7 @@
         icon: '&#9917;',
         iconBg: 'linear-gradient(135deg, #6c5ce7, #a29bfe)',
         name: 'Prono Coupe du Monde 2026',
-        publisher: 'Synapse Labs',
+        publisher: 'Pulse',
         rating: 4.9,
         reviews: 421,
         description: `Federez l'ensemble de vos collaborateurs autour de la Coupe du Monde FIFA 2026 avec notre application de pronostics. Chaque employe peut pronostiquer les resultats des matchs, suivre son classement en temps reel et competitionner avec ses collegues dans une ambiance conviviale.`,
@@ -2014,7 +2251,7 @@
         icon: '&#x1F9E0;',
         iconBg: 'linear-gradient(135deg, #a29bfe, #6c5ce7)',
         name: 'Quiz Master',
-        publisher: 'Synapse Labs',
+        publisher: 'Pulse',
         rating: 4.9,
         reviews: 312,
         description: `Creez et partagez des quiz interactifs sur l'entreprise, l'actualite et la culture generale. Une bibliotheque de plus de 10 000 questions disponibles, avec la possibilite de creer vos propres quiz personnalises.`,
@@ -2034,7 +2271,7 @@
         icon: '&#x1F3C3;',
         iconBg: 'linear-gradient(135deg, #00cec9, #00b894)',
         name: 'Wellness Challenge',
-        publisher: 'Synapse Labs',
+        publisher: 'Pulse',
         rating: 4.8,
         reviews: 256,
         description: `Lancez des defis sportifs collectifs pour promouvoir le bien-etre au travail. Challenge de pas, running, velo, fitness — connectez vos trackers d'activite et competitionnez en equipe.`,
@@ -2054,7 +2291,7 @@
         icon: '&#x1F4A1;',
         iconBg: 'linear-gradient(135deg, #fdcb6e, #e17055)',
         name: 'Innovation Challenge',
-        publisher: 'Synapse Labs',
+        publisher: 'Pulse',
         rating: 4.6,
         reviews: 128,
         description: `Transformez la creativite de vos collaborateurs en projets concrets. Les employes soumettent leurs idees, les collegues votent et commentent. Les meilleures idees sont accompagnees jusqu'a leur mise en oeuvre.`,
@@ -2074,7 +2311,7 @@
         icon: '&#x1F381;',
         iconBg: 'linear-gradient(135deg, #fd79a8, #e84393)',
         name: 'Secret Santa',
-        publisher: 'Synapse Labs',
+        publisher: 'Pulse',
         rating: 5.0,
         reviews: 189,
         description: `Organisez votre Secret Santa d'entreprise sans aucun effort. Tirage au sort automatique, listes de souhaits, messagerie anonyme entre participants et rappels automatiques. Toute la magie de Noel dans votre intranet.`,
