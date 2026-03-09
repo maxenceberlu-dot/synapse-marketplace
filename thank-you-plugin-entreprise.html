@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You Plugin en entreprise — Pulse</title>
+  <meta name="description" content="Remerciez vos collegues et creez une culture de gratitude en entreprise. Remerciements publics, badges personnalisables, mur de reconnaissance. Compatible Teams, Slack, Google Chat, SharePoint, Staffbase, LumApps, Workvivo. SSO Okta & Entra ID.">
+  <meta name="keywords" content="thank you plugin entreprise, reconnaissance entre pairs, badges collaborateurs, mur de gratitude entreprise, remerciements Teams Slack, culture gratitude entreprise">
+  <meta name="author" content="Pulse">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://pulsework.app/thank-you-plugin-entreprise.html">
+  <link rel="alternate" hreflang="fr" href="https://pulsework.app/thank-you-plugin-entreprise.html">
+  <link rel="alternate" hreflang="x-default" href="https://pulsework.app/thank-you-plugin-entreprise.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pulsework.app/thank-you-plugin-entreprise.html">
+  <meta property="og:title" content="Thank You Plugin en entreprise — Pulse">
+  <meta property="og:description" content="Remerciez vos collegues et creez une culture de gratitude en entreprise. Remerciements publics, badges personnalisables, mur de reconnaissance. Compatible Teams, Slack, Google Chat, SharePoint, Staffbase, LumApps, Workvivo. SSO Okta & Entra ID.">
+  <meta property="og:site_name" content="Pulse">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://pulsework.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Thank You Plugin en entreprise — Pulse">
+  <meta name="twitter:description" content="Remerciez vos collegues et creez une culture de gratitude en entreprise. Remerciements publics, badges personnalisables, mur de reconnaissance. Compatible Teams, Slack, Google Chat, SharePoint, Staffbase, LumApps, Workvivo. SSO Okta & Entra ID.">
+  <meta name="twitter:image" content="https://pulsework.app/og-image.png">
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Thank You Plugin — Pulse",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Application de reconnaissance entre pairs pour les entreprises. Remerciements publics, badges personnalisables, mur de gratitude. Compatible Teams, Slack, Google Chat, SharePoint, Staffbase, LumApps, Workvivo. SSO Okta & Entra ID.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "18",
+      "bestRating": "5"
+    },
+    "offers": {
+      "@type": "Offer",
+      "category": "Employee Engagement",
+      "priceCurrency": "EUR"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Pulse",
+      "url": "https://pulsework.app"
+    },
+    "featureList": [
+      "Remerciements publics entre collegues",
+      "Badges de reconnaissance personnalisables",
+      "Mur de reconnaissance visible par tous",
+      "Notifications temps reel Teams et Slack",
+      "Dashboard RH et analytics d'engagement",
+      "Gamification et classements mensuels"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://pulsework.app/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Thank You Plugin",
+        "item": "https://pulsework.app/thank-you-plugin-entreprise.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qu'est-ce que le Thank You Plugin ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le Thank You Plugin est une application de reconnaissance entre pairs integree a vos outils du quotidien (Teams, Slack, Google Chat, Staffbase). Elle permet a chaque collaborateur d'envoyer des remerciements publics, d'attribuer des badges personnalises et de contribuer a un mur de gratitude visible par toute l'entreprise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment fonctionne le systeme de badges ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Les administrateurs creent des badges personnalises selon les valeurs de l'entreprise : entraide, innovation, leadership, esprit d'equipe, etc. Chaque collaborateur peut attribuer un badge a un collegue en accompagnant son remerciement. Les badges sont visibles sur le profil du collaborateur et sur le mur de reconnaissance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Les remerciements sont-ils visibles par tous ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Par defaut, les remerciements sont publics et visibles sur le mur de reconnaissance de l'entreprise. L'administrateur peut configurer differents niveaux de visibilite : public (toute l'entreprise), equipe uniquement, ou prive (visible uniquement par l'expediteur et le destinataire)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "L'application s'integre-t-elle avec Teams et Slack ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, le Thank You Plugin s'integre nativement avec Microsoft Teams, Slack, Google Chat, SharePoint, Viva, Staffbase, LumApps, Workvivo, Workplace, Discord, Unily et Deel. Les notifications de remerciements sont envoyees en temps reel dans l'outil de communication de votre choix. L'authentification SSO est disponible via Okta, Microsoft Entra ID, Google Workspace et Auth0."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "L'application est-elle conforme au RGPD ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, le Thank You Plugin est entierement conforme au RGPD. Les donnees sont hebergees en Europe, le consentement des utilisateurs est respecte, et les collaborateurs peuvent a tout moment consulter, modifier ou supprimer leurs donnees personnelles. Aucune donnee n'est partagee avec des tiers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien de temps faut-il pour deployer l'application ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le deploiement du Thank You Plugin prend moins de 48 heures. Aucune intervention DSI n'est requise. L'equipe Pulse configure l'application selon vos besoins, cree les badges initiaux et forme les administrateurs. Les collaborateurs peuvent commencer a envoyer des remerciements des le premier jour."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #06060a;
+      --bg-secondary: #0c0c14;
+      --bg-card: rgba(255,255,255,0.03);
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.08);
+      --text-primary: #f0f0f5;
+      --text-secondary: rgba(240,240,245,0.6);
+      --text-tertiary: rgba(240,240,245,0.35);
+      --accent-1: #e84393;
+      --accent-2: #fab1a0;
+      --accent-3: #fd79a8;
+      --accent-4: #ff7675;
+      --accent-5: #fab1a0;
+      --gradient-primary: linear-gradient(135deg, #e84393, #fab1a0, #fd79a8);
+      --gradient-hero: linear-gradient(160deg, #e84393 0%, #fab1a0 30%, #fd79a8 60%, #ff7675 100%);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .bg-mesh {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bg-mesh .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: orbFloat 20s ease-in-out infinite;
+    }
+
+    .bg-mesh .orb:nth-child(1) {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(232,67,147,0.15), transparent 70%);
+      top: -200px; left: -100px;
+    }
+
+    .bg-mesh .orb:nth-child(2) {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(250,177,160,0.1), transparent 70%);
+      bottom: -150px; right: -100px;
+      animation-delay: -7s;
+    }
+
+    .bg-mesh .orb:nth-child(3) {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(253,121,168,0.08), transparent 70%);
+      top: 50%; left: 50%;
+      animation-delay: -14s;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 16px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(6,6,10,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text-primary);
+    }
+
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #6c5ce7, #a855f7, #e84393);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: visible;
+      box-shadow: 0 0 20px rgba(232,67,147,0.25), 0 0 40px rgba(108,92,231,0.15);
+    }
+
+    .nav-logo-icon svg { width: 22px; height: 22px; overflow: visible; }
+
+    .nav-logo-icon .heart-main { transform-origin: 12px 12px; animation: heartbeat 2.4s ease-in-out infinite; }
+    .nav-logo-icon .pulse-glow { transform-origin: 12px 12px; animation: glowPulse 2.4s ease-in-out infinite; }
+    .nav-logo-icon .ecg-line { stroke-dasharray: 50; stroke-dashoffset: 0; animation: ecgDraw 2.4s ease-in-out infinite; }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); } 7% { transform: scale(1.15); } 14% { transform: scale(1); }
+      21% { transform: scale(1.1); } 28% { transform: scale(1); } 100% { transform: scale(1); }
+    }
+    @keyframes glowPulse {
+      0% { opacity: 0.2; transform: scale(1); } 7% { opacity: 0.5; transform: scale(1.4); } 14% { opacity: 0.2; transform: scale(1); }
+      21% { opacity: 0.4; transform: scale(1.25); } 28% { opacity: 0.2; transform: scale(1); } 100% { opacity: 0.2; transform: scale(1); }
+    }
+    @keyframes ecgDraw {
+      0% { stroke-dashoffset: 50; opacity: 0.4; } 15% { stroke-dashoffset: 0; opacity: 1; }
+      50% { stroke-dashoffset: 0; opacity: 1; } 65% { stroke-dashoffset: 0; opacity: 0.6; } 100% { stroke-dashoffset: 0; opacity: 0.6; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .nav-logo-icon .heart-main, .nav-logo-icon .pulse-glow, .nav-logo-icon .ecg-line { animation: none !important; }
+      .nav-logo-icon .ecg-line { stroke-dashoffset: 0 !important; }
+    }
+
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 1.2rem;
+    }
+
+    .nav-actions { display: flex; gap: 12px; align-items: center; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px;
+      border-radius: 50px; font-weight: 600; font-size: 0.85rem;
+      text-decoration: none; cursor: pointer;
+      transition: var(--transition); border: none;
+      font-family: var(--font-body);
+    }
+
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: white;
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,67,147,0.3); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--glass-border);
+    }
+
+    .btn-ghost:hover { background: rgba(255,255,255,0.05); color: var(--text-primary); }
+
+    /* HERO */
+    .hero {
+      position: relative; z-index: 1;
+      padding: 160px 40px 80px;
+      max-width: 1200px; margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    .hero-badge-emoji { font-size: 1.2rem; }
+
+    .hero-badge-highlight {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .gradient-text {
+      background: var(--gradient-hero);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex; gap: 16px;
+      justify-content: center; flex-wrap: wrap;
+    }
+
+    /* STATS */
+    .stats {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto 80px;
+      padding: 0 40px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* SECTIONS */
+    .section {
+      position: relative; z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .section h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .section p, .section li {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .section ul li {
+      padding: 10px 0;
+      padding-left: 32px;
+      position: relative;
+    }
+
+    .section ul li::before {
+      content: '\2713';
+      position: absolute;
+      left: 0;
+      color: var(--accent-3);
+      font-weight: 700;
+    }
+
+    /* FEATURES GRID */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 { margin-bottom: 8px; }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* PLATFORMS */
+    .platforms {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    .platform-badge {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 20px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid var(--glass-border);
+      padding: 24px 0;
+    }
+
+    .faq-question {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--accent-2);
+      transition: var(--transition);
+    }
+
+    .faq-item.open .faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+
+    .faq-answer p {
+      padding-top: 16px;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* CTA */
+    .cta-section {
+      position: relative; z-index: 1;
+      max-width: 800px;
+      margin: 40px auto 80px;
+      padding: 60px 40px;
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      font-size: 1.05rem;
+    }
+
+    /* FOOTER */
+    .footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--glass-border);
+      padding: 40px;
+      text-align: center;
+      color: var(--text-tertiary);
+      font-size: 0.85rem;
+    }
+
+    .footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .footer a:hover { color: var(--text-primary); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav { padding: 12px 20px; }
+      .hero { padding: 120px 20px 60px; }
+      .section { padding: 40px 20px; }
+      .stats { padding: 0 20px; }
+      .cta-section { margin: 40px 20px; padding: 40px 24px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .nav-actions .btn-ghost { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Background -->
+  <div class="bg-mesh">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ff6b9d"/><stop offset="30%" stop-color="#ee5a8f"/><stop offset="65%" stop-color="#c44ecf"/><stop offset="100%" stop-color="#6c5ce7"/></linearGradient>
+            <linearGradient id="hhl" x1="20%" y1="0%" x2="80%" y2="80%"><stop offset="0%" stop-color="rgba(255,255,255,0.45)"/><stop offset="50%" stop-color="rgba(255,255,255,0.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></linearGradient>
+            <radialGradient id="hglow" cx="50%" cy="45%" r="55%"><stop offset="0%" stop-color="#ff6b9d" stop-opacity="0.5"/><stop offset="60%" stop-color="#c44ecf" stop-opacity="0.2"/><stop offset="100%" stop-color="#6c5ce7" stop-opacity="0"/></radialGradient>
+            <filter id="hshadow" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="0.5" stdDeviation="0.8" flood-color="#ff6b9d" flood-opacity="0.4"/></filter>
+          </defs>
+          <circle cx="12" cy="12" r="11" fill="url(#hglow)" class="pulse-glow"/>
+          <path class="heart-main" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#hg)" filter="url(#hshadow)"/>
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#hhl)" opacity="0.7"/>
+          <path class="ecg-line" d="M4 12.5H7C7.3 12.5 7.5 12.2 7.8 11.8L8.6 9.8C8.8 9.3 9.2 9.3 9.4 9.8L10.8 15.2C11 15.7 11.4 15.7 11.6 15.2L12.5 11.5C12.7 10.8 13 10.8 13.2 11.2L13.8 12.8C14 13.2 14.2 13 14.3 12.7L14.5 12.2H17" fill="none" stroke="rgba(255,255,255,0.92)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">pulse</span>
+    </a>
+    <div class="nav-actions">
+      <a href="/" class="btn btn-ghost">Toutes les apps</a>
+      <a href="/contact.html" class="btn btn-primary">Demander une demo</a>
+    </div>
+  </nav>
+
+  <main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="hero-badge-emoji">&#x1F64F;</span>
+      <span>Reconnaissance</span>
+      <span class="hero-badge-highlight">Culture de gratitude</span>
+    </div>
+    <h1>
+      Thank You Plugin<br>
+      <span class="gradient-text">celebrez vos collaborateurs</span>
+    </h1>
+    <p class="hero-subtitle">
+      Permettez a chaque collaborateur de remercier publiquement ses collegues, d'attribuer des badges de reconnaissance
+      et de contribuer a un mur de gratitude visible par toute l'entreprise. Creez une culture de reconnaissance
+      authentique et renforcez l'engagement au quotidien.
+    </p>
+    <div class="hero-actions">
+      <a href="/contact.html" class="btn btn-primary" style="padding: 14px 32px; font-size: 0.95rem;">
+        Demander une demo gratuite
+      </a>
+      <a href="#fonctionnalites" class="btn btn-ghost" style="padding: 14px 32px; font-size: 0.95rem;">
+        Decouvrir les fonctionnalites
+      </a>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-number">30 sec</div>
+      <div class="stat-label">pour remercier un collegue</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">reconnaissance visible</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">RGPD</div>
+      <div class="stat-label">conforme et securise</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">&lt;48h</div>
+      <div class="stat-label">deploiement garanti</div>
+    </div>
+  </div>
+
+  <!-- Fonctionnalites -->
+  <section class="section" id="fonctionnalites">
+    <h2>Tout ce qu'il faut pour une culture de gratitude</h2>
+    <p>Une application complete pour valoriser vos collaborateurs et renforcer l'engagement, deployable en moins de 48 heures.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">&#x1F64F;</div>
+        <h3>Remerciements publics</h3>
+        <p>Envoyez des remerciements visibles a vos collegues en quelques secondes. Chaque message de gratitude est publie sur le mur de reconnaissance et notifie le destinataire en temps reel.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#x1F3C5;</div>
+        <h3>Badges personnalisables</h3>
+        <p>Creez des badges de reconnaissance alignes sur les valeurs de votre entreprise : entraide, innovation, leadership, esprit d'equipe. Chaque badge accompagne un remerciement et reste visible sur le profil.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#x1F5BC;</div>
+        <h3>Mur de reconnaissance</h3>
+        <p>Un mur de gratitude visible par toute l'entreprise affiche les remerciements en temps reel. Filtrez par equipe, par badge ou par periode pour decouvrir les contributions de chacun.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#x1F514;</div>
+        <h3>Notifications temps reel</h3>
+        <p>Chaque remerciement declenche une notification instantanee dans Microsoft Teams, Slack ou Google Chat. Le destinataire est informe immediatement, ou qu'il travaille.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#x1F4CA;</div>
+        <h3>Dashboard RH</h3>
+        <p>Suivez les metriques d'engagement, analysez les tendances de reconnaissance et generez des rapports mensuels. Identifiez les equipes les plus actives et les collaborateurs les plus reconnus.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#x1F3C6;</div>
+        <h3>Gamification</h3>
+        <p>Classements des collaborateurs les plus reconnus, recompenses mensuelles et statistiques individuelles. La gamification encourage la participation et rend la reconnaissance ludique.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cas d'usage -->
+  <section class="section">
+    <h2>Cas d'usage concrets</h2>
+    <ul>
+      <li><strong>&#x1F91D; Reconnaissance entre pairs</strong> — Encouragez l'appreciation quotidienne entre collegues. Chaque collaborateur peut remercier un pair pour son aide, sa disponibilite ou sa contribution a un projet.</li>
+      <li><strong>&#x1F389; Celebration des reussites</strong> — Felicitez publiquement les equipes et les individus pour la livraison d'un projet, l'atteinte d'un objectif ou un jalon important.</li>
+      <li><strong>&#x1F331; Onboarding bienveillant</strong> — Remerciez les mentors et les collegues qui accompagnent les nouveaux arrivants. Creez un accueil chaleureux des les premiers jours.</li>
+      <li><strong>&#x2764; Culture d'entreprise positive</strong> — Construisez une culture d'entreprise fondee sur la gratitude. Le mur de reconnaissance rend les valeurs humaines visibles et contagieuses.</li>
+    </ul>
+  </section>
+
+  <!-- Plateformes -->
+  <section class="section" style="text-align: center;">
+    <h2>Compatible avec vos outils existants</h2>
+    <p>Aucune installation requise. L'application s'integre directement dans vos outils du quotidien.</p>
+    <h3 style="font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin:16px 0 12px;text-align:center;color:#fab1a0;">Communication & Intranet</h3>
+    <div class="platforms">
+      <div class="platform-badge">Microsoft Teams</div>
+      <div class="platform-badge">Slack</div>
+      <div class="platform-badge">Google Chat</div>
+      <div class="platform-badge">SharePoint</div>
+      <div class="platform-badge">Viva</div>
+      <div class="platform-badge">Staffbase</div>
+      <div class="platform-badge">Workplace</div>
+      <div class="platform-badge">Discord</div>
+      <div class="platform-badge">LumApps</div>
+      <div class="platform-badge">Unily</div>
+      <div class="platform-badge">Workvivo</div>
+      <div class="platform-badge">Deel</div>
+    </div>
+
+    <h3 style="font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin:16px 0 12px;text-align:center;color:#fd79a8;">Authentification & SSO</h3>
+    <div class="platforms">
+      <div class="platform-badge">Okta</div>
+      <div class="platform-badge">Microsoft Entra ID</div>
+      <div class="platform-badge">Google Workspace</div>
+      <div class="platform-badge">Auth0</div>
+    </div>
+
+    <h3 style="font-family:'Space Grotesk',sans-serif;font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin:16px 0 12px;text-align:center;color:#ff7675;">SIRH & Gestion RH</h3>
+    <div class="platforms">
+      <div class="platform-badge">Workday</div>
+      <div class="platform-badge">BambooHR</div>
+      <div class="platform-badge">Personio</div>
+      <div class="platform-badge">HiBob</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <h2>Questions frequentes</h2>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Qu'est-ce que le Thank You Plugin ?
+      </div>
+      <div class="faq-answer">
+        <p>Le Thank You Plugin est une application de reconnaissance entre pairs integree a vos outils du quotidien (Teams, Slack, Google Chat, Staffbase). Elle permet a chaque collaborateur d'envoyer des remerciements publics, d'attribuer des badges personnalises et de contribuer a un mur de gratitude visible par toute l'entreprise.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Comment fonctionne le systeme de badges ?
+      </div>
+      <div class="faq-answer">
+        <p>Les administrateurs creent des badges personnalises selon les valeurs de l'entreprise : entraide, innovation, leadership, esprit d'equipe, etc. Chaque collaborateur peut attribuer un badge a un collegue en accompagnant son remerciement. Les badges sont visibles sur le profil du collaborateur et sur le mur de reconnaissance.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Les remerciements sont-ils visibles par tous ?
+      </div>
+      <div class="faq-answer">
+        <p>Par defaut, les remerciements sont publics et visibles sur le mur de reconnaissance de l'entreprise. L'administrateur peut configurer differents niveaux de visibilite : public (toute l'entreprise), equipe uniquement, ou prive (visible uniquement par l'expediteur et le destinataire).</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        L'application s'integre-t-elle avec Teams et Slack ?
+      </div>
+      <div class="faq-answer">
+        <p>Oui, le Thank You Plugin s'integre nativement avec Microsoft Teams, Slack, Google Chat, SharePoint, Viva, Staffbase, LumApps, Workvivo, Workplace, Discord, Unily et Deel. Les notifications de remerciements sont envoyees en temps reel dans l'outil de communication de votre choix. L'authentification SSO est disponible via Okta, Microsoft Entra ID, Google Workspace et Auth0.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        L'application est-elle conforme au RGPD ?
+      </div>
+      <div class="faq-answer">
+        <p>Oui, le Thank You Plugin est entierement conforme au RGPD. Les donnees sont hebergees en Europe, le consentement des utilisateurs est respecte, et les collaborateurs peuvent a tout moment consulter, modifier ou supprimer leurs donnees personnelles. Aucune donnee n'est partagee avec des tiers.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+        Combien de temps faut-il pour deployer l'application ?
+      </div>
+      <div class="faq-answer">
+        <p>Le deploiement du Thank You Plugin prend moins de 48 heures. Aucune intervention DSI n'est requise. L'equipe Pulse configure l'application selon vos besoins, cree les badges initiaux et forme les administrateurs. Les collaborateurs peuvent commencer a envoyer des remerciements des le premier jour.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Pret a creer une culture de gratitude ?</h2>
+    <p>Deploiement en moins de 48h. Aucune intervention DSI requise. Demo gratuite.</p>
+    <a href="/contact.html" class="btn btn-primary" style="padding: 16px 40px; font-size: 1rem;">
+      Demander une demo gratuite
+    </a>
+  </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Pulse. Tous droits reserves. | <a href="/">Accueil</a> &middot; <a href="/contact.html">Contact</a></p>
+  </footer>
+
+</body>
+</html>
