@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <!-- Dégradé principal cœur -->
+    <linearGradient id="pulse-heart-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b9d"/>
+      <stop offset="30%" stop-color="#ee5a8f"/>
+      <stop offset="65%" stop-color="#c44ecf"/>
+      <stop offset="100%" stop-color="#6c5ce7"/>
+    </linearGradient>
+    <!-- Reflet lumineux -->
+    <linearGradient id="pulse-highlight" x1="20%" y1="0%" x2="80%" y2="80%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.45)"/>
+      <stop offset="50%" stop-color="rgba(255,255,255,0.1)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <!-- Glow radial -->
+    <radialGradient id="pulse-glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#ff6b9d" stop-opacity="0.5"/>
+      <stop offset="60%" stop-color="#c44ecf" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#6c5ce7" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Dégradé fond -->
+    <linearGradient id="pulse-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6c5ce7"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#e84393"/>
+    </linearGradient>
+    <!-- Ombre portée -->
+    <filter id="pulse-shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#ff6b9d" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <!-- Fond arrondi -->
+  <rect width="120" height="120" rx="28" fill="url(#pulse-bg)"/>
+  <!-- Glow derrière le cœur -->
+  <circle cx="60" cy="58" r="42" fill="url(#pulse-glow)"/>
+  <!-- Cœur principal -->
+  <g transform="translate(12, 10) scale(4)" filter="url(#pulse-shadow)">
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#pulse-heart-grad)"/>
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#pulse-highlight)" opacity="0.7"/>
+  </g>
+  <!-- Ligne ECG -->
+  <g transform="translate(12, 10) scale(4)">
+    <path d="M4 12.5H7C7.3 12.5 7.5 12.2 7.8 11.8L8.6 9.8C8.8 9.3 9.2 9.3 9.4 9.8L10.8 15.2C11 15.7 11.4 15.7 11.6 15.2L12.5 11.5C12.7 10.8 13 10.8 13.2 11.2L13.8 12.8C14 13.2 14.2 13 14.3 12.7L14.5 12.2H17" fill="none" stroke="rgba(255,255,255,0.92)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
