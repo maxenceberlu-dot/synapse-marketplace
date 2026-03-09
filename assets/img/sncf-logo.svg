@@ -1,0 +1,12 @@
+<svg viewBox="0 0 280 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sncf-grad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#7B2D8E"/>
+      <stop offset="35%" stop-color="#A52055"/>
+      <stop offset="65%" stop-color="#C41E3A"/>
+      <stop offset="100%" stop-color="#D42027"/>
+    </linearGradient>
+  </defs>
+  <path d="M32 92 C28 92 26 88 28 84 L56 12 C58 8 62 4 68 4 L252 4 C258 4 260 8 258 14 L230 86 C228 90 224 94 218 94 Z" fill="url(#sncf-grad)"/>
+  <text x="148" y="67" text-anchor="middle" fill="white" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="52" letter-spacing="3">SNCF</text>
+</svg>
