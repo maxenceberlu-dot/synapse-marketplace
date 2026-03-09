@@ -768,73 +768,87 @@
 
       <!-- Mockup Téléphone SNCF -->
       <div style="flex-shrink:0;">
-        <div style="width:280px;height:560px;border-radius:36px;background:#1a1a2e;border:3px solid rgba(255,255,255,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.5);overflow:hidden;position:relative;">
+        <div style="width:280px;height:560px;border-radius:36px;background:#1c1025;border:3px solid rgba(255,255,255,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.5);overflow:hidden;position:relative;">
           <!-- Notch -->
-          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:28px;background:#1a1a2e;border-radius:0 0 16px 16px;z-index:10;"></div>
+          <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:28px;background:#1c1025;border-radius:0 0 16px 16px;z-index:10;"></div>
           <!-- Status bar -->
           <div style="padding:10px 16px 4px;display:flex;justify-content:space-between;align-items:center;font-size:0.65rem;color:rgba(255,255,255,0.5);">
             <span>9:41</span>
             <span>●●●● 📶 🔋</span>
           </div>
-          <!-- App Header SNCF -->
-          <div style="background:linear-gradient(135deg,#0b2545,#13315c);padding:16px;text-align:center;border-bottom:3px solid #d32f2f;">
-            <div style="font-size:1.4rem;font-weight:800;color:#fff;font-family:'Space Grotesk',sans-serif;letter-spacing:1px;">🚄 SNCF</div>
-            <div style="font-size:0.7rem;color:rgba(255,255,255,0.7);margin-top:2px;">Pronostics Coupe du Monde 2026</div>
+          <!-- App Header SNCF avec logo SVG -->
+          <div style="background:linear-gradient(135deg,#82368C,#B5234C,#D1232A);padding:14px 16px;text-align:center;">
+            <svg viewBox="0 0 200 60" style="width:120px;height:36px;margin:0 auto;display:block;" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="sncfg" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="0%" stop-color="#82368C"/><stop offset="50%" stop-color="#B5234C"/><stop offset="100%" stop-color="#D1232A"/></linearGradient></defs>
+              <path d="M10 55 L35 5 L190 5 L165 55 Z" fill="url(#sncfg)" rx="4"/>
+              <text x="100" y="40" text-anchor="middle" fill="white" font-family="'Space Grotesk',Arial,sans-serif" font-weight="900" font-size="32" letter-spacing="2">SNCF</text>
+            </svg>
+            <div style="font-size:0.65rem;color:rgba(255,255,255,0.8);margin-top:4px;">Pronostics Coupe du Monde 2026</div>
           </div>
-          <!-- Classement -->
-          <div style="padding:12px;background:linear-gradient(180deg,#0b2545,#091e3a);">
-            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1px;color:#d32f2f;font-weight:700;margin-bottom:8px;">🏆 Classement général</div>
+          <!-- Classement étendu -->
+          <div style="padding:12px;background:linear-gradient(180deg,#21132a,#1c1025);flex:1;">
+            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1px;color:#D1232A;font-weight:700;margin-bottom:8px;">🏆 Classement général</div>
             <!-- Joueur 1 -->
-            <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(211,47,47,0.12);border:1px solid rgba(211,47,47,0.3);border-radius:10px;margin-bottom:6px;">
-              <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#d32f2f,#ff6659);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;color:#fff;">1</div>
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:linear-gradient(135deg,rgba(209,35,42,0.15),rgba(130,54,140,0.1));border:1px solid rgba(209,35,42,0.35);border-radius:10px;margin-bottom:6px;">
+              <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#D1232A,#B5234C);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;color:#fff;">1</div>
               <div style="flex:1;text-align:left;">
                 <div style="font-size:0.75rem;font-weight:600;color:#fff;">Marie D.</div>
-                <div style="font-size:0.6rem;color:rgba(255,255,255,0.5);">Direction TGV</div>
+                <div style="font-size:0.55rem;color:rgba(255,255,255,0.5);">Direction TGV</div>
               </div>
-              <div style="font-size:0.8rem;font-weight:800;color:#d32f2f;">312 pts</div>
+              <div style="font-size:0.8rem;font-weight:800;color:#D1232A;">312 pts</div>
             </div>
             <!-- Joueur 2 -->
             <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin-bottom:6px;">
-              <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;color:#fff;">2</div>
+              <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;color:#fff;">2</div>
               <div style="flex:1;text-align:left;">
                 <div style="font-size:0.75rem;font-weight:600;color:#fff;">Lucas M.</div>
-                <div style="font-size:0.6rem;color:rgba(255,255,255,0.5);">Gare de Lyon</div>
+                <div style="font-size:0.55rem;color:rgba(255,255,255,0.5);">Gare de Lyon</div>
               </div>
               <div style="font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.7);">287 pts</div>
             </div>
             <!-- Joueur 3 -->
-            <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin-bottom:10px;">
-              <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;color:#fff;">3</div>
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin-bottom:6px;">
+              <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;color:#fff;">3</div>
               <div style="flex:1;text-align:left;">
                 <div style="font-size:0.75rem;font-weight:600;color:#fff;">Sophie R.</div>
-                <div style="font-size:0.6rem;color:rgba(255,255,255,0.5);">Siège Paris</div>
+                <div style="font-size:0.55rem;color:rgba(255,255,255,0.5);">Siège Paris</div>
               </div>
               <div style="font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.7);">264 pts</div>
             </div>
-            <!-- Match à pronostiquer -->
-            <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1px;color:#d32f2f;font-weight:700;margin-bottom:6px;">⚽ Prochain match</div>
-            <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px;text-align:center;">
-              <div style="font-size:0.6rem;color:rgba(255,255,255,0.5);margin-bottom:6px;">Phase de groupes — 12 juin 2026, 21h00</div>
-              <div style="display:flex;align-items:center;justify-content:center;gap:12px;">
-                <div style="text-align:center;">
-                  <div style="font-size:1.2rem;">🇫🇷</div>
-                  <div style="font-size:0.65rem;color:#fff;font-weight:600;">France</div>
-                </div>
-                <div style="font-size:0.85rem;font-weight:800;color:#d32f2f;">VS</div>
-                <div style="text-align:center;">
-                  <div style="font-size:1.2rem;">🇦🇷</div>
-                  <div style="font-size:0.65rem;color:#fff;font-weight:600;">Argentine</div>
-                </div>
+            <!-- Joueur 4 -->
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin-bottom:6px;">
+              <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;color:#fff;">4</div>
+              <div style="flex:1;text-align:left;">
+                <div style="font-size:0.75rem;font-weight:600;color:#fff;">Thomas B.</div>
+                <div style="font-size:0.55rem;color:rgba(255,255,255,0.5);">TER Auvergne</div>
               </div>
-              <div style="margin-top:8px;padding:6px 16px;background:linear-gradient(135deg,#d32f2f,#ff6659);border-radius:20px;font-size:0.7rem;font-weight:700;color:#fff;display:inline-block;">Pronostiquer →</div>
+              <div style="font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.7);">251 pts</div>
+            </div>
+            <!-- Joueur 5 -->
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin-bottom:6px;">
+              <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;color:#fff;">5</div>
+              <div style="flex:1;text-align:left;">
+                <div style="font-size:0.75rem;font-weight:600;color:#fff;">Julie P.</div>
+                <div style="font-size:0.55rem;color:rgba(255,255,255,0.5);">SNCF Réseau</div>
+              </div>
+              <div style="font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.7);">238 pts</div>
+            </div>
+            <!-- Joueur 6 -->
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;">
+              <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;color:#fff;">6</div>
+              <div style="flex:1;text-align:left;">
+                <div style="font-size:0.75rem;font-weight:600;color:#fff;">Pierre L.</div>
+                <div style="font-size:0.55rem;color:rgba(255,255,255,0.5);">Gare Montparnasse</div>
+              </div>
+              <div style="font-size:0.8rem;font-weight:700;color:rgba(255,255,255,0.7);">224 pts</div>
             </div>
           </div>
-          <!-- Bottom nav -->
-          <div style="position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-around;padding:10px 0;background:#0b2545;border-top:1px solid rgba(255,255,255,0.08);font-size:0.55rem;color:rgba(255,255,255,0.4);">
-            <div style="text-align:center;color:#d32f2f;"><div>🏆</div>Classement</div>
-            <div style="text-align:center;"><div>⚽</div>Matchs</div>
-            <div style="text-align:center;"><div>📊</div>Stats</div>
-            <div style="text-align:center;"><div>💬</div>Chat</div>
+          <!-- Bottom nav : Dashboard, Pronostics, Classement, Mon profil -->
+          <div style="position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-around;padding:10px 0;background:linear-gradient(135deg,#2a1533,#21132a);border-top:1px solid rgba(209,35,42,0.25);font-size:0.5rem;color:rgba(255,255,255,0.4);">
+            <div style="text-align:center;"><div style="font-size:0.85rem;">📊</div>Dashboard</div>
+            <div style="text-align:center;"><div style="font-size:0.85rem;">⚽</div>Pronostics</div>
+            <div style="text-align:center;color:#D1232A;"><div style="font-size:0.85rem;">🏆</div>Classement</div>
+            <div style="text-align:center;"><div style="font-size:0.85rem;">👤</div>Mon profil</div>
           </div>
         </div>
         <p style="font-size:0.8rem;color:rgba(240,240,245,0.4);margin-top:12px;">Exemple : application SNCF</p>
