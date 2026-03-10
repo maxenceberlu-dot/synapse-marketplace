@@ -33,6 +33,9 @@
   <meta name="twitter:image:alt" content="Pulse — Plateforme d'Engagement Collaborateur">
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1730,7 +1733,7 @@
   <div class="bg-grid"></div>
 
   <!-- Navigation -->
-  <nav class="nav" id="nav">
+  <nav class="nav" id="nav" aria-label="Navigation principale">
     <a href="#" class="nav-logo">
       <div class="nav-logo-icon">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1770,14 +1773,14 @@
       <li><a href="#">Ressources</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="btn btn-ghost">Se connecter</button>
-      <a href="contact.html" class="btn btn-primary">Contactez-nous</a>
+      <button class="btn btn-ghost" aria-label="Se connecter \u00e0 votre compte Pulse">Se connecter</button>
+      <a href="contact.html" class="btn btn-primary" aria-label="Contactez l'\u00e9quipe Pulse">Contactez-nous</a>
     </div>
   </nav>
 
-  <main>
+  <main role="main">
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero" aria-label="Pr\u00e9sentation de Pulse">
     <div class="hero-badge">
       <span>Compatible avec vos outils</span>
       <span class="hero-badge-highlight">Nouveau</span>
@@ -1835,12 +1838,12 @@
 
 
   <!-- Search & Filter -->
-  <div class="search-section" id="apps">
+  <div class="search-section" id="apps" role="search" aria-label="Rechercher une application">
     <div class="search-container">
       <svg class="search-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" class="search-bar" placeholder="Rechercher une application..." id="searchInput">
+      <input type="text" class="search-bar" placeholder="Rechercher une application..." id="searchInput" aria-label="Rechercher une application">
     </div>
-    <div class="filter-bar" id="filterBar">
+    <div class="filter-bar" id="filterBar" role="group" aria-label="Filtrer par cat\u00e9gorie">
       <button class="filter-chip active" data-filter="all">Toutes</button>
       <button class="filter-chip" data-filter="engagement">Engagement</button>
       <button class="filter-chip" data-filter="sport">Sport & Bien-etre</button>
@@ -1852,7 +1855,7 @@
   </div>
 
   <!-- Apps Grid -->
-  <section class="section" style="padding-top: 40px;">
+  <section class="section" style="padding-top: 40px;" aria-label="Catalogue des applications">
 
     <div class="apps-grid" id="appsGrid">
 
@@ -2600,7 +2603,7 @@
   </section>
 
   <!-- How It Works -->
-  <section class="section" id="how-it-works">
+  <section class="section" id="how-it-works" aria-label="Comment \u00e7a marche">
     <div class="section-header reveal">
       <div class="section-label">Comment ca marche</div>
       <h2 class="section-title">Prêt en 3 étapes</h2>
@@ -2626,7 +2629,7 @@
   </section>
 
   <!-- Sécurité & Entreprise -->
-  <section class="section" id="entreprise" style="padding-top:80px;">
+  <section class="section" id="entreprise" style="padding-top:80px;" aria-label="S\u00e9curit\u00e9 et entreprise">
     <div class="section-header reveal">
       <div class="section-label">Entreprise</div>
       <h2 class="section-title" style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;">Conçu pour les grandes entreprises</h2>
@@ -2701,7 +2704,7 @@
   </section>
 
   <!-- Staffbase Integration Banner -->
-  <section class="section" id="integration" style="padding-top:80px;">
+  <section class="section" id="integration" style="padding-top:80px;" aria-label="Int\u00e9grations et compatibilit\u00e9">
     <div class="section-header reveal">
       <div class="section-label">Intégrations</div>
       <h2 class="section-title" style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;">S'intègre à tout votre écosystème</h2>
@@ -2831,7 +2834,7 @@
   <!-- Footer -->
   </main>
 
-  <footer class="footer">
+  <footer class="footer" aria-label="Pied de page">
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="#" class="nav-logo">

@@ -1,0 +1,39 @@
+{
+  "name": "Pulse — Plateforme d'Engagement Collaborateur",
+  "short_name": "Pulse",
+  "description": "Pulse est la plateforme d'engagement collaborateur. Quiz, pronostics, défis sportifs, innovation et plus. Compatible Teams, Slack, Google Chat.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06060a",
+  "theme_color": "#6c5ce7",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
