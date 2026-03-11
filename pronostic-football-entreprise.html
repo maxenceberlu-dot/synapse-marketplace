@@ -419,6 +419,32 @@
       justify-content: center; flex-wrap: wrap;
     }
 
+    /* HERO IMAGE */
+    .hero-image-container {
+      position: relative; z-index: 1;
+      max-width: 700px;
+      margin: -20px auto 60px;
+      padding: 0 40px;
+      text-align: center;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(108,92,231,0.2);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(108,92,231,0.12);
+    }
+
+    .hero-image-caption {
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: var(--text-tertiary);
+      font-style: italic;
+    }
+
     /* STATS */
     .stats {
       position: relative; z-index: 1;
@@ -861,6 +887,16 @@
       </a>
     </div>
   </section>
+
+  <!-- Hero Image -->
+  <div class="hero-image-container">
+    <img src="/assets/img/pronostics-equipe-football.jpg"
+         alt="Équipe de collaborateurs célébrant avec l'application de pronostics football Pulse lors d'un match France - Espagne en entreprise"
+         class="hero-image"
+         loading="eager"
+         width="900" height="1200">
+    <p class="hero-image-caption">Des collaborateurs engagés autour des pronostics football avec Pulse</p>
+  </div>
 
   <!-- Stats -->
   <div class="stats">
