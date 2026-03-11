@@ -1,14 +1,20 @@
 // ============================================
-// Pulse Analytics - Lightweight Tracker
-// pulsework.app - Uses Supabase JS Client
+// Pulse Analytics - Lightweight Tracker v3
+// pulsework.app - Direct REST API (no CDN deps)
 // ============================================
 (function() {
   'use strict';
 
   var SUPABASE_URL = 'https://iaaeerenmfyatlbtqylp.supabase.co';
-  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhYWVlcmVubWZ5YXRsYnRxeWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMzA5NTMsImV4cCI6MjA4ODgwNjk1M30.TOwlijdWVUYZ3KxTB-c-aMaaJ0WszsxWQCnsvREQr3M';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhYWVlcmVubWZ5YXRsYnRxeWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMzA5NTMsImV4cCI6MjA4ODgwNjk1M30.TOwlijdWVUYZ3KxTB-c-aMaaJ0WszsxWQCnsvREQr3M';
+  var REST = SUPABASE_URL + '/rest/v1/';
   var EXCLUDE_PATHS = ['/dashboard.html'];
   var HEARTBEAT_MS = 30000;
+
+  // Debug logging (set false in production once working)
+  var DEBUG = true;
+  function log(msg, data) { if (DEBUG) console.log('[Pulse]', msg, data !== undefined ? data : ''); }
+  function logErr(msg, data) { if (DEBUG) console.error('[Pulse]', msg, data !== undefined ? data : ''); }
 
   // Don't track bots
   if (/bot|crawl|spider|slurp|Googlebot/i.test(navigator.userAgent)) return;
@@ -17,8 +23,76 @@
   var pagePath = window.location.pathname || '/';
   if (EXCLUDE_PATHS.indexOf(pagePath) !== -1) return;
 
+  log('Init - tracking page:', pagePath);
+
   // ============================================
-  // HELPERS
+  // STANDARD HEADERS (identical to curl test)
+  // ============================================
+  var HEADERS = {
+    'Content-Type': 'application/json',
+    'apikey': SUPABASE_KEY,
+    'Authorization': 'Bearer ' + SUPABASE_KEY,
+    'Prefer': 'return=minimal'
+  };
+
+  // ============================================
+  // REST HELPERS
+  // ============================================
+  function postRow(table, data) {
+    log('POST ' + table);
+    return fetch(REST + table, {
+      method: 'POST',
+      headers: HEADERS,
+      body: JSON.stringify(data)
+    }).then(function(r) {
+      log(table + ' POST → ' + r.status);
+      if (!r.ok) r.text().then(function(t) { logErr(table + ' POST error body:', t); });
+      return r;
+    }).catch(function(e) {
+      logErr(table + ' POST network error:', e.message);
+    });
+  }
+
+  function upsertRow(table, data, conflictCol) {
+    var upsertHeaders = {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Prefer': 'return=minimal,resolution=merge-duplicates'
+    };
+    var url = REST + table + '?on_conflict=' + conflictCol;
+    log('UPSERT ' + table + ' (on_conflict=' + conflictCol + ')');
+    return fetch(url, {
+      method: 'POST',
+      headers: upsertHeaders,
+      body: JSON.stringify(data)
+    }).then(function(r) {
+      log(table + ' UPSERT → ' + r.status);
+      if (!r.ok) r.text().then(function(t) { logErr(table + ' UPSERT error body:', t); });
+      return r;
+    }).catch(function(e) {
+      logErr(table + ' UPSERT network error:', e.message);
+    });
+  }
+
+  function patchRow(table, filter, data, keepalive) {
+    var url = REST + table + '?' + filter;
+    var opts = {
+      method: 'PATCH',
+      headers: HEADERS,
+      body: JSON.stringify(data)
+    };
+    if (keepalive) opts.keepalive = true;
+    return fetch(url, opts).then(function(r) {
+      if (!r.ok && DEBUG) r.text().then(function(t) { logErr(table + ' PATCH error:', t); });
+      return r;
+    }).catch(function(e) {
+      if (DEBUG) logErr(table + ' PATCH network error:', e.message);
+    });
+  }
+
+  // ============================================
+  // DATA HELPERS
   // ============================================
   function generateVisitorId() {
     var components = [
@@ -109,7 +183,7 @@
         'Asia/Kolkata': 'Inde', 'Asia/Dubai': 'EAU', 'Asia/Singapore': 'Singapour',
         'Australia/Sydney': 'Australie', 'Pacific/Auckland': 'Nouvelle-Zélande',
         'Africa/Casablanca': 'Maroc', 'Africa/Tunis': 'Tunisie', 'Africa/Algiers': 'Algérie',
-        'Africa/Dakar': 'Sénégal', 'Africa/Abidjan': 'Côte d\'Ivoire'
+        'Africa/Dakar': 'Sénégal', 'Africa/Abidjan': "Côte d'Ivoire"
       };
       return map[tz] || tz.split('/').pop().replace(/_/g, ' ') || 'Inconnu';
     } catch(e) { return 'Inconnu'; }
@@ -126,115 +200,91 @@
   }
 
   // ============================================
-  // LOAD SUPABASE JS CLIENT THEN TRACK
+  // MAIN TRACKING
   // ============================================
-  var script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
-  script.async = true;
-  script.onload = function() {
-    try {
-      var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      runTracking(sb);
-    } catch(e) {}
-  };
-  document.head.appendChild(script);
+  var visitorId = generateVisitorId();
+  var sessionId = getSessionId();
+  var pageCount = incrementPageCount();
+  var utm = getUTMParams();
+  var tz = '';
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e) {}
 
-  function runTracking(sb) {
-    var visitorId = generateVisitorId();
-    var sessionId = getSessionId();
-    var pageCount = incrementPageCount();
-    var utm = getUTMParams();
-    var tz = '';
-    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e) {}
+  log('visitor=' + visitorId + ', session=' + sessionId + ', pageCount=' + pageCount);
 
-    // 1. Record page view
-    sb.from('page_views').insert({
-      visitor_id: visitorId,
+  // 1. Record page view
+  postRow('page_views', {
+    visitor_id: visitorId,
+    session_id: sessionId,
+    page_url: pagePath,
+    page_title: document.title,
+    referrer: getCleanReferrer(),
+    utm_source: utm.utm_source,
+    utm_medium: utm.utm_medium,
+    utm_campaign: utm.utm_campaign,
+    utm_term: utm.utm_term,
+    utm_content: utm.utm_content,
+    device_type: getDeviceType(),
+    browser: getBrowser(),
+    os: getOS(),
+    screen_width: screen.width,
+    screen_height: screen.height,
+    language: navigator.language || '',
+    country: getCountryFromTimezone(),
+    timezone: tz
+  });
+
+  // 2. Session management
+  if (pageCount === 1) {
+    postRow('sessions', {
       session_id: sessionId,
-      page_url: pagePath,
-      page_title: document.title,
-      referrer: getCleanReferrer(),
-      utm_source: utm.utm_source,
-      utm_medium: utm.utm_medium,
-      utm_campaign: utm.utm_campaign,
-      utm_term: utm.utm_term,
-      utm_content: utm.utm_content,
-      device_type: getDeviceType(),
-      browser: getBrowser(),
-      os: getOS(),
-      screen_width: screen.width,
-      screen_height: screen.height,
-      language: navigator.language || '',
-      country: getCountryFromTimezone(),
-      timezone: tz
-    }).then(function() {});
-
-    // 2. Session management
-    if (pageCount === 1) {
-      sb.from('sessions').insert({
-        session_id: sessionId,
-        visitor_id: visitorId,
-        entry_page: pagePath,
-        exit_page: pagePath,
-        page_count: 1,
-        is_bounce: true
-      }).then(function() {});
-    } else {
-      sb.from('sessions').update({
-        last_seen_at: new Date().toISOString(),
-        exit_page: pagePath,
-        page_count: pageCount,
-        is_bounce: false
-      }).eq('session_id', sessionId).then(function() {});
-    }
-
-    // 3. Active visitor (real-time) - upsert
-    sb.from('active_visitors').upsert({
       visitor_id: visitorId,
-      session_id: sessionId,
-      page_url: pagePath,
-      page_title: document.title,
-      last_seen: new Date().toISOString()
-    }, { onConflict: 'session_id' }).then(function() {});
-
-    // 4. Heartbeat every 30s
-    var heartbeat = setInterval(function() {
-      sb.from('active_visitors').update({
-        page_url: window.location.pathname || '/',
-        last_seen: new Date().toISOString()
-      }).eq('session_id', sessionId).then(function() {});
-
-      sb.from('sessions').update({
-        last_seen_at: new Date().toISOString()
-      }).eq('session_id', sessionId).then(function() {});
-    }, HEARTBEAT_MS);
-
-    // 5. Page unload
-    function onLeave() {
-      clearInterval(heartbeat);
-      // Use raw fetch with keepalive as last resort
-      var url = SUPABASE_URL + '/rest/v1/sessions?session_id=eq.' + encodeURIComponent(sessionId);
-      try {
-        fetch(url, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': SUPABASE_ANON_KEY,
-            'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-            'Prefer': 'return=minimal'
-          },
-          body: JSON.stringify({
-            last_seen_at: new Date().toISOString(),
-            exit_page: window.location.pathname || '/'
-          }),
-          keepalive: true
-        }).catch(function() {});
-      } catch(e) {}
-    }
-
-    window.addEventListener('pagehide', onLeave);
-    document.addEventListener('visibilitychange', function() {
-      if (document.visibilityState === 'hidden') onLeave();
+      entry_page: pagePath,
+      exit_page: pagePath,
+      page_count: 1,
+      is_bounce: true
+    });
+  } else {
+    patchRow('sessions', 'session_id=eq.' + encodeURIComponent(sessionId), {
+      last_seen_at: new Date().toISOString(),
+      exit_page: pagePath,
+      page_count: pageCount,
+      is_bounce: false
     });
   }
+
+  // 3. Active visitor (real-time) — upsert on session_id
+  upsertRow('active_visitors', {
+    visitor_id: visitorId,
+    session_id: sessionId,
+    page_url: pagePath,
+    page_title: document.title,
+    last_seen: new Date().toISOString()
+  }, 'session_id');
+
+  // 4. Heartbeat every 30s
+  var heartbeat = setInterval(function() {
+    patchRow('active_visitors', 'session_id=eq.' + encodeURIComponent(sessionId), {
+      page_url: window.location.pathname || '/',
+      last_seen: new Date().toISOString()
+    });
+    patchRow('sessions', 'session_id=eq.' + encodeURIComponent(sessionId), {
+      last_seen_at: new Date().toISOString()
+    });
+  }, HEARTBEAT_MS);
+
+  // 5. Page unload
+  function onLeave() {
+    clearInterval(heartbeat);
+    patchRow('sessions', 'session_id=eq.' + encodeURIComponent(sessionId), {
+      last_seen_at: new Date().toISOString(),
+      exit_page: window.location.pathname || '/'
+    }, true);
+  }
+
+  window.addEventListener('pagehide', onLeave);
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') onLeave();
+  });
+
+  log('Tracking initialized successfully');
 })();
