@@ -500,11 +500,8 @@
     // ============================================
     var SUPABASE_URL = 'https://iaaeerenmfyatlbtqylp.supabase.co';
     var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhYWVlcmVubWZ5YXRsYnRxeWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMzA5NTMsImV4cCI6MjA4ODgwNjk1M30.TOwlijdWVUYZ3KxTB-c-aMaaJ0WszsxWQCnsvREQr3M';
-    var SUPABASE_API_KEY = 'sb_publishable_tRLyTaoF8KGVu0mCEDyjYA_aONzGimM';
 
-    var supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-      global: { headers: { 'apikey': SUPABASE_API_KEY } }
-    });
+    var supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     var currentPeriod = '7d';
     var charts = {};
     var realtimeChannel = null;
