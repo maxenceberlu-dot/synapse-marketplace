@@ -983,6 +983,15 @@
       box-shadow: 0 25px 70px rgba(0,0,0,0.5), 0 0 50px rgba(108,92,231,0.15);
     }
 
+    .featured-mockup-row {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      padding-top: 32px;
+      border-top: 1px solid var(--glass-border);
+      margin-top: 8px;
+    }
+
     .featured-mockup {
       width: 100%;
       max-width: 420px;
@@ -1921,6 +1930,60 @@
                class="featured-image"
                loading="lazy"
                width="900" height="1200">
+        </div>
+        <!-- App mockup preview -->
+        <div class="featured-mockup-row">
+          <div class="featured-mockup">
+            <div class="mockup-header">
+              <div class="mockup-dot"></div>
+              <div class="mockup-dot"></div>
+              <div class="mockup-dot"></div>
+            </div>
+            <div class="mockup-content">
+              <div class="mockup-match">
+                <div class="mockup-team">
+                  <span class="mockup-flag">&#x1F1EB;&#x1F1F7;</span>
+                  <span class="mockup-team-name">France</span>
+                </div>
+                <div class="mockup-score-input">2</div>
+                <span class="mockup-vs">VS</span>
+                <div class="mockup-score-input">1</div>
+                <div class="mockup-team" style="justify-content:flex-end;">
+                  <span class="mockup-team-name">Brésil</span>
+                  <span class="mockup-flag">&#x1F1E7;&#x1F1F7;</span>
+                </div>
+              </div>
+              <div class="mockup-match">
+                <div class="mockup-team">
+                  <span class="mockup-flag">&#x1F1E9;&#x1F1EA;</span>
+                  <span class="mockup-team-name">Allemagne</span>
+                </div>
+                <div class="mockup-score-input">0</div>
+                <span class="mockup-vs">VS</span>
+                <div class="mockup-score-input">3</div>
+                <div class="mockup-team" style="justify-content:flex-end;">
+                  <span class="mockup-team-name">Argentine</span>
+                  <span class="mockup-flag">&#x1F1E6;&#x1F1F7;</span>
+                </div>
+              </div>
+              <div class="mockup-leaderboard-title">Classement</div>
+              <div class="mockup-leader">
+                <div class="mockup-rank">1</div>
+                <span class="mockup-leader-name">Sophie M.</span>
+                <span class="mockup-leader-pts">247 pts</span>
+              </div>
+              <div class="mockup-leader">
+                <div class="mockup-rank" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7);">2</div>
+                <span class="mockup-leader-name">Thomas R.</span>
+                <span class="mockup-leader-pts">231 pts</span>
+              </div>
+              <div class="mockup-leader">
+                <div class="mockup-rank" style="background:linear-gradient(135deg,#00cec9,#00b894);">3</div>
+                <span class="mockup-leader-name">Marie L.</span>
+                <span class="mockup-leader-pts">218 pts</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
