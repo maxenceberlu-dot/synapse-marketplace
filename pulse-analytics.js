@@ -8,6 +8,7 @@
   // CONFIGURATION - Replace with your Supabase credentials
   var CONFIG = {
     supabaseUrl: 'https://iaaeerenmfyatlbtqylp.supabase.co',
+    supabaseApiKey: 'sb_publishable_tRLyTaoF8KGVu0mCEDyjYA_aONzGimM',
     supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhYWVlcmVubWZ5YXRsYnRxeWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMzA5NTMsImV4cCI6MjA4ODgwNjk1M30.TOwlijdWVUYZ3KxTB-c-aMaaJ0WszsxWQCnsvREQr3M',
     heartbeatInterval: 30000,
     excludePaths: ['/dashboard.html']
@@ -152,7 +153,7 @@
     if (query) url += '?' + query;
     var headers = {
       'Content-Type': 'application/json',
-      'apikey': CONFIG.supabaseAnonKey,
+      'apikey': CONFIG.supabaseApiKey,
       'Authorization': 'Bearer ' + CONFIG.supabaseAnonKey
     };
     if (method === 'POST') {
@@ -252,7 +253,7 @@
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          'apikey': CONFIG.supabaseAnonKey,
+          'apikey': CONFIG.supabaseApiKey,
           'Authorization': 'Bearer ' + CONFIG.supabaseAnonKey,
           'Prefer': 'return=minimal'
         },
