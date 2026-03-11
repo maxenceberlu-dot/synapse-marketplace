@@ -1,7 +1,7 @@
 {
-  "name": "Pulse — Plateforme d'Engagement Collaborateur",
+  "name": "Pulse — Applications d'Engagement Collaborateur & Développement Sur Mesure",
   "short_name": "Pulse",
-  "description": "Pulse est la plateforme d'engagement collaborateur. Quiz, pronostics, défis sportifs, innovation et plus. Compatible Teams, Slack, Google Chat.",
+  "description": "Pulse développe des applications d'engagement collaborateur : apps prêtes à l'emploi et développement sur mesure. Sécurisées, conformes RGPD, connectées à Teams, Slack, SharePoint, Staffbase.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#06060a",
