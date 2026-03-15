@@ -199,6 +199,35 @@
     } catch(e) { return ref; }
   }
 
+  // Detect AI traffic source (ChatGPT, Perplexity, Claude, Gemini, Copilot)
+  function getAISource() {
+    var params = new URLSearchParams(window.location.search);
+    var utmSource = (params.get('utm_source') || '').toLowerCase();
+    var ref = (document.referrer || '').toLowerCase();
+
+    // ChatGPT adds utm_source=chatgpt.com automatically
+    if (utmSource === 'chatgpt.com' || utmSource === 'chatgpt') return 'chatgpt';
+    if (ref.indexOf('chatgpt.com') > -1) return 'chatgpt';
+
+    // Perplexity
+    if (utmSource === 'perplexity' || utmSource === 'perplexity.ai') return 'perplexity';
+    if (ref.indexOf('perplexity.ai') > -1) return 'perplexity';
+
+    // Claude
+    if (utmSource === 'claude' || utmSource === 'claude.ai') return 'claude';
+    if (ref.indexOf('claude.ai') > -1) return 'claude';
+
+    // Google AI / Gemini
+    if (utmSource === 'gemini' || utmSource === 'google-ai') return 'gemini';
+    if (ref.indexOf('gemini.google.com') > -1) return 'gemini';
+
+    // Microsoft Copilot
+    if (utmSource === 'copilot' || utmSource === 'bing-copilot') return 'copilot';
+    if (ref.indexOf('copilot.microsoft.com') > -1) return 'copilot';
+
+    return '';
+  }
+
   // ============================================
   // MAIN TRACKING
   // ============================================
@@ -210,6 +239,17 @@
   try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e) {}
 
   log('visitor=' + visitorId + ', session=' + sessionId + ', pageCount=' + pageCount);
+
+  // Detect AI source
+  var aiSource = getAISource();
+  if (aiSource) {
+    log('AI traffic detected:', aiSource);
+    // Override utm_source if AI source detected but no UTM set
+    if (!utm.utm_source) {
+      utm.utm_source = aiSource;
+      utm.utm_medium = 'ai-search';
+    }
+  }
 
   // 1. Record page view
   postRow('page_views', {

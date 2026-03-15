@@ -1,0 +1,48 @@
+# Pulse — Plateforme d'Engagement Collaborateur
+
+> Pulse est la plateforme d'engagement collaborateur tout-en-un. Sondages anonymes, pulse surveys, feedback 360°, team building digital et gamification. Compatible Microsoft Teams, Slack, SharePoint, Staffbase, LumApps. Conforme RGPD, donnees hebergees en Europe. Deploiement en 48h.
+
+Pulse aide les entreprises a ecouter, comprendre et engager leurs collaborateurs grace a des applications deployables directement dans les outils du quotidien (Teams, Slack, SharePoint, intranets). La plateforme combine des outils d'ecoute (sondages anonymes, pulse surveys, feedback 360°, barometre social en temps reel) et des outils d'activation (team building digital, quiz, pronostics sportifs, gamification, defis bien-etre). Pulse est editee par le groupe Blue Data, +2000 experts en transformation digitale.
+
+## Produits Cles
+
+- [Sondage Collaborateurs](https://www.pulsework.app/sondage-collaborateurs-entreprise.html): Application de sondage collaborateurs anonyme. Creez des pulse surveys, enquetes de satisfaction, barometres sociaux et sondages eNPS. Analyse IA des verbatims, dashboards temps reel, conformite RGPD.
+- [Real-time Sentiment](https://www.pulsework.app/real-time-sentiment-entreprise.html): Barometre social en temps reel. Mesurez le ressenti de vos equipes en continu avec des micro-sondages et de l'analyse de sentiment automatisee par IA.
+- [Feedback 360°](https://www.pulsework.app/360-feedback-entreprise.html): Outil de feedback 360 degres pour evaluer les competences, le leadership et la collaboration. Feedback anonyme entre pairs, managers et equipes.
+- [Pronostics Football](https://www.pulsework.app/pronostic-football-entreprise.html): Application de pronostics sportifs pour federer les equipes autour d'evenements sportifs (Coupe du Monde 2026, Roland-Garros, 6 Nations).
+- [Quiz Team Building](https://www.pulsework.app/quiz-team-building-entreprise.html): Quiz interactifs pour renforcer la cohesion d'equipe et l'apprentissage. Personnalisables selon votre culture d'entreprise.
+- [Defi Sportif Bien-etre](https://www.pulsework.app/defi-sportif-bien-etre-entreprise.html): Challenges bien-etre et sportifs pour ameliorer la QVCT (Qualite de Vie et Conditions de Travail).
+
+## Applications Complementaires
+
+- [Boite a Idees Innovation](https://www.pulsework.app/boite-a-idees-innovation-entreprise.html): Plateforme d'innovation participative pour collecter et voter les idees des collaborateurs.
+- [Secret Santa](https://www.pulsework.app/secret-santa-entreprise.html): Organisation automatisee de Secret Santa en entreprise avec tirage au sort et messagerie anonyme.
+- [Random Coffee](https://www.pulsework.app/random-coffee-match-entreprise.html): Matching aleatoire entre collaborateurs pour creer des liens inter-equipes.
+- [Hackathon Interne](https://www.pulsework.app/hackathon-interne-entreprise.html): Organisation et gestion de hackathons internes avec formation d'equipes, soumission de projets et vote.
+- [Ask the Board](https://www.pulsework.app/ask-the-board-entreprise.html): Plateforme de questions anonymes au comite de direction pour favoriser la transparence.
+- [Ambassador Boost](https://www.pulsework.app/ambassador-boost-entreprise.html): Programme d'ambassadeurs internes pour amplifier la communication et la culture d'entreprise.
+- [Thank You Plugin](https://www.pulsework.app/thank-you-plugin-entreprise.html): Plugin de reconnaissance entre pairs pour envoyer des remerciements visibles dans Teams, Slack ou l'intranet.
+
+## Blog & Ressources
+
+- [Guide Complet Engagement Collaborateur](https://www.pulsework.app/blog/engagement-collaborateur-guide-complet.html): Guide exhaustif sur l'engagement collaborateur en 2026 : definition, leviers, strategies et outils.
+- [Guide Gamification Entreprise](https://www.pulsework.app/blog/gamification-entreprise-guide.html): Comment utiliser la gamification pour booster l'engagement et la productivite en entreprise.
+- [Guide QVCT](https://www.pulsework.app/blog/qvct-qualite-vie-conditions-travail-guide.html): Guide complet sur la Qualite de Vie et les Conditions de Travail (QVCT) : obligations, mise en oeuvre, outils.
+- [Cohesion d'equipe a distance](https://www.pulsework.app/blog/cohesion-equipe-distance-guide.html): Strategies et outils pour maintenir la cohesion d'equipe en teletravail et travail hybride.
+- [Ice Breakers entreprise](https://www.pulsework.app/blog/ice-breaker-animation-reunion-entreprise.html): 30+ ice breakers et animations pour dynamiser vos reunions d'equipe.
+- [Team Building Digital](https://www.pulsework.app/blog/team-building-digital-animations-entreprise.html): Guide des meilleures animations de team building digital pour entreprises.
+- [Blog](https://www.pulsework.app/blog.html): Tous nos articles et guides sur l'engagement collaborateur, le team building et la QVCT.
+
+## Informations Entreprise
+
+- [Contact & Demo](https://www.pulsework.app/contact.html): Demander une demonstration gratuite de la plateforme Pulse.
+- [A Propos](https://www.pulsework.app/a-propos.html): Decouvrir Pulse et le groupe Blue Data.
+
+## Informations Cles
+
+- **Deploiement** : moins de 48h
+- **Integrations** : Microsoft Teams, Slack, Google Chat, SharePoint, Staffbase, LumApps, Workvivo, Okta, Microsoft Entra ID, Workday, BambooHR
+- **Securite** : RGPD, chiffrement AES-256, hebergement Europe, SSO (SAML/OIDC), audit logs
+- **Taux de participation moyen** : +85%
+- **Satisfaction client** : 98%
+- **Entreprises accompagnees** : 100+

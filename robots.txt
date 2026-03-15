@@ -1,5 +1,73 @@
+# ==============================================
+# Pulse — pulsework.app
+# Robots.txt
+# ==============================================
+
+# Default: allow all crawlers
 User-agent: *
 Allow: /
 Disallow: /dashboard.html
 
+# ==============================================
+# AI Search Crawlers — ALLOWED
+# ChatGPT Search, Perplexity, Google AI, Claude
+# ==============================================
+
+# OpenAI ChatGPT Search (citations & search results)
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI ChatGPT user-initiated browsing
+User-agent: ChatGPT-User
+Allow: /
+
+# Google AI (Gemini, AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic Claude
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity AI Search
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Microsoft Copilot / Bing AI
+User-agent: Bingbot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# ==============================================
+# AI Training Crawlers — BLOCKED
+# Block model training, keep search visibility
+# ==============================================
+
+# OpenAI training crawler (NOT search)
+User-agent: GPTBot
+Disallow: /
+
+# Common Content Farm / AI Scraper
+User-agent: CCBot
+Disallow: /
+
+# Bytespider (ByteDance/TikTok training)
+User-agent: Bytespider
+Disallow: /
+
+# ==============================================
+# Sitemaps, LLMs & IndexNow
+# ==============================================
 Sitemap: https://www.pulsework.app/sitemap.xml
+
+# IndexNow key for Bing / Yandex / Naver instant indexing
+# Key file: https://www.pulsework.app/053f6dad6cb340c39bf5e4dc0cff92d8.txt

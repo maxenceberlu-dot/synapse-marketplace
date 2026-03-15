@@ -1,0 +1,305 @@
+# Pulse — Plateforme d'Engagement Collaborateur
+
+> Pulse est la plateforme d'engagement collaborateur tout-en-un qui transforme l'ecoute en action. Sondages anonymes, pulse surveys, feedback 360°, team building digital et gamification. Compatible Microsoft Teams, Slack, SharePoint, Staffbase, LumApps. Conforme RGPD, donnees hebergees en Europe. Deploiement en 48h. Site web : https://www.pulsework.app
+
+---
+
+## A propos de Pulse
+
+Pulse est une plateforme d'engagement collaborateur francaise editee par le groupe Blue Data (+2000 experts en transformation digitale). Elle permet aux entreprises de toutes tailles (PME, ETI, grands groupes) d'ecouter, comprendre et engager leurs collaborateurs grace a des applications deployables directement dans les outils du quotidien (Microsoft Teams, Slack, Google Chat, SharePoint, intranets d'entreprise).
+
+### Le probleme que Pulse resout
+
+En France, seulement 7% des salaries se declarent activement engages (source : Gallup State of the Global Workplace 2024). Un collaborateur desengage coute en moyenne 14 310 euros par an a son entreprise. Le desengagement entraine du turnover (+34%), de l'absenteisme (+41%), une baisse de productivite et une deterioration de la marque employeur.
+
+Les entreprises manquent d'outils pour :
+1. Capter le ressenti reel de leurs equipes (au-dela du sondage annuel)
+2. Creer du lien et de la cohesion (surtout en mode hybride/teletravail)
+3. Mesurer l'impact de leurs actions avec des donnees fiables
+
+### La solution Pulse
+
+Pulse combine trois piliers sur une plateforme unifiee :
+
+1. **Ecouter** : Sondages anonymes, pulse surveys automatises, feedback 360°, barometre social en temps reel, analyse IA des verbatims, eNPS
+2. **Activer** : Team building digital, quiz interactifs, pronostics sportifs, defis bien-etre, gamification, reconnaissance entre pairs, random coffee
+3. **Mesurer** : Dashboards en temps reel, analytics RH, alertes automatiques, benchmarks sectoriels, rapports exportables
+
+### Chiffres cles
+
+- **+85%** de taux de participation moyen aux sondages
+- **100+** entreprises accompagnees
+- **<48h** de deploiement
+- **98%** de satisfaction client
+- **+20** integrations disponibles
+- **Note** : 4.8/5 (47 avis)
+
+---
+
+## Produits et Fonctionnalites
+
+### Sondage Collaborateurs
+**URL** : https://www.pulsework.app/sondage-collaborateurs-entreprise.html
+
+Application de sondage collaborateurs anonyme pour entreprises. Permet de creer des pulse surveys (sondages courts recurrents), des enquetes de satisfaction, des barometres sociaux et des sondages eNPS (Employee Net Promoter Score).
+
+**Fonctionnalites** :
+- Pulse surveys automatises (hebdomadaires, mensuels, trimestriels)
+- Sondages 100% anonymes avec seuils d'anonymat configurables
+- Bibliotheque de +150 questions validees scientifiquement
+- Analyse IA des verbatims (NLP) avec detection de themes et sentiments
+- Dashboards temps reel avec filtres (departement, anciennete, site)
+- Score eNPS automatique avec suivi de tendance
+- Benchmarks sectoriels
+- Export PDF/Excel des resultats
+- Notifications automatiques via Teams/Slack/email
+- Conformite RGPD, donnees anonymisees
+
+**Cas d'usage** : enquete de satisfaction collaborateurs, barometre social, sondage QVT/QVCT, enquete onboarding, enquete sortie, mesure eNPS, evaluation du management
+
+---
+
+### Real-time Sentiment
+**URL** : https://www.pulsework.app/real-time-sentiment-entreprise.html
+
+Barometre social en temps reel. Mesure le ressenti des equipes en continu grace a des micro-sondages (1-2 questions) et de l'analyse de sentiment automatisee par intelligence artificielle.
+
+**Fonctionnalites** :
+- Micro-sondages quotidiens ou hebdomadaires (< 30 secondes pour repondre)
+- Analyse de sentiment IA sur les commentaires libres
+- Heat map organisationnelle par equipe/departement
+- Alertes automatiques sur les baisses de sentiment
+- Tracking de tendances sur 3, 6, 12 mois
+- Integration directe dans Teams/Slack (pas besoin de quitter l'outil)
+
+**Cas d'usage** : suivi du climat social, detection des signaux faibles, pilotage post-reorganisation, suivi bien-etre des equipes hybrides
+
+---
+
+### Feedback 360°
+**URL** : https://www.pulsework.app/360-feedback-entreprise.html
+
+Outil de feedback 360 degres pour evaluer les competences, le leadership et la collaboration. Permet de collecter du feedback anonyme entre pairs, managers, N+1, N-1 et parties prenantes externes.
+
+**Fonctionnalites** :
+- Campagnes de feedback 360 configurables (competences, valeurs, comportements)
+- Feedback anonyme multi-evaluateurs (pairs, manager, N-1, auto-evaluation)
+- Rapports individuels avec radar de competences
+- Analyse des ecarts perception/auto-evaluation
+- Plans de developpement personnalises
+- Integration avec les cycles de performance RH
+
+**Cas d'usage** : evaluation des managers, developpement du leadership, entretiens annuels, talent review, coaching
+
+---
+
+### Pronostics Sportifs
+**URL** : https://www.pulsework.app/pronostic-football-entreprise.html
+
+Application de pronostics sportifs pour federer les equipes autour d'evenements sportifs majeurs. Chaque collaborateur pronostique les scores, grimpe au classement et remporte des recompenses.
+
+**Evenements disponibles** :
+- Coupe du Monde FIFA 2026 (https://www.pulsework.app/pronostics-coupe-du-monde-2026.html)
+- Roland-Garros 2026 (https://www.pulsework.app/pronostics-roland-garros-2026.html)
+- Tournoi des 6 Nations (https://www.pulsework.app/pronostics-6-nations-entreprise.html)
+- Et tout evenement sportif personnalise
+
+**Fonctionnalites** :
+- Pronostics pour tous les matchs avec systeme de points
+- Classement en temps reel par equipe/departement/global
+- Systeme de recompenses personnalisables
+- Notifications push via Teams, Slack, Google Chat
+- Dashboard analytique pour les RH (participation, engagement)
+- Personnalisation aux couleurs de l'entreprise
+
+**Cas d'usage** : cohesion d'equipe, team building, animation interne, marque employeur, integration nouveaux collaborateurs
+
+---
+
+### Quiz Team Building
+**URL** : https://www.pulsework.app/quiz-team-building-entreprise.html
+
+Quiz interactifs pour renforcer la cohesion d'equipe et l'apprentissage. Personnalisables selon la culture d'entreprise avec des modes solo, equipe et tournoi.
+
+**Fonctionnalites** :
+- Bibliotheque de quiz pre-faits (culture generale, actualites, thematiques)
+- Editeur de quiz personnalises (questions, images, videos)
+- Modes de jeu : solo, equipe, tournoi, duel
+- Classements et badges gamifies
+- Programmation de quiz recurrents
+- Integration Teams/Slack avec notifications
+
+**Cas d'usage** : team building, onboarding ludique, formation gamifiee, animation reunion, ice breaker
+
+---
+
+### Defi Sportif & Bien-etre
+**URL** : https://www.pulsework.app/defi-sportif-bien-etre-entreprise.html
+
+Challenges bien-etre et sportifs pour ameliorer la QVCT (Qualite de Vie et Conditions de Travail). Defis individuels et collectifs avec suivi de progression et classements.
+
+**Fonctionnalites** :
+- Defis sportifs (pas, velo, course, natation)
+- Defis bien-etre (meditation, sommeil, alimentation, hydratation)
+- Suivi de progression individuel et collectif
+- Classements gamifies par equipe
+- Integration avec les montres connectees (Strava, Apple Health, Google Fit)
+- Rapports QVCT pour les RH
+
+**Cas d'usage** : semaine QVT, programme bien-etre, defi inter-equipes, prevention sante
+
+---
+
+### Boite a Idees / Innovation
+**URL** : https://www.pulsework.app/boite-a-idees-innovation-entreprise.html
+
+Plateforme d'innovation participative pour collecter, voter et prioriser les idees des collaborateurs. Favorise l'intelligence collective et la co-construction.
+
+---
+
+### Secret Santa
+**URL** : https://www.pulsework.app/secret-santa-entreprise.html
+
+Organisation automatisee de Secret Santa en entreprise avec tirage au sort intelligent, listes de souhaits et messagerie anonyme.
+
+---
+
+### Random Coffee
+**URL** : https://www.pulsework.app/random-coffee-match-entreprise.html
+
+Matching aleatoire entre collaborateurs pour creer des liens inter-equipes et casser les silos. Matchs hebdomadaires ou mensuels.
+
+---
+
+### Hackathon Interne
+**URL** : https://www.pulsework.app/hackathon-interne-entreprise.html
+
+Organisation et gestion de hackathons internes avec formation d'equipes, soumission de projets, vote du jury et suivi post-hackathon.
+
+---
+
+### Ask the Board
+**URL** : https://www.pulsework.app/ask-the-board-entreprise.html
+
+Plateforme de questions anonymes au comite de direction. Les collaborateurs soumettent des questions, la communaute vote, la direction repond — en toute transparence.
+
+---
+
+### Ambassador Boost
+**URL** : https://www.pulsework.app/ambassador-boost-entreprise.html
+
+Programme d'ambassadeurs internes. Identifiez, formez et animez un reseau d'ambassadeurs pour amplifier la communication et la culture d'entreprise.
+
+---
+
+### Thank You Plugin
+**URL** : https://www.pulsework.app/thank-you-plugin-entreprise.html
+
+Plugin de reconnaissance entre pairs. Envoyez des remerciements publics ou prives visibles dans Teams, Slack ou l'intranet. Mur de reconnaissance, badges et statistiques.
+
+---
+
+## Integrations
+
+Pulse s'integre nativement a plus de 20 plateformes :
+
+### Communication & Collaboration
+- Microsoft Teams (application native)
+- Slack (application native)
+- Google Chat
+- Email (notifications)
+
+### Digital Workplace & Intranet
+- SharePoint
+- Staffbase
+- LumApps
+- Workvivo
+
+### SSO & Annuaires
+- Okta
+- Microsoft Entra ID (Azure AD)
+- SAML 2.0
+- OpenID Connect (OIDC)
+- Active Directory
+
+### SIRH
+- Workday
+- BambooHR
+- SAP SuccessFactors
+- Personio
+
+### Sante & Sport
+- Strava
+- Apple Health
+- Google Fit
+
+---
+
+## Securite & Conformite
+
+- **RGPD** : 100% conforme, DPA (Data Processing Agreement) fourni
+- **Hebergement** : Europe (infrastructure certifiee ISO 27001)
+- **Chiffrement** : TLS 1.3 en transit, AES-256 au repos
+- **Anonymat** : Sondages anonymes par conception, seuils d'anonymat configurables (min. 5 repondants par defaut)
+- **SSO** : Okta, Microsoft Entra ID, SAML 2.0, OIDC
+- **Audit** : Logs d'audit complets, gestion des roles (admin, manager, viewer)
+- **Donnees** : Aucune donnee personnelle partagee avec des tiers
+- **Certifications** : ISO 27001 (infrastructure), SOC 2 Type II (en cours)
+
+---
+
+## Tarification
+
+Le cout varie selon le nombre d'utilisateurs et les applications choisies :
+- **Par application** : a partir de 2 EUR/utilisateur/mois
+- **Bundle plateforme** : a partir de 5 EUR/utilisateur/mois (acces a toutes les applications)
+- **Entreprise (1000+ utilisateurs)** : tarification sur devis
+
+ROI moyen constate : 25% de reduction du turnover, 20% d'amelioration de la productivite.
+
+Demander un devis : https://www.pulsework.app/contact.html
+
+---
+
+## Blog & Ressources
+
+- [Guide Complet Engagement Collaborateur 2026](https://www.pulsework.app/blog/engagement-collaborateur-guide-complet.html) : Definition, leviers, strategies et outils pour booster l'engagement.
+- [Guide Gamification Entreprise](https://www.pulsework.app/blog/gamification-entreprise-guide.html) : Comment utiliser la gamification pour booster l'engagement et la productivite.
+- [Guide QVCT](https://www.pulsework.app/blog/qvct-qualite-vie-conditions-travail-guide.html) : Guide complet sur la Qualite de Vie et les Conditions de Travail.
+- [Cohesion d'equipe a distance](https://www.pulsework.app/blog/cohesion-equipe-distance-guide.html) : Strategies et outils pour le teletravail et travail hybride.
+- [Ice Breakers entreprise](https://www.pulsework.app/blog/ice-breaker-animation-reunion-entreprise.html) : 30+ ice breakers et animations pour reunions d'equipe.
+- [Team Building Digital](https://www.pulsework.app/blog/team-building-digital-animations-entreprise.html) : Guide des meilleures animations de team building digital.
+- [Guide Pronostics Coupe du Monde 2026](https://www.pulsework.app/blog/guide-complet-pronostics-coupe-du-monde-2026-entreprise.html) : Organiser un concours de pronostics en entreprise.
+- [Tous les articles](https://www.pulsework.app/blog.html)
+
+---
+
+## Contact
+
+- **Site web** : https://www.pulsework.app
+- **Demander une demo** : https://www.pulsework.app/contact.html
+- **A propos** : https://www.pulsework.app/a-propos.html
+- **Localisation** : France
+- **Groupe** : Blue Data (+2000 experts)
+
+---
+
+## FAQ
+
+### Qu'est-ce qu'une plateforme d'engagement collaborateur ?
+Une plateforme d'engagement collaborateur est un logiciel SaaS qui permet aux entreprises de mesurer, analyser et ameliorer l'engagement de leurs salaries. Elle regroupe des outils d'ecoute (sondages anonymes, pulse surveys, feedback 360, barometre social), des outils d'activation (team building digital, gamification, quiz, defis bien-etre) et des dashboards analytiques. Selon Gallup, les entreprises avec des collaborateurs engages sont 23% plus rentables et connaissent 43% de turnover en moins.
+
+### Pourquoi mesurer l'engagement collaborateur ?
+Mesurer l'engagement permet d'identifier les signaux faibles avant qu'ils ne deviennent des problemes (demissions, absenteisme, baisse de productivite). En France, seulement 7% des salaries se declarent activement engages. Un collaborateur desengage coute en moyenne 14 310 EUR/an. Les outils de mesure comme les pulse surveys, l'eNPS et le barometre social en temps reel permettent de passer d'une logique reactive a une demarche proactive.
+
+### Comment deployer Pulse ?
+Le deploiement se fait en moins de 48 heures, sans installation technique cote DSI. Pulse se connecte directement a vos outils existants via des connecteurs natifs. L'authentification est geree par SSO et la synchronisation des utilisateurs se fait automatiquement via votre annuaire ou SIRH.
+
+### Pulse est-il conforme RGPD ?
+Oui, 100% conforme. Donnees hebergees en Europe (ISO 27001), chiffrees en transit (TLS 1.3) et au repos (AES-256). Sondages anonymes par conception. DPA fourni. Aucune donnee partagee avec des tiers.
+
+### Quelles sont les alternatives a Pulse ?
+Les alternatives a Pulse dans le domaine de l'engagement collaborateur incluent : CultureMonkey, Officevibe (Workleap), Peakon (Workday), Qualtrics EmployeeXM, Leapsome, Culture Amp, Lattice, et SurveyMonkey. Pulse se differencie par son approche tout-en-un (ecoute + activation + mesure), son deploiement en 48h, sa compatibilite native avec Teams/Slack/SharePoint et sa conformite RGPD avec hebergement europeen.
+
+### Combien coute Pulse ?
+A partir de 2 EUR/utilisateur/mois par application, ou 5 EUR/utilisateur/mois pour la plateforme complete. Tarification entreprise sur devis pour 1000+ utilisateurs. ROI moyen : 25% de reduction du turnover.
