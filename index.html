@@ -425,32 +425,182 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 4px;
       list-style: none;
     }
 
-    .nav-links a {
+    .nav-links > li {
+      position: relative;
+    }
+
+    .nav-links > li > a,
+    .nav-links > li > button {
       color: var(--text-secondary);
       text-decoration: none;
       font-size: 0.88rem;
       font-weight: 500;
       transition: var(--transition);
       position: relative;
+      padding: 8px 14px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
     }
 
-    .nav-links a:hover { color: var(--text-primary); }
+    .nav-links > li > a:hover,
+    .nav-links > li > button:hover,
+    .nav-links > li.open > button {
+      color: var(--text-primary);
+      background: var(--glass);
+    }
 
-    .nav-links a::after {
-      content: '';
+    .nav-links .nav-chevron {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.2s ease;
+      opacity: 0.5;
+    }
+
+    .nav-links > li.open .nav-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* ============================================
+       MEGA MENU DROPDOWNS
+       ============================================ */
+    .nav-dropdown {
       position: absolute;
-      bottom: -4px; left: 0;
-      width: 0; height: 2px;
-      background: var(--gradient-primary);
-      border-radius: 1px;
-      transition: width 0.3s ease;
+      top: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+      z-index: 2000;
     }
 
-    .nav-links a:hover::after { width: 100%; }
+    .nav-links > li.open .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown-inner {
+      background: var(--nav-bg-scrolled);
+      backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 24px;
+      min-width: 520px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px var(--glass-border);
+    }
+
+    [data-theme="light"] .nav-dropdown-inner {
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px var(--glass-border);
+    }
+
+    .nav-dropdown-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+
+    .nav-dropdown-grid.single-col {
+      grid-template-columns: 1fr;
+    }
+
+    .nav-dropdown-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .nav-dropdown-item:hover {
+      background: var(--glass);
+    }
+
+    [data-theme="light"] .nav-dropdown-item:hover {
+      background: rgba(0,0,0,0.04);
+    }
+
+    .nav-dropdown-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+    }
+
+    .nav-dropdown-text h4 {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+      letter-spacing: -0.2px;
+    }
+
+    .nav-dropdown-text p {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      line-height: 1.4;
+    }
+
+    .nav-dropdown-section-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-tertiary);
+      padding: 4px 14px 8px;
+    }
+
+    .nav-dropdown-divider {
+      height: 1px;
+      background: var(--glass-border);
+      margin: 8px 0;
+    }
+
+    .nav-dropdown-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px 0;
+      margin-top: 8px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .nav-dropdown-footer a {
+      font-size: 0.78rem;
+      color: var(--accent-2);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s;
+    }
+
+    .nav-dropdown-footer a:hover {
+      color: var(--accent-1);
+    }
 
     .nav-actions {
       display: flex;
@@ -1780,9 +1930,12 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
+    @media (max-width: 1080px) {
+      .nav-links { display: none; }
+    }
+
     @media (max-width: 768px) {
       .nav { padding: 0 20px; }
-      .nav-links { display: none; }
       .section { padding: 80px 20px; }
       .apps-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; }
@@ -2049,11 +2202,133 @@
       <span class="nav-logo-text">pulse</span>
     </a>
     <ul class="nav-links">
-      <li><a href="/sondage-collaborateurs-entreprise.html">Sondages</a></li>
-      <li><a href="/real-time-sentiment-entreprise.html">Sentiment</a></li>
-      <li><a href="/360-feedback-entreprise.html">Feedback 360</a></li>
-      <li><a href="#apps">Applications</a></li>
-      <li><a href="/blog.html">Blog</a></li>
+      <!-- PRODUIT -->
+      <li>
+        <button type="button" aria-expanded="false" aria-haspopup="true">Produit <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner">
+            <div class="nav-dropdown-section-title">Ecoute & Feedback</div>
+            <div class="nav-dropdown-grid">
+              <a href="/sondage-collaborateurs-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(108,92,231,0.12);border-color:rgba(108,92,231,0.2);">&#x1F4CA;</div>
+                <div class="nav-dropdown-text"><h4>Sondages Collaborateurs</h4><p>Pulse surveys, eNPS et barometres sociaux anonymes</p></div>
+              </a>
+              <a href="/real-time-sentiment-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(0,206,201,0.12);border-color:rgba(0,206,201,0.2);">&#x1F4C8;</div>
+                <div class="nav-dropdown-text"><h4>Real-time Sentiment</h4><p>Barometre social en temps reel avec analyse IA</p></div>
+              </a>
+              <a href="/360-feedback-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,121,168,0.12);border-color:rgba(253,121,168,0.2);">&#x1F504;</div>
+                <div class="nav-dropdown-text"><h4>Feedback 360°</h4><p>Evaluation entre pairs, managers et equipes</p></div>
+              </a>
+              <a href="/ask-the-board-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,203,110,0.12);border-color:rgba(253,203,110,0.2);">&#x2753;</div>
+                <div class="nav-dropdown-text"><h4>Ask the Board</h4><p>Questions anonymes a la direction</p></div>
+              </a>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-section-title">Activation & Cohesion</div>
+            <div class="nav-dropdown-grid">
+              <a href="/pronostic-football-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(108,92,231,0.12);border-color:rgba(108,92,231,0.2);">&#x26BD;</div>
+                <div class="nav-dropdown-text"><h4>Pronostics Sportifs</h4><p>Coupe du Monde, Roland-Garros, 6 Nations</p></div>
+              </a>
+              <a href="/quiz-team-building-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(0,206,201,0.12);border-color:rgba(0,206,201,0.2);">&#x1F3AF;</div>
+                <div class="nav-dropdown-text"><h4>Quiz & Team Building</h4><p>Quiz interactifs et tournois d'equipe</p></div>
+              </a>
+              <a href="/defi-sportif-bien-etre-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,121,168,0.12);border-color:rgba(253,121,168,0.2);">&#x1F3C3;</div>
+                <div class="nav-dropdown-text"><h4>Defis Bien-etre</h4><p>Challenges sportifs et QVCT gamifies</p></div>
+              </a>
+              <a href="/thank-you-plugin-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,203,110,0.12);border-color:rgba(253,203,110,0.2);">&#x1F64F;</div>
+                <div class="nav-dropdown-text"><h4>Reconnaissance</h4><p>Remerciements entre pairs dans Teams/Slack</p></div>
+              </a>
+            </div>
+            <div class="nav-dropdown-footer">
+              <a href="#apps">Voir toutes les applications &#x2192;</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- SOLUTIONS -->
+      <li>
+        <button type="button" aria-expanded="false" aria-haspopup="true">Solutions <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner" style="min-width:440px;">
+            <div class="nav-dropdown-grid single-col">
+              <a href="/sondage-collaborateurs-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(108,92,231,0.12);border-color:rgba(108,92,231,0.2);">&#x1F4CB;</div>
+                <div class="nav-dropdown-text"><h4>Engagement Collaborateur</h4><p>Mesurez et boostez l'engagement avec sondages et gamification</p></div>
+              </a>
+              <a href="/defi-sportif-bien-etre-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(0,206,201,0.12);border-color:rgba(0,206,201,0.2);">&#x1F49A;</div>
+                <div class="nav-dropdown-text"><h4>QVCT & Bien-etre</h4><p>Defis bien-etre, barometres et suivi de la qualite de vie au travail</p></div>
+              </a>
+              <a href="/quiz-team-building-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,121,168,0.12);border-color:rgba(253,121,168,0.2);">&#x1F91D;</div>
+                <div class="nav-dropdown-text"><h4>Cohesion d'equipe</h4><p>Team building digital, quiz, random coffee et evenements internes</p></div>
+              </a>
+              <a href="/boite-a-idees-innovation-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,203,110,0.12);border-color:rgba(253,203,110,0.2);">&#x1F4A1;</div>
+                <div class="nav-dropdown-text"><h4>Innovation Participative</h4><p>Boite a idees, hackathons internes et ideation collaborative</p></div>
+              </a>
+              <a href="/ambassador-boost-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(108,92,231,0.12);border-color:rgba(108,92,231,0.2);">&#x1F4E3;</div>
+                <div class="nav-dropdown-text"><h4>Marque Employeur</h4><p>Ambassadeurs internes et programmes de communication engageants</p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- RESSOURCES -->
+      <li>
+        <button type="button" aria-expanded="false" aria-haspopup="true">Ressources <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner" style="min-width:460px;">
+            <div class="nav-dropdown-section-title">Guides</div>
+            <div class="nav-dropdown-grid">
+              <a href="/blog/engagement-collaborateur-guide-complet.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(108,92,231,0.12);border-color:rgba(108,92,231,0.2);">&#x1F4D6;</div>
+                <div class="nav-dropdown-text"><h4>Guide Engagement</h4><p>Le guide complet 2026</p></div>
+              </a>
+              <a href="/blog/gamification-entreprise-guide.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(0,206,201,0.12);border-color:rgba(0,206,201,0.2);">&#x1F3AE;</div>
+                <div class="nav-dropdown-text"><h4>Guide Gamification</h4><p>Booster l'engagement par le jeu</p></div>
+              </a>
+              <a href="/blog/qvct-qualite-vie-conditions-travail-guide.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,121,168,0.12);border-color:rgba(253,121,168,0.2);">&#x1F33F;</div>
+                <div class="nav-dropdown-text"><h4>Guide QVCT</h4><p>Qualite de vie et conditions de travail</p></div>
+              </a>
+              <a href="/blog/cohesion-equipe-distance-guide.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,203,110,0.12);border-color:rgba(253,203,110,0.2);">&#x1F310;</div>
+                <div class="nav-dropdown-text"><h4>Cohesion a distance</h4><p>Equipes hybrides et teletravail</p></div>
+              </a>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-section-title">Contenus</div>
+            <div class="nav-dropdown-grid">
+              <a href="/blog.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(108,92,231,0.12);border-color:rgba(108,92,231,0.2);">&#x270D;&#xFE0F;</div>
+                <div class="nav-dropdown-text"><h4>Blog</h4><p>Tous nos articles et analyses</p></div>
+              </a>
+              <a href="/blog/ice-breaker-animation-reunion-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(0,206,201,0.12);border-color:rgba(0,206,201,0.2);">&#x1F9CA;</div>
+                <div class="nav-dropdown-text"><h4>30+ Ice Breakers</h4><p>Animations pour vos reunions</p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- ENTREPRISE (lien direct) -->
+      <li><a href="/a-propos.html">Entreprise</a></li>
+
+      <!-- TARIFS (lien direct) -->
+      <li><a href="/contact.html">Tarifs</a></li>
     </ul>
     <div class="nav-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="Basculer mode clair/sombre" title="Mode clair / sombre">
@@ -3775,7 +4050,6 @@ s0.parentNode.insertBefore(s1,s0);
   var toggle = document.getElementById('themeToggle');
   if (!toggle) return;
 
-  // Load saved preference or default to dark
   var saved = localStorage.getItem('pulse-theme');
   if (saved === 'light') {
     document.documentElement.setAttribute('data-theme', 'light');
@@ -3786,6 +4060,76 @@ s0.parentNode.insertBefore(s1,s0);
     var next = current === 'light' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('pulse-theme', next);
+  });
+})();
+</script>
+
+<!-- Mega Menu Dropdown Script -->
+<script>
+(function() {
+  'use strict';
+  var navItems = document.querySelectorAll('.nav-links > li');
+
+  navItems.forEach(function(item) {
+    var btn = item.querySelector('button[aria-haspopup]');
+    if (!btn) return;
+
+    // Toggle on click
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isOpen = item.classList.contains('open');
+
+      // Close all others
+      navItems.forEach(function(other) {
+        other.classList.remove('open');
+        var otherBtn = other.querySelector('button[aria-haspopup]');
+        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle current
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Open on hover (desktop)
+    item.addEventListener('mouseenter', function() {
+      if (window.innerWidth < 900) return;
+      navItems.forEach(function(other) {
+        other.classList.remove('open');
+        var otherBtn = other.querySelector('button[aria-haspopup]');
+        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+      });
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    });
+
+    item.addEventListener('mouseleave', function() {
+      if (window.innerWidth < 900) return;
+      item.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close on click outside
+  document.addEventListener('click', function() {
+    navItems.forEach(function(item) {
+      item.classList.remove('open');
+      var btn = item.querySelector('button[aria-haspopup]');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      navItems.forEach(function(item) {
+        item.classList.remove('open');
+        var btn = item.querySelector('button[aria-haspopup]');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
   });
 })();
 </script>
