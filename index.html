@@ -511,8 +511,15 @@
        ============================================ */
     .engagement-pillars {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .engagement-pillars {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -2477,7 +2484,7 @@
         </div>
         <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:10px;letter-spacing:-0.3px;">Ecoutez</h3>
         <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.65;">Sondages anonymes, pulse surveys et feedback 360° pour capter le ressenti reel de vos equipes.</p>
-        <a href="/sondage-collaborateurs-entreprise.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:0.82rem;color:var(--accent-2);text-decoration:none;font-weight:600;transition:gap 0.2s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Sondage collaborateurs <span>&#x2192;</span></a>
+        <a href="#apps" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:0.82rem;color:var(--accent-2);text-decoration:none;font-weight:600;transition:gap 0.2s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Explorer les apps <span>&#x2192;</span></a>
       </div>
 
       <!-- ACTIVEZ -->
@@ -2507,7 +2514,22 @@
         </div>
         <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:10px;letter-spacing:-0.3px;">Mesurez</h3>
         <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.65;">Dashboards en temps reel, analytics RH et alertes automatiques pour piloter l'engagement avec des donnees.</p>
-        <a href="/real-time-sentiment-entreprise.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:0.82rem;color:var(--accent-4);text-decoration:none;font-weight:600;transition:gap 0.2s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Real-time Sentiment <span>&#x2192;</span></a>
+        <a href="#apps" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:0.82rem;color:var(--accent-4);text-decoration:none;font-weight:600;transition:gap 0.2s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Explorer les apps <span>&#x2192;</span></a>
+      </div>
+
+      <!-- GAMIFIEZ -->
+      <div style="background:var(--bg-card);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:40px 36px;text-align:center;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:120px;height:120px;background:radial-gradient(circle,rgba(253,203,110,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+        <div style="width:64px;height:64px;margin:0 auto 20px;border-radius:18px;background:linear-gradient(135deg,rgba(253,203,110,0.15),rgba(255,165,0,0.1));border:1px solid rgba(253,203,110,0.2);display:flex;align-items:center;justify-content:center;position:relative;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#iconGrad4)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <defs><linearGradient id="iconGrad4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fdcb6e"/><stop offset="100%" stop-color="#e17055"/></linearGradient></defs>
+            <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+          </svg>
+          <div style="position:absolute;inset:-1px;border-radius:18px;background:linear-gradient(135deg,rgba(253,203,110,0.3),transparent);opacity:0;transition:opacity 0.3s;pointer-events:none;" class="icon-glow"></div>
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:10px;letter-spacing:-0.3px;">Gamifiez</h3>
+        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.65;">Pronostics Coupe du Monde 2026, quiz, defis sportifs et classements pour federer vos equipes par le jeu.</p>
+        <a href="/pronostic-football-entreprise.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:0.82rem;color:var(--accent-5);text-decoration:none;font-weight:600;transition:gap 0.2s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Pronostics 2026 <span>&#x2192;</span></a>
       </div>
 
     </div>
@@ -2565,14 +2587,16 @@
                width="900" height="1200">
         </div>
         <!-- App mockup preview -->
-        <div class="featured-mockup-row">
-          <div class="featured-mockup">
+        <div class="featured-mockup-row" style="display:flex;gap:20px;flex-wrap:wrap;">
+          <!-- MOCKUP 1: Pronostics / Paris -->
+          <div class="featured-mockup" style="flex:1;min-width:260px;">
             <div class="mockup-header">
               <div class="mockup-dot"></div>
               <div class="mockup-dot"></div>
               <div class="mockup-dot"></div>
             </div>
             <div class="mockup-content">
+              <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-tertiary);margin-bottom:12px;font-weight:600;">Mes pronostics</div>
               <div class="mockup-match">
                 <div class="mockup-team">
                   <span class="mockup-flag">&#x1F1EB;&#x1F1F7;</span>
@@ -2599,21 +2623,73 @@
                   <span class="mockup-flag">&#x1F1E6;&#x1F1F7;</span>
                 </div>
               </div>
-              <div class="mockup-leaderboard-title">Classement</div>
-              <div class="mockup-leader">
+              <div class="mockup-match">
+                <div class="mockup-team">
+                  <span class="mockup-flag">&#x1F1EA;&#x1F1F8;</span>
+                  <span class="mockup-team-name">Espagne</span>
+                </div>
+                <div class="mockup-score-input">2</div>
+                <span class="mockup-vs">VS</span>
+                <div class="mockup-score-input">2</div>
+                <div class="mockup-team" style="justify-content:flex-end;">
+                  <span class="mockup-team-name">Angleterre</span>
+                  <span class="mockup-flag">&#x1F3F4;&#xE0067;&#xE0062;&#xE0065;&#xE006E;&#xE0067;&#xE007F;</span>
+                </div>
+              </div>
+              <div style="margin-top:14px;padding:10px 14px;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.2);border-radius:10px;display:flex;align-items:center;justify-content:space-between;">
+                <span style="font-size:0.72rem;color:var(--text-secondary);">Points gagnes aujourd'hui</span>
+                <span style="font-size:0.88rem;font-weight:700;color:var(--accent-3);">+18 pts</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- MOCKUP 2: Classement collaborateurs -->
+          <div class="featured-mockup" style="flex:1;min-width:260px;">
+            <div class="mockup-header">
+              <div class="mockup-dot"></div>
+              <div class="mockup-dot"></div>
+              <div class="mockup-dot"></div>
+            </div>
+            <div class="mockup-content">
+              <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-tertiary);margin-bottom:12px;font-weight:600;">Classement general</div>
+              <div class="mockup-leader" style="background:linear-gradient(135deg,rgba(253,203,110,0.12),rgba(253,203,110,0.04));border:1px solid rgba(253,203,110,0.2);border-radius:10px;padding:10px 12px;">
+                <div style="font-size:1.1rem;margin-right:4px;">&#x1F947;</div>
                 <div class="mockup-rank">1</div>
-                <span class="mockup-leader-name">Sophie M.</span>
+                <span class="mockup-leader-name" style="font-weight:700;">Sophie M.</span>
+                <span style="font-size:0.65rem;color:var(--text-tertiary);margin-left:auto;margin-right:8px;">Marketing</span>
                 <span class="mockup-leader-pts">247 pts</span>
               </div>
               <div class="mockup-leader">
+                <div style="font-size:1.1rem;margin-right:4px;">&#x1F948;</div>
                 <div class="mockup-rank" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7);">2</div>
                 <span class="mockup-leader-name">Thomas R.</span>
+                <span style="font-size:0.65rem;color:var(--text-tertiary);margin-left:auto;margin-right:8px;">Tech</span>
                 <span class="mockup-leader-pts">231 pts</span>
               </div>
               <div class="mockup-leader">
+                <div style="font-size:1.1rem;margin-right:4px;">&#x1F949;</div>
                 <div class="mockup-rank" style="background:linear-gradient(135deg,#00cec9,#00b894);">3</div>
                 <span class="mockup-leader-name">Marie L.</span>
+                <span style="font-size:0.65rem;color:var(--text-tertiary);margin-left:auto;margin-right:8px;">RH</span>
                 <span class="mockup-leader-pts">218 pts</span>
+              </div>
+              <div class="mockup-leader" style="opacity:0.6;">
+                <div style="width:1.1rem;margin-right:4px;"></div>
+                <div class="mockup-rank" style="background:rgba(255,255,255,0.08);">4</div>
+                <span class="mockup-leader-name">Lucas P.</span>
+                <span style="font-size:0.65rem;color:var(--text-tertiary);margin-left:auto;margin-right:8px;">Finance</span>
+                <span class="mockup-leader-pts">205 pts</span>
+              </div>
+              <div class="mockup-leader" style="opacity:0.4;">
+                <div style="width:1.1rem;margin-right:4px;"></div>
+                <div class="mockup-rank" style="background:rgba(255,255,255,0.08);">5</div>
+                <span class="mockup-leader-name">Emma B.</span>
+                <span style="font-size:0.65rem;color:var(--text-tertiary);margin-left:auto;margin-right:8px;">Ops</span>
+                <span class="mockup-leader-pts">198 pts</span>
+              </div>
+              <div style="margin-top:14px;padding:10px 14px;background:rgba(0,206,201,0.08);border:1px solid rgba(0,206,201,0.15);border-radius:10px;display:flex;align-items:center;justify-content:space-between;">
+                <span style="font-size:0.72rem;color:var(--text-secondary);">Votre position</span>
+                <span style="font-size:0.88rem;font-weight:700;color:var(--accent-3);">8e / 142</span>
               </div>
             </div>
           </div>
