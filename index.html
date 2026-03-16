@@ -160,7 +160,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   <!-- Prevent flash of wrong theme -->
   <script>
     (function(){var t=localStorage.getItem('pulse-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();
@@ -192,8 +192,8 @@
       --radius-lg: 20px;
       --radius-xl: 28px;
       --shadow-glow: 0 0 60px rgba(108,92,231,0.15);
-      --font-display: 'Space Grotesk', sans-serif;
-      --font-body: 'Inter', sans-serif;
+      --font-display: 'Bricolage Grotesque', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       --nav-bg: rgba(6,6,10,0.7);
       --nav-bg-scrolled: rgba(6,6,10,0.92);
@@ -295,6 +295,42 @@
       50% { transform: translate(-40px, 80px) scale(0.9); }
       75% { transform: translate(60px, 40px) scale(1.05); }
     }
+
+    /* Film grain overlay for depth */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+    }
+
+    [data-theme="light"] body::before {
+      opacity: 0.03;
+    }
+
+    /* Scroll-triggered reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
 
     /* ============================================
        HEARTBEAT LOGO ANIMATION
@@ -2401,7 +2437,7 @@
 
 
   <!-- WHY ENGAGEMENT SECTION -->
-  <section style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 40px 40px;">
+  <section style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 40px 100px;">
     <div style="text-align:center;margin-bottom:56px;">
       <div style="display:inline-flex;align-items:center;gap:8px;font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--accent-4);margin-bottom:16px;">
         <span style="width:24px;height:1px;background:var(--accent-4);opacity:0.4;"></span>
@@ -4130,6 +4166,31 @@ s0.parentNode.insertBefore(s1,s0);
         if (btn) btn.setAttribute('aria-expanded', 'false');
       });
     }
+  });
+})();
+</script>
+
+<!-- Scroll Reveal Animations -->
+<script>
+(function() {
+  'use strict';
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .app-card-item, .section-header, [class*="section-label"]').forEach(function(el) {
+    if (!el.classList.contains('reveal')) el.classList.add('reveal');
+    observer.observe(el);
+  });
+
+  // Also observe the engagement cards
+  document.querySelectorAll('[style*="bg-card"]').forEach(function(el, i) {
+    el.classList.add('reveal', 'reveal-delay-' + (i + 1));
+    observer.observe(el);
   });
 })();
 </script>
