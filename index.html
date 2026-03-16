@@ -507,6 +507,22 @@
     }
 
     /* ============================================
+       ENGAGEMENT PILLARS (Ecoutez / Activez / Mesurez)
+       ============================================ */
+    .engagement-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 768px) {
+      .engagement-pillars {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    /* ============================================
        MEGA MENU DROPDOWNS
        ============================================ */
     .nav-dropdown {
@@ -2447,25 +2463,53 @@
       <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-1px;line-height:1.15;">L'engagement ne se devine pas.<br><span style="background:var(--gradient-hero);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Il se mesure.</span></h2>
       <p style="color:var(--text-secondary);margin-top:16px;font-size:1.05rem;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.7;">En France, seulement 7% des salaries se declarent engages. Les autres ? Ils sont la, mais pas vraiment. Pulse transforme le silence en signal, et le signal en action.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
-      <div style="background:var(--bg-card);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:36px;text-align:center;">
-        <div style="font-size:2.8rem;margin-bottom:12px;">&#x1F4CB;</div>
-        <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin-bottom:8px;">Ecoutez</h3>
-        <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;">Sondages anonymes, pulse surveys et feedback 360° pour capter le ressenti reel de vos equipes.</p>
-        <a href="/sondage-collaborateurs-entreprise.html" style="display:inline-flex;align-items:center;gap:4px;margin-top:12px;font-size:0.82rem;color:var(--accent-2);text-decoration:none;font-weight:600;">Sondage collaborateurs &#x2192;</a>
+    <div class="engagement-pillars">
+
+      <!-- ECOUTEZ -->
+      <div style="background:var(--bg-card);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:40px 36px;text-align:center;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:120px;height:120px;background:radial-gradient(circle,rgba(108,92,231,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+        <div style="width:64px;height:64px;margin:0 auto 20px;border-radius:18px;background:linear-gradient(135deg,rgba(108,92,231,0.15),rgba(168,85,247,0.1));border:1px solid rgba(108,92,231,0.2);display:flex;align-items:center;justify-content:center;position:relative;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#iconGrad1)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <defs><linearGradient id="iconGrad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6c5ce7"/><stop offset="100%" stop-color="#a855f7"/></linearGradient></defs>
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+          <div style="position:absolute;inset:-1px;border-radius:18px;background:linear-gradient(135deg,rgba(108,92,231,0.3),transparent);opacity:0;transition:opacity 0.3s;pointer-events:none;" class="icon-glow"></div>
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:10px;letter-spacing:-0.3px;">Ecoutez</h3>
+        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.65;">Sondages anonymes, pulse surveys et feedback 360° pour capter le ressenti reel de vos equipes.</p>
+        <a href="/sondage-collaborateurs-entreprise.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:0.82rem;color:var(--accent-2);text-decoration:none;font-weight:600;transition:gap 0.2s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Sondage collaborateurs <span>&#x2192;</span></a>
       </div>
-      <div style="background:var(--bg-card);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:36px;text-align:center;">
-        <div style="font-size:2.8rem;margin-bottom:12px;">&#x1F680;</div>
-        <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin-bottom:8px;">Activez</h3>
-        <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;">Team building digital, quiz, pronostics sportifs et gamification pour creer du lien et de la cohesion.</p>
-        <a href="#apps" style="display:inline-flex;align-items:center;gap:4px;margin-top:12px;font-size:0.82rem;color:var(--accent-3);text-decoration:none;font-weight:600;">Explorer les apps &#x2192;</a>
+
+      <!-- ACTIVEZ -->
+      <div style="background:var(--bg-card);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:40px 36px;text-align:center;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:120px;height:120px;background:radial-gradient(circle,rgba(0,206,201,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+        <div style="width:64px;height:64px;margin:0 auto 20px;border-radius:18px;background:linear-gradient(135deg,rgba(0,206,201,0.15),rgba(0,180,216,0.1));border:1px solid rgba(0,206,201,0.2);display:flex;align-items:center;justify-content:center;position:relative;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#iconGrad2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <defs><linearGradient id="iconGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00cec9"/><stop offset="100%" stop-color="#0984e3"/></linearGradient></defs>
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <div style="position:absolute;inset:-1px;border-radius:18px;background:linear-gradient(135deg,rgba(0,206,201,0.3),transparent);opacity:0;transition:opacity 0.3s;pointer-events:none;" class="icon-glow"></div>
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:10px;letter-spacing:-0.3px;">Activez</h3>
+        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.65;">Team building digital, quiz, pronostics sportifs et gamification pour creer du lien et de la cohesion.</p>
+        <a href="#apps" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:0.82rem;color:var(--accent-3);text-decoration:none;font-weight:600;transition:gap 0.2s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Explorer les apps <span>&#x2192;</span></a>
       </div>
-      <div style="background:var(--bg-card);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:36px;text-align:center;">
-        <div style="font-size:2.8rem;margin-bottom:12px;">&#x1F4C8;</div>
-        <h3 style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;margin-bottom:8px;">Mesurez</h3>
-        <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.6;">Dashboards en temps reel, analytics RH et alertes automatiques pour piloter l'engagement avec des donnees.</p>
-        <a href="/real-time-sentiment-entreprise.html" style="display:inline-flex;align-items:center;gap:4px;margin-top:12px;font-size:0.82rem;color:var(--accent-5);text-decoration:none;font-weight:600;">Real-time Sentiment &#x2192;</a>
+
+      <!-- MESUREZ -->
+      <div style="background:var(--bg-card);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:40px 36px;text-align:center;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:120px;height:120px;background:radial-gradient(circle,rgba(253,121,168,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+        <div style="width:64px;height:64px;margin:0 auto 20px;border-radius:18px;background:linear-gradient(135deg,rgba(253,121,168,0.15),rgba(232,67,147,0.1));border:1px solid rgba(253,121,168,0.2);display:flex;align-items:center;justify-content:center;position:relative;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#iconGrad3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <defs><linearGradient id="iconGrad3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fd79a8"/><stop offset="100%" stop-color="#e84393"/></linearGradient></defs>
+            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><path d="M3 20h18"/>
+          </svg>
+          <div style="position:absolute;inset:-1px;border-radius:18px;background:linear-gradient(135deg,rgba(253,121,168,0.3),transparent);opacity:0;transition:opacity 0.3s;pointer-events:none;" class="icon-glow"></div>
+        </div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:10px;letter-spacing:-0.3px;">Mesurez</h3>
+        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.65;">Dashboards en temps reel, analytics RH et alertes automatiques pour piloter l'engagement avec des donnees.</p>
+        <a href="/real-time-sentiment-entreprise.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:0.82rem;color:var(--accent-4);text-decoration:none;font-weight:600;transition:gap 0.2s;" onmouseover="this.style.gap='10px'" onmouseout="this.style.gap='6px'">Real-time Sentiment <span>&#x2192;</span></a>
       </div>
+
     </div>
   </section>
 
