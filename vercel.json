@@ -2,6 +2,12 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "framework": null,
+  "redirects": [
+    { "source": "/pronostics-entreprise", "destination": "/pronostics-sportifs-entreprise.html", "statusCode": 301 },
+    { "source": "/pronostics-entreprise.html", "destination": "/pronostics-sportifs-entreprise.html", "statusCode": 301 },
+    { "source": "/application-pronostics-entreprise", "destination": "/pronostics-sportifs-entreprise.html", "statusCode": 301 },
+    { "source": "/application-pronostics-entreprise.html", "destination": "/pronostics-sportifs-entreprise.html", "statusCode": 301 }
+  ],
   "rewrites": [
     { "source": "/.well-known/(.*)", "destination": "/.well-known/$1" },
     { "source": "/(.*)", "destination": "/$1" }
