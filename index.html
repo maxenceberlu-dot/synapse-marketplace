@@ -2390,7 +2390,7 @@
         Engagement collaborateur
         <span style="width:24px;height:1px;background:var(--accent-4);opacity:0.4;"></span>
       </div>
-      <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-1px;line-height:1.15;">L'engagement ne se devine pas.<br><span style="background:var(--gradient-hero);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Il se mesure.</span></h2>
+      <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-1px;line-height:1.15;">Pourquoi mesurer l'engagement collaborateur ?<br><span style="background:var(--gradient-hero);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Parce qu'il ne se devine pas.</span></h2>
       <p style="color:var(--text-secondary);margin-top:16px;font-size:1.05rem;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.7;">En France, seulement 7% des salaries se declarent engages. Les autres ? Ils sont la, mais pas vraiment. Pulse transforme le silence en signal, et le signal en action.</p>
     </div>
     <div class="engagement-pillars">
@@ -3336,7 +3336,7 @@
   <section class="section" id="processus" aria-label="Notre processus">
     <div class="section-header reveal">
       <div class="section-label">Notre processus</div>
-      <h2 class="section-title">Votre application en 4 étapes</h2>
+      <h2 class="section-title">Comment développer votre application d'engagement ?</h2>
       <p class="section-subtitle">De l'idée au déploiement, un processus éprouvé pour livrer des applications d'engagement de haute qualité.</p>
     </div>
     <div class="steps-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
@@ -3367,7 +3367,7 @@
   <section class="section" id="entreprise" style="padding-top:80px;" aria-label="S\u00e9curit\u00e9 et entreprise">
     <div class="section-header reveal">
       <div class="section-label">Sécurité & Conformité</div>
-      <h2 class="section-title" style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;">Chaque application est conçue pour l'entreprise</h2>
+      <h2 class="section-title" style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;">Comment garantir la sécurité et la conformité de vos applications ?</h2>
       <p style="color:var(--text-secondary);max-width:620px;margin:0 auto;font-size:1.05rem;">De 50 à 50 000+ collaborateurs, chaque application que nous développons respecte les exigences de sécurité, de conformité et de scalabilité des organisations internationales.</p>
     </div>
 
@@ -3442,7 +3442,7 @@
   <section class="section" id="integration" style="padding-top:80px;" aria-label="Int\u00e9grations et compatibilit\u00e9">
     <div class="section-header reveal">
       <div class="section-label">Intégrations</div>
-      <h2 class="section-title" style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;">S'intègre à tout votre écosystème</h2>
+      <h2 class="section-title" style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;">Comment intégrer Pulse à vos outils existants ?</h2>
       <p style="color:var(--text-secondary);max-width:600px;margin:0 auto;font-size:1.05rem;">Chaque application que nous développons se connecte nativement à vos outils de communication, d'authentification et de gestion RH. Aucune configuration complexe.</p>
     </div>
 
@@ -3641,6 +3641,7 @@
         <a href="#" title="GitHub">GH</a>
       </div>
     </div>
+    <div style="text-align:center;padding-top:16px;"><a href="/mentions-legales.html" style="color: #8892ab; font-size: 13px; text-decoration: none;">Mentions légales</a> · <a href="/politique-confidentialite.html" style="color: #8892ab; font-size: 13px; text-decoration: none;">Politique de confidentialité</a></div>
   </footer>
 
   <!-- App Detail Modal -->
@@ -4108,19 +4109,26 @@
     });
   </script>
 <script src="/pulse-analytics.js" defer></script>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+<!-- Tawk.to Chat - Lazy loaded -->
+<script>
 (function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5f32e7b91e6c0725256062bc/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
+  var loaded = false;
+  function loadTawk() {
+    if (loaded) return;
+    loaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://embed.tawk.to/5f32e7b91e6c0725256062bc/default';
+    s.charset = 'UTF-8';
+    s.setAttribute('crossorigin', '*');
+    document.head.appendChild(s);
+  }
+  setTimeout(loadTawk, 3000);
+  ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(function(e) {
+    document.addEventListener(e, loadTawk, { once: true, passive: true });
+  });
 })();
 </script>
-<!--End of Tawk.to Script-->
 
 <!-- Theme Toggle Script -->
 <script>

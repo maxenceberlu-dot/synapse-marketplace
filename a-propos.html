@@ -29,6 +29,21 @@
   <link rel="alternate" hreflang="fr" href="https://www.pulsework.app/a-propos.html">
   <link rel="alternate" hreflang="x-default" href="https://www.pulsework.app/a-propos.html">
 
+  <!-- Structured Data: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Maxence Berlu",
+    "jobTitle": "Co-fondateur",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Pulse",
+      "url": "https://www.pulsework.app"
+    }
+  }
+  </script>
+
   <!-- Structured Data: Organization -->
   <script type="application/ld+json">
   {
@@ -470,23 +485,26 @@
         </div>
       </div>
 
-      <!-- Stats -->
+      <!-- Pulse en chiffres -->
+      <div class="about-section">
+        <h2>Pulse en chiffres</h2>
+      </div>
       <div class="stats-row">
         <div class="stat-item">
-          <div class="number">2 000+</div>
-          <div class="label">Experts dans le groupe</div>
+          <div class="number">20+</div>
+          <div class="label">Activités d'engagement disponibles</div>
         </div>
         <div class="stat-item">
-          <div class="number">50+</div>
-          <div class="label">Applications livrées</div>
-        </div>
-        <div class="stat-item">
-          <div class="number">🇫🇷 🇧🇷</div>
-          <div class="label">Franco-brésilienne</div>
+          <div class="number">Teams · Slack · SharePoint</div>
+          <div class="label">Intégrations natives</div>
         </div>
         <div class="stat-item">
           <div class="number">RGPD</div>
-          <div class="label">Conforme & sécurisé</div>
+          <div class="label">Conforme, hébergement européen</div>
+        </div>
+        <div class="stat-item">
+          <div class="number">&lt; 48h</div>
+          <div class="label">Déploiement rapide</div>
         </div>
       </div>
 
@@ -505,8 +523,23 @@
       <div class="about-section">
         <h2>Notre mission</h2>
         <p>
-          Nous croyons que des collaborateurs engagés sont la clé de la performance des entreprises. Notre mission est de concevoir et développer pour les équipes RH et Communication les applications les plus innovantes pour créer du lien, stimuler la cohésion et mesurer l'engagement — le tout dans un environnement sécurisé et conforme aux standards les plus exigeants.
+          Chez Pulse, nous croyons que l'engagement collaborateur est le premier levier de performance des entreprises. Notre mission : donner aux RH et managers les outils simples et ludiques pour créer du lien, mesurer le ressenti et fédérer leurs équipes.
         </p>
+        <p>
+          Nous concevons et développons des applications d'engagement innovantes, sécurisées et conformes aux standards les plus exigeants — pour que chaque organisation puisse transformer le silence en signal, et le signal en action.
+        </p>
+      </div>
+
+      <!-- L'équipe -->
+      <div class="about-section">
+        <h2>L'équipe</h2>
+        <div style="display: flex; align-items: center; gap: 20px; margin: 24px 0; padding: 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 16px;">
+          <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #6c5ce7, #a29bfe); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 28px; flex-shrink: 0;">MB</div>
+          <div>
+            <h3 style="margin: 0; font-size: 18px; color: var(--text-primary);">Maxence Berlu</h3>
+            <p style="margin: 4px 0 0; font-size: 14px; color: var(--text-secondary); line-height: 1.6;">Co-fondateur · Passionné par l'engagement collaborateur et la gamification en entreprise. Convaincu que des équipes engagées créent des entreprises performantes.</p>
+          </div>
+        </div>
       </div>
 
       <!-- Valeurs -->
@@ -564,18 +597,25 @@
   </footer>
 
 <script src="/pulse-analytics.js" defer></script>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+<!-- Tawk.to Chat - Lazy loaded -->
+<script>
 (function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5f32e7b91e6c0725256062bc/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
+  var loaded = false;
+  function loadTawk() {
+    if (loaded) return;
+    loaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://embed.tawk.to/5f32e7b91e6c0725256062bc/default';
+    s.charset = 'UTF-8';
+    s.setAttribute('crossorigin', '*');
+    document.head.appendChild(s);
+  }
+  setTimeout(loadTawk, 3000);
+  ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(function(e) {
+    document.addEventListener(e, loadTawk, { once: true, passive: true });
+  });
 })();
 </script>
-<!--End of Tawk.to Script-->
 </body>
 </html>

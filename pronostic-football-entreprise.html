@@ -1473,22 +1473,30 @@
     </div>
     <div style="border-top:1px solid rgba(240,240,245,0.1);padding-top:20px;text-align:center;">
       <p style="color:rgba(240,240,245,0.4);font-size:0.8rem;">&copy; 2026 Pulse. Tous droits réservés.</p>
+      <p style="color:rgba(240,240,245,0.4);font-size:0.75rem;margin-top:8px;"><a href="/mentions-legales.html" style="color:rgba(240,240,245,0.4);font-size:0.75rem;text-decoration:none;">Mentions légales</a> · <a href="/politique-confidentialite.html" style="color:rgba(240,240,245,0.4);font-size:0.75rem;text-decoration:none;">Politique de confidentialité</a></p>
     </div>
   </footer>
 
 <script src="/pulse-analytics.js" defer></script>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+<!-- Tawk.to Chat - Lazy loaded -->
+<script>
 (function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5f32e7b91e6c0725256062bc/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
+  var loaded = false;
+  function loadTawk() {
+    if (loaded) return;
+    loaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://embed.tawk.to/5f32e7b91e6c0725256062bc/default';
+    s.charset = 'UTF-8';
+    s.setAttribute('crossorigin', '*');
+    document.head.appendChild(s);
+  }
+  setTimeout(loadTawk, 3000);
+  ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(function(e) {
+    document.addEventListener(e, loadTawk, { once: true, passive: true });
+  });
 })();
 </script>
-<!--End of Tawk.to Script-->
 </body>
 </html>
