@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politique de Confidentialité | Pulse</title>
+  <meta name="description" content="Politique de confidentialité de Pulse (pulsework.app). Découvrez comment nous collectons, utilisons et protégeons vos données personnelles, conformément au RGPD.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.pulsework.app/politique-confidentialite.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.pulsework.app/politique-confidentialite.html">
+  <meta property="og:title" content="Politique de Confidentialité — Pulse">
+  <meta property="og:description" content="Politique de confidentialité de Pulse. Collecte, utilisation et protection de vos données personnelles, conformément au RGPD.">
+  <meta property="og:site_name" content="Pulse">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://www.pulsework.app/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Politique de Confidentialité — Pulse">
+  <meta name="twitter:description" content="Politique de confidentialité de Pulse. Collecte, utilisation et protection de vos données personnelles, conformément au RGPD.">
+  <meta name="twitter:image" content="https://www.pulsework.app/og-image.jpg">
+
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="fr" href="https://www.pulsework.app/politique-confidentialite.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.pulsework.app/politique-confidentialite.html">
+
+  <!-- Schema.org - BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://www.pulsework.app/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Politique de Confidentialité",
+        "item": "https://www.pulsework.app/politique-confidentialite.html"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="help" type="text/markdown" href="/llms.txt" title="LLM Information">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="help" type="text/markdown" href="/llms.txt" title="LLM Information">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #06060a;
+      --bg-secondary: #0c0c14;
+      --bg-card: rgba(255,255,255,0.03);
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.08);
+      --text-primary: #f0f0f5;
+      --text-secondary: rgba(240,240,245,0.6);
+      --text-tertiary: rgba(240,240,245,0.35);
+      --accent-1: #6c5ce7;
+      --accent-2: #a29bfe;
+      --accent-3: #00cec9;
+      --accent-4: #fd79a8;
+      --gradient-primary: linear-gradient(135deg, #6c5ce7, #a29bfe, #00cec9);
+      --gradient-hero: linear-gradient(160deg, #6c5ce7 0%, #a29bfe 30%, #00cec9 60%, #fd79a8 100%);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .bg-mesh {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0; pointer-events: none; overflow: hidden;
+    }
+
+    .bg-mesh .orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px);
+      animation: orbFloat 20s ease-in-out infinite;
+    }
+
+    .bg-mesh .orb:nth-child(1) {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(108,92,231,0.15), transparent 70%);
+      top: -200px; left: -100px;
+    }
+
+    .bg-mesh .orb:nth-child(2) {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(0,206,201,0.1), transparent 70%);
+      bottom: -150px; right: -100px;
+      animation-delay: -7s;
+    }
+
+    .bg-mesh .orb:nth-child(3) {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(253,121,168,0.08), transparent 70%);
+      top: 50%; left: 50%;
+      animation-delay: -14s;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000; padding: 16px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(6,6,10,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text-primary);
+    }
+
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #ff6b9d, #c44ecf, #6c5ce7);
+      display: flex; align-items: center; justify-content: center;
+      padding: 4px;
+    }
+
+    .nav-logo-icon svg { width: 100%; height: 100%; }
+    .nav-logo-text { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; }
+
+    .nav-cta {
+      padding: 10px 24px;
+      background: var(--gradient-hero);
+      color: #fff; border: none; border-radius: 50px;
+      font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; cursor: pointer;
+    }
+
+    /* CONTENT */
+    main { position: relative; z-index: 1; padding-top: 100px; }
+
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .hero-about {
+      text-align: center;
+      padding: 60px 24px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-about h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      background: var(--gradient-hero);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+
+    .hero-about p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .about-section {
+      margin-bottom: 48px;
+    }
+
+    .about-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+
+    .about-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      margin-top: 24px;
+      color: var(--text-primary);
+    }
+
+    .about-section p, .about-section li {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .about-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .about-section ul li {
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .about-section ul li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+    }
+
+    .about-section a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    .about-section a:hover {
+      text-decoration: underline;
+    }
+
+    .about-section strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .about-section table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    .about-section table th,
+    .about-section table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--glass-border);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .about-section table th {
+      color: var(--text-primary);
+      font-weight: 600;
+      background: var(--bg-card);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 40px;
+      padding: 32px 24px;
+      border-top: 1px solid var(--glass-border);
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 0.85rem;
+      color: var(--text-tertiary);
+    }
+
+    .footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .footer a:hover { color: var(--text-primary); }
+
+    @media (max-width: 600px) {
+      .nav { padding: 12px 16px; }
+      .hero-about h1 { font-size: 1.8rem; }
+      .about-section table { font-size: 0.85rem; }
+      .about-section table th,
+      .about-section table td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-mesh">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="white"/>
+          <path d="M4 12.5H7C7.3 12.5 7.5 12.2 7.8 11.8L8.6 9.8C8.8 9.3 9.2 9.3 9.4 9.8L10.8 15.2C11 15.7 11.4 15.7 11.6 15.2L12.5 11.5C12.7 10.8 13 10.8 13.2 11.2L13.8 12.8C14 13.2 14.2 13 14.3 12.7L14.5 12.2H17" fill="none" stroke="rgba(108,92,231,0.9)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">pulse</span>
+    </a>
+    <a href="/contact.html" class="nav-cta">Demander une démo</a>
+  </nav>
+
+  <main>
+
+    <!-- Hero -->
+    <div class="hero-about">
+      <h1>Politique de Confidentialité</h1>
+      <p>Pulse s'engage à protéger vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés.</p>
+    </div>
+
+    <div class="section">
+
+      <!-- Responsable du traitement -->
+      <div class="about-section">
+        <h2>1. Responsable du traitement</h2>
+        <p>Le responsable du traitement des données personnelles collectées sur le site <strong>pulsework.app</strong> est :</p>
+        <ul>
+          <li><strong>Pulse</strong>, marque de Blue Data Group</li>
+          <li><strong>E-mail DPO :</strong> <a href="mailto:contact@pulsework.app">contact@pulsework.app</a></li>
+        </ul>
+      </div>
+
+      <!-- Données collectées -->
+      <div class="about-section">
+        <h2>2. Données personnelles collectées</h2>
+        <p>Dans le cadre de l'utilisation du site pulsework.app, nous pouvons être amenés à collecter les données personnelles suivantes :</p>
+
+        <h3>Via le formulaire de contact / demande de démo</h3>
+        <ul>
+          <li>Nom et prénom</li>
+          <li>Adresse e-mail professionnelle</li>
+          <li>Nom de l'entreprise</li>
+          <li>Message (contenu libre)</li>
+        </ul>
+
+        <h3>Via la navigation sur le site</h3>
+        <ul>
+          <li>Adresse IP (anonymisée)</li>
+          <li>Pages visitées et durée de visite</li>
+          <li>Type de navigateur et système d'exploitation</li>
+          <li>Source de trafic (referrer)</li>
+        </ul>
+      </div>
+
+      <!-- Finalités -->
+      <div class="about-section">
+        <h2>3. Finalités du traitement</h2>
+        <p>Les données collectées sont utilisées pour les finalités suivantes :</p>
+        <ul>
+          <li>Répondre à vos demandes de contact et de démonstration</li>
+          <li>Vous envoyer des informations commerciales relatives à nos services (avec votre consentement)</li>
+          <li>Analyser la fréquentation et améliorer l'expérience utilisateur du site</li>
+          <li>Assurer le fonctionnement du service de chat en ligne</li>
+        </ul>
+        <p>La base légale du traitement est votre <strong>consentement</strong> (article 6.1.a du RGPD) et notre <strong>intérêt légitime</strong> (article 6.1.f du RGPD) pour l'amélioration de nos services.</p>
+      </div>
+
+      <!-- Cookies et traceurs -->
+      <div class="about-section">
+        <h2>4. Cookies et traceurs</h2>
+        <p>Le site pulsework.app utilise les cookies et traceurs suivants :</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Service</th>
+              <th>Finalité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fonctionnel</td>
+              <td>Pulse (interne)</td>
+              <td>Fonctionnement du site, préférences utilisateur</td>
+            </tr>
+            <tr>
+              <td>Analytique</td>
+              <td>Supabase (analytics interne)</td>
+              <td>Mesure d'audience anonymisée, amélioration du site</td>
+            </tr>
+            <tr>
+              <td>Chat</td>
+              <td>Tawk.to</td>
+              <td>Service de messagerie en ligne pour le support</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><strong>Important :</strong> Pulse n'utilise pas Google Analytics ni aucun autre outil de tracking publicitaire tiers. Notre système d'analytics repose sur Supabase, une solution auto-hébergée qui ne partage aucune donnée avec des tiers.</p>
+        <p>Vous pouvez configurer votre navigateur pour refuser tout ou partie des cookies. La désactivation des cookies fonctionnels peut affecter votre expérience de navigation.</p>
+      </div>
+
+      <!-- Destinataires -->
+      <div class="about-section">
+        <h2>5. Destinataires des données</h2>
+        <p>Vos données personnelles sont destinées exclusivement à l'équipe Pulse / Blue Data Group. Elles ne sont jamais vendues à des tiers.</p>
+        <p>Les sous-traitants suivants peuvent avoir accès à vos données dans le cadre de leurs services :</p>
+        <ul>
+          <li><strong>Vercel Inc.</strong> (hébergement du site) — USA, couvert par les clauses contractuelles types (CCT)</li>
+          <li><strong>Supabase Inc.</strong> (base de données et analytics) — USA, couvert par les CCT</li>
+          <li><strong>Tawk.to Inc.</strong> (chat en ligne) — données de conversation uniquement</li>
+        </ul>
+      </div>
+
+      <!-- Durée de conservation -->
+      <div class="about-section">
+        <h2>6. Durée de conservation</h2>
+        <ul>
+          <li><strong>Données de contact :</strong> conservées pendant 3 ans à compter du dernier contact</li>
+          <li><strong>Données de navigation :</strong> conservées pendant 13 mois maximum</li>
+          <li><strong>Cookies :</strong> durée maximale de 13 mois conformément aux recommandations de la CNIL</li>
+        </ul>
+        <p>Au-delà de ces durées, les données sont supprimées ou anonymisées de manière irréversible.</p>
+      </div>
+
+      <!-- Droits des utilisateurs -->
+      <div class="about-section">
+        <h2>7. Vos droits</h2>
+        <p>Conformément au RGPD et à la loi Informatique et Libertés, vous disposez des droits suivants sur vos données personnelles :</p>
+        <ul>
+          <li><strong>Droit d'accès :</strong> obtenir la confirmation que vos données sont traitées et en recevoir une copie</li>
+          <li><strong>Droit de rectification :</strong> demander la correction de données inexactes ou incomplètes</li>
+          <li><strong>Droit à l'effacement :</strong> demander la suppression de vos données personnelles</li>
+          <li><strong>Droit à la portabilité :</strong> recevoir vos données dans un format structuré et couramment utilisé</li>
+          <li><strong>Droit d'opposition :</strong> vous opposer au traitement de vos données pour des motifs légitimes</li>
+          <li><strong>Droit à la limitation :</strong> demander la suspension du traitement de vos données</li>
+          <li><strong>Droit de retrait du consentement :</strong> retirer votre consentement à tout moment</li>
+        </ul>
+        <p>Pour exercer ces droits, envoyez un e-mail à : <a href="mailto:contact@pulsework.app">contact@pulsework.app</a></p>
+        <p>Nous nous engageons à répondre dans un délai maximum de <strong>30 jours</strong>.</p>
+        <p>En cas de litige, vous pouvez également adresser une réclamation à la <strong>CNIL</strong> (Commission Nationale de l'Informatique et des Libertés) : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a></p>
+      </div>
+
+      <!-- Sécurité -->
+      <div class="about-section">
+        <h2>8. Sécurité des données</h2>
+        <p>Pulse met en place les mesures techniques et organisationnelles appropriées pour protéger vos données personnelles contre tout accès non autorisé, modification, divulgation ou destruction :</p>
+        <ul>
+          <li>Chiffrement des données en transit (HTTPS/TLS)</li>
+          <li>Accès restreint aux données personnelles (principe du moindre privilège)</li>
+          <li>Infrastructure hébergée chez Vercel avec des standards de sécurité élevés</li>
+          <li>Sauvegardes régulières et plan de continuité</li>
+        </ul>
+      </div>
+
+      <!-- Transferts internationaux -->
+      <div class="about-section">
+        <h2>9. Transferts internationaux</h2>
+        <p>Certaines données peuvent être transférées vers les États-Unis dans le cadre de l'utilisation de nos sous-traitants (Vercel, Supabase, Tawk.to). Ces transferts sont encadrés par :</p>
+        <ul>
+          <li>Les <strong>clauses contractuelles types</strong> (CCT) approuvées par la Commission européenne</li>
+          <li>Le <strong>EU-US Data Privacy Framework</strong> lorsque applicable</li>
+        </ul>
+      </div>
+
+      <!-- Modifications -->
+      <div class="about-section">
+        <h2>10. Modifications de la politique</h2>
+        <p>Pulse se réserve le droit de modifier la présente politique de confidentialité à tout moment. En cas de modification substantielle, nous vous en informerons via le site. La date de dernière mise à jour est indiquée ci-dessous.</p>
+        <p><em>Dernière mise à jour : mars 2026</em></p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Pulse — Groupe <a href="https://bludata.com.br/" target="_blank" rel="noopener">Blue Data</a>. Tous droits réservés. | <a href="/">Accueil</a> · <a href="/blog.html">Blog</a> · <a href="/contact.html">Contact</a> · <a href="/mentions-legales.html">Mentions légales</a> · <a href="/politique-confidentialite.html">Confidentialité</a></p>
+  </footer>
+
+<script src="/pulse-analytics.js" defer></script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5f32e7b91e6c0725256062bc/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>

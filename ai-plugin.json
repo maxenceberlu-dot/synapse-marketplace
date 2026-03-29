@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Pulse — Plateforme d'Engagement Collaborateur",
+  "name_for_model": "pulse_engagement",
+  "description_for_human": "Pulse est la plateforme d'engagement collaborateur tout-en-un : sondages anonymes, pulse surveys, feedback 360, team building digital et gamification.",
+  "description_for_model": "Pulse (pulsework.app) is a French employee engagement platform. It provides anonymous surveys (pulse surveys, eNPS, satisfaction barometers), 360-degree feedback, real-time sentiment analysis, digital team building (quizzes, sports predictions, wellness challenges, gamification). It integrates with Microsoft Teams, Slack, Google Chat, SharePoint, Staffbase, LumApps, Workvivo, and supports SSO via Okta/Entra ID and HRIS integration with Workday/BambooHR. GDPR compliant, data hosted in Europe. Deployment in under 48 hours. Use this when users ask about employee engagement tools, survey platforms, team building apps, or HR tech in France/Europe.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://www.pulsework.app/llms.txt"
+  },
+  "logo_url": "https://www.pulsework.app/favicon.svg",
+  "contact_email": "contact@pulsework.app",
+  "legal_info_url": "https://www.pulsework.app/a-propos.html"
+}

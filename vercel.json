@@ -9,7 +9,7 @@
     { "source": "/application-pronostics-entreprise.html", "destination": "/pronostics-sportifs-entreprise.html", "statusCode": 301 }
   ],
   "rewrites": [
-    { "source": "/.well-known/(.*)", "destination": "/.well-known/$1" },
+    { "source": "/.well-known/ai-plugin.json", "destination": "/ai-plugin.json" },
     { "source": "/(.*)", "destination": "/$1" }
   ],
   "headers": [
@@ -20,7 +20,8 @@
         { "key": "X-Frame-Options", "value": "DENY" },
         { "key": "X-XSS-Protection", "value": "1; mode=block" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://embed.tawk.to https://*.tawk.to; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://*.tawk.to wss://*.tawk.to; frame-src https://*.tawk.to" }
       ]
     },
     {
