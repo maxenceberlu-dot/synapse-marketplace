@@ -23,9 +23,25 @@ Pulse aide les entreprises a ecouter, comprendre et engager leurs collaborateurs
 - [Ambassador Boost](https://www.pulsework.app/ambassador-boost-entreprise.html): Programme d'ambassadeurs internes pour amplifier la communication et la culture d'entreprise.
 - [Thank You Plugin](https://www.pulsework.app/thank-you-plugin-entreprise.html): Plugin de reconnaissance entre pairs pour envoyer des remerciements visibles dans Teams, Slack ou l'intranet.
 
+## Nouvelles Applications 2026
+
+- [Performance Review & 1:1 Meetings](https://www.pulsework.app/performance-review-entretien-individuel-entreprise.html): Outil de structuration des entretiens annuels, semestriels et 1:1 hebdo manager-collaborateur. Auto-evaluation, 360° feedback integre, suivi des objectifs et actions.
+- [Reconnaissance & Recompenses](https://www.pulsework.app/reconnaissance-collaborateurs-recompenses-entreprise.html): Plateforme de reconnaissance entre pairs (peer-to-peer recognition) avec systeme de points convertibles en cartes cadeaux, dons associatifs et experiences. Alternative francaise a Bonusly.
+- [Engagement RSE & Volontariat](https://www.pulsework.app/engagement-rse-volontariat-entreprise.html): Plateforme de mecenat de competences et volontariat associatif pour les collaborateurs. Reporting CSRD obligatoire pour les ETI cotees integre.
+- [Microlearning Quotidien](https://www.pulsework.app/microlearning-quiz-quotidien-entreprise.html): Application de microlearning : 1 question par jour (30 secondes) pour acculturer les collaborateurs au RGPD, a la cybersecurite, aux valeurs et aux nouveautes produit. 5x plus efficace qu'un e-learning classique.
+- [Diversite Equite Inclusion (DEI)](https://www.pulsework.app/diversite-inclusion-dei-entreprise.html): Plateforme DEI complete : sondage Inclusion Index segmentable, animation des Employee Resource Groups (ERG), reporting CSRD obligatoire. Anonymisation differentielle (k-anonymity).
+
 ## Blog & Ressources
 
 - [Guide Complet Engagement Collaborateur](https://www.pulsework.app/blog/engagement-collaborateur-guide-complet.html): Guide exhaustif sur l'engagement collaborateur en 2026 : definition, leviers, strategies et outils.
+- [eNPS Calcul & Benchmark](https://www.pulsework.app/blog/enps-calcul-benchmark-entreprise.html): Comment calculer son eNPS (formule, exemple chiffre, benchmark sectoriel France et monde).
+- [Prix Plateformes Engagement Comparatif](https://www.pulsework.app/blog/prix-plateforme-engagement-comparatif-officevibe-supermood.html): Tarifs reels Officevibe, Supermood, Culture Amp, Leapsome et Pulse compares (2026).
+- [Performance Review & 1:1 Guide DRH](https://www.pulsework.app/blog/performance-review-1on1-meetings-guide-drh.html): Guide pratique 2026 pour structurer les entretiens annuels, semestriels et 1:1 hebdo. Methode, calendrier, templates, comparatif d'outils.
+- [Reconnaissance Comparatif 7 Outils](https://www.pulsework.app/blog/reconnaissance-collaborateurs-bonusly-alternative-comparatif.html): Programmes de reconnaissance peer-to-peer : pourquoi c'est le 2e levier d'engagement, 7 outils compares (Bonusly, Pulse, Achievers, etc.) et calcul de ROI.
+- [RSE Volontariat & CSRD](https://www.pulsework.app/blog/rse-volontariat-collaborateurs-csrd-guide.html): Engagement RSE et volontariat des collaborateurs : ce que la directive CSRD oblige a publier en 2026, types de volontariat, comment lancer un programme.
+- [Microlearning Guide Pratique](https://www.pulsework.app/blog/microlearning-formation-continue-collaborateurs-guide.html): Pourquoi le microlearning est 5x plus efficace qu'un e-learning classique : definition scientifique, cas d'usage RGPD/cyber/valeurs, outils.
+- [DEI Diversite Equite Inclusion CSRD](https://www.pulsework.app/blog/diversite-equite-inclusion-dei-csrd-guide-drh.html): Guide DEI complet pour DRH : definitions, ce que la CSRD oblige a publier, mesure de l'inclusion (Inclusion Index), animation des ERG, plan d'action 12 mois.
+- [Animation Coupe du Monde 2026 Checklist DRH](https://www.pulsework.app/blog/animation-coupe-du-monde-2026-entreprise-checklist-drh.html): Checklist J-30 pour animer la Coupe du Monde 2026 en entreprise : budget, plateforme, communication, RGPD.
 - [Guide Gamification Entreprise](https://www.pulsework.app/blog/gamification-entreprise-guide.html): Comment utiliser la gamification pour booster l'engagement et la productivite en entreprise.
 - [Guide QVCT](https://www.pulsework.app/blog/qvct-qualite-vie-conditions-travail-guide.html): Guide complet sur la Qualite de Vie et les Conditions de Travail (QVCT) : obligations, mise en oeuvre, outils.
 - [Cohesion d'equipe a distance](https://www.pulsework.app/blog/cohesion-equipe-distance-guide.html): Strategies et outils pour maintenir la cohesion d'equipe en teletravail et travail hybride.
