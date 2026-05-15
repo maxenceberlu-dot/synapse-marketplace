@@ -756,6 +756,7 @@
       .footer-bottom { flex-direction: column; gap: 16px; }
     }
   </style>
+  <link rel="stylesheet" href="/assets/css/nav-shared.css">
 </head>
 <body>
   <div class="bg-mesh"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
@@ -771,15 +772,30 @@
   <div class="bg-grid"></div>
 
   <!-- Navigation -->
-  <nav class="nav" id="nav">
+  <nav class="nav" id="nav" aria-label="Navigation principale">
     <a href="/" class="nav-logo">
       <div class="nav-logo-icon">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ff6b9d"/><stop offset="30%" stop-color="#ee5a8f"/><stop offset="65%" stop-color="#c44ecf"/><stop offset="100%" stop-color="#6c5ce7"/></linearGradient>
-            <linearGradient id="hhl" x1="20%" y1="0%" x2="80%" y2="80%"><stop offset="0%" stop-color="rgba(255,255,255,0.45)"/><stop offset="50%" stop-color="rgba(255,255,255,0.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></linearGradient>
-            <radialGradient id="hglow" cx="50%" cy="45%" r="55%"><stop offset="0%" stop-color="#ff6b9d" stop-opacity="0.5"/><stop offset="60%" stop-color="#c44ecf" stop-opacity="0.2"/><stop offset="100%" stop-color="#6c5ce7" stop-opacity="0"/></radialGradient>
-            <filter id="hshadow" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="0.5" stdDeviation="0.8" flood-color="#ff6b9d" flood-opacity="0.4"/></filter>
+            <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff6b9d"/>
+              <stop offset="30%" stop-color="#ee5a8f"/>
+              <stop offset="65%" stop-color="#c44ecf"/>
+              <stop offset="100%" stop-color="#6c5ce7"/>
+            </linearGradient>
+            <linearGradient id="hhl" x1="20%" y1="0%" x2="80%" y2="80%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.45)"/>
+              <stop offset="50%" stop-color="rgba(255,255,255,0.1)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </linearGradient>
+            <radialGradient id="hglow" cx="50%" cy="45%" r="55%">
+              <stop offset="0%" stop-color="#ff6b9d" stop-opacity="0.5"/>
+              <stop offset="60%" stop-color="#c44ecf" stop-opacity="0.2"/>
+              <stop offset="100%" stop-color="#6c5ce7" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="hshadow" x="-25%" y="-25%" width="150%" height="150%">
+              <feDropShadow dx="0" dy="0.5" stdDeviation="0.8" flood-color="#ff6b9d" flood-opacity="0.4"/>
+            </filter>
           </defs>
           <circle cx="12" cy="12" r="11" fill="url(#hglow)" class="pulse-glow"/>
           <path class="heart-main" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#hg)" filter="url(#hshadow)"/>
@@ -789,9 +805,128 @@
       </div>
       <span class="nav-logo-text">pulse</span>
     </a>
+    <ul class="nav-links">
+      <li>
+        <button type="button" aria-expanded="false" aria-haspopup="true">Produit <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner">
+            <div class="nav-dropdown-section-title">Ecoute &amp; Feedback</div>
+            <div class="nav-dropdown-grid">
+              <a href="/sondage-collaborateurs-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(108,92,231,0.12);border-color:rgba(108,92,231,0.2);">&#x1F4CA;</div>
+                <div class="nav-dropdown-text"><h4>Sondages Collaborateurs</h4><p>Pulse surveys, eNPS et barometres sociaux anonymes</p></div>
+              </a>
+              <a href="/real-time-sentiment-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(0,206,201,0.12);border-color:rgba(0,206,201,0.2);">&#x1F4C8;</div>
+                <div class="nav-dropdown-text"><h4>Baromètre Social</h4><p>Sentiment en temps réel avec analyse IA</p></div>
+              </a>
+              <a href="/360-feedback-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,121,168,0.12);border-color:rgba(253,121,168,0.2);">&#x1F504;</div>
+                <div class="nav-dropdown-text"><h4>Feedback 360°</h4><p>Evaluation entre pairs, managers et equipes</p></div>
+              </a>
+              <a href="/ask-the-board-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,203,110,0.12);border-color:rgba(253,203,110,0.2);">&#x2753;</div>
+                <div class="nav-dropdown-text"><h4>Ask the Board</h4><p>Questions anonymes a la direction</p></div>
+              </a>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-section-title">Activation &amp; Cohesion</div>
+            <div class="nav-dropdown-grid">
+              <a href="/quiz-team-building-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(0,206,201,0.12);border-color:rgba(0,206,201,0.2);">&#x1F3AF;</div>
+                <div class="nav-dropdown-text"><h4>Quiz &amp; Team Building</h4><p>Quiz interactifs et tournois d'equipe</p></div>
+              </a>
+              <a href="/defi-sportif-bien-etre-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,121,168,0.12);border-color:rgba(253,121,168,0.2);">&#x1F3C3;</div>
+                <div class="nav-dropdown-text"><h4>Defis Bien-etre</h4><p>Challenges sportifs et QVCT gamifies</p></div>
+              </a>
+              <a href="/reconnaissance-collaborateurs-recompenses-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,203,110,0.12);border-color:rgba(253,203,110,0.2);">&#x1F64F;</div>
+                <div class="nav-dropdown-text"><h4>Reconnaissance</h4><p>Kudos, points et catalogue de recompenses</p></div>
+              </a>
+              <a href="/pronostic-football-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(108,92,231,0.12);border-color:rgba(108,92,231,0.2);">&#x26BD;</div>
+                <div class="nav-dropdown-text"><h4>Pronostics Sportifs</h4><p>Coupe du Monde, Roland-Garros, 6 Nations</p></div>
+              </a>
+            </div>
+            <div class="nav-dropdown-footer">
+              <a href="/#apps">Voir toutes les applications &#x2192;</a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <button type="button" aria-expanded="false" aria-haspopup="true">Solutions <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner" style="min-width:440px;">
+            <div class="nav-dropdown-grid single-col">
+              <a href="/sondage-collaborateurs-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(108,92,231,0.12);border-color:rgba(108,92,231,0.2);">&#x1F4CB;</div>
+                <div class="nav-dropdown-text"><h4>Engagement Collaborateur</h4><p>Mesurez et boostez l'engagement avec sondages et gamification</p></div>
+              </a>
+              <a href="/defi-sportif-bien-etre-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(0,206,201,0.12);border-color:rgba(0,206,201,0.2);">&#x1F49A;</div>
+                <div class="nav-dropdown-text"><h4>QVCT &amp; Bien-etre</h4><p>Defis bien-etre, barometres et suivi de la qualite de vie au travail</p></div>
+              </a>
+              <a href="/quiz-team-building-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,121,168,0.12);border-color:rgba(253,121,168,0.2);">&#x1F91D;</div>
+                <div class="nav-dropdown-text"><h4>Cohesion d'equipe</h4><p>Team building digital, quiz, random coffee et evenements internes</p></div>
+              </a>
+              <a href="/boite-a-idees-innovation-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,203,110,0.12);border-color:rgba(253,203,110,0.2);">&#x1F4A1;</div>
+                <div class="nav-dropdown-text"><h4>Boîte à Idées</h4><p>Innovation participative, votes et suivi des projets</p></div>
+              </a>
+              <a href="/ambassador-boost-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(108,92,231,0.12);border-color:rgba(108,92,231,0.2);">&#x1F4E3;</div>
+                <div class="nav-dropdown-text"><h4>Marque Employeur</h4><p>Ambassadeurs internes et programmes de communication engageants</p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <button type="button" aria-expanded="false" aria-haspopup="true">Ressources <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner" style="min-width:460px;">
+            <div class="nav-dropdown-section-title">Guides</div>
+            <div class="nav-dropdown-grid">
+              <a href="/blog/engagement-collaborateur-guide-complet.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(108,92,231,0.12);border-color:rgba(108,92,231,0.2);">&#x1F4D6;</div>
+                <div class="nav-dropdown-text"><h4>Guide Engagement</h4><p>Le guide complet 2026</p></div>
+              </a>
+              <a href="/blog/gamification-entreprise-guide.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(0,206,201,0.12);border-color:rgba(0,206,201,0.2);">&#x1F3AE;</div>
+                <div class="nav-dropdown-text"><h4>Guide Gamification</h4><p>Booster l'engagement par le jeu</p></div>
+              </a>
+              <a href="/blog/qvct-qualite-vie-conditions-travail-guide.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,121,168,0.12);border-color:rgba(253,121,168,0.2);">&#x1F33F;</div>
+                <div class="nav-dropdown-text"><h4>Guide QVCT</h4><p>Qualite de vie et conditions de travail</p></div>
+              </a>
+              <a href="/blog/cohesion-equipe-distance-guide.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(253,203,110,0.12);border-color:rgba(253,203,110,0.2);">&#x1F310;</div>
+                <div class="nav-dropdown-text"><h4>Cohesion a distance</h4><p>Equipes hybrides et teletravail</p></div>
+              </a>
+            </div>
+            <div class="nav-dropdown-divider"></div>
+            <div class="nav-dropdown-section-title">Contenus</div>
+            <div class="nav-dropdown-grid">
+              <a href="/blog.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(108,92,231,0.12);border-color:rgba(108,92,231,0.2);">&#x270D;&#xFE0F;</div>
+                <div class="nav-dropdown-text"><h4>Blog</h4><p>Tous nos articles et analyses</p></div>
+              </a>
+              <a href="/blog/ice-breaker-animation-reunion-entreprise.html" class="nav-dropdown-item">
+                <div class="nav-dropdown-icon" style="background:rgba(0,206,201,0.12);border-color:rgba(0,206,201,0.2);">&#x1F9CA;</div>
+                <div class="nav-dropdown-text"><h4>30+ Ice Breakers</h4><p>Animations pour vos reunions</p></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="/a-propos.html">Entreprise</a></li>
+      <li><a href="/contact.html">Tarifs</a></li>
+    </ul>
     <div class="nav-actions">
-      <a href="/" class="btn btn-ghost">Toutes les apps</a>
-      <a href="/contact.html" class="btn btn-primary">Demander une demo</a>
+      <a href="/contact.html" class="nav-cta">Demander une demo</a>
     </div>
   </nav>
   <main class="blog-container">
@@ -1055,5 +1190,6 @@
   });
 })();
 </script>
+<script src="/assets/js/nav-shared.js" defer></script>
 </body>
 </html>
