@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview — Section mockups Sondage Pulse Work</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+
+  <style>
+    /* ============================================
+       PALETTE & RESET
+       ============================================ */
+    :root {
+      --pulse-indigo: #5B4FE5;
+      --pulse-violet: #8B5CF6;
+      --coral: #FF6B6B;
+      --bg: #FAFAFC;
+      --surface: #FFFFFF;
+      --text: #1A1B2E;
+      --text-secondary: #6B6B7E;
+      --text-tertiary: #9CA3AF;
+      --success: #10B981;
+      --amber: #F59E0B;
+      --red: #EF4444;
+      --border: #EEF0F4;
+      --border-strong: #E5E7EB;
+      --shadow-sm: 0 1px 2px rgba(26,27,46,0.04);
+      --shadow-md: 0 8px 24px rgba(26,27,46,0.08);
+      --shadow-lg: 0 20px 60px rgba(26,27,46,0.12);
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      padding: 60px 0;
+    }
+
+    /* ============================================
+       SECTION CONTAINER
+       ============================================ */
+    .survey-mockup-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      background: transparent;
+    }
+
+    .mockup-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .mockup-eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--pulse-indigo);
+      margin-bottom: 16px;
+    }
+
+    .mockup-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .mockup-subtitle {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    /* ============================================
+       PHONES ROW
+       ============================================ */
+    .phones-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: nowrap;
+    }
+
+    /* Effet escalier subtil */
+    .phone-wrapper:nth-child(1) { margin-top: 0; }
+    .phone-wrapper:nth-child(2) { margin-top: 24px; }
+    .phone-wrapper:nth-child(3) { margin-top: 0; }
+    .phone-wrapper:nth-child(4) { margin-top: 24px; }
+    .phone-wrapper:nth-child(5) { margin-top: 0; }
+
+    .phone-wrapper {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @media (hover: hover) {
+      .phone-wrapper:hover {
+        transform: translateY(-12px);
+      }
+      .phone-wrapper:hover .phone {
+        box-shadow: 0 30px 80px rgba(91,79,229,0.18), 0 0 0 1px rgba(91,79,229,0.08);
+      }
+    }
+
+    /* ============================================
+       IPHONE DEVICE
+       ============================================ */
+    .phone {
+      position: relative;
+      width: 240px;
+      height: 488px;
+      background: #0a0a0c;
+      border-radius: 44px;
+      padding: 9px;
+      box-shadow:
+        0 20px 50px rgba(26,27,46,0.18),
+        0 8px 16px rgba(26,27,46,0.08),
+        inset 0 0 0 2px rgba(255,255,255,0.04);
+      transition: box-shadow 0.4s ease;
+    }
+
+    /* Boutons latéraux */
+    .phone::before {
+      content: '';
+      position: absolute;
+      left: -2px;
+      top: 92px;
+      width: 3px;
+      height: 28px;
+      background: #1a1a1d;
+      border-radius: 2px 0 0 2px;
+    }
+    .phone::after {
+      content: '';
+      position: absolute;
+      right: -2px;
+      top: 110px;
+      width: 3px;
+      height: 50px;
+      background: #1a1a1d;
+      border-radius: 0 2px 2px 0;
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: var(--surface);
+      border-radius: 36px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Dynamic island */
+    .dynamic-island {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 22px;
+      background: #0a0a0c;
+      border-radius: 14px;
+      z-index: 10;
+    }
+
+    /* Status bar */
+    .status-bar {
+      padding: 14px 22px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text);
+      height: 38px;
+      flex-shrink: 0;
+    }
+
+    .status-bar-time {
+      letter-spacing: -0.02em;
+    }
+
+    .status-bar-icons {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      font-size: 10px;
+    }
+
+    /* Screen content area */
+    .screen-content {
+      flex: 1;
+      padding: 18px 18px 14px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ============================================
+       SHARED COMPONENTS
+       ============================================ */
+    .pulse-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--pulse-indigo), var(--pulse-violet));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.04em;
+      box-shadow: 0 4px 12px rgba(91,79,229,0.25);
+    }
+
+    .h1-screen {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .subtitle-screen {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .micro {
+      font-size: 10px;
+      color: var(--text-tertiary);
+    }
+
+    .cta-primary {
+      background: var(--pulse-indigo);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(91,79,229,0.2);
+    }
+
+    .cta-secondary {
+      background: transparent;
+      color: var(--pulse-indigo);
+      padding: 11px 18px;
+      border-radius: 12px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      width: 100%;
+      border: 1.5px solid var(--pulse-indigo);
+      cursor: pointer;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 11px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    /* ============================================
+       SCREEN 1 — ACCUEIL & LANGUES
+       ============================================ */
+    .screen-1 {
+      gap: 14px;
+    }
+
+    .screen-1-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .greeting {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .screen-1 .h1-screen {
+      text-align: center;
+      font-size: 22px;
+    }
+
+    .screen-1 .subtitle-screen {
+      text-align: center;
+      max-width: 95%;
+    }
+
+    .lang-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+      margin-top: 6px;
+    }
+
+    .lang-btn {
+      background: var(--surface);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 10px;
+      padding: 10px 8px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.lang-center {
+      grid-column: 1 / -1;
+      max-width: 50%;
+      margin: 0 auto;
+    }
+
+    .lang-flag {
+      font-size: 14px;
+    }
+
+    .info-chips {
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    .footer-micro {
+      text-align: center;
+      margin-top: 6px;
+      font-size: 9px;
+    }
+
+    /* ============================================
+       SCREEN 2 — ANONYMAT
+       ============================================ */
+    .screen-2 {
+      gap: 12px;
+    }
+
+    .progress-dots {
+      display: flex;
+      gap: 6px;
+      padding: 0 4px 2px;
+      align-items: center;
+    }
+
+    .progress-dot {
+      flex: 1;
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    .anonymous-shield {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pulse-indigo), var(--pulse-violet));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 12px auto 4px;
+      position: relative;
+      color: #fff;
+    }
+
+    .anonymous-shield::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid rgba(91,79,229,0.25);
+      animation: pulse-ring 2.4s ease-out infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 1; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    .screen-2 .h1-screen {
+      text-align: center;
+      font-size: 18px;
+      margin: 4px 0 12px;
+    }
+
+    .promise-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .promise-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 11px;
+      background: var(--bg);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .promise-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 13px;
+    }
+
+    .promise-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+    }
+
+    .promise-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .promise-desc {
+      font-size: 10px;
+      color: var(--text-secondary);
+      line-height: 1.3;
+    }
+
+    .screen-2 .cta-primary {
+      margin-top: 10px;
+    }
+
+    .link-secondary {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding-top: 4px;
+    }
+
+    /* ============================================
+       SCREEN 3 — QUESTION LIKERT
+       ============================================ */
+    .screen-3 {
+      gap: 10px;
+    }
+
+    .progress-bar-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .progress-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      width: 27%;
+      height: 100%;
+      background: var(--pulse-indigo);
+      border-radius: 2px;
+    }
+
+    .question-chip {
+      display: inline-flex;
+      padding: 4px 10px;
+      background: rgba(91,79,229,0.08);
+      border-radius: 100px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--pulse-indigo);
+      width: fit-content;
+      margin-top: 2px;
+    }
+
+    .question-text {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--text);
+      margin-top: 2px;
+    }
+
+    .likert-options {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .likert-option {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 11px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .likert-option.selected {
+      border-color: var(--pulse-indigo);
+      background: rgba(91,79,229,0.04);
+    }
+
+    .likert-check {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .likert-check-green { background: var(--success); }
+    .likert-check-green-light { background: #6EE7B7; }
+    .likert-check-amber { background: var(--amber); }
+    .likert-check-red { background: var(--red); }
+
+    .verbatim-accordion {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 11px;
+      background: var(--bg);
+      border-radius: 8px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .screen-3-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: auto;
+    }
+
+    .screen-3-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-next {
+      flex: 1;
+      background: var(--pulse-indigo);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(91,79,229,0.18);
+    }
+
+    .save-indicator {
+      text-align: center;
+      font-size: 9px;
+      color: var(--text-tertiary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .save-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--success);
+      border-radius: 50%;
+    }
+
+    /* ============================================
+       SCREEN 4 — PAUSE & REPRISE
+       ============================================ */
+    .screen-4 {
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hourglass-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pulse-indigo), var(--coral));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      margin: 16px auto 0;
+    }
+
+    .screen-4 .h1-screen {
+      font-size: 17px;
+      margin: 4px 0;
+      text-align: center;
+    }
+
+    .progress-circle-wrap {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      margin: 6px auto 8px;
+    }
+
+    .progress-circle-svg {
+      transform: rotate(-90deg);
+    }
+
+    .progress-circle-bg {
+      stroke: var(--border);
+    }
+
+    .progress-circle-fill {
+      stroke: var(--pulse-indigo);
+      stroke-linecap: round;
+    }
+
+    .progress-circle-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--pulse-indigo);
+      letter-spacing: -0.02em;
+    }
+
+    .screen-4-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .screen-4 .micro {
+      margin-top: 6px;
+      padding: 0 6px;
+      line-height: 1.4;
+    }
+
+    /* ============================================
+       SCREEN 5 — CONFIRMATION
+       ============================================ */
+    .screen-5 {
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .check-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pulse-indigo), var(--success));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      margin: 18px auto 4px;
+      position: relative;
+    }
+
+    .check-circle::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid rgba(16,185,129,0.3);
+      animation: pulse-ring 2.4s ease-out infinite;
+    }
+
+    .screen-5 .h1-screen {
+      font-size: 18px;
+      margin: 4px 0;
+      text-align: center;
+    }
+
+    .thanks-paragraph {
+      font-size: 11px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      padding: 0 4px;
+    }
+
+    .stat-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 12px;
+      font-size: 11px;
+      color: var(--text);
+      line-height: 1.4;
+      width: 100%;
+    }
+
+    .stat-card strong { font-weight: 700; }
+
+    .screen-5 .cta-secondary {
+      font-size: 12px;
+      padding: 10px 14px;
+    }
+
+    .gdpr-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 9px;
+      background: var(--bg);
+      border-radius: 100px;
+      font-size: 9px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      margin-top: auto;
+    }
+
+    /* ============================================
+       FOOTER DISCLAIMER
+       ============================================ */
+    .mockup-disclaimer {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.02em;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 1100px) {
+      .phones-row {
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: center;
+      }
+      .phone-wrapper { margin-top: 0 !important; }
+    }
+
+    @media (max-width: 720px) {
+      .survey-mockup-section { padding: 60px 20px; }
+      .phones-row { gap: 24px; }
+      .phone { width: 220px; height: 448px; }
+    }
+
+    @media (max-width: 480px) {
+      .phone { width: 200px; height: 408px; }
+    }
+
+    /* ============================================
+       PREVIEW HEADER (only for this preview file)
+       ============================================ */
+    .preview-banner {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, rgba(91,79,229,0.08), rgba(139,92,246,0.08));
+      border: 1px solid rgba(91,79,229,0.2);
+      border-radius: 12px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .preview-banner strong {
+      color: var(--pulse-indigo);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preview-banner">
+    <strong>👀 Preview</strong> — Section mockups Sondage Collaborateur. Tu peux la voir ici en standalone avant qu'on l'intègre sur <code>/sondage-collaborateurs-entreprise.html</code>.
+  </div>
+
+  <!-- ============================================
+       SECTION MOCKUPS SONDAGE PULSE WORK
+       Embed-ready : copier-coller entre <section>...</section>
+       ============================================ -->
+  <section class="survey-mockup-section" aria-label="Aperçu du parcours répondant">
+
+    <header class="mockup-header">
+      <div class="mockup-eyebrow">Découvrez l'expérience répondant</div>
+      <h2 class="mockup-title">Un parcours pensé pour vos collaborateurs.<br>Pas pour vos RH.</h2>
+      <p class="mockup-subtitle">5 écrans, 8 minutes, 5 langues — l'engagement collaborateur sans friction.</p>
+    </header>
+
+    <div class="phones-row">
+
+      <!-- ========== SCREEN 1 — ACCUEIL & LANGUES ========== -->
+      <div class="phone-wrapper">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="dynamic-island"></div>
+            <div class="status-bar">
+              <span class="status-bar-time">09:41</span>
+              <span class="status-bar-icons">
+                <i data-lucide="signal" style="width:11px;height:11px;"></i>
+                <i data-lucide="wifi" style="width:11px;height:11px;"></i>
+                <i data-lucide="battery-full" style="width:14px;height:11px;"></i>
+              </span>
+            </div>
+            <div class="screen-content screen-1">
+              <div class="screen-1-header">
+                <div class="pulse-logo">P</div>
+                <div class="greeting">Bonjour 👋</div>
+                <h1 class="h1-screen">Votre voix compte</h1>
+                <p class="subtitle-screen">Un sondage anonyme de 8 minutes pour faire grandir votre entreprise.</p>
+              </div>
+              <div class="lang-grid">
+                <button class="lang-btn"><span class="lang-flag">🇫🇷</span> Français</button>
+                <button class="lang-btn"><span class="lang-flag">🇬🇧</span> English</button>
+                <button class="lang-btn"><span class="lang-flag">🇪🇸</span> Español</button>
+                <button class="lang-btn"><span class="lang-flag">🇵🇹</span> Português</button>
+                <button class="lang-btn lang-center"><span class="lang-flag">🇩🇪</span> Deutsch</button>
+              </div>
+              <div class="info-chips">
+                <span class="chip">🔒 Anonyme</span>
+                <span class="chip">🇪🇺 Hébergé en UE</span>
+              </div>
+              <div class="footer-micro micro">Propulsé par Pulse Work · RGPD · Lien unique</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== SCREEN 2 — ANONYMAT ========== -->
+      <div class="phone-wrapper">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="dynamic-island"></div>
+            <div class="status-bar">
+              <span class="status-bar-time">09:41</span>
+              <span class="status-bar-icons">
+                <i data-lucide="signal" style="width:11px;height:11px;"></i>
+                <i data-lucide="wifi" style="width:11px;height:11px;"></i>
+                <i data-lucide="battery-full" style="width:14px;height:11px;"></i>
+              </span>
+            </div>
+            <div class="screen-content screen-2">
+              <div class="progress-dots">
+                <span class="progress-dot"></span>
+                <span class="progress-dot"></span>
+                <span class="progress-dot"></span>
+                <span class="progress-dot"></span>
+                <span class="progress-dot"></span>
+              </div>
+              <div class="anonymous-shield">
+                <i data-lucide="lock" style="width:26px;height:26px;"></i>
+              </div>
+              <h1 class="h1-screen">Votre anonymat<br>est garanti</h1>
+              <div class="promise-cards">
+                <div class="promise-card">
+                  <div class="promise-icon">🔒</div>
+                  <div class="promise-text">
+                    <div class="promise-title">100% anonyme</div>
+                    <div class="promise-desc">Aucune information identifiante n'est stockée</div>
+                  </div>
+                </div>
+                <div class="promise-card">
+                  <div class="promise-icon">⏱️</div>
+                  <div class="promise-text">
+                    <div class="promise-title">8 à 10 minutes</div>
+                    <div class="promise-desc">Pause et reprise possibles à tout moment</div>
+                  </div>
+                </div>
+                <div class="promise-card">
+                  <div class="promise-icon">💬</div>
+                  <div class="promise-text">
+                    <div class="promise-title">Vos mots ont du poids</div>
+                    <div class="promise-desc">Commentaires libres relus et anonymisés</div>
+                  </div>
+                </div>
+              </div>
+              <button class="cta-primary">Je commence le questionnaire</button>
+              <a href="#" class="link-secondary">En savoir plus</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== SCREEN 3 — QUESTION LIKERT ========== -->
+      <div class="phone-wrapper">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="dynamic-island"></div>
+            <div class="status-bar">
+              <span class="status-bar-time">09:41</span>
+              <span class="status-bar-icons">
+                <i data-lucide="signal" style="width:11px;height:11px;"></i>
+                <i data-lucide="wifi" style="width:11px;height:11px;"></i>
+                <i data-lucide="battery-full" style="width:14px;height:11px;"></i>
+              </span>
+            </div>
+            <div class="screen-content screen-3">
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-label">
+                  <span>Question 8 / 30</span>
+                  <span>27%</span>
+                </div>
+                <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+              </div>
+              <span class="question-chip">Engagement</span>
+              <h2 class="question-text">Je comprends clairement les orientations stratégiques de mon entreprise.</h2>
+              <div class="likert-options">
+                <div class="likert-option">
+                  <span class="likert-check likert-check-green">✓</span>
+                  D'accord
+                </div>
+                <div class="likert-option selected">
+                  <span class="likert-check likert-check-green-light">✓</span>
+                  Plutôt d'accord
+                </div>
+                <div class="likert-option">
+                  <span class="likert-check likert-check-amber">✓</span>
+                  Plutôt pas d'accord
+                </div>
+                <div class="likert-option">
+                  <span class="likert-check likert-check-red">✓</span>
+                  Pas d'accord
+                </div>
+              </div>
+              <div class="verbatim-accordion">
+                <span>Souhaitez-vous préciser ?</span>
+                <i data-lucide="chevron-down" style="width:12px;height:12px;"></i>
+              </div>
+              <div class="screen-3-footer">
+                <div class="screen-3-actions">
+                  <button class="btn-ghost">Précédent</button>
+                  <button class="btn-next">Suivant →</button>
+                </div>
+                <div class="save-indicator">
+                  <span class="save-dot"></span>
+                  Sauvegarde automatique activée
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== SCREEN 4 — PAUSE & REPRISE ========== -->
+      <div class="phone-wrapper">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="dynamic-island"></div>
+            <div class="status-bar">
+              <span class="status-bar-time">09:41</span>
+              <span class="status-bar-icons">
+                <i data-lucide="signal" style="width:11px;height:11px;"></i>
+                <i data-lucide="wifi" style="width:11px;height:11px;"></i>
+                <i data-lucide="battery-full" style="width:14px;height:11px;"></i>
+              </span>
+            </div>
+            <div class="screen-content screen-4">
+              <div class="hourglass-icon">
+                <i data-lucide="hourglass" style="width:24px;height:24px;"></i>
+              </div>
+              <h1 class="h1-screen">Vous en êtes à<br>18 questions sur 30</h1>
+              <p class="subtitle-screen">Vous pouvez reprendre plus tard, votre progression est sauvegardée.</p>
+              <div class="progress-circle-wrap">
+                <svg class="progress-circle-svg" width="90" height="90" viewBox="0 0 90 90">
+                  <circle class="progress-circle-bg" cx="45" cy="45" r="38" fill="none" stroke-width="6"/>
+                  <circle class="progress-circle-fill" cx="45" cy="45" r="38" fill="none" stroke-width="6"
+                          stroke-dasharray="238.76" stroke-dashoffset="95.5"/>
+                </svg>
+                <div class="progress-circle-text">60%</div>
+              </div>
+              <div class="screen-4-buttons">
+                <button class="cta-primary">Continuer maintenant</button>
+                <button class="cta-secondary">Reprendre plus tard</button>
+              </div>
+              <div class="micro">Un rappel par email demain à la même heure</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== SCREEN 5 — CONFIRMATION ========== -->
+      <div class="phone-wrapper">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="dynamic-island"></div>
+            <div class="status-bar">
+              <span class="status-bar-time">09:41</span>
+              <span class="status-bar-icons">
+                <i data-lucide="signal" style="width:11px;height:11px;"></i>
+                <i data-lucide="wifi" style="width:11px;height:11px;"></i>
+                <i data-lucide="battery-full" style="width:14px;height:11px;"></i>
+              </span>
+            </div>
+            <div class="screen-content screen-5">
+              <div class="check-circle">
+                <i data-lucide="check" style="width:32px;height:32px;stroke-width:3;"></i>
+              </div>
+              <h1 class="h1-screen">Merci, votre voix<br>a été entendue</h1>
+              <p class="thanks-paragraph">Vos 30 réponses ont été soumises et anonymisées. Les résultats consolidés seront partagés par votre direction dans les prochaines semaines.</p>
+              <div class="stat-card">
+                👥 Vous êtes le <strong>487ème collaborateur</strong> à avoir participé ce mois-ci.
+              </div>
+              <button class="cta-secondary">
+                <i data-lucide="share-2" style="width:13px;height:13px;display:inline-block;vertical-align:middle;margin-right:5px;"></i>
+                Partager avec un collègue
+              </button>
+              <div class="gdpr-badge">🇪🇺 Données stockées en Europe · RGPD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="mockup-disclaimer">Aperçu non contractuel — Captures illustratives du parcours produit</p>
+  </section>
+
+  <script>
+    // Init Lucide icons
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+
+</body>
+</html>

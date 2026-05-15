@@ -16,6 +16,7 @@ const EXCLUDE = new Set([
   '404.html',
   'google99f7135c8d8a1617.html',
   'email-followup-alfa-laval.html',
+  'pulse-survey-mockup-section.html', // Preview standalone, noindex
 ]);
 
 function listHtml(dir, prefix = '') {
