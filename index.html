@@ -1196,6 +1196,8 @@
 
     .app-card-meta {
       flex: 1;
+      min-width: 0;
+      padding-right: 90px; /* Réserve l'espace pour le badge absolute en top-right */
     }
 
     .app-card-name {
@@ -1204,6 +1206,8 @@
       font-weight: 700;
       margin-bottom: 4px;
       letter-spacing: -0.3px;
+      line-height: 1.3;
+      overflow-wrap: anywhere;
     }
 
     .app-card-publisher {
@@ -2267,6 +2271,40 @@
 
     <div class="apps-grid" id="appsGrid">
 
+      <!-- App Custom: Votre App Sur Mesure -->
+      <div class="app-card reveal app-card-item" data-category="custom" data-name="Votre App Sur Mesure" data-app="custom" style="border:2px dashed rgba(99,102,241,0.5);background:rgba(99,102,241,0.06);">
+        <div class="app-card-header">
+          <div class="app-icon" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);font-size:1.6rem;display:flex;align-items:center;justify-content:center;">&#x2795;</div>
+          <div class="app-card-meta">
+            <div class="app-card-name">Votre Application Sur Mesure</div>
+            <div class="app-card-publisher">développé par Pulse</div>
+          </div>
+          <span class="app-card-badge" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;">Sur Mesure</span>
+        </div>
+        <p class="app-card-desc">
+          Vous avez un besoin spécifique ? Notre équipe de +2000 ingénieurs conçoit et développe votre application d'engagement sur mesure : sécurisée, conforme RGPD, connectée à vos outils (Teams, Slack, SharePoint, Staffbase, LumApps).
+        </p>
+        <div class="app-card-tags">
+          <span class="app-tag">Sur Mesure</span>
+          <span class="app-tag">Sécurisé</span>
+          <span class="app-tag">Connecté</span>
+          <span class="app-tag">RGPD</span>
+        </div>
+        <div class="app-card-footer">
+          <div class="app-rating" style="font-size:0.85rem;color:rgba(255,255,255,0.6);">
+            Livraison rapide &amp; flexible
+          </div>
+          <span class="app-installs" style="color:rgba(255,255,255,0.6);">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            100% dédié
+          </span>
+        </div>
+        <div class="app-card-cta">
+          <a href="/contact.html" class="btn-install">Discuter de votre projet</a>
+          <a href="/contact.html" class="btn-preview">En savoir +</a>
+        </div>
+      </div>
+
       <!-- App 11: Real-time Sentiment -->
       <div class="app-card reveal app-card-item" data-category="feedback" data-name="Real-time Sentiment" data-app="sentiment">
         <div class="app-card-header">
@@ -2542,39 +2580,6 @@
         <div class="app-card-cta">
           <a href="/random-coffee-match-entreprise.html" class="btn-install">Découvrir</a>
           <a href="/contact.html" class="btn-preview">Démo</a>
-        </div>
-      </div>
-      <!-- App Custom: Votre App Sur Mesure -->
-      <div class="app-card reveal app-card-item" data-category="custom" data-name="Votre App Sur Mesure" data-app="custom" style="border:2px dashed rgba(99,102,241,0.5);background:rgba(99,102,241,0.06);">
-        <div class="app-card-header">
-          <div class="app-icon" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);font-size:1.6rem;display:flex;align-items:center;justify-content:center;">&#x2795;</div>
-          <div class="app-card-meta">
-            <div class="app-card-name">Votre Application Sur Mesure</div>
-            <div class="app-card-publisher">développé par Pulse</div>
-          </div>
-          <span class="app-card-badge" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;">Sur Mesure</span>
-        </div>
-        <p class="app-card-desc">
-          Vous avez un besoin spécifique ? Notre équipe de +2000 ingénieurs conçoit et développe votre application d'engagement sur mesure : sécurisée, conforme RGPD, connectée à vos outils (Teams, Slack, SharePoint, Staffbase, LumApps).
-        </p>
-        <div class="app-card-tags">
-          <span class="app-tag">Sur Mesure</span>
-          <span class="app-tag">Sécurisé</span>
-          <span class="app-tag">Connecté</span>
-          <span class="app-tag">RGPD</span>
-        </div>
-        <div class="app-card-footer">
-          <div class="app-rating" style="font-size:0.85rem;color:rgba(255,255,255,0.6);">
-            Livraison rapide &amp; flexible
-          </div>
-          <span class="app-installs" style="color:rgba(255,255,255,0.6);">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            100% dédié
-          </span>
-        </div>
-        <div class="app-card-cta">
-          <a href="/contact.html" class="btn-install">Discuter de votre projet</a>
-          <a href="/contact.html" class="btn-preview">En savoir +</a>
         </div>
       </div>
       <!-- App 3: Wellness Challenge -->
@@ -3102,6 +3107,8 @@
         </div>
       </div>
 
+    </div>
+  </section>
 
   <!-- Sur Mesure -->
   <section class="section" id="sur-mesure" style="padding-top:80px;" aria-label="Développement sur mesure">
