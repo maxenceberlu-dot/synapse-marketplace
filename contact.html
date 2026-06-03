@@ -1161,13 +1161,14 @@
         <h2>Parlez-nous de votre projet</h2>
         <p>Remplissez le formulaire, nous revenons vers vous rapidement.</p>
 
-        <form id="contactForm" action="https://formsubmit.co/maxenceberlu@gmail.com" method="POST">
-          <!-- FormSubmit config -->
-          <input type="hidden" name="_subject" value="Nouveau lead Pulse">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="">
-          <input type="hidden" name="_template" value="table">
-          <input type="text" name="_honey" style="display:none">
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <!-- Web3Forms config -->
+          <input type="hidden" name="access_key" value="4a1e524d-a32d-4758-b892-f84523dbc1c6">
+          <input type="hidden" name="subject" value="Nouveau lead Pulse Work">
+          <input type="hidden" name="from_name" value="Formulaire contact pulsework.app">
+          <!-- Redondance : copie aussi au Gmail pour éviter les pertes de leads via Zoho/spam -->
+          <input type="hidden" name="cc" value="maxenceberlu@gmail.com">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
           <div class="form-row">
             <div class="form-group">
@@ -1210,6 +1211,11 @@
           <button type="submit" class="btn-submit" id="submitBtn">
             Demander ma démo gratuite
           </button>
+
+          <p id="formError" style="display:none; color:#d33; font-size:14px; margin-top:12px; text-align:center;">
+            Une erreur est survenue. Merci d'essayer à nouveau ou de nous écrire directement à
+            <a href="mailto:pulsework@pulsework.app" style="color:#d33; text-decoration:underline;">pulsework@pulsework.app</a>.
+          </p>
 
           <p class="form-note">
             En soumettant ce formulaire, vous acceptez d'être contacté par notre équipe.<br>
@@ -1351,15 +1357,89 @@
   </main>
 
   <script>
-    // Set the _next redirect to current page with success param
-    const currentUrl = window.location.href.split('?')[0];
-    document.querySelector('input[name="_next"]').value = currentUrl + '?success=true';
+    (function () {
+      const form = document.getElementById('contactForm');
+      const btn = document.getElementById('submitBtn');
+      const successMsg = document.getElementById('successMessage');
+      const errorMsg = document.getElementById('formError');
+      const originalLabel = btn.textContent;
 
-    // Check if redirected back after submission
-    if (window.location.search.includes('success=true')) {
-      document.getElementById('contactForm').style.display = 'none';
-      document.getElementById('successMessage').classList.add('show');
-    }
+      // === Diagnostic logging pour debugger les leads manquants ===
+      function logLead(stage, data) {
+        try { console.log('[Lead]', stage, data); } catch (e) {}
+      }
+
+      // === Tracking Supabase indépendant de Web3Forms (backup) ===
+      // Permet de logger TOUTE soumission même si Web3Forms échoue ou n'envoie pas l'email
+      async function logToSupabase(payload, status, error) {
+        try {
+          const SUPABASE_URL = 'https://iaaeerenmfyatlbtqylp.supabase.co';
+          const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhYWVlcmVubWZ5YXRsYnRxeWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMzA5NTMsImV4cCI6MjA4ODgwNjk1M30.TOwlijdWVUYZ3KxTB-c-aMaaJ0WszsxWQCnsvREQr3M';
+          await fetch(SUPABASE_URL + '/rest/v1/lead_submissions', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'apikey': SUPABASE_KEY,
+              'Authorization': 'Bearer ' + SUPABASE_KEY,
+              'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify({
+              prenom: payload.Prenom || '',
+              nom: payload.Nom || '',
+              email: payload.Email || '',
+              entreprise: payload.Entreprise || '',
+              taille_entreprise: payload['Taille entreprise'] || '',
+              message: payload.Message || '',
+              web3forms_status: status,
+              web3forms_error: error || null,
+              user_agent: navigator.userAgent,
+              referrer: document.referrer || null,
+              created_at: new Date().toISOString()
+            })
+          });
+        } catch (e) { console.warn('[Lead] Supabase backup log failed', e); }
+      }
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        errorMsg.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Envoi en cours…';
+
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData);
+        logLead('submit-start', { email: payload.Email, entreprise: payload.Entreprise });
+
+        try {
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+          logLead('web3forms-response', { status: res.status, success: data.success, message: data.message });
+
+          if (res.ok && data.success) {
+            logLead('success', { email: payload.Email });
+            logToSupabase(payload, 'success', null);
+            form.style.display = 'none';
+            successMsg.classList.add('show');
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            throw new Error(data.message || 'Échec de l\'envoi');
+          }
+        } catch (err) {
+          logLead('error', { message: err.message, payload: { email: payload.Email, entreprise: payload.Entreprise } });
+          logToSupabase(payload, 'error', err.message);
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+          errorMsg.style.display = 'block';
+        }
+      });
+    })();
   </script>
 <footer class="footer" style="padding:20px;text-align:center;">
     <p style="margin-top:8px;"><a href="/mentions-legales.html" style="color: #8892ab; font-size: 13px; text-decoration: none;">Mentions légales</a> · <a href="/politique-confidentialite.html" style="color: #8892ab; font-size: 13px; text-decoration: none;">Politique de confidentialité</a></p>
