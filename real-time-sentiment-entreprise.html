@@ -436,10 +436,15 @@
             '.pw-head { display: none !important; }' +
             '.pw-dirswitch { display: none !important; }' +
             '.pw-showcase { box-shadow: none !important; border: none !important; padding-top: 0 !important; }' +
-            /* Flèches de navigation : toujours visibles + couleur or pour démarquer du fond noir */
-            '.pw-arrow { opacity: 1 !important; background: rgba(201,169,97,0.12) !important; border: 1px solid rgba(201,169,97,0.45) !important; }' +
-            '.pw-arrow:hover { background: rgba(201,169,97,0.25) !important; border-color: rgba(201,169,97,0.7) !important; }' +
-            '.pw-arrow svg { color: #C9A961 !important; stroke: #C9A961 !important; fill: none !important; stroke-width: 2.5 !important; opacity: 1 !important; }';
+            /* Flèches navigation : toujours visibles + chevron injecté en CSS (les <i data-lucide> sont vides si Lucide ne tourne pas) */
+            '.pw-arrow { opacity: 1 !important; display: flex !important; align-items: center !important; justify-content: center !important; background: rgba(201,169,97,0.15) !important; border: 1.5px solid rgba(201,169,97,0.55) !important; width: 44px !important; height: 44px !important; border-radius: 50% !important; cursor: pointer; transition: background .2s ease, transform .2s ease; }' +
+            '.pw-arrow:hover { background: rgba(201,169,97,0.30) !important; border-color: rgba(201,169,97,0.85) !important; transform: translateY(-50%) scale(1.08); }' +
+            /* Vide l\'éventuel contenu du <i> Lucide et injecte un SVG inline via background-image */
+            '.pw-arrow i, .pw-arrow svg { width: 20px !important; height: 20px !important; display: block !important; opacity: 1 !important; background-repeat: no-repeat !important; background-position: center !important; }' +
+            '.pw-arrow.l i, .pw-arrow.l svg, .pw-arrow#prev i { background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23C9A961%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%2715 18 9 12 15 6%27/%3E%3C/svg%3E") !important; }' +
+            '.pw-arrow.r i, .pw-arrow.r svg, .pw-arrow#next i { background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2720%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23C9A961%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%279 18 15 12 9 6%27/%3E%3C/svg%3E") !important; }' +
+            /* Force visibilité même sur mobile (la media query du bundle cache .pw-arrow < 600px) */
+            '@media (max-width: 600px) { .pw-arrow { display: flex !important; } }';
           doc.head.appendChild(style);
         } catch (e) { /* ignore */ }
       }
