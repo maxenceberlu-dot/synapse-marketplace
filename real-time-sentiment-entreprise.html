@@ -415,7 +415,7 @@
       id="pw-showcase"
       src="/embeds/showcase-potel-chabot.html"
       title="Démonstration interactive Pulse Work — Baromètre Social Potel &amp; Chabot"
-      style="width:100%; max-width:1240px; height:760px; border:0; display:block; margin:0 auto; border-radius: 14px; background: transparent; box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 20px 60px rgba(0,0,0,0.5);"
+      style="width:100%; max-width:1240px; height:760px; border:0; display:block; margin:0 auto; background: transparent;"
       loading="lazy"
       scrolling="no">
     </iframe>
@@ -423,7 +423,6 @@
   <script>
     (function () {
       var iframe = document.getElementById('pw-showcase');
-      // Injecter du CSS dans l'iframe (même origine) pour : fond transparent, masquer header + boutons, masquer erreurs, mettre en valeur le bord de l'écran
       function injectShowcaseStyle() {
         try {
           var doc = iframe.contentDocument || (iframe.contentWindow && iframe.contentWindow.document);
@@ -436,7 +435,11 @@
             '#__bundler_loading, #__bundler_err, #__bundler_thumbnail { display: none !important; }' +
             '.pw-head { display: none !important; }' +
             '.pw-dirswitch { display: none !important; }' +
-            '.pw-showcase { box-shadow: 0 0 0 1px rgba(255,255,255,0.18), 0 16px 48px rgba(0,0,0,0.45) !important; border-radius: 14px !important; overflow: hidden; padding-top: 0 !important; }';
+            '.pw-showcase { box-shadow: none !important; border: none !important; padding-top: 0 !important; }' +
+            /* Flèches de navigation : toujours visibles + couleur or pour démarquer du fond noir */
+            '.pw-arrow { opacity: 1 !important; background: rgba(201,169,97,0.12) !important; border: 1px solid rgba(201,169,97,0.45) !important; }' +
+            '.pw-arrow:hover { background: rgba(201,169,97,0.25) !important; border-color: rgba(201,169,97,0.7) !important; }' +
+            '.pw-arrow svg { color: #C9A961 !important; stroke: #C9A961 !important; fill: none !important; stroke-width: 2.5 !important; opacity: 1 !important; }';
           doc.head.appendChild(style);
         } catch (e) { /* ignore */ }
       }
