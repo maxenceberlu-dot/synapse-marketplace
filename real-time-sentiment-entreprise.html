@@ -409,6 +409,52 @@
     <div class="stat-card"><div class="stat-number">&lt;48h</div><div class="stat-label">deploiement garanti</div></div>
   </div>
 
+  <!-- Showcase interactif Pulse Work × Potel & Chabot -->
+  <div style="margin: 60px auto 40px; max-width: 1240px; padding: 0 40px;">
+    <iframe
+      id="pw-showcase"
+      src="/embeds/showcase-potel-chabot.html"
+      title="Démonstration interactive Pulse Work — Baromètre Social Potel &amp; Chabot"
+      style="width:100%; max-width:1240px; height:760px; border:0; display:block; margin:0 auto; border-radius: 14px; background: transparent; box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 20px 60px rgba(0,0,0,0.5);"
+      loading="lazy"
+      scrolling="no">
+    </iframe>
+  </div>
+  <script>
+    (function () {
+      var iframe = document.getElementById('pw-showcase');
+      // Injecter du CSS dans l'iframe (même origine) pour : fond transparent, masquer header + boutons, masquer erreurs, mettre en valeur le bord de l'écran
+      function injectShowcaseStyle() {
+        try {
+          var doc = iframe.contentDocument || (iframe.contentWindow && iframe.contentWindow.document);
+          if (!doc || !doc.head) return;
+          if (doc.getElementById('pw-style-override')) return;
+          var style = doc.createElement('style');
+          style.id = 'pw-style-override';
+          style.textContent =
+            'html, body { background: transparent !important; }' +
+            '#__bundler_loading, #__bundler_err, #__bundler_thumbnail { display: none !important; }' +
+            '.pw-head { display: none !important; }' +
+            '.pw-dirswitch { display: none !important; }' +
+            '.pw-showcase { box-shadow: 0 0 0 1px rgba(255,255,255,0.18), 0 16px 48px rgba(0,0,0,0.45) !important; border-radius: 14px !important; overflow: hidden; padding-top: 0 !important; }';
+          doc.head.appendChild(style);
+        } catch (e) { /* ignore */ }
+      }
+      iframe.addEventListener('load', injectShowcaseStyle);
+      window.addEventListener('message', function (e) {
+        if (e.data && e.data.pulseworkShowcaseHeight) {
+          iframe.style.height = e.data.pulseworkShowcaseHeight + 'px';
+          injectShowcaseStyle();
+        }
+      });
+      var attempts = 0;
+      var poll = setInterval(function () {
+        injectShowcaseStyle();
+        if (++attempts >= 50) clearInterval(poll);
+      }, 100);
+    })();
+  </script>
+
   <section class="section">
     <h2>Pourquoi mesurer le baromètre social en temps réel ?</h2>
     <p>Le baromètre social temps réel transforme la façon dont les DRH et les directions de la communication interne pilotent l'engagement collaborateur. Là où les enquêtes annuelles offrent une photo figée du climat social, un baromètre temps réel capte les signaux faibles dès leur apparition : surcharge ponctuelle, frustration sur un projet, impact d'une réorganisation, perte d'adhésion managériale.</p>
@@ -422,55 +468,7 @@
 
   <section class="section" id="fonctionnalites">
     <h2>Tout ce qu'il faut pour mesurer le ressenti</h2>
-    <p>Une application cle en main pour prendre le pouls de vos equipes en continu et de maniere anonyme. Découvrez ci-dessous une démonstration interactive du baromètre social Pulse Work sur un cas réel.</p>
-
-    <!-- Showcase interactif Pulse Work × Potel & Chabot -->
-    <div style="margin: 40px 0; max-width: 1240px; margin-left: auto; margin-right: auto;">
-      <iframe
-        id="pw-showcase"
-        src="/embeds/showcase-potel-chabot.html"
-        title="Démonstration interactive Pulse Work — Baromètre Social Potel &amp; Chabot"
-        style="width:100%; max-width:1240px; height:980px; border:0; display:block; margin:0 auto; border-radius: 14px; background: transparent; box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 20px 60px rgba(0,0,0,0.5);"
-        loading="lazy"
-        scrolling="no">
-      </iframe>
-    </div>
-    <script>
-      (function () {
-        var iframe = document.getElementById('pw-showcase');
-        // Injecter du CSS dans l'iframe (même origine) pour : fond transparent, masquer erreurs, mettre en valeur le bord de l'écran
-        function injectShowcaseStyle() {
-          try {
-            var doc = iframe.contentDocument || (iframe.contentWindow && iframe.contentWindow.document);
-            if (!doc || !doc.head) return;
-            if (doc.getElementById('pw-style-override')) return; // déjà injecté
-            var style = doc.createElement('style');
-            style.id = 'pw-style-override';
-            style.textContent =
-              'html, body { background: transparent !important; }' +
-              '#__bundler_loading, #__bundler_err, #__bundler_thumbnail { display: none !important; }' +
-              '.pw-showcase { box-shadow: 0 0 0 1px rgba(255,255,255,0.18), 0 16px 48px rgba(0,0,0,0.45) !important; border-radius: 14px !important; overflow: hidden; }';
-            doc.head.appendChild(style);
-          } catch (e) { /* ignore cross-origin / non-ready */ }
-        }
-        // 1. Inject on iframe load
-        iframe.addEventListener('load', injectShowcaseStyle);
-        // 2. Re-inject à chaque message (le bundler remplace le document après load → on re-injecte)
-        window.addEventListener('message', function (e) {
-          if (e.data && e.data.pulseworkShowcaseHeight) {
-            iframe.style.height = e.data.pulseworkShowcaseHeight + 'px';
-            injectShowcaseStyle();
-          }
-        });
-        // 3. Polling de secours pendant les 5 premières secondes (le bundler peut prendre du temps)
-        var attempts = 0;
-        var poll = setInterval(function () {
-          injectShowcaseStyle();
-          if (++attempts >= 50) clearInterval(poll); // 50 × 100ms = 5s
-        }, 100);
-      })();
-    </script>
-
+    <p>Une application cle en main pour prendre le pouls de vos equipes en continu et de maniere anonyme.</p>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">&#x1F4AC;</div>
