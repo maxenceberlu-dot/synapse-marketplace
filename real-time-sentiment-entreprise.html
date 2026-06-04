@@ -422,7 +422,29 @@
 
   <section class="section" id="fonctionnalites">
     <h2>Tout ce qu'il faut pour mesurer le ressenti</h2>
-    <p>Une application cle en main pour prendre le pouls de vos equipes en continu et de maniere anonyme.</p>
+    <p>Une application cle en main pour prendre le pouls de vos equipes en continu et de maniere anonyme. Découvrez ci-dessous une démonstration interactive du baromètre social Pulse Work sur un cas réel.</p>
+
+    <!-- Showcase interactif Pulse Work × Potel & Chabot -->
+    <div style="margin: 40px 0; max-width: 1240px; margin-left: auto; margin-right: auto;">
+      <iframe
+        id="pw-showcase"
+        src="/embeds/showcase-potel-chabot.html"
+        title="Démonstration interactive Pulse Work — Baromètre Social Potel &amp; Chabot"
+        style="width:100%; max-width:1240px; height:980px; border:0; display:block; margin:0 auto; border-radius: 14px;"
+        loading="lazy"
+        scrolling="no">
+      </iframe>
+    </div>
+    <script>
+      // Auto-redimensionnement de l'iframe showcase
+      window.addEventListener('message', function (e) {
+        if (e.data && e.data.pulseworkShowcaseHeight) {
+          var f = document.getElementById('pw-showcase');
+          if (f) f.style.height = e.data.pulseworkShowcaseHeight + 'px';
+        }
+      });
+    </script>
+
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">&#x1F4AC;</div>
