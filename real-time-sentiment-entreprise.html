@@ -430,19 +430,45 @@
         id="pw-showcase"
         src="/embeds/showcase-potel-chabot.html"
         title="Démonstration interactive Pulse Work — Baromètre Social Potel &amp; Chabot"
-        style="width:100%; max-width:1240px; height:980px; border:0; display:block; margin:0 auto; border-radius: 14px;"
+        style="width:100%; max-width:1240px; height:980px; border:0; display:block; margin:0 auto; border-radius: 14px; background: transparent; box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 20px 60px rgba(0,0,0,0.5);"
         loading="lazy"
         scrolling="no">
       </iframe>
     </div>
     <script>
-      // Auto-redimensionnement de l'iframe showcase
-      window.addEventListener('message', function (e) {
-        if (e.data && e.data.pulseworkShowcaseHeight) {
-          var f = document.getElementById('pw-showcase');
-          if (f) f.style.height = e.data.pulseworkShowcaseHeight + 'px';
+      (function () {
+        var iframe = document.getElementById('pw-showcase');
+        // Injecter du CSS dans l'iframe (même origine) pour : fond transparent, masquer erreurs, mettre en valeur le bord de l'écran
+        function injectShowcaseStyle() {
+          try {
+            var doc = iframe.contentDocument || (iframe.contentWindow && iframe.contentWindow.document);
+            if (!doc || !doc.head) return;
+            if (doc.getElementById('pw-style-override')) return; // déjà injecté
+            var style = doc.createElement('style');
+            style.id = 'pw-style-override';
+            style.textContent =
+              'html, body { background: transparent !important; }' +
+              '#__bundler_loading, #__bundler_err, #__bundler_thumbnail { display: none !important; }' +
+              '.pw-showcase { box-shadow: 0 0 0 1px rgba(255,255,255,0.18), 0 16px 48px rgba(0,0,0,0.45) !important; border-radius: 14px !important; overflow: hidden; }';
+            doc.head.appendChild(style);
+          } catch (e) { /* ignore cross-origin / non-ready */ }
         }
-      });
+        // 1. Inject on iframe load
+        iframe.addEventListener('load', injectShowcaseStyle);
+        // 2. Re-inject à chaque message (le bundler remplace le document après load → on re-injecte)
+        window.addEventListener('message', function (e) {
+          if (e.data && e.data.pulseworkShowcaseHeight) {
+            iframe.style.height = e.data.pulseworkShowcaseHeight + 'px';
+            injectShowcaseStyle();
+          }
+        });
+        // 3. Polling de secours pendant les 5 premières secondes (le bundler peut prendre du temps)
+        var attempts = 0;
+        var poll = setInterval(function () {
+          injectShowcaseStyle();
+          if (++attempts >= 50) clearInterval(poll); // 50 × 100ms = 5s
+        }, 100);
+      })();
     </script>
 
     <div class="features-grid">
