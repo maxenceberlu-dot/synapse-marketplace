@@ -6,7 +6,9 @@
     { "source": "/pronostics-entreprise", "destination": "/pronostics-sportifs-entreprise.html", "statusCode": 301 },
     { "source": "/pronostics-entreprise.html", "destination": "/pronostics-sportifs-entreprise.html", "statusCode": 301 },
     { "source": "/application-pronostics-entreprise", "destination": "/pronostics-sportifs-entreprise.html", "statusCode": 301 },
-    { "source": "/application-pronostics-entreprise.html", "destination": "/pronostics-sportifs-entreprise.html", "statusCode": 301 }
+    { "source": "/application-pronostics-entreprise.html", "destination": "/pronostics-sportifs-entreprise.html", "statusCode": 301 },
+    { "source": "/blog/", "destination": "/blog.html", "statusCode": 301 },
+    { "source": "/blog", "destination": "/blog.html", "statusCode": 301 }
   ],
   "rewrites": [
     { "source": "/.well-known/ai-plugin.json", "destination": "/ai-plugin.json" },
@@ -35,7 +37,7 @@
       "headers": [
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
         { "key": "Cache-Control", "value": "public, max-age=86400" },
-        { "key": "X-Robots-Tag", "value": "index, follow" }
+        { "key": "X-Robots-Tag", "value": "noindex, follow" }
       ]
     },
     {
@@ -43,7 +45,7 @@
       "headers": [
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
         { "key": "Cache-Control", "value": "public, max-age=86400" },
-        { "key": "X-Robots-Tag", "value": "index, follow" }
+        { "key": "X-Robots-Tag", "value": "noindex, follow" }
       ]
     },
     {
@@ -51,6 +53,14 @@
       "headers": [
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
         { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" },
+        { "key": "X-Robots-Tag", "value": "noindex" }
       ]
     }
   ]
