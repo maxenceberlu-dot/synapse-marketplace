@@ -980,11 +980,47 @@
       color: var(--trust-logo-color);
       white-space: nowrap;
       user-select: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      flex: 0 0 auto;
+    }
+
+    .trust-logo img {
+      height: 100%;
+      width: auto;
+      max-width: 180px;
+      object-fit: contain;
+      filter: grayscale(1) brightness(1.8) contrast(0.5);
+      opacity: 0.55;
+      transition: filter .3s ease, opacity .3s ease;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .trust-bar:hover .trust-logo img {
+      opacity: 0.75;
+    }
+
+    .trust-logo img:hover {
+      filter: grayscale(0) brightness(1) contrast(1);
+      opacity: 1;
+    }
+
+    :root[data-theme="light"] .trust-logo img,
+    body.theme-light .trust-logo img {
+      filter: grayscale(1) brightness(0.7) contrast(0.9);
+      opacity: 0.55;
     }
 
     @keyframes scrollLogos {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .trust-logos { animation: none !important; flex-wrap: wrap; justify-content: center; }
     }
 
     /* ============================================
@@ -1816,6 +1852,16 @@
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+    /* FAQ */
+    .faq-wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+    .faq-item { border-bottom: 1px solid var(--glass-border); padding: 24px 0; }
+    .faq-question { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .faq-question::after { content: '+'; font-size: 1.4rem; color: var(--accent-2); transition: transform 0.3s ease; flex: 0 0 auto; }
+    .faq-item.open .faq-question::after { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.open .faq-answer { max-height: 500px; }
+    .faq-answer p { padding-top: 16px; font-size: 1rem; color: var(--text-secondary); line-height: 1.75; margin: 0; }
   </style>
 
   <!-- Structured Data: BreadcrumbList -->
@@ -2152,6 +2198,13 @@
       </div>
     </div>
   </section>
+
+
+  <!-- TRUST BAR "Ils nous font confiance" : EN ATTENTE des 8 logos clients.
+       Section retirée temporairement car /assets/img/clients/ est vide (8 images 404 sinon).
+       À RÉACTIVER dès dépôt des logos : la version complète est identique à celle de
+       a-propos.html (section .trust-bar), avec airbus.png, esa.svg, eutelsat.svg,
+       biomerieux.png, marriott.png, concentrix.svg, potel-chabot.png, roland-garros.png. -->
 
 
   <!-- WHY ENGAGEMENT SECTION -->
@@ -3370,6 +3423,39 @@
       </article>
     </section>
   </noscript>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" style="padding-top:80px;" aria-label="Questions fréquentes">
+    <div style="text-align:center;margin-bottom:48px;">
+      <h2 class="section-title" style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;">Questions fréquentes sur les plateformes d'engagement collaborateur</h2>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Qu'est-ce qu'une plateforme d'engagement collaborateur ?</div>
+        <div class="faq-answer"><p>Une plateforme d'engagement collaborateur est un logiciel SaaS qui permet aux entreprises de mesurer, analyser et améliorer l'engagement de leurs salariés. Elle regroupe des outils d'écoute (sondages anonymes, pulse surveys, feedback 360, baromètre social), des outils d'activation (team building digital, gamification, quiz, défis bien-être) et des dashboards analytiques. Selon Gallup, les entreprises avec des collaborateurs engagés sont 23% plus rentables et connaissent 43% de turnover en moins. Pulse est une plateforme d'engagement collaborateur française compatible Teams, Slack et SharePoint.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Pourquoi mesurer l'engagement collaborateur en entreprise ?</div>
+        <div class="faq-answer"><p>Mesurer l'engagement collaborateur permet d'identifier les signaux faibles avant qu'ils ne deviennent des problèmes (démissions, absentéisme, baisse de productivité). En France, seulement 7% des salariés se déclarent activement engagés (Gallup 2024). Un collaborateur désengagé coûte en moyenne 14 310 euros par an à son entreprise. Les outils de mesure comme les pulse surveys, l'eNPS et le baromètre social en temps réel permettent de passer d'une logique réactive à une démarche proactive. Pulse propose des sondages anonymes avec analyse IA des verbatims et dashboards temps réel.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Comment déployer Pulse dans mon entreprise ?</div>
+        <div class="faq-answer"><p>Le déploiement de Pulse se fait en moins de 48 heures, sans installation technique côté DSI. La plateforme se connecte directement à vos outils existants (Microsoft Teams, Slack, Google Chat, SharePoint, Staffbase, LumApps, Workvivo) via des connecteurs natifs. L'authentification est gérée par SSO (Okta, Microsoft Entra ID, SAML, OIDC) et la synchronisation des utilisateurs se fait automatiquement via votre annuaire (Active Directory) ou votre SIRH (Workday, BambooHR). Un Customer Success Manager vous accompagne pour le paramétrage et le lancement.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Quelles intégrations sont disponibles avec Pulse ?</div>
+        <div class="faq-answer"><p>Pulse s'intègre à plus de 20 plateformes : outils de communication (Microsoft Teams, Slack, Google Chat), intranets et digital workplace (SharePoint, Staffbase, LumApps, Workvivo), SSO et annuaires (Okta, Microsoft Entra ID, SAML, OIDC), et SIRH (Workday, BambooHR). Les applications Pulse se déploient nativement dans ces environnements, permettant aux collaborateurs de participer sans quitter leurs outils du quotidien.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Est-ce que Pulse est conforme RGPD ?</div>
+        <div class="faq-answer"><p>Oui, Pulse est 100% conforme au RGPD. Les données sont hébergées en Europe (infrastructure certifiée ISO 27001), chiffrées en transit (TLS 1.3) et au repos (AES-256). Les sondages sont anonymes par conception, avec des seuils d'anonymat configurables. Pulse propose un DPA (Data Processing Agreement) standard, des audit logs complets, et peut s'intégrer à votre politique de sécurité existante via SSO et gestion des rôles. Aucune donnée personnelle n'est partagée avec des tiers.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">Combien coûte une plateforme d'engagement collaborateur ?</div>
+        <div class="faq-answer"><p>Le coût d'une plateforme d'engagement collaborateur varie généralement entre 2 et 8 euros par utilisateur par mois, selon les fonctionnalités et le nombre d'utilisateurs. Pulse propose des formules adaptées aux PME comme aux grands groupes, avec un modèle de tarification par application ou en bundle plateforme complète. Le ROI est mesurable : les entreprises utilisant une plateforme d'engagement constatent en moyenne 25% de réduction du turnover et 20% d'amélioration de la productivité. Contactez-nous pour un devis personnalisé.</p></div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   </main>
