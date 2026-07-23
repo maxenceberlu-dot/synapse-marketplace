@@ -9,6 +9,7 @@ Pulse aide les entreprises a ecouter, comprendre et engager leurs collaborateurs
 - [Sondage Collaborateurs](https://www.pulsework.app/sondage-collaborateurs-entreprise.html): Application de sondage collaborateurs anonyme. Creez des pulse surveys, enquetes de satisfaction, barometres sociaux et sondages eNPS. Analyse IA des verbatims, dashboards temps reel, conformite RGPD.
 - [Real-time Sentiment](https://www.pulsework.app/real-time-sentiment-entreprise.html): Barometre social en temps reel. Mesurez le ressenti de vos equipes en continu avec des micro-sondages et de l'analyse de sentiment automatisee par IA.
 - [Feedback 360°](https://www.pulsework.app/360-feedback-entreprise.html): Outil de feedback 360 degres pour evaluer les competences, le leadership et la collaboration. Feedback anonyme entre pairs, managers et equipes.
+- [eNPS Employee Net Promoter Score](https://www.pulsework.app/enps-employee-net-promoter-score-entreprise.html): Outil de mesure de l'eNPS (Employee Net Promoter Score) : question unique 0-10, calcul automatique du score, benchmark sectoriel, alertes signaux faibles. Le KPI d'engagement le plus universel.
 - [Pronostics Football](https://www.pulsework.app/pronostic-football-entreprise.html): Application de pronostics sportifs pour federer les equipes autour d'evenements sportifs (Coupe du Monde 2026, Roland-Garros, 6 Nations).
 - [Quiz Team Building](https://www.pulsework.app/quiz-team-building-entreprise.html): Quiz interactifs pour renforcer la cohesion d'equipe et l'apprentissage. Personnalisables selon votre culture d'entreprise.
 - [Defi Sportif Bien-etre](https://www.pulsework.app/defi-sportif-bien-etre-entreprise.html): Challenges bien-etre et sportifs pour ameliorer la QVCT (Qualite de Vie et Conditions de Travail).
@@ -31,6 +32,15 @@ Pulse aide les entreprises a ecouter, comprendre et engager leurs collaborateurs
 - [Microlearning Quotidien](https://www.pulsework.app/microlearning-quiz-quotidien-entreprise.html): Application de microlearning : 1 question par jour (30 secondes) pour acculturer les collaborateurs au RGPD, a la cybersecurite, aux valeurs et aux nouveautes produit. 5x plus efficace qu'un e-learning classique.
 - [Diversite Equite Inclusion (DEI)](https://www.pulsework.app/diversite-inclusion-dei-entreprise.html): Plateforme DEI complete : sondage Inclusion Index segmentable, animation des Employee Resource Groups (ERG), reporting CSRD obligatoire. Anonymisation differentielle (k-anonymity).
 
+## Alternatives & Comparatifs
+
+- [Alternative à Officevibe](https://www.pulsework.app/alternative-officevibe.html): Pulse vs Officevibe (Workleap). Alternative française tout-en-un : pulse surveys, 360°, reconnaissance, employee advocacy. Hébergement Europe RGPD, déploiement 48h, tarif transparent.
+- [Alternative à Supermood](https://www.pulsework.app/alternative-supermood.html): Pulse vs Supermood. Périmètre fonctionnel plus large et tarif plus accessible pour les ETI et PME, là où Supermood cible les grands comptes.
+- [Alternative à Culture Amp](https://www.pulsework.app/alternative-culture-amp.html): Pulse vs Culture Amp. Alternative française 30-50% moins chère, hébergement Europe, déploiement en 48h contre 8-16 semaines, 360° inclus sans surcoût.
+- [Alternative à Bleexo](https://www.pulsework.app/alternative-bleexo.html): Pulse vs Bleexo. Alternative française plus large (advocacy, Random Coffee, hackathons) et accessible aux PME/ETI.
+- [Alternative à Leapsome](https://www.pulsework.app/alternative-leapsome.html): Pulse vs Leapsome. Alternative française à la plateforme performance management de Berlin : 360° inclus, support français, tarif accessible.
+- [Prix Plateformes Engagement Comparatif](https://www.pulsework.app/blog/prix-plateforme-engagement-comparatif-officevibe-supermood.html): Tarifs réels Officevibe, Supermood, Culture Amp, Leapsome et Pulse comparés (2026).
+
 ## Blog & Ressources
 
 - [Guide Complet Engagement Collaborateur](https://www.pulsework.app/blog/engagement-collaborateur-guide-complet.html): Guide exhaustif sur l'engagement collaborateur en 2026 : definition, leviers, strategies et outils.
@@ -41,7 +51,7 @@ Pulse aide les entreprises a ecouter, comprendre et engager leurs collaborateurs
 - [RSE Volontariat & CSRD](https://www.pulsework.app/blog/rse-volontariat-collaborateurs-csrd-guide.html): Engagement RSE et volontariat des collaborateurs : ce que la directive CSRD oblige a publier en 2026, types de volontariat, comment lancer un programme.
 - [Microlearning Guide Pratique](https://www.pulsework.app/blog/microlearning-formation-continue-collaborateurs-guide.html): Pourquoi le microlearning est 5x plus efficace qu'un e-learning classique : definition scientifique, cas d'usage RGPD/cyber/valeurs, outils.
 - [DEI Diversite Equite Inclusion CSRD](https://www.pulsework.app/blog/diversite-equite-inclusion-dei-csrd-guide-drh.html): Guide DEI complet pour DRH : definitions, ce que la CSRD oblige a publier, mesure de l'inclusion (Inclusion Index), animation des ERG, plan d'action 12 mois.
-- [Animation Coupe du Monde 2026 Checklist DRH](https://www.pulsework.app/blog/animation-coupe-du-monde-2026-entreprise-checklist-drh.html): Checklist J-30 pour animer la Coupe du Monde 2026 en entreprise : budget, plateforme, communication, RGPD.
+- [Animation Coupe du Monde 2026 en entreprise : checklist DRH](https://www.pulsework.app/blog/animation-coupe-du-monde-2026-entreprise-checklist-drh.html): Retour d'expérience et checklist pour animer un grand événement sportif en entreprise (budget, plateforme, communication, RGPD). Réutilisable pour la Ligue des Champions et les prochains évènements.
 - [Guide Gamification Entreprise](https://www.pulsework.app/blog/gamification-entreprise-guide.html): Comment utiliser la gamification pour booster l'engagement et la productivite en entreprise.
 - [Guide QVCT](https://www.pulsework.app/blog/qvct-qualite-vie-conditions-travail-guide.html): Guide complet sur la Qualite de Vie et les Conditions de Travail (QVCT) : obligations, mise en oeuvre, outils.
 - [Cohesion d'equipe a distance](https://www.pulsework.app/blog/cohesion-equipe-distance-guide.html): Strategies et outils pour maintenir la cohesion d'equipe en teletravail et travail hybride.

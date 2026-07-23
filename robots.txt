@@ -4,10 +4,12 @@
 # ==============================================
 
 # Default: allow all crawlers
+# Note : dashboard.html et /embeds/ sont exclus de l'index via noindex
+# (meta robots + X-Robots-Tag). On NE met PAS de Disallow ici : sinon Google
+# ne peut pas crawler la page pour voir le noindex, et elle peut être indexée
+# "sans contenu" si elle reçoit un lien externe.
 User-agent: *
 Allow: /
-Disallow: /dashboard.html
-Disallow: /embeds/
 
 # ==============================================
 # AI Search Crawlers — ALLOWED
