@@ -459,6 +459,16 @@
       .bluedata-card { flex-direction: column; text-align: center; padding: 24px 20px; }
       .hero-about h1 { font-size: 1.8rem; }
     }
+
+    /* Trust bar : logos clients */
+    .trust-bar { position: relative; z-index: 1; padding: 48px 0; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); overflow: hidden; margin-bottom: 40px; }
+    .trust-bar-label { text-align: center; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-tertiary); margin-bottom: 28px; }
+    .trust-logos { display: flex; align-items: center; gap: 64px; animation: scrollLogos 30s linear infinite; width: max-content; }
+    .trust-logo { display: inline-flex; align-items: center; justify-content: center; height: 64px; padding: 0 28px; background: rgba(255,255,255,0.96); border-radius: 12px; flex: 0 0 auto; box-shadow: 0 2px 14px rgba(0,0,0,0.18); transition: transform .3s ease, box-shadow .3s ease; user-select: none; }
+    .trust-logo:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.28); }
+    .trust-logo img { height: 30px; width: auto; max-width: 150px; object-fit: contain; display: block; user-select: none; -webkit-user-drag: none; }
+    @keyframes scrollLogos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .trust-logos { animation: none !important; flex-wrap: wrap; justify-content: center; } }
   </style>
   <link rel="stylesheet" href="/assets/css/nav-shared.css?v=2">
 </head>
@@ -631,6 +641,28 @@
       <h1>À propos de Pulse</h1>
       <p>Pulse est une entreprise franco-brésilienne qui aide les DRH et les managers à transformer l'engagement de leurs équipes. Nous développons plus de 50 applications prêtes à l'emploi (pronostics sportifs, sondages, Secret Santa, hackathons, 360° feedback...) et des solutions sur mesure, toutes intégrées nativement à Microsoft Teams, Slack et aux SIRH du marché.</p>
     </div>
+
+    <!-- Trust bar : ils nous font confiance -->
+    <section class="trust-bar" aria-label="Ils nous font confiance">
+      <div class="trust-bar-label">Ils nous font confiance</div>
+      <div class="trust-logos">
+        <div class="trust-logo"><img src="/assets/img/clients/airbus.png" alt="Airbus" loading="lazy" width="150" height="30"></div>
+        <div class="trust-logo"><img src="/assets/img/clients/eutelsat.png" alt="Eutelsat" loading="lazy" width="150" height="30"></div>
+        <div class="trust-logo"><img src="/assets/img/clients/biomerieux.png" alt="bioMérieux" loading="lazy" width="150" height="30"></div>
+        <div class="trust-logo"><img src="/assets/img/clients/marriott.png" alt="Marriott" loading="lazy" width="150" height="30"></div>
+        <div class="trust-logo"><img src="/assets/img/clients/concentrix.png" alt="Concentrix" loading="lazy" width="150" height="30"></div>
+        <div class="trust-logo"><img src="/assets/img/clients/potel-chabot.png" alt="Potel & Chabot" loading="lazy" width="150" height="30"></div>
+        <div class="trust-logo"><img src="/assets/img/clients/roland-garros.png" alt="Roland-Garros" loading="lazy" width="150" height="30"></div>
+        <div class="trust-logo" aria-hidden="true"><img src="/assets/img/clients/airbus.png" alt="" loading="lazy" width="150" height="30"></div>
+        <div class="trust-logo" aria-hidden="true"><img src="/assets/img/clients/eutelsat.png" alt="" loading="lazy" width="150" height="30"></div>
+        <div class="trust-logo" aria-hidden="true"><img src="/assets/img/clients/biomerieux.png" alt="" loading="lazy" width="150" height="30"></div>
+        <div class="trust-logo" aria-hidden="true"><img src="/assets/img/clients/marriott.png" alt="" loading="lazy" width="150" height="30"></div>
+        <div class="trust-logo" aria-hidden="true"><img src="/assets/img/clients/concentrix.png" alt="" loading="lazy" width="150" height="30"></div>
+        <div class="trust-logo" aria-hidden="true"><img src="/assets/img/clients/potel-chabot.png" alt="" loading="lazy" width="150" height="30"></div>
+        <div class="trust-logo" aria-hidden="true"><img src="/assets/img/clients/roland-garros.png" alt="" loading="lazy" width="150" height="30"></div>
+      </div>
+    </div>
+    </section>
 
     <div class="section">
 
