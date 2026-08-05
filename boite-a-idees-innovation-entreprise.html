@@ -853,6 +853,35 @@
     </div>
   </div>
 
+  <!-- Animation interactive Boîte à Idées (Claude Design) -->
+  <div style="margin: 48px auto 24px; max-width: 1100px; padding: 0 24px;">
+    <iframe
+      id="bai-animation"
+      src="/embeds/boite-a-idees-animation.html"
+      title="Démonstration animée de la boîte à idées Pulse : soumission, vote et pipeline d'innovation"
+      style="width:100%; aspect-ratio: 1200 / 800; border:0; display:block; border-radius:16px; background:transparent;"
+      loading="lazy"
+      scrolling="no">
+    </iframe>
+  </div>
+  <script>
+    (function(){
+      var f = document.getElementById('bai-animation');
+      function inject(){
+        try {
+          var d = f.contentDocument || (f.contentWindow && f.contentWindow.document);
+          if(!d || !d.head) return;
+          if(d.getElementById('bai-style')) return;
+          var s = d.createElement('style'); s.id = 'bai-style';
+          s.textContent = 'html, body { background: transparent !important; } #__bundler_loading, #__bundler_err, #__bundler_thumbnail { display: none !important; }';
+          d.head.appendChild(s);
+        } catch(e) { /* cross-origin / pas prêt */ }
+      }
+      f.addEventListener('load', inject);
+      var n = 0, poll = setInterval(function(){ inject(); if(++n >= 50) clearInterval(poll); }, 100);
+    })();
+  </script>
+
   <!-- Définition / éditorial -->
   <section class="section">
     <h2>Qu'est-ce qu'une boîte à idées en entreprise ?</h2>
