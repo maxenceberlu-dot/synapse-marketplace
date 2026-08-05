@@ -227,6 +227,16 @@
     .footer a { color: var(--text-secondary); text-decoration: none; }
     .footer a:hover { color: var(--text-primary); }
     @media (max-width: 768px) { .nav { padding: 12px 20px; } .hero { padding: 120px 20px 60px; } .section { padding: 40px 20px; } .stats { padding: 0 20px; } .cta-section { margin: 40px 20px; padding: 40px 24px; } .features-grid { grid-template-columns: 1fr; } .nav-actions .btn-ghost { display: none; } }
+    /* Trust bar clients */
+    .trust-bar { position: relative; z-index: 1; padding: 36px 0; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); overflow: hidden; margin: 20px auto 0; max-width: 1100px; }
+    .trust-bar-label { text-align: center; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-tertiary); margin-bottom: 24px; }
+    .trust-logos { display: flex; align-items: center; gap: 52px; animation: scrollLogos 32s linear infinite; width: max-content; }
+    .trust-logo { display: inline-flex; align-items: center; justify-content: center; height: 72px; padding: 0 24px; background: rgba(255,255,255,0.96); border-radius: 12px; flex: 0 0 auto; box-shadow: 0 2px 14px rgba(0,0,0,0.18); }
+    .trust-logo img { height: 30px; width: auto; max-width: 140px; object-fit: contain; display: block; user-select: none; -webkit-user-drag: none; }
+    .trust-logo.logo-lg img { height: 44px; max-width: 120px; }
+    .trust-logo.logo-xl img { height: 54px; max-width: 60px; }
+    @keyframes scrollLogos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .trust-logos { animation: none; flex-wrap: wrap; justify-content: center; } }
   </style>
   <link rel="stylesheet" href="/assets/css/nav-shared.css?v=2">
 </head>
@@ -408,6 +418,27 @@
     <div class="stat-card"><div class="stat-number">RGPD</div><div class="stat-label">conforme et securise</div></div>
     <div class="stat-card"><div class="stat-number">&lt;48h</div><div class="stat-label">deploiement garanti</div></div>
   </div>
+
+  <!-- Trust bar : ils nous font confiance -->
+  <section class="trust-bar" aria-label="Ils nous font confiance">
+    <div class="trust-bar-label">Ils nous font confiance</div>
+    <div class="trust-logos">
+      <div class="trust-logo"><img src="/assets/img/clients/airbus.png" alt="Airbus" loading="lazy" width="140" height="72"></div>
+      <div class="trust-logo"><img src="/assets/img/clients/eutelsat.png" alt="Eutelsat" loading="lazy" width="140" height="72"></div>
+      <div class="trust-logo logo-lg"><img src="/assets/img/clients/biomerieux.png" alt="bioMérieux" loading="lazy" width="140" height="72"></div>
+      <div class="trust-logo"><img src="/assets/img/clients/concentrix.png" alt="Concentrix" loading="lazy" width="140" height="72"></div>
+      <div class="trust-logo logo-xl"><img src="/assets/img/clients/roland-garros.png" alt="Roland-Garros" loading="lazy" width="140" height="72"></div>
+      <div class="trust-logo"><img src="/assets/img/clients/marriott.png" alt="Marriott" loading="lazy" width="140" height="72"></div>
+      <div class="trust-logo logo-lg"><img src="/assets/img/clients/potel-chabot.png" alt="Potel & Chabot" loading="lazy" width="140" height="72"></div>
+      <div class="trust-logo" aria-hidden="true"><img src="/assets/img/clients/airbus.png" alt="" loading="lazy" width="140" height="72"></div>
+      <div class="trust-logo" aria-hidden="true"><img src="/assets/img/clients/eutelsat.png" alt="" loading="lazy" width="140" height="72"></div>
+      <div class="trust-logo logo-lg" aria-hidden="true"><img src="/assets/img/clients/biomerieux.png" alt="" loading="lazy" width="140" height="72"></div>
+      <div class="trust-logo" aria-hidden="true"><img src="/assets/img/clients/concentrix.png" alt="" loading="lazy" width="140" height="72"></div>
+      <div class="trust-logo logo-xl" aria-hidden="true"><img src="/assets/img/clients/roland-garros.png" alt="" loading="lazy" width="140" height="72"></div>
+      <div class="trust-logo" aria-hidden="true"><img src="/assets/img/clients/marriott.png" alt="" loading="lazy" width="140" height="72"></div>
+      <div class="trust-logo logo-lg" aria-hidden="true"><img src="/assets/img/clients/potel-chabot.png" alt="" loading="lazy" width="140" height="72"></div>
+    </div>
+  </section>
 
   <!-- Showcase interactif Pulse Work × Potel & Chabot -->
   <div style="margin: 60px auto 40px; max-width: 1240px; padding: 0 40px;">
