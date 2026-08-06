@@ -13,6 +13,7 @@ const OUTPUT = path.join(ROOT, 'sitemap.xml');
 // Pages exclues du sitemap (noindex, internes, vérification, prospection)
 const EXCLUDE = new Set([
   'dashboard.html',
+  'crm.html',
   '404.html',
   'google99f7135c8d8a1617.html',
   'email-followup-alfa-laval.html',

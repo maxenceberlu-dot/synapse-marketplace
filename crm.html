@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Pulse CRM - Pipeline</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-primary: #06060a;
+      --bg-secondary: #0c0c14;
+      --bg-card: rgba(255,255,255,0.03);
+      --bg-card-hover: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.08);
+      --text-primary: #f0f0f5;
+      --text-secondary: rgba(240,240,245,0.6);
+      --text-tertiary: rgba(240,240,245,0.35);
+      --accent-1: #6c5ce7;
+      --accent-2: #a29bfe;
+      --accent-3: #00cec9;
+      --accent-4: #fd79a8;
+      --accent-5: #fdcb6e;
+      --green: #00b894;
+      --gradient-primary: linear-gradient(135deg, #6c5ce7, #a29bfe, #00cec9);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --font-display: 'Bricolage Grotesque', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background orbs */
+    .bg-mesh { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.13; animation: orbFloat 20s ease-in-out infinite; }
+    .orb:nth-child(1) { width: 600px; height: 600px; background: #6c5ce7; top: -10%; left: -5%; }
+    .orb:nth-child(2) { width: 500px; height: 500px; background: #00cec9; bottom: -10%; right: -5%; animation-delay: -7s; }
+    .orb:nth-child(3) { width: 400px; height: 400px; background: #fd79a8; top: 50%; left: 50%; animation-delay: -14s; }
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+    @media (prefers-reduced-motion: reduce) { .orb { animation: none; } }
+
+    /* Login */
+    .login-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--bg-primary);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+    .login-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .login-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg); padding: 48px;
+      backdrop-filter: blur(20px); width: 100%; max-width: 420px; text-align: center;
+    }
+    .login-logo {
+      font-family: var(--font-display); font-size: 1.8rem; font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 8px;
+    }
+    .login-subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 32px; }
+    .login-input {
+      width: 100%; padding: 14px 20px; margin-bottom: 8px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm); color: var(--text-primary);
+      font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: border-color 0.3s;
+    }
+    .login-input:focus { border-color: var(--accent-1); }
+    .login-input::placeholder { color: var(--text-tertiary); }
+    .login-btn {
+      width: 100%; padding: 14px 24px; margin-top: 12px;
+      background: var(--gradient-primary); border: none; border-radius: var(--radius-sm);
+      color: white; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; transition: var(--transition);
+    }
+    .login-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(108,92,231,0.3); }
+    .login-error { color: var(--accent-4); font-size: 0.82rem; margin-top: 12px; display: none; }
+    .login-error.show { display: block; }
+
+    /* Nav */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 14px 28px;
+      background: rgba(6,6,10,0.85); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-left { display: flex; align-items: center; gap: 14px; }
+    .nav-brand {
+      font-family: var(--font-display); font-size: 1.2rem; font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-decoration: none;
+    }
+    .nav-badge {
+      padding: 4px 10px; font-size: 0.68rem; font-weight: 600;
+      background: rgba(108,92,231,0.15); color: var(--accent-2);
+      border: 1px solid rgba(108,92,231,0.25); border-radius: 50px;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .nav-btn {
+      padding: 8px 16px; font-size: 0.8rem;
+      background: rgba(255,255,255,0.04); color: var(--text-secondary);
+      border: 1px solid var(--glass-border); border-radius: var(--radius-sm);
+      cursor: pointer; font-family: var(--font-body); transition: var(--transition);
+      text-decoration: none; display: inline-block;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.08); color: var(--text-primary); }
+    .nav-logout {
+      padding: 8px 16px; font-size: 0.8rem;
+      background: rgba(253,121,168,0.1); color: var(--accent-4);
+      border: 1px solid rgba(253,121,168,0.2); border-radius: var(--radius-sm);
+      cursor: pointer; font-family: var(--font-body); transition: var(--transition);
+    }
+    .nav-logout:hover { background: rgba(253,121,168,0.2); }
+
+    /* Layout */
+    .crm {
+      position: relative; z-index: 1;
+      max-width: 1600px; margin: 0 auto;
+      padding: 84px 24px 40px;
+    }
+    .toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .toolbar-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; }
+    .toolbar-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .search-input {
+      padding: 10px 16px; width: 240px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm); color: var(--text-primary);
+      font-family: var(--font-body); font-size: 0.85rem; outline: none; transition: border-color 0.3s;
+    }
+    .search-input:focus { border-color: var(--accent-1); }
+    .search-input::placeholder { color: var(--text-tertiary); }
+    .btn-add {
+      padding: 10px 20px; background: var(--gradient-primary); border: none;
+      border-radius: var(--radius-sm); color: white; font-family: var(--font-body);
+      font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-add:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(108,92,231,0.3); }
+
+    /* KPIs */
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px; }
+    .kpi-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md); padding: 18px 22px;
+      backdrop-filter: blur(12px); transition: var(--transition);
+    }
+    .kpi-card:hover { background: var(--bg-card-hover); }
+    .kpi-label { font-size: 0.68rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 6px; }
+    .kpi-value {
+      font-family: var(--font-display); font-size: 1.7rem; font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .kpi-sub { font-size: 0.72rem; color: var(--text-tertiary); margin-top: 4px; }
+
+    /* Banners */
+    .banner {
+      border-radius: var(--radius-md); padding: 16px 22px; margin-bottom: 20px;
+      font-size: 0.85rem; line-height: 1.6; display: none;
+    }
+    .banner.show { display: block; }
+    .banner-error { background: rgba(253,121,168,0.08); border: 1px solid rgba(253,121,168,0.25); color: var(--accent-4); }
+    .banner-info { background: rgba(0,206,201,0.06); border: 1px solid rgba(0,206,201,0.2); color: var(--accent-3); }
+    .banner code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; color: var(--text-primary); }
+
+    /* Kanban */
+    .board-wrap { overflow-x: auto; padding-bottom: 12px; }
+    .board { display: flex; gap: 14px; min-width: 1100px; align-items: flex-start; }
+    .col {
+      flex: 1; min-width: 175px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      display: flex; flex-direction: column;
+      max-height: calc(100vh - 300px); min-height: 200px;
+    }
+    .col.drag-over { border-color: var(--accent-1); background: rgba(108,92,231,0.06); }
+    .col-header {
+      padding: 14px 14px 10px; display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: sticky; top: 0;
+    }
+    .col-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .col-title { font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; }
+    .col-count {
+      margin-left: auto; font-size: 0.7rem; color: var(--text-tertiary);
+      background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 50px;
+    }
+    .col-sum { padding: 4px 14px 8px; font-size: 0.68rem; color: var(--text-tertiary); min-height: 22px; }
+    .col-body { padding: 8px; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+    .col-empty { text-align: center; color: var(--text-tertiary); font-size: 0.72rem; padding: 24px 8px; }
+
+    /* Cards */
+    .lead-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm); padding: 12px 14px;
+      cursor: grab; transition: border-color 0.2s, background 0.2s, opacity 0.2s;
+    }
+    .lead-card:hover { background: var(--bg-card-hover); border-color: rgba(255,255,255,0.15); }
+    .lead-card.dragging { opacity: 0.4; }
+    .lead-name { font-weight: 600; font-size: 0.85rem; margin-bottom: 2px; }
+    .lead-company { font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 8px; }
+    .lead-tags { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+    .tag {
+      font-size: 0.64rem; padding: 2px 8px; border-radius: 50px;
+      border: 1px solid; white-space: nowrap;
+    }
+    .tag-produit { background: rgba(108,92,231,0.12); border-color: rgba(108,92,231,0.3); color: var(--accent-2); }
+    .tag-montant { background: rgba(0,206,201,0.1); border-color: rgba(0,206,201,0.25); color: var(--accent-3); }
+    .tag-form { background: rgba(253,203,110,0.1); border-color: rgba(253,203,110,0.25); color: var(--accent-5); }
+    .lead-date { font-size: 0.62rem; color: var(--text-tertiary); margin-top: 8px; }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(6,6,10,0.7); backdrop-filter: blur(6px);
+      display: none; align-items: flex-start; justify-content: center;
+      padding: 40px 16px; overflow-y: auto;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: var(--bg-secondary); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg); padding: 32px;
+      width: 100%; max-width: 560px;
+    }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .modal-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; }
+    .modal-close {
+      background: none; border: none; color: var(--text-tertiary);
+      font-size: 1.3rem; cursor: pointer; line-height: 1; padding: 4px;
+    }
+    .modal-close:hover { color: var(--text-primary); }
+    .modal-notice {
+      background: rgba(253,203,110,0.08); border: 1px solid rgba(253,203,110,0.25);
+      color: var(--accent-5); border-radius: var(--radius-sm);
+      padding: 10px 14px; font-size: 0.78rem; margin-bottom: 16px; display: none;
+    }
+    .modal-notice.show { display: block; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-field { display: flex; flex-direction: column; gap: 5px; }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-label { font-size: 0.68rem; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 1px; }
+    .form-input, .form-select, .form-textarea {
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm); color: var(--text-primary);
+      font-family: var(--font-body); font-size: 0.85rem; outline: none; transition: border-color 0.3s;
+      width: 100%;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent-1); }
+    .form-select option, .form-select optgroup { background: var(--bg-secondary); color: var(--text-primary); }
+    .form-textarea { resize: vertical; min-height: 70px; }
+    .form-message-origine {
+      background: rgba(255,255,255,0.02); border: 1px dashed var(--glass-border);
+      border-radius: var(--radius-sm); padding: 10px 14px;
+      font-size: 0.78rem; color: var(--text-secondary); white-space: pre-wrap;
+      max-height: 120px; overflow-y: auto;
+    }
+    .modal-actions { display: flex; gap: 10px; margin-top: 22px; align-items: center; }
+    .btn-save {
+      flex: 1; padding: 12px 20px; background: var(--gradient-primary); border: none;
+      border-radius: var(--radius-sm); color: white; font-family: var(--font-body);
+      font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: var(--transition);
+    }
+    .btn-save:hover { transform: translateY(-1px); box-shadow: 0 8px 30px rgba(108,92,231,0.3); }
+    .btn-save:disabled { opacity: 0.5; cursor: wait; transform: none; }
+    .btn-delete {
+      padding: 12px 16px; background: rgba(253,121,168,0.1); color: var(--accent-4);
+      border: 1px solid rgba(253,121,168,0.2); border-radius: var(--radius-sm);
+      cursor: pointer; font-family: var(--font-body); font-size: 0.8rem; transition: var(--transition);
+    }
+    .btn-delete:hover { background: rgba(253,121,168,0.2); }
+    .modal-error { color: var(--accent-4); font-size: 0.78rem; margin-top: 10px; display: none; }
+    .modal-error.show { display: block; }
+
+    .loading-spinner { display: flex; align-items: center; justify-content: center; padding: 60px; color: var(--text-tertiary); font-size: 0.85rem; }
+    .spinner {
+      width: 24px; height: 24px; border: 3px solid var(--glass-border);
+      border-top-color: var(--accent-1); border-radius: 50%;
+      animation: spin 0.8s linear infinite; margin-right: 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .last-updated { font-size: 0.72rem; color: var(--text-tertiary); text-align: center; padding: 20px; }
+
+    @media (max-width: 1024px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) {
+      .crm { padding: 76px 12px 32px; }
+      .nav { padding: 12px 14px; }
+      .nav-site-link { display: none; }
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .search-input { width: 100%; }
+      .toolbar-actions { width: 100%; }
+      .form-grid { grid-template-columns: 1fr; }
+      .modal { padding: 22px; }
+    }
+    @media (max-width: 480px) { .nav-badge { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="bg-mesh">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <!-- Login -->
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-card">
+      <div class="login-logo">Pulse CRM</div>
+      <p class="login-subtitle">Connectez-vous pour gérer vos leads</p>
+      <form id="loginForm" autocomplete="off">
+        <input type="email" class="login-input" id="loginEmail" placeholder="Email" required autocomplete="username">
+        <input type="password" class="login-input" id="loginPassword" placeholder="Mot de passe" required autocomplete="current-password">
+        <button type="submit" class="login-btn">Se connecter</button>
+      </form>
+      <p class="login-error" id="loginError">Email ou mot de passe incorrect</p>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-left">
+      <a href="/crm.html" class="nav-brand">Pulse CRM</a>
+      <span class="nav-badge">Pipeline</span>
+    </div>
+    <div class="nav-right">
+      <a href="/dashboard.html" class="nav-btn nav-site-link">Analytics</a>
+      <a href="/" class="nav-btn nav-site-link" target="_blank">Voir le site</a>
+      <button class="nav-btn" id="btnRefresh">Rafraîchir</button>
+      <button class="nav-logout" id="btnLogout">Déconnexion</button>
+    </div>
+  </nav>
+
+  <!-- CRM -->
+  <div class="crm" id="crmContent" style="display:none;">
+    <div class="banner banner-error" id="setupBanner">
+      <strong>Table CRM manquante.</strong> Exécute le fichier <code>supabase-crm-setup.sql</code> dans le SQL Editor de Supabase (projet iaaeerenmfyatlbtqylp), puis clique sur Rafraîchir.
+    </div>
+    <div class="banner banner-info" id="importBanner"></div>
+
+    <div class="toolbar">
+      <h1 class="toolbar-title">Pipeline de vente</h1>
+      <div class="toolbar-actions">
+        <input type="search" class="search-input" id="searchInput" placeholder="Rechercher (nom, entreprise, produit...)">
+        <button class="btn-add" id="btnAdd">+ Ajouter un lead</button>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Leads actifs</div>
+        <div class="kpi-value" id="kpiActive">-</div>
+        <div class="kpi-sub">hors gagnés / perdus</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Opportunités</div>
+        <div class="kpi-value" id="kpiOpps">-</div>
+        <div class="kpi-sub">en démo ou proposition</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Valeur pipeline</div>
+        <div class="kpi-value" id="kpiPipeline">-</div>
+        <div class="kpi-sub">montants des opportunités</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Gagnés</div>
+        <div class="kpi-value" id="kpiWon">-</div>
+        <div class="kpi-sub" id="kpiWonSub">-</div>
+      </div>
+    </div>
+
+    <div id="boardLoading" class="loading-spinner"><div class="spinner"></div>Chargement des leads...</div>
+    <div class="board-wrap">
+      <div class="board" id="board" style="display:none;"></div>
+    </div>
+
+    <div class="last-updated" id="lastUpdated"></div>
+  </div>
+
+  <!-- Modal fiche lead -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title" id="modalTitle">Fiche lead</span>
+        <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+      </div>
+      <div class="modal-notice" id="modalNotice"></div>
+      <form id="leadForm" autocomplete="off">
+        <div class="form-grid">
+          <div class="form-field">
+            <label class="form-label" for="fPrenom">Prénom</label>
+            <input class="form-input" id="fPrenom" type="text">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="fNom">Nom</label>
+            <input class="form-input" id="fNom" type="text">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="fEmail">Email</label>
+            <input class="form-input" id="fEmail" type="email">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="fEntreprise">Entreprise</label>
+            <input class="form-input" id="fEntreprise" type="text">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="fTaille">Taille entreprise</label>
+            <select class="form-select" id="fTaille">
+              <option value="">-</option>
+              <option>1-50</option>
+              <option>51-200</option>
+              <option>201-500</option>
+              <option>501-1000</option>
+              <option>1000+</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="fStage">Étape</label>
+            <select class="form-select" id="fStage"></select>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="fProduit">Produit Pulse</label>
+            <select class="form-select" id="fProduit"></select>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="fMontant">Montant estimé (€)</label>
+            <input class="form-input" id="fMontant" type="number" min="0" step="100" placeholder="ex: 5000">
+          </div>
+          <div class="form-field full" id="messageOrigineWrap" style="display:none;">
+            <label class="form-label">Message d'origine (formulaire)</label>
+            <div class="form-message-origine" id="fMessageOrigine"></div>
+          </div>
+          <div class="form-field full">
+            <label class="form-label" for="fNotes">Notes</label>
+            <textarea class="form-textarea" id="fNotes" placeholder="Prochaines étapes, contexte, objections..."></textarea>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-save" id="btnSave">Enregistrer</button>
+          <button type="button" class="btn-delete" id="btnDelete" style="display:none;">Supprimer</button>
+        </div>
+        <p class="modal-error" id="modalError"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script>
+    // ============================================
+    // CONFIGURATION
+    // ============================================
+    var SUPABASE_URL = 'https://iaaeerenmfyatlbtqylp.supabase.co';
+    var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhYWVlcmVubWZ5YXRsYnRxeWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMzA5NTMsImV4cCI6MjA4ODgwNjk1M30.TOwlijdWVUYZ3KxTB-c-aMaaJ0WszsxWQCnsvREQr3M';
+    var supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    var STAGES = [
+      { key: 'nouveau',     label: 'Nouveau',      color: '#a29bfe' },
+      { key: 'contacte',    label: 'Contacté',     color: '#00cec9' },
+      { key: 'demo',        label: 'Démo / RDV',   color: '#6c5ce7' },
+      { key: 'proposition', label: 'Proposition',  color: '#fdcb6e' },
+      { key: 'gagne',       label: 'Gagné',        color: '#00b894' },
+      { key: 'perdu',       label: 'Perdu',        color: '#fd79a8' }
+    ];
+    // À partir de ces étapes, le lead devient une opportunité : produit obligatoire
+    var STAGES_PRODUIT_REQUIS = ['demo', 'proposition', 'gagne'];
+
+    var PRODUITS = {
+      'Écoutez': ['Sondages Collaborateurs', 'Baromètre Social', 'Feedback 360°', 'Ask the Board', 'Problem Solver', 'eNPS'],
+      'Mesurez': ['Performance Review & 1:1', 'DEI Dashboard', 'RSE & Volontariat', 'Microlearning'],
+      'Activez': ['Boîte à Idées', 'Ideation Machine', 'Hackathon Interne', 'Ambassador Boost', 'Random Coffee Match'],
+      'Gamifiez': ['Quiz Team Building', 'Défis Bien-être & Sportifs', 'Reconnaissance & Récompenses', 'Thank You Plugin', 'Secret Santa', 'Pronostics Sportifs'],
+      'Autre': ['App Sur Mesure', 'Multi-produits', 'Autre']
+    };
+
+    var leads = [];
+    var searchTerm = '';
+    var editingLead = null;   // lead en cours d'édition (null = nouveau lead)
+    var pendingStage = null;  // étape cible quand un produit est requis avant le déplacement
+
+    var euro = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+
+    // ============================================
+    // AUTHENTICATION (même mécanique que dashboard.html)
+    // ============================================
+    async function checkAuth() {
+      var session = (await supabase.auth.getSession()).data.session;
+      if (session) { showCrm(); return true; }
+      return false;
+    }
+    async function login(email, password) {
+      var result = await supabase.auth.signInWithPassword({ email: email, password: password });
+      if (result.error) {
+        document.getElementById('loginError').classList.add('show');
+        return false;
+      }
+      document.getElementById('loginError').classList.remove('show');
+      showCrm();
+      return true;
+    }
+    async function logout() {
+      await supabase.auth.signOut();
+      document.getElementById('loginOverlay').classList.remove('hidden');
+      document.getElementById('crmContent').style.display = 'none';
+    }
+    function showCrm() {
+      document.getElementById('loginOverlay').classList.add('hidden');
+      document.getElementById('crmContent').style.display = 'block';
+      initCrm();
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      login(document.getElementById('loginEmail').value, document.getElementById('loginPassword').value);
+    });
+    document.getElementById('btnLogout').addEventListener('click', logout);
+    document.getElementById('btnRefresh').addEventListener('click', function() { initCrm(); });
+
+    // ============================================
+    // DATA
+    // ============================================
+    function isMissingTableError(error) {
+      return error && (error.code === '42P01' || /crm_leads/.test(error.message || ''));
+    }
+
+    // Importe dans crm_leads les soumissions du formulaire pas encore présentes
+    async function importNewSubmissions() {
+      var subs = await supabase.from('lead_submissions')
+        .select('id, prenom, nom, email, entreprise, taille_entreprise, message, created_at');
+      if (subs.error) { console.warn('[CRM] lecture lead_submissions:', subs.error.message); return 0; }
+
+      var existing = await supabase.from('crm_leads').select('submission_id').not('submission_id', 'is', null);
+      if (existing.error) throw existing.error;
+
+      var known = {};
+      (existing.data || []).forEach(function(r) { known[r.submission_id] = true; });
+
+      var toImport = (subs.data || []).filter(function(s) { return !known[s.id] && s.email; })
+        .map(function(s) {
+          return {
+            submission_id: s.id,
+            prenom: s.prenom, nom: s.nom, email: s.email,
+            entreprise: s.entreprise, taille_entreprise: s.taille_entreprise,
+            message: s.message,
+            source: 'formulaire', stage: 'nouveau',
+            created_at: s.created_at
+          };
+        });
+      if (!toImport.length) return 0;
+
+      var ins = await supabase.from('crm_leads').insert(toImport);
+      if (ins.error) throw ins.error;
+      return toImport.length;
+    }
+
+    async function loadLeads() {
+      var res = await supabase.from('crm_leads').select('*').order('created_at', { ascending: false });
+      if (res.error) throw res.error;
+      leads = res.data || [];
+    }
+
+    async function initCrm() {
+      var loading = document.getElementById('boardLoading');
+      var board = document.getElementById('board');
+      var setupBanner = document.getElementById('setupBanner');
+      var importBanner = document.getElementById('importBanner');
+      loading.style.display = 'flex';
+      board.style.display = 'none';
+      setupBanner.classList.remove('show');
+      importBanner.classList.remove('show');
+
+      try {
+        var imported = await importNewSubmissions();
+        await loadLeads();
+        if (imported > 0) {
+          importBanner.textContent = imported + ' nouveau' + (imported > 1 ? 'x' : '') + ' lead' + (imported > 1 ? 's' : '') + ' importé' + (imported > 1 ? 's' : '') + ' depuis le formulaire du site.';
+          importBanner.classList.add('show');
+        }
+        renderAll();
+        document.getElementById('lastUpdated').textContent = 'Mis à jour le ' + new Date().toLocaleString('fr-FR');
+      } catch (err) {
+        console.error('[CRM]', err);
+        if (isMissingTableError(err)) {
+          setupBanner.classList.add('show');
+          board.style.display = 'none';
+        } else {
+          importBanner.textContent = 'Erreur de chargement : ' + (err.message || err);
+          importBanner.classList.add('show');
+        }
+      } finally {
+        loading.style.display = 'none';
+      }
+    }
+
+    async function saveLead(payload, id) {
+      var res;
+      if (id) res = await supabase.from('crm_leads').update(payload).eq('id', id).select();
+      else res = await supabase.from('crm_leads').insert(payload).select();
+      if (res.error) throw res.error;
+      return res.data && res.data[0];
+    }
+
+    async function deleteLead(id) {
+      var res = await supabase.from('crm_leads').delete().eq('id', id);
+      if (res.error) throw res.error;
+    }
+
+    async function moveLead(lead, stageKey) {
+      if (lead.stage === stageKey) return;
+      if (STAGES_PRODUIT_REQUIS.indexOf(stageKey) !== -1 && !lead.produit) {
+        // Produit obligatoire pour devenir une opportunité → on ouvre la fiche
+        openModal(lead, stageKey);
+        return;
+      }
+      var previous = lead.stage;
+      lead.stage = stageKey;
+      renderAll();
+      try {
+        await saveLead({ stage: stageKey }, lead.id);
+      } catch (err) {
+        lead.stage = previous;
+        renderAll();
+        alert('Erreur lors du déplacement : ' + (err.message || err));
+      }
+    }
+
+    // ============================================
+    // RENDER
+    // ============================================
+    function fullName(l) {
+      var n = ((l.prenom || '') + ' ' + (l.nom || '')).trim();
+      return n || l.email || 'Sans nom';
+    }
+
+    function relativeDate(iso) {
+      if (!iso) return '';
+      var days = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
+      if (days <= 0) return "aujourd'hui";
+      if (days === 1) return 'hier';
+      if (days < 30) return 'il y a ' + days + ' j';
+      var months = Math.floor(days / 30);
+      if (months < 12) return 'il y a ' + months + ' mois';
+      return 'il y a ' + Math.floor(months / 12) + ' an' + (months >= 24 ? 's' : '');
+    }
+
+    function matchesSearch(l) {
+      if (!searchTerm) return true;
+      var hay = [l.prenom, l.nom, l.email, l.entreprise, l.produit, l.notes].join(' ').toLowerCase();
+      return hay.indexOf(searchTerm) !== -1;
+    }
+
+    function renderKpis() {
+      var active = leads.filter(function(l) { return l.stage !== 'gagne' && l.stage !== 'perdu'; });
+      var opps = leads.filter(function(l) { return l.stage === 'demo' || l.stage === 'proposition'; });
+      var won = leads.filter(function(l) { return l.stage === 'gagne'; });
+      var pipelineValue = opps.reduce(function(s, l) { return s + (Number(l.montant) || 0); }, 0);
+      var wonValue = won.reduce(function(s, l) { return s + (Number(l.montant) || 0); }, 0);
+      document.getElementById('kpiActive').textContent = active.length;
+      document.getElementById('kpiOpps').textContent = opps.length;
+      document.getElementById('kpiPipeline').textContent = euro.format(pipelineValue);
+      document.getElementById('kpiWon').textContent = won.length;
+      document.getElementById('kpiWonSub').textContent = wonValue > 0 ? euro.format(wonValue) + ' signés' : 'montants signés';
+    }
+
+    function renderBoard() {
+      var board = document.getElementById('board');
+      board.innerHTML = '';
+      STAGES.forEach(function(stage) {
+        var stageLeads = leads.filter(function(l) { return l.stage === stage.key && matchesSearch(l); });
+        var sum = stageLeads.reduce(function(s, l) { return s + (Number(l.montant) || 0); }, 0);
+
+        var col = document.createElement('div');
+        col.className = 'col';
+        col.dataset.stage = stage.key;
+
+        var header = document.createElement('div');
+        header.className = 'col-header';
+        header.innerHTML = '<span class="col-dot" style="background:' + stage.color + '"></span>' +
+          '<span class="col-title">' + stage.label + '</span>' +
+          '<span class="col-count">' + stageLeads.length + '</span>';
+        col.appendChild(header);
+
+        var sumEl = document.createElement('div');
+        sumEl.className = 'col-sum';
+        sumEl.textContent = sum > 0 ? euro.format(sum) : '';
+        col.appendChild(sumEl);
+
+        var body = document.createElement('div');
+        body.className = 'col-body';
+        if (!stageLeads.length) {
+          body.innerHTML = '<div class="col-empty">Aucun lead</div>';
+        }
+        stageLeads.forEach(function(l) { body.appendChild(renderCard(l)); });
+        col.appendChild(body);
+
+        // Drag & drop
+        col.addEventListener('dragover', function(e) { e.preventDefault(); col.classList.add('drag-over'); });
+        col.addEventListener('dragleave', function() { col.classList.remove('drag-over'); });
+        col.addEventListener('drop', function(e) {
+          e.preventDefault();
+          col.classList.remove('drag-over');
+          var id = Number(e.dataTransfer.getData('text/plain'));
+          var lead = leads.find(function(x) { return x.id === id; });
+          if (lead) moveLead(lead, stage.key);
+        });
+
+        board.appendChild(col);
+      });
+      board.style.display = 'flex';
+    }
+
+    function renderCard(l) {
+      var card = document.createElement('div');
+      card.className = 'lead-card';
+      card.draggable = true;
+
+      var tags = '';
+      if (l.produit) tags += '<span class="tag tag-produit">' + escapeHtml(l.produit) + '</span>';
+      if (l.montant) tags += '<span class="tag tag-montant">' + euro.format(Number(l.montant)) + '</span>';
+      if (l.source === 'formulaire') tags += '<span class="tag tag-form">Site</span>';
+
+      card.innerHTML =
+        '<div class="lead-name">' + escapeHtml(fullName(l)) + '</div>' +
+        (l.entreprise ? '<div class="lead-company">' + escapeHtml(l.entreprise) + (l.taille_entreprise ? ' · ' + escapeHtml(l.taille_entreprise) : '') + '</div>' : '') +
+        (tags ? '<div class="lead-tags">' + tags + '</div>' : '') +
+        '<div class="lead-date">' + relativeDate(l.created_at) + '</div>';
+
+      card.addEventListener('dragstart', function(e) {
+        e.dataTransfer.setData('text/plain', String(l.id));
+        card.classList.add('dragging');
+      });
+      card.addEventListener('dragend', function() { card.classList.remove('dragging'); });
+      card.addEventListener('click', function() { openModal(l, null); });
+      return card;
+    }
+
+    function renderAll() { renderKpis(); renderBoard(); }
+
+    function escapeHtml(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function(c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    // ============================================
+    // MODAL
+    // ============================================
+    function buildSelects() {
+      var stageSel = document.getElementById('fStage');
+      stageSel.innerHTML = STAGES.map(function(s) {
+        return '<option value="' + s.key + '">' + s.label + '</option>';
+      }).join('');
+
+      var prodSel = document.getElementById('fProduit');
+      var html = '<option value="">— Aucun / pas encore défini —</option>';
+      Object.keys(PRODUITS).forEach(function(group) {
+        html += '<optgroup label="' + group + '">';
+        PRODUITS[group].forEach(function(p) { html += '<option>' + p + '</option>'; });
+        html += '</optgroup>';
+      });
+      prodSel.innerHTML = html;
+    }
+
+    function openModal(lead, targetStage) {
+      editingLead = lead;
+      pendingStage = targetStage || null;
+
+      document.getElementById('modalTitle').textContent = lead ? fullName(lead) : 'Nouveau lead';
+      document.getElementById('btnDelete').style.display = lead ? 'block' : 'none';
+      document.getElementById('modalError').classList.remove('show');
+
+      var notice = document.getElementById('modalNotice');
+      if (pendingStage) {
+        var stageLabel = (STAGES.find(function(s) { return s.key === pendingStage; }) || {}).label || pendingStage;
+        notice.textContent = 'Pour passer ce lead en « ' + stageLabel + ' », choisis d\'abord le produit Pulse concerné.';
+        notice.classList.add('show');
+      } else {
+        notice.classList.remove('show');
+      }
+
+      document.getElementById('fPrenom').value = lead ? (lead.prenom || '') : '';
+      document.getElementById('fNom').value = lead ? (lead.nom || '') : '';
+      document.getElementById('fEmail').value = lead ? (lead.email || '') : '';
+      document.getElementById('fEntreprise').value = lead ? (lead.entreprise || '') : '';
+      document.getElementById('fTaille').value = lead ? (lead.taille_entreprise || '') : '';
+      document.getElementById('fStage').value = pendingStage || (lead ? lead.stage : 'nouveau');
+      document.getElementById('fProduit').value = lead ? (lead.produit || '') : '';
+      document.getElementById('fMontant').value = lead && lead.montant != null ? lead.montant : '';
+      document.getElementById('fNotes').value = lead ? (lead.notes || '') : '';
+
+      var msgWrap = document.getElementById('messageOrigineWrap');
+      if (lead && lead.message) {
+        msgWrap.style.display = 'flex';
+        document.getElementById('fMessageOrigine').textContent = lead.message;
+      } else {
+        msgWrap.style.display = 'none';
+      }
+
+      document.getElementById('modalOverlay').classList.add('show');
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('show');
+      editingLead = null;
+      pendingStage = null;
+    }
+
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+    document.getElementById('btnAdd').addEventListener('click', function() { openModal(null, null); });
+
+    document.getElementById('leadForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var errorEl = document.getElementById('modalError');
+      errorEl.classList.remove('show');
+
+      var stage = document.getElementById('fStage').value;
+      var produit = document.getElementById('fProduit').value || null;
+      var email = document.getElementById('fEmail').value.trim();
+      var nom = document.getElementById('fNom').value.trim();
+      var prenom = document.getElementById('fPrenom').value.trim();
+      var entreprise = document.getElementById('fEntreprise').value.trim();
+
+      if (!email && !nom && !prenom && !entreprise) {
+        errorEl.textContent = 'Renseigne au moins un nom, un email ou une entreprise.';
+        errorEl.classList.add('show');
+        return;
+      }
+      if (STAGES_PRODUIT_REQUIS.indexOf(stage) !== -1 && !produit) {
+        errorEl.textContent = 'Le produit Pulse est obligatoire à partir de l\'étape Démo / RDV (opportunité).';
+        errorEl.classList.add('show');
+        return;
+      }
+
+      var montantRaw = document.getElementById('fMontant').value;
+      var payload = {
+        prenom: prenom || null,
+        nom: nom || null,
+        email: email || null,
+        entreprise: entreprise || null,
+        taille_entreprise: document.getElementById('fTaille').value || null,
+        stage: stage,
+        produit: produit,
+        montant: montantRaw === '' ? null : Number(montantRaw),
+        notes: document.getElementById('fNotes').value.trim() || null
+      };
+
+      var btn = document.getElementById('btnSave');
+      btn.disabled = true;
+      try {
+        var saved = await saveLead(payload, editingLead ? editingLead.id : null);
+        if (editingLead) {
+          Object.assign(editingLead, saved || payload);
+        } else if (saved) {
+          leads.unshift(saved);
+        }
+        closeModal();
+        renderAll();
+      } catch (err) {
+        console.error('[CRM] save:', err);
+        errorEl.textContent = 'Erreur : ' + (err.message || err);
+        errorEl.classList.add('show');
+      } finally {
+        btn.disabled = false;
+      }
+    });
+
+    document.getElementById('btnDelete').addEventListener('click', async function() {
+      if (!editingLead) return;
+      if (!confirm('Supprimer définitivement ce lead (' + fullName(editingLead) + ') ?')) return;
+      try {
+        await deleteLead(editingLead.id);
+        leads = leads.filter(function(l) { return l.id !== editingLead.id; });
+        closeModal();
+        renderAll();
+      } catch (err) {
+        var errorEl = document.getElementById('modalError');
+        errorEl.textContent = 'Erreur : ' + (err.message || err);
+        errorEl.classList.add('show');
+      }
+    });
+
+    // ============================================
+    // SEARCH + INIT
+    // ============================================
+    document.getElementById('searchInput').addEventListener('input', function() {
+      searchTerm = this.value.trim().toLowerCase();
+      renderBoard();
+    });
+
+    buildSelects();
+    checkAuth();
+  </script>
+</body>
+</html>
