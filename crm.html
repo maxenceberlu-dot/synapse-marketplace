@@ -188,7 +188,7 @@
 
     /* Kanban */
     .board-wrap { overflow-x: auto; padding-bottom: 12px; }
-    .board { display: flex; gap: 14px; min-width: 1100px; align-items: flex-start; }
+    .board { display: flex; gap: 14px; min-width: 1280px; align-items: flex-start; }
     .col {
       flex: 1; min-width: 175px;
       background: rgba(255,255,255,0.02);
@@ -374,7 +374,7 @@
       <div class="kpi-card">
         <div class="kpi-label">Leads actifs</div>
         <div class="kpi-value" id="kpiActive">-</div>
-        <div class="kpi-sub">hors gagnés / perdus</div>
+        <div class="kpi-sub">hors gagnés, perdus, nurturing</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">Opportunités</div>
@@ -483,7 +483,8 @@
       { key: 'demo',        label: 'Démo / RDV',   color: '#6c5ce7' },
       { key: 'proposition', label: 'Proposition',  color: '#fdcb6e' },
       { key: 'gagne',       label: 'Gagné',        color: '#00b894' },
-      { key: 'perdu',       label: 'Perdu',        color: '#fd79a8' }
+      { key: 'perdu',       label: 'Perdu',        color: '#fd79a8' },
+      { key: 'nurturing',   label: 'Nurturing',    color: '#74b9ff' }
     ];
     // À partir de ces étapes, le lead devient une opportunité : produit obligatoire
     var STAGES_PRODUIT_REQUIS = ['demo', 'proposition', 'gagne'];
@@ -673,7 +674,7 @@
     }
 
     function renderKpis() {
-      var active = leads.filter(function(l) { return l.stage !== 'gagne' && l.stage !== 'perdu'; });
+      var active = leads.filter(function(l) { return l.stage !== 'gagne' && l.stage !== 'perdu' && l.stage !== 'nurturing'; });
       var opps = leads.filter(function(l) { return l.stage === 'demo' || l.stage === 'proposition'; });
       var won = leads.filter(function(l) { return l.stage === 'gagne'; });
       var pipelineValue = opps.reduce(function(s, l) { return s + (Number(l.montant) || 0); }, 0);
