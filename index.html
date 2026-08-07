@@ -1160,6 +1160,7 @@
 
     .app-card {
       position: relative;
+      isolation: isolate;
       background: var(--bg-card);
       border: 1px solid var(--glass-border);
       border-radius: var(--radius-lg);
@@ -1344,8 +1345,19 @@
       display: flex;
       gap: 10px;
       margin-top: 16px;
-      position: relative;
+      position: static;
+    }
+    /* Tuile entierement cliquable : le lien "Decouvrir" s'etire sur toute la carte */
+    .app-card .btn-install::after {
+      content: "";
+      position: absolute;
+      inset: 0;
       z-index: 1;
+    }
+    /* Le bouton "Demo" reste cliquable au-dessus de l'overlay */
+    .app-card .btn-preview {
+      position: relative;
+      z-index: 2;
     }
 
     .btn-install {
