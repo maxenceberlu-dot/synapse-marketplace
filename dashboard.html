@@ -415,6 +415,24 @@
       </div>
     </div>
 
+    <!-- SEO Ranking (Search Console) -->
+    <div class="chart-section" style="margin-top:24px;">
+      <div class="chart-header">
+        <span class="chart-title">📈 Ranking SEO — position des mots-clés</span>
+        <span id="rankUpdated" style="font-size:0.75rem;color:var(--text-tertiary);"></span>
+      </div>
+      <div class="kpi-grid" id="rankKpis" style="margin-bottom:24px;">
+        <div class="loading-spinner"><div class="spinner"></div>Chargement du ranking...</div>
+      </div>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartRankings"></canvas>
+      </div>
+      <div style="font-size:0.72rem;color:var(--text-tertiary);margin-top:12px;line-height:1.5;">
+        Position moyenne hebdomadaire sur Google (France), source Google Search Console.
+        <strong>Une position plus basse = mieux classé</strong> (l'axe est inversé : le haut du graphique = 1<sup>re</sup> place).
+      </div>
+    </div>
+
     <!-- Visitors chart -->
     <div class="chart-section">
       <div class="chart-header">
@@ -548,7 +566,7 @@
       login(document.getElementById('loginEmail').value, document.getElementById('loginPassword').value);
     });
     document.getElementById('btnLogout').addEventListener('click', logout);
-    document.getElementById('btnRefresh').addEventListener('click', function() { loadAllData(); });
+    document.getElementById('btnRefresh').addEventListener('click', function() { loadAllData(); loadRankings(); });
 
     // ============================================
     // CHART.JS DEFAULTS
@@ -1090,11 +1108,106 @@
     });
 
     // ============================================
+    // SEO RANKING (Search Console via data/keyword-rankings.json)
+    // ============================================
+    var RANK_PALETTE = ['#6c5ce7', '#00cec9', '#fd79a8', '#fdcb6e', '#a29bfe', '#55efc4'];
+    var RANK_ICON_CLASS = ['visitors', 'pageviews', 'duration', 'bounce'];
+
+    async function loadRankings() {
+      try {
+        var res = await fetch('/data/keyword-rankings.json?t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) return;
+        var data = await res.json();
+        if (!data.keywords || !data.keywords.length) return;
+        renderRankKpis(data.keywords);
+        renderRankChart(data.keywords);
+        if (data.generated) {
+          document.getElementById('rankUpdated').textContent = 'Données au ' + data.generated;
+        }
+      } catch (e) {
+        console.warn('[Ranking] chargement impossible', e);
+        document.getElementById('rankKpis').innerHTML =
+          '<div class="empty-state"><div class="empty-state-icon">📈</div><div class="empty-state-text">Données de ranking indisponibles</div></div>';
+      }
+    }
+
+    function renderRankKpis(keywords) {
+      var html = keywords.map(function (k, i) {
+        var h = k.history || [];
+        if (!h.length) return '';
+        var cur = h[h.length - 1].position;
+        var refIdx = Math.max(0, h.length - 5); // ~4 semaines avant
+        var prev = h[refIdx].position;
+        var delta = Math.round((prev - cur) * 10) / 10; // > 0 = gain de places (mieux classé)
+        var cls, label;
+        if (delta > 0.5) { cls = 'up'; label = '▲ +' + delta.toFixed(1) + ' places (4 sem.)'; }
+        else if (delta < -0.5) { cls = 'down'; label = '▼ ' + delta.toFixed(1) + ' places (4 sem.)'; }
+        else { cls = 'neutral'; label = '= stable (4 sem.)'; }
+        return '<div class="kpi-card">'
+          + '<div class="kpi-icon ' + RANK_ICON_CLASS[i % RANK_ICON_CLASS.length] + '">🔍</div>'
+          + '<div class="kpi-label">' + k.keyword + '</div>'
+          + '<div class="kpi-value">#' + cur.toFixed(1) + '</div>'
+          + '<div class="kpi-change ' + cls + '">' + label + '</div>'
+          + '</div>';
+      }).join('');
+      document.getElementById('rankKpis').innerHTML = html;
+    }
+
+    function renderRankChart(keywords) {
+      var weekSet = {};
+      keywords.forEach(function (k) { (k.history || []).forEach(function (p) { weekSet[p.week] = 1; }); });
+      var weeks = Object.keys(weekSet).sort();
+      var labels = weeks.map(function (w) {
+        var d = new Date(w + 'T00:00:00');
+        return d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short' });
+      });
+      var datasets = keywords.map(function (k, i) {
+        var map = {};
+        (k.history || []).forEach(function (p) { map[p.week] = p.position; });
+        var color = RANK_PALETTE[i % RANK_PALETTE.length];
+        return {
+          label: k.keyword,
+          data: weeks.map(function (w) { return (w in map) ? map[w] : null; }),
+          borderColor: color,
+          backgroundColor: 'transparent',
+          tension: 0.3, spanGaps: true,
+          pointRadius: 3, pointHoverRadius: 6,
+          pointBackgroundColor: color,
+          pointBorderColor: 'rgba(255,255,255,0.2)',
+          pointBorderWidth: 1, borderWidth: 2
+        };
+      });
+      if (charts.rankings) charts.rankings.destroy();
+      charts.rankings = new Chart(document.getElementById('chartRankings'), {
+        type: 'line',
+        data: { labels: labels, datasets: datasets },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          scales: {
+            x: { grid: { display: false }, ticks: { maxRotation: 0, maxTicksLimit: 12 } },
+            y: {
+              reverse: true,
+              grid: { color: 'rgba(255,255,255,0.04)' },
+              title: { display: true, text: 'Position Google (1 = haut)' },
+              ticks: { precision: 0 }
+            }
+          },
+          plugins: {
+            legend: { position: 'top', align: 'end' },
+            tooltip: { callbacks: { label: function (c) { return c.dataset.label + ' : position #' + c.parsed.y; } } }
+          }
+        }
+      });
+    }
+
+    // ============================================
     // INIT
     // ============================================
     async function initDashboard() {
       initRealtime();
       await loadAllData();
+      loadRankings();
     }
 
     // Check auth on load
