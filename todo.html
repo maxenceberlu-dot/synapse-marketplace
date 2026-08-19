@@ -247,6 +247,20 @@
     .imp-3 { background: rgba(162,155,254,0.16); color: #a29bfe; }
     .imp-4 { background: rgba(253,121,168,0.15); color: #fd79a8; }
     .imp-5 { background: rgba(253,203,110,0.16); color: #fdcb6e; }
+    .task-tag {
+      flex-shrink: 0; font-size: 0.7rem; font-weight: 800; padding: 4px 10px; border-radius: 20px;
+      letter-spacing: 0.6px; white-space: nowrap; text-transform: uppercase;
+    }
+    .tag-c0 { background: rgba(9,132,227,0.22);  color: #74b9ff; }
+    .tag-c1 { background: rgba(0,184,148,0.2);   color: #55efc4; }
+    .tag-c2 { background: rgba(225,112,85,0.2);  color: #fab1a0; }
+    .tag-c3 { background: rgba(232,67,147,0.2);  color: #fd79a8; }
+    .tag-c4 { background: rgba(253,203,110,0.2); color: #ffeaa7; }
+    .tag-c5 { background: rgba(108,92,231,0.22); color: #a29bfe; }
+    .tag-c6 { background: rgba(0,206,201,0.2);   color: #81ecec; }
+    .tag-c7 { background: rgba(214,48,49,0.22);  color: #ff7675; }
+    .quick-tag { flex: 0 0 160px; text-transform: uppercase; }
+    @media (max-width: 680px) { .quick-tag { flex: 1 1 40%; } }
     .task-del {
       flex-shrink: 0; background: none; border: none; color: var(--text-tertiary);
       font-size: 1rem; cursor: pointer; padding: 4px 6px; border-radius: 6px; transition: var(--transition);
@@ -346,7 +360,7 @@
   <!-- App -->
   <div class="app" id="appContent" style="display:none;">
     <div class="banner banner-error" id="setupBanner">
-      <strong>Table To-Do manquante.</strong> Exécute le fichier <code>supabase-todo-setup.sql</code> dans le SQL Editor de Supabase (projet iaaeerenmfyatlbtqylp), puis clique sur Rafraîchir.
+      <strong>Table To-Do manquante ou à mettre à jour.</strong> Exécute le fichier <code>supabase-todo-setup.sql</code> (ou la mise à jour fournie) dans le SQL Editor de Supabase (projet iaaeerenmfyatlbtqylp), puis clique sur Rafraîchir.
     </div>
 
     <!-- Gamification -->
@@ -354,13 +368,13 @@
       <div class="game-card">
         <div class="game-label">Score total</div>
         <div class="game-value"><span id="gScore">0</span><span class="unit">pts</span></div>
-        <div class="game-sub" id="gDoneCount">0 tâche terminée</div>
+        <div class="game-sub" id="gDoneCount">1 pt par tâche terminée</div>
       </div>
       <div class="game-card">
         <div class="game-label">Niveau</div>
         <div class="game-value" id="gLevel">1</div>
         <div class="level-track"><div class="level-fill" id="gLevelFill"></div></div>
-        <div class="game-sub" id="gLevelSub">0 / 25 pts</div>
+        <div class="game-sub" id="gLevelSub">0 / 10 pts</div>
       </div>
       <div class="game-card">
         <div class="game-label">Série</div>
@@ -379,7 +393,8 @@
       <form id="addForm">
         <div class="quick-add-row">
           <input type="text" class="quick-input" id="addTitle" placeholder="Nouvelle tâche… (Entrée pour ajouter)" maxlength="200" autocomplete="off">
-          <div class="imp-picker" id="impPicker" title="Importance (points gagnés)">
+          <input type="text" class="quick-input quick-tag" id="addTag" placeholder="Tag (client…)" maxlength="24" autocomplete="off" title="Tag libre : client ou projet (ex. FDJ)">
+          <div class="imp-picker" id="impPicker" title="Criticité (1 = faible, 5 = critique)">
             <button type="button" class="imp-dot" data-imp="1">1</button>
             <button type="button" class="imp-dot" data-imp="2">2</button>
             <button type="button" class="imp-dot active" data-imp="3">3</button>
@@ -413,7 +428,7 @@
     var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhYWVlcmVubWZ5YXRsYnRxeWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMzA5NTMsImV4cCI6MjA4ODgwNjk1M30.TOwlijdWVUYZ3KxTB-c-aMaaJ0WszsxWQCnsvREQr3M';
     var supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    var POINTS_PER_LEVEL = 25;
+    var POINTS_PER_LEVEL = 10;  // 1 pt par tâche terminée
     var CONFETTI_COLORS = ['#6c5ce7', '#a29bfe', '#00cec9', '#fd79a8', '#fdcb6e', '#00b894'];
 
     var tasks = [];
@@ -479,8 +494,8 @@
       render();
     }
 
-    async function addTask(title, importance, description) {
-      var payload = { title: title, importance: importance, description: description || null };
+    async function addTask(title, importance, description, tag) {
+      var payload = { title: title, importance: importance, description: description || null, tag: tag || null };
       var res = await supabase.from('todo_tasks').insert(payload).select();
       if (res.error) {
         if (isMissingTableError(res.error)) document.getElementById('setupBanner').classList.add('show');
@@ -504,7 +519,7 @@
 
       // Animations : points qui s'envolent + confettis depuis le bouton
       var rect = btnEl.getBoundingClientRect();
-      spawnFloatingPoints(rect, t.importance);
+      spawnFloatingPoints(rect, 1);
       spawnConfetti(rect);
 
       // Glissement de la carte puis re-render
@@ -542,7 +557,7 @@
     // ============================================
     function doneTasks() { return tasks.filter(function(t) { return t.done; }); }
     function totalScore() {
-      return doneTasks().reduce(function(s, t) { return s + (t.importance || 0); }, 0);
+      return doneTasks().length;  // 1 pt par tâche terminée (criticité = priorité, pas des points)
     }
     function levelFromScore(score) { return Math.floor(score / POINTS_PER_LEVEL) + 1; }
 
@@ -567,7 +582,7 @@
       var today = dayKey(new Date().toISOString());
       var pts = 0, count = 0;
       doneTasks().forEach(function(t) {
-        if (t.completed_at && dayKey(t.completed_at) === today) { pts += t.importance || 0; count++; }
+        if (t.completed_at && dayKey(t.completed_at) === today) { pts += 1; count++; }
       });
       return { pts: pts, count: count };
     }
@@ -580,7 +595,7 @@
       var today = todayStats();
 
       document.getElementById('gScore').textContent = score;
-      document.getElementById('gDoneCount').textContent = done + (done > 1 ? ' tâches terminées' : ' tâche terminée');
+      document.getElementById('gDoneCount').textContent = '1 pt par tâche terminée';
       document.getElementById('gLevel').textContent = level;
       document.getElementById('gLevelFill').style.width = Math.round((inLevel / POINTS_PER_LEVEL) * 100) + '%';
       document.getElementById('gLevelSub').textContent = inLevel + ' / ' + POINTS_PER_LEVEL + ' pts vers niv. ' + (level + 1);
@@ -625,6 +640,15 @@
     // ============================================
     // RENDER
     // ============================================
+    function tagClass(tag) {
+      var h = 0;
+      for (var i = 0; i < tag.length; i++) h = (h * 31 + tag.charCodeAt(i)) >>> 0;
+      return 'tag-c' + (h % 8);
+    }
+    function tagPill(t) {
+      if (!t.tag) return '';
+      return '<span class="task-tag ' + tagClass(t.tag) + '">' + escapeHtml(t.tag) + '</span>';
+    }
     function escapeHtml(s) {
       return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
@@ -661,9 +685,10 @@
         if (currentTab === 'open') {
           return '<div class="task-card" data-id="' + t.id + '">'
             + '<div class="task-row">'
-            + '<button class="task-check" title="Terminer (+' + t.importance + ' pts)">✓</button>'
+            + '<button class="task-check" title="Terminer (+1 pt)">✓</button>'
             + '<div class="task-title"><span class="caret">▶</span><span>' + escapeHtml(t.title) + '</span></div>'
-            + '<span class="task-pts imp-' + t.importance + '">' + t.importance + ' pt' + (t.importance > 1 ? 's' : '') + '</span>'
+            + tagPill(t)
+            + '<span class="task-pts imp-' + t.importance + '" title="Criticité ' + t.importance + '/5">⚑ ' + t.importance + '</span>'
             + '<button class="task-del" title="Supprimer">✕</button>'
             + '</div>' + desc + '</div>';
         }
@@ -672,7 +697,8 @@
           + '<span class="task-check">✓</span>'
           + '<div class="task-title"><span class="caret">▶</span><span>' + escapeHtml(t.title) + '</span>'
           + '<span class="task-date">' + fmtDate(t.completed_at) + '</span></div>'
-          + '<span class="task-pts imp-' + t.importance + '">+' + t.importance + '</span>'
+          + tagPill(t)
+          + '<span class="task-pts imp-' + t.importance + '" title="Criticité ' + t.importance + '/5">⚑ ' + t.importance + '</span>'
           + '<button class="task-restore" title="Remettre à faire">↩ à faire</button>'
           + '<button class="task-del" title="Supprimer">✕</button>'
           + '</div>' + desc + '</div>';
@@ -715,10 +741,12 @@
       var descInput = document.getElementById('addDesc');
       var title = titleInput.value.trim();
       if (!title) { titleInput.focus(); return; }
-      var ok = await addTask(title, selectedImportance, descInput.value.trim());
+      var tagInput = document.getElementById('addTag');
+      var ok = await addTask(title, selectedImportance, descInput.value.trim(), tagInput.value.trim().toUpperCase());
       if (ok) {
         titleInput.value = '';
         descInput.value = '';
+        // le tag reste rempli : pratique pour enchaîner les tâches d'un même client
         titleInput.focus();
       }
     });
