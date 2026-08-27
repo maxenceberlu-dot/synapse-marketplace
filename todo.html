@@ -326,6 +326,29 @@
       box-shadow: 0 12px 40px rgba(108,92,231,0.35);
     }
     .levelup-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    /* ===== Agenda (actions long terme) ===== */
+    .tabs { flex-wrap: wrap; }
+    .agenda-day {
+      font-family: var(--font-display); font-size: 0.9rem; font-weight: 700;
+      color: var(--text-secondary); margin: 18px 0 2px; padding-left: 2px;
+    }
+    .agenda-day:first-child { margin-top: 0; }
+    .agenda-day.overdue { color: var(--accent-4); }
+    .task-due {
+      flex-shrink: 0; font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 20px;
+      white-space: nowrap; background: rgba(255,255,255,0.06); color: var(--text-secondary);
+    }
+    .task-due.overdue { background: rgba(253,121,168,0.16); color: #fd79a8; }
+    .task-due.today   { background: rgba(253,203,110,0.16); color: #fdcb6e; }
+    .task-due.soon    { background: rgba(0,206,201,0.14); color: #00cec9; }
+    .quick-due { display: none; margin-top: 10px; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 0.85rem; color: var(--text-secondary); }
+    .quick-due.show { display: flex; }
+    .quick-due input[type="date"] {
+      padding: 10px 14px; background: var(--bg-secondary); border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm); color: var(--text-primary); font-family: var(--font-body);
+      font-size: 1rem; outline: none; color-scheme: dark;
+    }
+
     /* ===== Drag & drop (souris + tactile) ===== */
     .task-drag {
       flex-shrink: 0; color: var(--text-tertiary); cursor: grab;
@@ -438,14 +461,19 @@
           </div>
           <button type="submit" class="btn-add">Ajouter</button>
         </div>
-        <button type="button" class="btn-details" id="btnDetails">+ détails</button>
+        <button type="button" class="btn-details" id="btnDetails">+ détails / échéance</button>
         <textarea class="quick-desc" id="addDesc" placeholder="Description (optionnelle)…"></textarea>
+        <div class="quick-due" id="dueRow">
+          <label for="addDue">📅 Échéance (action long terme) :</label>
+          <input type="date" id="addDue">
+        </div>
       </form>
     </div>
 
     <!-- Onglets -->
     <div class="tabs">
       <button class="tab active" data-tab="open">À faire<span class="count" id="countOpen"></span></button>
+      <button class="tab" data-tab="longterm">🗓️ Actions long terme<span class="count" id="countLong"></span></button>
       <button class="tab" data-tab="done">Terminées<span class="count" id="countDone"></span></button>
     </div>
 
@@ -530,10 +558,10 @@
       render();
     }
 
-    async function addTask(title, importance, description, tag) {
+    async function addTask(title, importance, description, tag, dueDate) {
       var openT = tasks.filter(function(t) { return !t.done && t.rank != null; });
       var newRank = openT.length ? Math.min.apply(null, openT.map(function(t) { return t.rank; })) - 1000 : 1000;
-      var payload = { title: title, importance: importance, description: description || null, tag: tag || null, rank: newRank };
+      var payload = { title: title, importance: importance, description: description || null, tag: tag || null, rank: newRank, due_date: dueDate || null };
       var res = await supabase.from('todo_tasks').insert(payload).select();
       if (res.error) {
         if (isMissingTableError(res.error)) document.getElementById('setupBanner').classList.add('show');
@@ -767,10 +795,50 @@
       return new Date(iso).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
     }
 
+    function dueInfo(dstr) {
+      var today = new Date(); today.setHours(0, 0, 0, 0);
+      var d = new Date(dstr + 'T00:00:00');
+      var diff = Math.round((d - today) / 864e5);
+      if (diff < 0) return { label: 'en retard de ' + (-diff) + ' j', cls: 'overdue', diff: diff };
+      if (diff === 0) return { label: "aujourd'hui", cls: 'today', diff: 0 };
+      if (diff === 1) return { label: 'demain', cls: 'soon', diff: 1 };
+      return { label: 'dans ' + diff + ' j', cls: diff <= 7 ? 'soon' : 'later', diff: diff };
+    }
+    function agendaCard(t) {
+      var desc = t.description
+        ? '<div class="task-desc">' + escapeHtml(t.description) + '</div>'
+        : '<div class="task-desc empty">Aucune description</div>';
+      var di = dueInfo(t.due_date);
+      return '<div class="task-card" data-id="' + t.id + '">'
+        + '<div class="task-row">'
+        + '<button class="task-check" title="Terminer (+1 pt)">✓</button>'
+        + '<div class="task-title"><span class="caret">▶</span><span>' + escapeHtml(t.title) + '</span></div>'
+        + '<span class="task-due ' + di.cls + '">' + di.label + '</span>'
+        + tagPill(t)
+        + '<span class="task-pts imp-' + t.importance + '" title="Criticité ' + t.importance + '/5">⚑ ' + t.importance + '</span>'
+        + '<button class="task-del" title="Supprimer">✕</button>'
+        + '</div>' + desc + '</div>';
+    }
+    function renderAgenda(items) {
+      var html = '';
+      var lastDate = null;
+      items.forEach(function(t) {
+        if (t.due_date !== lastDate) {
+          lastDate = t.due_date;
+          var di = dueInfo(t.due_date);
+          var d = new Date(t.due_date + 'T00:00:00');
+          var label = d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+          html += '<div class="agenda-day' + (di.diff < 0 ? ' overdue' : '') + '">📅 ' + label.charAt(0).toUpperCase() + label.slice(1) + '</div>';
+        }
+        html += agendaCard(t);
+      });
+      return html;
+    }
+
     function render() {
       renderGameBar();
 
-      var open = tasks.filter(function(t) { return !t.done; })
+      var open = tasks.filter(function(t) { return !t.done && !t.due_date; })
         .sort(function(a, b) {
           var ra = (a.rank == null) ? Infinity : a.rank;
           var rb = (b.rank == null) ? Infinity : b.rank;
@@ -779,16 +847,31 @@
       var done = doneTasks()
         .sort(function(a, b) { return new Date(b.completed_at || 0) - new Date(a.completed_at || 0); });
 
+      var longterm = tasks.filter(function(t) { return !t.done && t.due_date; })
+        .sort(function(a, b) {
+          return (a.due_date < b.due_date ? -1 : a.due_date > b.due_date ? 1 : 0) || (b.importance - a.importance);
+        });
+
       document.getElementById('countOpen').textContent = open.length ? '(' + open.length + ')' : '';
+      document.getElementById('countLong').textContent = longterm.length ? '(' + longterm.length + ')' : '';
       document.getElementById('countDone').textContent = done.length ? '(' + done.length + ')' : '';
 
       var list = document.getElementById('taskList');
-      var items = currentTab === 'open' ? open : done;
+      var items = currentTab === 'open' ? open : (currentTab === 'longterm' ? longterm : done);
 
       if (!items.length) {
-        list.innerHTML = currentTab === 'open'
-          ? '<div class="empty-state"><div class="big">✨</div>Aucune tâche à faire.<br>Ajoute ta première tâche ci-dessus !</div>'
-          : '<div class="empty-state"><div class="big">🏁</div>Aucune tâche terminée pour l\'instant.<br>Termine une tâche pour gagner tes premiers points !</div>';
+        var empties = {
+          open: '<div class="empty-state"><div class="big">✨</div>Aucune tâche à faire.<br>Ajoute ta première tâche ci-dessus !</div>',
+          longterm: '<div class="empty-state"><div class="big">🗓️</div>Aucune action long terme.<br>Ajoute une tâche avec une échéance (« + détails / échéance »).</div>',
+          done: '<div class="empty-state"><div class="big">🏁</div>Aucune tâche terminée pour l\'instant.<br>Termine une tâche pour gagner tes premiers points !</div>'
+        };
+        list.innerHTML = empties[currentTab];
+        return;
+      }
+
+      if (currentTab === 'longterm') {
+        list.innerHTML = renderAgenda(longterm);
+        wireCards(list);
         return;
       }
 
@@ -819,7 +902,10 @@
           + '</div>' + desc + '</div>';
       }).join('');
 
-      // Délégation d'événements par carte
+      wireCards(list);
+    }
+
+    function wireCards(list) {
       list.querySelectorAll('.task-card').forEach(function(card) {
         var id = Number(card.getAttribute('data-id'));
         var check = card.querySelector('button.task-check');
@@ -847,8 +933,10 @@
 
     document.getElementById('btnDetails').addEventListener('click', function() {
       var ta = document.getElementById('addDesc');
+      var dueRow = document.getElementById('dueRow');
       ta.classList.toggle('show');
-      this.textContent = ta.classList.contains('show') ? '− masquer les détails' : '+ détails';
+      dueRow.classList.toggle('show', ta.classList.contains('show'));
+      this.textContent = ta.classList.contains('show') ? '− masquer' : '+ détails / échéance';
       if (ta.classList.contains('show')) ta.focus();
     });
 
@@ -859,23 +947,27 @@
       var title = titleInput.value.trim();
       if (!title) { titleInput.focus(); return; }
       var tagInput = document.getElementById('addTag');
-      var ok = await addTask(title, selectedImportance, descInput.value.trim(), tagInput.value.trim().toUpperCase());
+      var dueInput = document.getElementById('addDue');
+      var hadDue = !!dueInput.value;
+      var ok = await addTask(title, selectedImportance, descInput.value.trim(), tagInput.value.trim().toUpperCase(), dueInput.value);
       if (ok) {
         titleInput.value = '';
         descInput.value = '';
+        dueInput.value = '';
         // le tag reste rempli : pratique pour enchaîner les tâches d'un même client
+        if (hadDue) switchTab('longterm');
         titleInput.focus();
       }
     });
 
     // Onglets
+    function switchTab(name) {
+      document.querySelectorAll('.tab').forEach(function(t) { t.classList.toggle('active', t.getAttribute('data-tab') === name); });
+      currentTab = name;
+      render();
+    }
     document.querySelectorAll('.tab').forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
-        tab.classList.add('active');
-        currentTab = tab.getAttribute('data-tab');
-        render();
-      });
+      tab.addEventListener('click', function() { switchTab(tab.getAttribute('data-tab')); });
     });
 
     // Check auth on load

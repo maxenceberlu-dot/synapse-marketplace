@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS todo_tasks (
   description   text,                                   -- optionnelle, dépliée au clic sur le titre
   tag           text,                                   -- tag libre : client / projet (ex. FDJ)
   rank          double precision,                       -- ordre manuel (drag & drop)
+  due_date      date,                                   -- échéance → onglet "Actions long terme" (agenda)
   importance    int  NOT NULL DEFAULT 3
                 CHECK (importance BETWEEN 1 AND 5),     -- = points gagnés à la complétion
   done          boolean NOT NULL DEFAULT false,
