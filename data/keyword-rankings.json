@@ -3,182 +3,218 @@
   "source": "Google Search Console",
   "keywords": [
     {
-      "keyword": "quiz entreprise",
-      "page": "/quiz-team-building-entreprise.html",
+      "keyword": "random coffee",
+      "page": "/random-coffee-match-entreprise.html",
       "history": [
         {
-          "week": "2026-04-27",
-          "position": 25.1,
-          "impressions": 10
-        },
-        {
-          "week": "2026-05-04",
-          "position": 29.6,
-          "impressions": 34
-        },
-        {
-          "week": "2026-05-11",
-          "position": 19.3,
-          "impressions": 42
-        },
-        {
-          "week": "2026-05-18",
-          "position": 18.8,
-          "impressions": 51
-        },
-        {
-          "week": "2026-05-25",
-          "position": 17.7,
-          "impressions": 37
-        },
-        {
-          "week": "2026-06-01",
-          "position": 17.0,
-          "impressions": 28
-        },
-        {
-          "week": "2026-06-08",
-          "position": 18.6,
-          "impressions": 15
-        },
-        {
-          "week": "2026-06-15",
-          "position": 18.5,
-          "impressions": 38
-        },
-        {
-          "week": "2026-06-22",
-          "position": 18.9,
-          "impressions": 59
-        },
-        {
           "week": "2026-06-29",
-          "position": 17.9,
-          "impressions": 54
+          "position": 4.9,
+          "impressions": 27,
+          "jours": 6
         },
         {
           "week": "2026-07-06",
-          "position": 19.2,
-          "impressions": 63
+          "position": 5.2,
+          "impressions": 20,
+          "jours": 5
         },
         {
           "week": "2026-07-13",
-          "position": 20.0,
-          "impressions": 61
+          "position": 5.8,
+          "impressions": 14,
+          "jours": 4
         },
         {
           "week": "2026-07-20",
-          "position": 40.9,
-          "impressions": 60
+          "position": 6.6,
+          "impressions": 20,
+          "jours": 7
         },
         {
           "week": "2026-07-27",
-          "position": 76.9,
-          "impressions": 61
+          "position": 5.9,
+          "impressions": 17,
+          "jours": 5
         },
         {
           "week": "2026-08-03",
-          "position": 74.4,
-          "impressions": 58,
+          "position": 7.8,
+          "impressions": 13,
+          "jours": 4
+        },
+        {
+          "week": "2026-08-10",
+          "position": 6.5,
+          "impressions": 6,
+          "jours": 4
+        },
+        {
+          "week": "2026-08-17",
+          "position": 7.0,
+          "impressions": 14,
+          "jours": 6
+        },
+        {
+          "week": "2026-08-24",
+          "position": 6.8,
+          "impressions": 4,
+          "jours": 2
+        }
+      ]
+    },
+    {
+      "keyword": "logiciel sondage pulse collaborateur",
+      "page": "/sondage-collaborateurs-entreprise.html",
+      "history": [
+        {
+          "week": "2026-06-29",
+          "position": 8.0,
+          "impressions": 6,
+          "jours": 3
+        },
+        {
+          "week": "2026-07-06",
+          "position": 10.9,
+          "impressions": 11,
+          "jours": 6
+        },
+        {
+          "week": "2026-07-13",
+          "position": 11.7,
+          "impressions": 9,
+          "jours": 5
+        },
+        {
+          "week": "2026-07-20",
+          "position": 11.4,
+          "impressions": 13,
+          "jours": 6
+        },
+        {
+          "week": "2026-07-27",
+          "position": 9.8,
+          "impressions": 18,
+          "jours": 6
+        },
+        {
+          "week": "2026-08-03",
+          "position": 9.3,
+          "impressions": 25,
           "jours": 7
         },
         {
           "week": "2026-08-10",
-          "position": 85.1,
-          "impressions": 21,
-          "jours": 7
-        },
-        {
-          "week": "2026-08-17",
-          "position": 83.8,
+          "position": 13.4,
           "impressions": 23,
           "jours": 7
         },
         {
+          "week": "2026-08-17",
+          "position": 5.4,
+          "impressions": 15,
+          "jours": 7
+        },
+        {
           "week": "2026-08-24",
-          "position": 68.0,
+          "position": 7.2,
+          "impressions": 15,
+          "jours": 3
+        }
+      ]
+    },
+    {
+      "keyword": "outil sondage pulse",
+      "page": "/sondage-collaborateurs-entreprise.html",
+      "history": [
+        {
+          "week": "2026-06-29",
+          "position": 10.0,
+          "impressions": 1,
+          "jours": 1
+        },
+        {
+          "week": "2026-07-06",
+          "position": 14.4,
+          "impressions": 8,
+          "jours": 5
+        },
+        {
+          "week": "2026-07-13",
+          "position": 13.1,
+          "impressions": 7,
+          "jours": 6
+        },
+        {
+          "week": "2026-07-20",
+          "position": 17.6,
+          "impressions": 11,
+          "jours": 5
+        },
+        {
+          "week": "2026-07-27",
+          "position": 25.5,
+          "impressions": 2,
+          "jours": 1
+        },
+        {
+          "week": "2026-08-03",
+          "position": 14.9,
+          "impressions": 17,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-10",
+          "position": 14.7,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 11.8,
+          "impressions": 13,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 14.0,
           "impressions": 9,
           "jours": 3
         }
       ]
     },
     {
-      "keyword": "engagement collaborateur",
-      "page": "/blog/engagement-collaborateur-guide-complet.html",
+      "keyword": "feedback anonyme des employés",
+      "page": "/sondage-collaborateurs-entreprise.html",
       "history": [
         {
-          "week": "2026-05-04",
-          "position": 29.0,
-          "impressions": 3
-        },
-        {
-          "week": "2026-05-11",
-          "position": 45.8,
-          "impressions": 4
-        },
-        {
-          "week": "2026-05-25",
-          "position": 47.8,
-          "impressions": 4
-        },
-        {
-          "week": "2026-06-01",
-          "position": 57.6,
-          "impressions": 5
-        },
-        {
-          "week": "2026-06-08",
-          "position": 58.4,
-          "impressions": 5
-        },
-        {
-          "week": "2026-06-15",
-          "position": 48.0,
-          "impressions": 1
-        },
-        {
-          "week": "2026-06-29",
-          "position": 51.0,
-          "impressions": 2
-        },
-        {
-          "week": "2026-07-13",
-          "position": 74.0,
-          "impressions": 5
-        },
-        {
           "week": "2026-07-20",
-          "position": 88.1,
-          "impressions": 19
+          "position": 18.0,
+          "impressions": 1,
+          "jours": 1
         },
         {
           "week": "2026-07-27",
-          "position": 82.3,
-          "impressions": 71
+          "position": 17.9,
+          "impressions": 7,
+          "jours": 5
         },
         {
           "week": "2026-08-03",
-          "position": 86.0,
-          "impressions": 25,
-          "jours": 7
+          "position": 16.6,
+          "impressions": 9,
+          "jours": 5
         },
         {
           "week": "2026-08-10",
-          "position": 88.1,
-          "impressions": 37,
-          "jours": 7
+          "position": 16.7,
+          "impressions": 7,
+          "jours": 6
         },
         {
           "week": "2026-08-17",
-          "position": 82.5,
-          "impressions": 47,
-          "jours": 7
-        },
-        {
-          "week": "2026-08-24",
-          "position": 84.7,
-          "impressions": 31,
-          "jours": 3
+          "position": 18.2,
+          "impressions": 5,
+          "jours": 4
         }
       ]
     },
@@ -278,66 +314,101 @@
       ]
     },
     {
-      "keyword": "évaluation 360",
-      "page": "/360-feedback-entreprise.html",
+      "keyword": "quiz entreprise",
+      "page": "/quiz-team-building-entreprise.html",
       "history": [
         {
+          "week": "2026-04-27",
+          "position": 25.1,
+          "impressions": 10
+        },
+        {
+          "week": "2026-05-04",
+          "position": 29.6,
+          "impressions": 34
+        },
+        {
+          "week": "2026-05-11",
+          "position": 19.3,
+          "impressions": 42
+        },
+        {
+          "week": "2026-05-18",
+          "position": 18.8,
+          "impressions": 51
+        },
+        {
+          "week": "2026-05-25",
+          "position": 17.7,
+          "impressions": 37
+        },
+        {
+          "week": "2026-06-01",
+          "position": 17.0,
+          "impressions": 28
+        },
+        {
+          "week": "2026-06-08",
+          "position": 18.6,
+          "impressions": 15
+        },
+        {
           "week": "2026-06-15",
-          "position": 76.3,
-          "impressions": 6
+          "position": 18.5,
+          "impressions": 38
         },
         {
           "week": "2026-06-22",
-          "position": 77.4,
-          "impressions": 16
+          "position": 18.9,
+          "impressions": 59
         },
         {
           "week": "2026-06-29",
-          "position": 70.2,
-          "impressions": 29
+          "position": 17.9,
+          "impressions": 54
         },
         {
           "week": "2026-07-06",
-          "position": 71.7,
-          "impressions": 19
+          "position": 19.2,
+          "impressions": 63
         },
         {
           "week": "2026-07-13",
-          "position": 74.1,
-          "impressions": 6
+          "position": 20.0,
+          "impressions": 61
         },
         {
           "week": "2026-07-20",
-          "position": 74.5,
-          "impressions": 11
+          "position": 40.9,
+          "impressions": 60
         },
         {
           "week": "2026-07-27",
-          "position": 76.1,
-          "impressions": 29
+          "position": 76.9,
+          "impressions": 61
         },
         {
           "week": "2026-08-03",
-          "position": 73.2,
-          "impressions": 25,
+          "position": 74.4,
+          "impressions": 58,
           "jours": 7
         },
         {
           "week": "2026-08-10",
-          "position": 74.8,
-          "impressions": 45,
+          "position": 85.1,
+          "impressions": 21,
           "jours": 7
         },
         {
           "week": "2026-08-17",
-          "position": 75.5,
-          "impressions": 41,
+          "position": 83.8,
+          "impressions": 23,
           "jours": 7
         },
         {
           "week": "2026-08-24",
-          "position": 74.4,
-          "impressions": 13,
+          "position": 68.0,
+          "impressions": 9,
           "jours": 3
         }
       ]
