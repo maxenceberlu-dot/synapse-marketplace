@@ -429,6 +429,8 @@
       <div style="font-size:0.72rem;color:var(--text-tertiary);margin-top:12px;line-height:1.5;">
         Position moyenne hebdomadaire sur Google (France), source Google Search Console.
         <strong>Une position plus basse = mieux classé</strong> (l'axe est inversé : le haut du graphique = 1<sup>re</sup> place).
+        Google consolide ses données avec ~3 jours de retard : le dernier point porte donc sur une semaine incomplète.
+        Sur un mot-clé à faible volume, quelques impressions suffisent à déplacer fortement la moyenne — à interpréter avec prudence.
       </div>
     </div>
 
@@ -1121,7 +1123,13 @@
         renderRankKpis(data.keywords);
         renderRankChart(data.keywords);
         if (data.generated) {
-          document.getElementById('rankUpdated').textContent = 'Données au ' + data.generated;
+          var jusquAu = data.data_through || data.generated;
+          var partielle = (data.keywords || []).some(function (k) {
+            var h = k.history || []; var d = h[h.length - 1];
+            return d && d.jours && d.jours < 7;
+          });
+          document.getElementById('rankUpdated').textContent =
+            'Données Google au ' + jusquAu + (partielle ? ' · dernière semaine incomplète' : '');
         }
       } catch (e) {
         console.warn('[Ranking] chargement impossible', e);

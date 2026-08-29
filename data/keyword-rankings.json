@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-07",
+  "generated": "2026-08-29",
   "source": "Google Search Console",
   "keywords": [
     {
@@ -78,8 +78,27 @@
         },
         {
           "week": "2026-08-03",
-          "position": 74.5,
-          "impressions": 33
+          "position": 74.4,
+          "impressions": 58,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-10",
+          "position": 85.1,
+          "impressions": 21,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 83.8,
+          "impressions": 23,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 68.0,
+          "impressions": 9,
+          "jours": 3
         }
       ]
     },
@@ -139,8 +158,27 @@
         },
         {
           "week": "2026-08-03",
-          "position": 73.3,
-          "impressions": 100
+          "position": 86.0,
+          "impressions": 25,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-10",
+          "position": 88.1,
+          "impressions": 37,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 82.5,
+          "impressions": 47,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 84.7,
+          "impressions": 31,
+          "jours": 3
         }
       ]
     },
@@ -215,8 +253,27 @@
         },
         {
           "week": "2026-08-03",
-          "position": 36.9,
-          "impressions": 7
+          "position": 31.0,
+          "impressions": 13,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-10",
+          "position": 42.8,
+          "impressions": 12,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 28.4,
+          "impressions": 14,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 18.3,
+          "impressions": 3,
+          "jours": 3
         }
       ]
     },
@@ -261,10 +318,30 @@
         },
         {
           "week": "2026-08-03",
-          "position": 71.6,
-          "impressions": 12
+          "position": 73.2,
+          "impressions": 25,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-10",
+          "position": 74.8,
+          "impressions": 45,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 75.5,
+          "impressions": 41,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 74.4,
+          "impressions": 13,
+          "jours": 3
         }
       ]
     }
-  ]
+  ],
+  "data_through": "2026-08-26"
 }
