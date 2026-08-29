@@ -20,9 +20,8 @@
     {
       nom: "Facturation",
       desc: "Devis & factures",
-      href: "http://localhost:3010",
+      href: "https://pulse-facturation.vercel.app",
       couleur: "#a29bfe",
-      locale: true, // app Next.js lancée sur le Mac
       icone: '<path d="M14 2.5H6.5v19h11V8z"/><path d="M14 2.5V8h5"/><path d="M9.5 13h5M9.5 16.5h3.5"/>',
     },
     {
@@ -97,12 +96,6 @@
     .pl-item svg { width: 26px; height: 26px; }
     .pl-nom { font-size: 0.78rem; font-weight: 600; line-height: 1.1; text-align: center; }
     .pl-desc { font-size: 0.62rem; opacity: 0.55; text-align: center; line-height: 1.2; }
-    .pl-locale {
-      position: absolute; top: 5px; right: 5px;
-      font-size: 0.52rem; font-weight: 700; letter-spacing: 0.5px;
-      padding: 2px 5px; border-radius: 5px;
-      background: rgba(255,255,255,0.1); color: var(--text-tertiary, rgba(240,240,245,0.5));
-    }
 
     @media (max-width: 420px) { .pl-panel { width: min(300px, 88vw); } }
     @media (prefers-reduced-motion: reduce) {
@@ -122,7 +115,7 @@
   function estCourante(href) {
     const page = location.pathname.split("/").pop() || "index.html";
     if (href === "/") return page === "index.html" || page === "";
-    if (href.startsWith("http")) return false; // app locale, jamais « courante » ici
+    if (href.startsWith("http")) return false; // autre domaine : jamais « courante » ici
     return href.replace("/", "") === page;
   }
 
@@ -152,8 +145,7 @@
         <a class="pl-item" href="${a.href}" role="menuitem"
            ${courante ? 'aria-current="page"' : ""}
            ${a.href.startsWith("http") || a.href === "/" ? 'target="_blank" rel="noopener"' : ""}
-           ${a.locale ? 'title="Application locale — nécessite le serveur lancé sur ton Mac"' : ""}>
-          ${a.locale ? '<span class="pl-locale">LOCAL</span>' : ""}
+ >
           <svg viewBox="0 0 24 24" fill="none" stroke="${a.couleur}" stroke-width="1.7"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${a.icone}</svg>
           <span class="pl-nom">${a.nom}</span>
