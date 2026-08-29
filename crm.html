@@ -348,11 +348,6 @@
       <span class="nav-badge">Pipeline</span>
     </div>
     <div class="nav-right">
-      <!-- Pulse Facturation (CPQ) : app locale, nécessite `pnpm dev` dans ~/pulse-facturation -->
-      <a href="http://localhost:3010" class="nav-btn nav-site-link" target="_blank"
-         title="Pulse Facturation — devis, factures, contrats (app locale : serveur à lancer sur ton Mac)">Facturation</a>
-      <a href="/dashboard.html" class="nav-btn nav-site-link">Analytics</a>
-      <a href="/" class="nav-btn nav-site-link" target="_blank">Voir le site</a>
       <button class="nav-btn" id="btnRefresh">Rafraîchir</button>
       <button class="nav-logout" id="btnLogout">Déconnexion</button>
     </div>
@@ -923,5 +918,6 @@
     buildSelects();
     checkAuth();
   </script>
+  <script src="/app-launcher.js" defer></script>
 </body>
 </html>
