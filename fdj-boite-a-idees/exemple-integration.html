@@ -27,8 +27,10 @@
       c'est la page hôte qui redimensionne l'iframe à la hauteur publiée par l'application.
     </p>
 
+    <!-- La hauteur de départ sert tant que l'application n'a pas publié la sienne
+         (onglet ouvert en arrière-plan, panneau replié...). -->
     <iframe id="boite-a-idees" src="./index.html" title="Boîte à idées, inventez le prochain jeu"
-            scrolling="no" height="600"></iframe>
+            scrolling="no" height="900"></iframe>
   </div>
 
   <script>
@@ -41,7 +43,8 @@
         if (event.source !== iframe.contentWindow) return;      // on n'écoute que notre iframe
         var data = event.data || {};
 
-        if (data.type === "resize" && typeof data.height === "number") {
+        // On ignore une hauteur nulle : elle signifierait faire disparaître l'iframe.
+        if (data.type === "resize" && typeof data.height === "number" && data.height > 0) {
           iframe.style.height = data.height + "px";
         }
 

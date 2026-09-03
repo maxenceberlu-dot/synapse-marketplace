@@ -598,13 +598,37 @@
 
   /* ---------- Intégration iframe : publication de la hauteur ---------- */
 
+  function mesurerHauteur() {
+    return Math.ceil(Math.max(
+      document.documentElement.getBoundingClientRect().height,
+      document.documentElement.scrollHeight,
+      document.body ? document.body.scrollHeight : 0
+    ));
+  }
+
   function publishHeight() {
     if (window.parent === window) return;
-    var hauteur = Math.ceil(document.documentElement.getBoundingClientRect().height);
+
+    var hauteur = mesurerHauteur();
+
+    /* Un onglet en arrière-plan, un panneau replié ou une iframe pas encore
+       peinte mesurent zéro : publier cette valeur ferait disparaître
+       l'application chez l'hôte. On se tait, et on republie quand la page
+       redevient visible. */
+    if (!hauteur) return;
+
     window.parent.postMessage({ type: "resize", height: hauteur }, "*");
   }
 
   function watchHeight() {
+    // La hauteur change aussi quand la page redevient visible et quand les
+    // polices finissent de charger.
+    document.addEventListener("visibilitychange", publishHeight);
+    window.addEventListener("pageshow", publishHeight);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(publishHeight);
+    }
+
     if (typeof ResizeObserver === "undefined") {
       window.addEventListener("resize", publishHeight);
       return;
