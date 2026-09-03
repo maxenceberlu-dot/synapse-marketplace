@@ -1,0 +1,930 @@
+/* ============================================================
+   BOÎTE À IDÉES FDJ UNITED — Inventez le prochain jeu
+   Feuille de styles unique de l'application (iframe Staffbase).
+
+   Contraintes structurantes :
+   - contenu d'iframe uniquement, aucune modale, aucun overlay,
+   - aucune zone de défilement interne, la hauteur grandit avec le contenu,
+   - pas de mode sombre, une seule couleur d'accent.
+   ============================================================ */
+
+/* ---------- Design tokens (point unique de la charte) ---------- */
+:root {
+  --fdj-navy: #0B1E3F;
+  --fdj-accent: #1652F0;
+  --fdj-accent-soft: #EBF1FE;
+  --ink: #14171F;
+  --ink-2: #4B5364;
+  --ink-3: #878E9D;
+  --line: #ECEDF2;
+  --surface: #FFFFFF;
+  --app-bg: #FCFCFD;
+
+  /* Seule couleur fonctionnelle en plus de l'accent : reprise telle quelle
+     de la palette de vignettes (--ticket-1), aucune couleur nouvelle. */
+  --error: #DC4430;
+
+  --font-stack: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Couleurs de vignette : palette fermée, texte blanc lisible imposé. */
+  --ticket-1: #DC4430;
+  --ticket-2: #C1761A;
+  --ticket-3: #207F76;
+  --ticket-4: #5B45C9;
+  --ticket-5: #123A6E;
+  --ticket-6: #BE3760;
+
+  --radius-card: 16px;
+  --radius-compact: 14px;
+  --radius-field: 12px;
+  --radius-pill: 999px;
+  --shadow-card: 0 6px 22px rgba(20, 23, 31, .05);
+  --shadow-card-hover: 0 10px 28px rgba(20, 23, 31, .09);
+
+  /* Hauteur du bandeau illustré. Le README donne 104 px ; le prototype,
+     qui n'est pas en border-box, rend 136 px (104 + 2 x 16 de padding).
+     Un seul point à changer si le design tranche pour l'autre valeur. */
+  --ticket-height: 104px;
+  --ticket-height-detail: 210px;
+
+  --gap-block: 22px;
+  --gap-grid: 18px;
+  --pad-app: 44px;
+}
+
+/* ---------- Base ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  background: var(--app-bg);
+  font-family: var(--font-stack);
+  -webkit-font-smoothing: antialiased;
+  color: var(--ink);
+}
+
+body { overflow-x: hidden; }
+
+p, .u-pretty { text-wrap: pretty; }
+
+.noscript {
+  padding: var(--pad-app);
+  font: 400 15.5px/1.6 var(--font-stack);
+  color: var(--ink-2);
+}
+
+.u-visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Conteneur racine ---------- */
+.app {
+  padding: var(--pad-app);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-block);
+}
+
+/* ---------- Carte générique ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color .15s ease-out, border-color .15s ease-out,
+              color .15s ease-out, opacity .15s ease-out, box-shadow .15s ease-out;
+}
+
+.btn--primary {
+  background: var(--fdj-accent);
+  color: #fff;
+  font: 600 15px/1 var(--font-stack);
+  padding: 16px 26px;
+  flex: none;
+}
+
+.btn--primary:hover { background: #0F45D6; }
+
+.btn--primary.is-disabled,
+.btn--primary[disabled] {
+  opacity: .35;
+  pointer-events: none;
+}
+
+.btn--primary-compact { font: 600 14.5px/1 var(--font-stack); padding: 14px 24px; }
+
+.btn--secondary {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink-2);
+  font: 600 14.5px/1 var(--font-stack);
+  padding: 15px 24px;
+}
+
+.btn--secondary:hover { border-color: #DCDFE8; }
+
+.btn:focus-visible {
+  outline: 2px solid var(--fdj-accent);
+  outline-offset: 2px;
+}
+
+/* Compteur de soutiens dans le pied de carte : contour fin, chevron + nombre. */
+.support {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 9px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color .15s ease-out, border-color .15s ease-out;
+}
+
+.support:hover { border-color: var(--fdj-accent); }
+
+.support__icon { color: var(--fdj-accent); flex: none; }
+
+.support__count {
+  font: 700 13px/1 var(--font-stack);
+  color: var(--fdj-navy);
+  font-variant-numeric: tabular-nums;
+}
+
+.support.is-supported {
+  background: var(--fdj-accent-soft);
+  border-color: var(--fdj-accent-soft);
+}
+
+.support:focus-visible {
+  outline: 2px solid var(--fdj-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Étiquettes fines ---------- */
+.tag {
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  font: 500 11.5px/1 var(--font-stack);
+  padding: 7px 11px;
+  border-radius: var(--radius-pill);
+}
+
+/* ---------- Avatar ---------- */
+.avatar {
+  border-radius: var(--radius-pill);
+  background: var(--fdj-accent-soft);
+  color: var(--fdj-accent);
+  font-weight: 700;
+  text-align: center;
+  flex: none;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.avatar--28 { width: 28px; height: 28px; font-size: 10.5px; line-height: 28px; }
+.avatar--38 { width: 38px; height: 38px; font-size: 13px; line-height: 38px; }
+
+/* ---------- Bloc d'introduction ---------- */
+.intro {
+  padding: 32px 34px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 36px;
+}
+
+.intro__col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 520px;
+}
+
+.intro__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--fdj-accent);
+  font: 700 10.5px/1 var(--font-stack);
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+.intro__title {
+  font: 800 27px/1.22 var(--font-stack);
+  color: var(--fdj-navy);
+  letter-spacing: -.02em;
+}
+
+.intro__text {
+  font: 400 15.5px/1.6 var(--font-stack);
+  color: var(--ink-2);
+}
+
+/* ---------- Ligne de compteurs ---------- */
+.counters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--gap-grid);
+}
+
+.counter {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.counter__value {
+  font: 800 32px/1 var(--font-stack);
+  color: var(--fdj-navy);
+  letter-spacing: -.03em;
+}
+
+.counter__total {
+  font: 500 16px/1 var(--font-stack);
+  color: var(--ink-3);
+  letter-spacing: normal;
+}
+
+.counter__label { font: 500 13.5px/1 var(--font-stack); color: var(--ink-3); }
+
+.counter__label--short { display: none; }
+
+/* ---------- Grille d'idées ---------- */
+.ideas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-grid);
+}
+
+.idea {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+  transition: box-shadow .15s ease-out;
+}
+
+.idea:hover { box-shadow: var(--shadow-card-hover); }
+
+.idea--skeleton { cursor: default; }
+
+/* Le nom du jeu porte l'action pour le clavier et les lecteurs d'écran ;
+   le reste de la carte est cliquable à la souris. */
+.idea__open {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.idea__open:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Bandeau illustré ---------- */
+.ticket {
+  height: var(--ticket-height);
+  position: relative;
+  padding: 16px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--ticket-color, var(--fdj-navy));
+}
+
+.ticket__pattern {
+  position: absolute;
+  pointer-events: none;
+}
+
+.ticket__price {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(255, 255, 255, .22);
+  color: #fff;
+  font: 700 12px/1 var(--font-stack);
+  padding: 7px 11px;
+  border-radius: var(--radius-pill);
+}
+
+.ticket__name {
+  position: relative;
+  font: 800 24px/1.1 var(--font-stack);
+  color: #fff;
+  letter-spacing: -.02em;
+}
+
+/* ---------- Corps de la carte d'idée ---------- */
+.idea__body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.idea__pitch {
+  font: 500 15px/1.5 var(--font-stack);
+  color: var(--ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.idea__mechanic {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.idea__mechanic-label {
+  font: 700 9.5px/1.5 var(--font-stack);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  flex: none;
+}
+
+.idea__mechanic-text { font: 400 13px/1.5 var(--font-stack); color: var(--ink-3); }
+
+.idea__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto; /* aligne les pieds de carte d'une même rangée */
+}
+
+.divider { height: 1px; background: var(--line); }
+
+.idea__footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.idea__author {
+  font: 600 12.5px/1.35 var(--font-stack);
+  color: var(--ink-2);
+  flex: 1;
+  min-width: 0;
+}
+
+.idea__company {
+  display: block;
+  font: 400 11.5px/1.35 var(--font-stack);
+  color: var(--ink-3);
+}
+
+/* ---------- Encadré de bas de page ---------- */
+.footnote {
+  padding: 26px 30px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.footnote__col { flex: 1; display: flex; flex-direction: column; gap: 14px; }
+
+.footnote__title { font: 700 14.5px/1 var(--font-stack); color: var(--ink); }
+
+.footnote__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footnote__row { display: flex; align-items: center; gap: 12px; }
+
+.footnote__rank {
+  font: 800 14px/1.4 var(--font-stack);
+  color: var(--fdj-accent);
+  width: 14px;
+  flex: none;
+}
+
+.footnote__name { font: 500 13.5px/1.4 var(--font-stack); color: var(--ink-2); flex: 1; }
+
+.footnote__count {
+  font: 700 13.5px/1.4 var(--font-stack);
+  color: var(--fdj-navy);
+  font-variant-numeric: tabular-nums;
+}
+
+.footnote__sep { width: 1px; background: var(--line); align-self: stretch; flex: none; }
+
+.footnote__aside { width: 280px; flex: none; display: flex; flex-direction: column; gap: 10px; }
+
+.footnote__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--fdj-accent);
+  font: 700 10.5px/1 var(--font-stack);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.footnote__text { font: 400 13.5px/1.55 var(--font-stack); color: var(--ink-2); }
+
+/* ============================================================
+   ÉCRAN 3 — Fiche d'une idée (ouverte en ligne, jamais en modale)
+   ============================================================ */
+
+/* Le lien de retour n'est pas un bloc de premier niveau : la fiche
+   se rapproche un peu de lui (18 px au lieu de 22). */
+.app--detail { gap: 18px; }
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--ink-3);
+  font: 600 13.5px/1 var(--font-stack);
+  cursor: pointer;
+  transition: color .15s ease-out;
+}
+
+.back:hover { color: var(--fdj-navy); }
+
+.back:focus-visible {
+  outline: 2px solid var(--fdj-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.detail {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Le focus déplacé au titre après un changement de vue ne doit pas
+   dessiner de contour : il sert seulement au clavier et aux lecteurs. */
+[tabindex="-1"]:focus { outline: none; }
+
+/* ---------- Bandeau de la fiche ---------- */
+.ticket--detail { height: var(--ticket-height-detail); padding: 28px; }
+
+.ticket--detail .ticket__price {
+  top: 24px;
+  right: 24px;
+  font: 700 13px/1 var(--font-stack);
+  padding: 9px 14px;
+}
+
+.ticket__heading {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ticket__universe {
+  font: 700 10px/1 var(--font-stack);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .8);
+}
+
+.ticket--detail .ticket__name {
+  font: 800 38px/1.08 var(--font-stack);
+  letter-spacing: -.03em;
+}
+
+/* ---------- Corps de la fiche ---------- */
+.detail__body {
+  padding: 32px 34px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.detail__pitch {
+  font: 500 19px/1.5 var(--font-stack);
+  color: var(--ink);
+  max-width: 640px;
+}
+
+.detail__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.tag--lg { font-size: 12px; padding: 8px 13px; }
+
+.detail__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+
+.detail__col { display: flex; flex-direction: column; gap: 10px; }
+
+.detail__label {
+  font: 700 11px/1 var(--font-stack);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.detail__text { font: 400 14.5px/1.6 var(--font-stack); color: var(--ink-2); }
+
+.detail__footer { display: flex; align-items: center; gap: 12px; }
+
+.detail__author {
+  font: 600 14px/1.4 var(--font-stack);
+  color: var(--ink-2);
+  flex: 1;
+  min-width: 0;
+}
+
+.detail__meta {
+  display: block;
+  font: 400 13px/1.4 var(--font-stack);
+  color: var(--ink-3);
+}
+
+.btn--support {
+  background: var(--fdj-accent);
+  color: #fff;
+  font: 700 14.5px/1 var(--font-stack);
+  padding: 14px 22px;
+  gap: 9px;
+  flex: none;
+}
+
+.btn--support:hover { background: #0F45D6; }
+
+.btn--support .btn__count { color: rgba(255, 255, 255, .7); }
+
+/* ============================================================
+   ÉCRAN 4 — Formulaire, et ÉCRAN 5 — Confirmation
+   ============================================================ */
+
+.form {
+  padding: 34px 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form__title {
+  font: 800 21px/1.3 var(--font-stack);
+  color: var(--ink);
+  letter-spacing: -.02em;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.field__label {
+  font: 600 13px/1 var(--font-stack);
+  color: var(--ink-2);
+  padding: 0;
+}
+
+/* Groupe de puces : fieldset en bloc, la legende garde une marge plutot
+   qu'un gap, les legendes se comportent mal dans un conteneur flex. */
+.field--group { display: block; }
+.field--group .field__label { display: block; margin-bottom: 9px; }
+
+.input,
+.textarea {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-field);
+  padding: 14px 16px;
+  font: 400 15px/1 var(--font-stack);
+  color: var(--ink);
+  transition: border-color .15s ease-out;
+}
+
+.textarea {
+  line-height: 1.5;
+  min-height: 78px;
+  resize: none;      /* la zone grandit toute seule : jamais de defilement interne */
+  overflow: hidden;
+}
+
+.input::placeholder,
+.textarea::placeholder { color: var(--ink-3); }
+
+.input:focus,
+.textarea:focus { outline: none; border-color: var(--fdj-accent); }
+
+/* ---------- Puces selectionnables (boutons radio a plat) ---------- */
+.choices { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.choice { display: inline-flex; }
+
+.choice__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice__label {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  background: var(--surface);
+  font: 600 12.5px/1 var(--font-stack);
+  padding: 10px 15px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background-color .15s ease-out, border-color .15s ease-out, color .15s ease-out;
+}
+
+.choice__label:hover { border-color: #DCDFE8; }
+
+.choice__input:checked + .choice__label {
+  background: var(--fdj-accent);
+  border-color: var(--fdj-accent);
+  color: #fff;
+}
+
+.choice__input:focus-visible + .choice__label {
+  outline: 2px solid var(--fdj-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Case a cocher ---------- */
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  cursor: pointer;
+}
+
+.check__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.check__box {
+  width: 19px;
+  height: 19px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: transparent;
+  flex: none;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .15s ease-out, border-color .15s ease-out;
+}
+
+.check__input:checked + .check__box {
+  background: var(--fdj-accent);
+  border-color: var(--fdj-accent);
+  color: #fff;
+}
+
+.check__input:focus-visible + .check__box {
+  outline: 2px solid var(--fdj-accent);
+  outline-offset: 2px;
+}
+
+.check__text { font: 400 13.5px/1.5 var(--font-stack); color: var(--ink-2); }
+
+/* ---------- Erreurs de saisie ---------- */
+.field__error { font: 500 12.5px/1.4 var(--font-stack); color: var(--error); }
+
+.field--group .field__error { margin-top: 9px; }
+
+.field.is-invalid .input,
+.field.is-invalid .textarea { border-color: var(--error); }
+
+.form__error {
+  border: 1px solid var(--error);
+  border-radius: var(--radius-field);
+  padding: 14px 16px;
+  font: 500 13.5px/1.5 var(--font-stack);
+  color: var(--error);
+}
+
+/* ---------- Actions du formulaire ---------- */
+.form__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.form__actions .btn--primary { font: 600 14.5px/1 var(--font-stack); padding: 15px 26px; }
+
+/* ---------- Confirmation ---------- */
+.confirm {
+  padding: 46px 36px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.confirm__badge {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: var(--fdj-accent-soft);
+  color: var(--fdj-accent);
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm__col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.confirm__title { font: 700 19px/1.3 var(--font-stack); color: var(--ink); }
+
+.confirm__text { font: 400 15px/1.55 var(--font-stack); color: var(--ink-2); }
+
+.link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: 600 14.5px/1 var(--font-stack);
+  color: var(--fdj-accent);
+  cursor: pointer;
+}
+
+.link:hover { color: var(--fdj-navy); }
+
+.link--spaced { margin-top: 8px; }
+
+.link:focus-visible {
+  outline: 2px solid var(--fdj-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Squelettes de chargement ---------- */
+.skeleton {
+  background: linear-gradient(90deg, #F1F2F6 25%, #F8F9FB 50%, #F1F2F6 75%);
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+.skeleton--ticket { height: var(--ticket-height); border-radius: 0; }
+.skeleton--line { height: 12px; }
+.skeleton--line.is-short { width: 55%; }
+
+.idea--skeleton { pointer-events: none; }
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; }
+  * { transition: none !important; }
+}
+
+/* ---------- Mobile et petites largeurs (une seule colonne) ---------- */
+@media (max-width: 700px) {
+  :root {
+    --pad-app: 20px;
+    --gap-block: 14px;
+    --ticket-height: 112px;
+  }
+
+  .ideas { grid-template-columns: 1fr; }
+
+  .intro {
+    padding: 24px 22px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11px;
+  }
+
+  .intro__title { font-size: 23px; }
+  .intro__text { font-size: 14.5px; line-height: 1.55; }
+
+  .intro .btn--primary {
+    align-self: stretch;
+    margin-top: 6px;
+    font-size: 14.5px;
+    padding: 15px 24px;
+  }
+
+  .counters { gap: 10px; }
+
+  .counter {
+    border-radius: var(--radius-compact);
+    box-shadow: none;
+    padding: 16px 10px;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .counter__value { font-size: 21px; letter-spacing: normal; }
+  .counter__total { display: none; }
+  .counter__label { font-size: 11px; line-height: 1.2; }
+  .counter__label--long { display: none; }
+  .counter__label--short { display: inline; }
+
+  .idea__pitch {
+    display: block;
+    -webkit-line-clamp: none;
+    line-clamp: none;
+    overflow: visible;
+  }
+
+  .footnote {
+    flex-direction: column;
+    gap: 20px;
+    padding: 22px 22px;
+  }
+
+  .footnote__sep { width: auto; height: 1px; align-self: stretch; }
+  .footnote__aside { width: auto; }
+
+  /* Fiche : une seule colonne, bandeau et titre réduits. */
+  :root { --ticket-height-detail: 150px; }
+
+  .ticket--detail { padding: 20px; }
+
+  /* Le motif est dessiné pour un bandeau de 210 px : on le réduit
+     sur le bandeau mobile pour qu'il reste un fond, pas un sujet. */
+  .ticket--detail .ticket__pattern {
+    transform: scale(.62);
+    transform-origin: 100% 100%;
+  }
+
+  .ticket--detail .ticket__price { top: 16px; right: 16px; }
+  .ticket--detail .ticket__name { font-size: 28px; }
+
+  .detail__body { padding: 22px 20px 24px; gap: 20px; }
+  .detail__pitch { font-size: 17px; }
+  .detail__cols { grid-template-columns: 1fr; gap: 20px; }
+
+  .detail__footer { flex-wrap: wrap; }
+  .btn--support { flex: 1 0 100%; justify-content: center; }
+
+  /* Formulaire et confirmation : boutons en pleine largeur. */
+  .form { padding: 24px 20px 26px; gap: 18px; }
+  .form__actions .btn { flex: 1 0 100%; }
+
+  .confirm { padding: 30px 22px; flex-direction: column; gap: 16px; }
+}

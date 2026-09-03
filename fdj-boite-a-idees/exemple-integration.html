@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Exemple d'intégration — Boîte à idées FDJ United</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background: linear-gradient(160deg, #EAF0FF 0%, #FDF2F8 100%);
+      font-family: Inter, system-ui, sans-serif;
+      color: #4B5364;
+    }
+    .host { max-width: 900px; margin: 0 auto; }
+    .host h1 { font-size: 18px; color: #14171F; margin: 0 0 6px; }
+    .host p { font-size: 14px; line-height: 1.6; margin: 0 0 20px; }
+    iframe { width: 100%; border: 0; display: block; border-radius: 16px; }
+  </style>
+</head>
+<body>
+  <div class="host">
+    <h1>Exemple de page hôte</h1>
+    <p>
+      Reproduit le comportement attendu côté intranet : l'iframe n'a pas de barre de défilement,
+      c'est la page hôte qui redimensionne l'iframe à la hauteur publiée par l'application.
+    </p>
+
+    <iframe id="boite-a-idees" src="./index.html" title="Boîte à idées, inventez le prochain jeu"
+            scrolling="no" height="600"></iframe>
+  </div>
+
+  <script>
+    // Code de référence à reprendre côté Staffbase.
+    (function () {
+      "use strict";
+      var iframe = document.getElementById("boite-a-idees");
+
+      window.addEventListener("message", function (event) {
+        if (event.source !== iframe.contentWindow) return;      // on n'écoute que notre iframe
+        var data = event.data || {};
+
+        if (data.type === "resize" && typeof data.height === "number") {
+          iframe.style.height = data.height + "px";
+        }
+
+        if (data.type === "scrollToTop") {
+          iframe.scrollIntoView({ block: "start", behavior: "smooth" });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
