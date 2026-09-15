@@ -510,7 +510,6 @@
         <ul>
           <li><strong>Cookies fonctionnels :</strong> nécessaires au fonctionnement du site (session, préférences)</li>
           <li><strong>Cookies analytiques :</strong> mesure d'audience via un système d'analytics interne (Supabase). Aucun cookie tiers de type Google Analytics n'est utilisé</li>
-          <li><strong>Cookies de chat :</strong> le service de chat en ligne Tawk.to peut déposer des cookies pour assurer le fonctionnement de la messagerie</li>
         </ul>
         <p>Vous pouvez configurer votre navigateur pour refuser les cookies. Notez que cela pourrait affecter certaines fonctionnalités du site.</p>
         <p>Pour en savoir plus sur la gestion de vos données personnelles, consultez notre <a href="/politique-confidentialite.html">Politique de Confidentialité</a>.</p>
@@ -533,26 +532,6 @@
   </footer>
 
 <script src="/pulse-analytics.js" defer></script>
-<!-- Tawk.to Chat - Lazy loaded -->
-<script>
-(function(){
-  var loaded = false;
-  function loadTawk() {
-    if (loaded) return;
-    loaded = true;
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://embed.tawk.to/5f32e7b91e6c0725256062bc/default';
-    s.charset = 'UTF-8';
-    s.setAttribute('crossorigin', '*');
-    document.head.appendChild(s);
-  }
-  setTimeout(loadTawk, 3000);
-  ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(function(e) {
-    document.addEventListener(e, loadTawk, { once: true, passive: true });
-  });
-})();
-</script>
 <script src="/assets/js/nav-shared.js?v=2" defer></script>
 </body>
 </html>

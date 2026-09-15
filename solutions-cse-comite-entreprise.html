@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -194,6 +194,29 @@
       --font-display: 'Space Grotesk', sans-serif;
       --font-body: 'Inter', sans-serif;
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f8f9fc;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(0,0,0,0.02);
+      --bg-card-hover: rgba(0,0,0,0.04);
+      --glass: rgba(0,0,0,0.03);
+      --glass-border: rgba(0,0,0,0.08);
+      --text-primary: #1a1a2e;
+      --text-secondary: rgba(26,26,46,0.65);
+      --text-tertiary: rgba(26,26,46,0.4);
+      --accent-1: #5a4bd1;
+      --accent-2: #6c5ce7;
+      --accent-3: #00a8a8;
+      --accent-4: #e84393;
+      --accent-5: #e67e22;
+      --gradient-primary: linear-gradient(135deg, #5a4bd1, #6c5ce7, #00a8a8);
+      --gradient-hero: linear-gradient(160deg, #5a4bd1 0%, #6c5ce7 30%, #00a8a8 60%, #e84393 100%);
+      --nav-bg: rgba(248,249,252,0.85);
+      --nav-bg-scrolled: rgba(248,249,252,0.95);
+      --grid-line: rgba(0,0,0,0.025);
+      --input-bg: #ffffff;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -616,6 +639,23 @@
       .features-grid { grid-template-columns: 1fr; }
       .nav-actions .btn-ghost { display: none; }
     }
+  
+    /* Cartes d'apps mises en valeur (icône + titre + survol) */
+    .feature-card h3 a { color: var(--text-primary); text-decoration: none; transition: color .2s; }
+    .feature-card--app { display: flex; flex-direction: column; position: relative; }
+    .feature-card--app .app-ic {
+      width: 48px; height: 48px; border-radius: 13px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.5rem; margin-bottom: 16px;
+      background: var(--gradient-primary); box-shadow: 0 6px 16px rgba(108,92,231,0.28);
+    }
+    .feature-card--app .app-go {
+      margin-top: auto; padding-top: 16px; display: inline-flex; align-items: center; gap: 6px;
+      color: var(--accent-1); font-size: 0.88rem; font-weight: 600; text-decoration: none;
+      transition: gap .2s;
+    }
+    .feature-card--app:hover { transform: translateY(-4px); border-color: var(--accent-2); box-shadow: 0 14px 34px rgba(108,92,231,0.16); }
+    .feature-card--app:hover h3 a { color: var(--accent-1); }
+    .feature-card--app:hover .app-go { gap: 11px; }
   </style>
   <link rel="stylesheet" href="/assets/css/nav-shared.css?v=2">
 </head>
@@ -638,7 +678,7 @@
               <stop offset="0%" stop-color="#ff6b9d"/>
               <stop offset="30%" stop-color="#ee5a8f"/>
               <stop offset="65%" stop-color="#c44ecf"/>
-              <stop offset="100%" stop-color="#6c5ce7"/>
+              <stop offset="100%" stop-color="var(--accent-1)"/>
             </linearGradient>
             <linearGradient id="hhl" x1="20%" y1="0%" x2="80%" y2="80%">
               <stop offset="0%" stop-color="rgba(255,255,255,0.45)"/>
@@ -648,7 +688,7 @@
             <radialGradient id="hglow" cx="50%" cy="45%" r="55%">
               <stop offset="0%" stop-color="#ff6b9d" stop-opacity="0.5"/>
               <stop offset="60%" stop-color="#c44ecf" stop-opacity="0.2"/>
-              <stop offset="100%" stop-color="#6c5ce7" stop-opacity="0"/>
+              <stop offset="100%" stop-color="var(--accent-1)" stop-opacity="0"/>
             </radialGradient>
             <filter id="hshadow" x="-25%" y="-25%" width="150%" height="150%">
               <feDropShadow dx="0" dy="0.5" stdDeviation="0.8" flood-color="#ff6b9d" flood-opacity="0.4"/>
@@ -853,67 +893,93 @@
     <h3 style="margin-top:32px;">1. Animer la communauté de travail (activités sociales et culturelles)</h3>
     <p style="margin-top:8px;">Le cœur de la mission ASC : créer du lien, de la convivialité et de la cohésion. Des animations digitales que le CSE lance en quelques minutes et que tous les salariés peuvent rejoindre, où qu'ils soient.</p>
     <div class="features-grid" style="margin-top:24px;">
-      <div class="feature-card">
+      <div class="feature-card feature-card--app">
+        <div class="app-ic">🎯</div>
         <h3><a href="/quiz-team-building-entreprise.html">Quiz d'entreprise</a></h3>
         <p>Quiz de culture générale, sur l'entreprise ou l'actualité, en équipe ou en duel. L'icebreaker idéal pour un afterwork, un séminaire ou une pause ludique. 10 000+ questions.</p>
+        <a href="/quiz-team-building-entreprise.html" class="app-go">Découvrir <span>→</span></a>
       </div>
-      <div class="feature-card">
+      <div class="feature-card feature-card--app">
+        <div class="app-ic">⚽</div>
         <h3><a href="/pronostics-sportifs-entreprise.html">Pronostics sportifs</a></h3>
         <p>Fédérez les salariés autour des grands événements : <a href="/pronostics-6-nations-entreprise.html">6 Nations</a>, <a href="/pronostics-roland-garros-2026.html">Roland-Garros</a>, Ligue des Champions, Coupe du Monde. Classements par équipe, filiale ou pays.</p>
+        <a href="/pronostics-sportifs-entreprise.html" class="app-go">Découvrir <span>→</span></a>
       </div>
-      <div class="feature-card">
+      <div class="feature-card feature-card--app">
+        <div class="app-ic">🎁</div>
         <h3><a href="/secret-santa-entreprise.html">Secret Santa</a></h3>
         <p>L'animation de fin d'année sans effort pour le CSE : tirage au sort automatique, listes de souhaits et messagerie anonyme. Parfait en présentiel comme à distance.</p>
+        <a href="/secret-santa-entreprise.html" class="app-go">Découvrir <span>→</span></a>
       </div>
-      <div class="feature-card">
+      <div class="feature-card feature-card--app">
+        <div class="app-ic">🏃</div>
         <h3><a href="/defi-sportif-bien-etre-entreprise.html">Défis sportifs &amp; bien-être</a></h3>
         <p>Challenges de pas, running, vélo, fitness. Les salariés forment des équipes, connectent leurs trackers et se défient. Cohésion et QVCT en même temps.</p>
+        <a href="/defi-sportif-bien-etre-entreprise.html" class="app-go">Découvrir <span>→</span></a>
       </div>
-      <div class="feature-card">
+      <div class="feature-card feature-card--app">
+        <div class="app-ic">☕</div>
         <h3><a href="/random-coffee-match-entreprise.html">Random Coffee</a></h3>
         <p>Chaque semaine, l'algorithme connecte deux collègues pour un café. Le meilleur moyen de briser les silos et de recréer du lien informel, surtout en télétravail.</p>
+        <a href="/random-coffee-match-entreprise.html" class="app-go">Découvrir <span>→</span></a>
       </div>
-      <div class="feature-card">
+      <div class="feature-card feature-card--app">
+        <div class="app-ic">🚀</div>
         <h3><a href="/hackathon-interne-entreprise.html">Hackathon interne</a></h3>
         <p>Un événement fédérateur où les équipes forment des squads, pitchent et prototypent. Un temps fort d'entreprise que le CSE peut co-organiser avec la direction.</p>
+        <a href="/hackathon-interne-entreprise.html" class="app-go">Découvrir <span>→</span></a>
       </div>
     </div>
 
     <h3 style="margin-top:40px;">2. Écouter et consulter les salariés (mission de représentation)</h3>
     <p style="margin-top:8px;">Le CSE représente les salariés : il doit connaître leurs attentes et les relayer. Pulse lui donne les outils pour recueillir la parole, de façon anonyme et structurée.</p>
     <div class="features-grid" style="margin-top:24px;">
-      <div class="feature-card">
+      <div class="feature-card feature-card--app">
+        <div class="app-ic">📊</div>
         <h3><a href="/sondage-collaborateurs-entreprise.html">Sondages &amp; enquêtes pulse</a></h3>
         <p>Sondez les salariés sur leurs attentes (activités souhaitées, sujets qui comptent) en quelques minutes, de façon anonyme. Des réponses fiables pour orienter le programme du CSE.</p>
+        <a href="/sondage-collaborateurs-entreprise.html" class="app-go">Découvrir <span>→</span></a>
       </div>
-      <div class="feature-card">
+      <div class="feature-card feature-card--app">
+        <div class="app-ic">📡</div>
         <h3><a href="/real-time-sentiment-entreprise.html">Baromètre social</a></h3>
         <p>Mesurez le climat social en continu et en temps réel. Un indicateur précieux pour le CSE, qui a précisément vocation à suivre le moral et les conditions de travail.</p>
+        <a href="/real-time-sentiment-entreprise.html" class="app-go">Découvrir <span>→</span></a>
       </div>
-      <div class="feature-card">
+      <div class="feature-card feature-card--app">
+        <div class="app-ic">💭</div>
         <h3><a href="/boite-a-idees-innovation-entreprise.html">Boîte à idées</a></h3>
         <p>Les salariés proposent des idées (nouvelles activités, améliorations), les collègues votent et commentent. Le CSE identifie ce qui fédère vraiment, preuves à l'appui.</p>
+        <a href="/boite-a-idees-innovation-entreprise.html" class="app-go">Découvrir <span>→</span></a>
       </div>
-      <div class="feature-card">
+      <div class="feature-card feature-card--app">
+        <div class="app-ic">🙋</div>
         <h3><a href="/ask-the-board-entreprise.html">Ask the Board</a></h3>
         <p>Les salariés posent leurs questions à la direction ; les plus soutenues remontent en priorité. Un canal transparent qui prolonge le rôle de relais du CSE.</p>
+        <a href="/ask-the-board-entreprise.html" class="app-go">Découvrir <span>→</span></a>
       </div>
     </div>
 
     <h3 style="margin-top:40px;">3. Reconnaître, communiquer et mesurer l'impact</h3>
     <p style="margin-top:8px;">Célébrer les salariés, faire connaître les actions du CSE et prouver leur impact pour justifier le budget ASC.</p>
     <div class="features-grid" style="margin-top:24px;">
-      <div class="feature-card">
+      <div class="feature-card feature-card--app">
+        <div class="app-ic">🏆</div>
         <h3><a href="/reconnaissance-collaborateurs-recompenses-entreprise.html">Reconnaissance &amp; récompenses</a></h3>
         <p>Reconnaissance entre pairs avec un budget de points convertibles en cartes-cadeaux, dons ou expériences. Une manière moderne, humaine et animée de récompenser.</p>
+        <a href="/reconnaissance-collaborateurs-recompenses-entreprise.html" class="app-go">Découvrir <span>→</span></a>
       </div>
-      <div class="feature-card">
+      <div class="feature-card feature-card--app">
+        <div class="app-ic">🙏</div>
         <h3><a href="/thank-you-plugin-entreprise.html">Thank You &amp; badges</a></h3>
         <p>Les collègues se remercient et s'attribuent des badges de reconnaissance. Un rituel simple qui renforce la culture de gratitude et le sentiment d'appartenance.</p>
+        <a href="/thank-you-plugin-entreprise.html" class="app-go">Découvrir <span>→</span></a>
       </div>
-      <div class="feature-card">
+      <div class="feature-card feature-card--app">
+        <div class="app-ic">📣</div>
         <h3><a href="/ambassador-boost-entreprise.html">Communication &amp; ambassadeurs</a></h3>
         <p>Des contenus prêts à partager pour faire connaître les initiatives et rendre les salariés fiers de leur entreprise. Le CSE gagne en visibilité auprès des équipes.</p>
+        <a href="/ambassador-boost-entreprise.html" class="app-go">Découvrir <span>→</span></a>
       </div>
       <div class="feature-card">
         <h3>Dashboards de participation</h3>
@@ -1069,21 +1135,21 @@
 
   <!-- Découvrez aussi -->
   <section style="max-width:900px;margin:60px auto;padding:0 24px;">
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:#f0f0f5;margin-bottom:20px;text-align:center;">Quelles autres applications Pulse propose-t-il pour engager vos équipes ?</h2>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--text-primary);margin-bottom:20px;text-align:center;">Quelles autres applications Pulse propose-t-il pour engager vos équipes ?</h2>
     <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
-      <a href="/pronostics-sportifs-entreprise.html" style="display:inline-block;padding:10px 20px;border-radius:8px;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.3);color:#a29bfe;text-decoration:none;font-size:0.9rem;transition:all 0.2s;">⚽ Application pronostics sportifs entreprise</a>
-      <a href="/pronostics-coupe-du-monde-2026.html" style="display:inline-block;padding:10px 20px;border-radius:8px;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.3);color:#a29bfe;text-decoration:none;font-size:0.9rem;transition:all 0.2s;">🏆 Pronostics Coupe du Monde 2026</a>
-      <a href="/defi-sportif-bien-etre-entreprise.html" style="display:inline-block;padding:10px 20px;border-radius:8px;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.3);color:#a29bfe;text-decoration:none;font-size:0.9rem;transition:all 0.2s;">🏃 Défis sportifs bien-être</a>
-      <a href="/360-feedback-entreprise.html" style="display:inline-block;padding:10px 20px;border-radius:8px;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.3);color:#a29bfe;text-decoration:none;font-size:0.9rem;transition:all 0.2s;">💬 Feedback 360°</a>
+      <a href="/pronostics-sportifs-entreprise.html" style="display:inline-block;padding:10px 20px;border-radius:8px;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.3);color:var(--accent-2);text-decoration:none;font-size:0.9rem;transition:all 0.2s;">⚽ Application pronostics sportifs entreprise</a>
+      <a href="/pronostics-coupe-du-monde-2026.html" style="display:inline-block;padding:10px 20px;border-radius:8px;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.3);color:var(--accent-2);text-decoration:none;font-size:0.9rem;transition:all 0.2s;">🏆 Pronostics Coupe du Monde 2026</a>
+      <a href="/defi-sportif-bien-etre-entreprise.html" style="display:inline-block;padding:10px 20px;border-radius:8px;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.3);color:var(--accent-2);text-decoration:none;font-size:0.9rem;transition:all 0.2s;">🏃 Défis sportifs bien-être</a>
+      <a href="/360-feedback-entreprise.html" style="display:inline-block;padding:10px 20px;border-radius:8px;background:rgba(108,92,231,0.1);border:1px solid rgba(108,92,231,0.3);color:var(--accent-2);text-decoration:none;font-size:0.9rem;transition:all 0.2s;">💬 Feedback 360°</a>
     </div>
   </section>
 
   <!-- Footer -->
   <!-- Développement sur mesure -->
   <div style="max-width:800px;margin:60px auto;padding:40px;background:rgba(99,102,241,0.06);border:2px dashed rgba(99,102,241,0.3);border-radius:20px;text-align:center;">
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:12px;color:#f0f0f5;">Besoin d'une application similaire sur mesure ?</h2>
-    <p style="color:rgba(240,240,245,0.6);max-width:600px;margin:0 auto 24px;font-size:0.95rem;line-height:1.7;">Notre équipe de +2000 ingénieurs peut concevoir et développer une application personnalisée adaptée à vos besoins, votre identité et vos outils.</p>
-    <a href="/contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:8px;background:linear-gradient(135deg,#6c5ce7,#a29bfe,#00cec9);color:white;font-size:0.95rem;font-weight:600;text-decoration:none;box-shadow:0 4px 20px rgba(108,92,231,0.3);">Discuter de votre projet<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:12px;color:var(--text-primary);">Besoin d'une application similaire sur mesure ?</h2>
+    <p style="color:var(--text-secondary);max-width:600px;margin:0 auto 24px;font-size:0.95rem;line-height:1.7;">Notre équipe de +2000 ingénieurs peut concevoir et développer une application personnalisée adaptée à vos besoins, votre identité et vos outils.</p>
+    <a href="/contact.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:8px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2),var(--accent-3));color:white;font-size:0.95rem;font-weight:600;text-decoration:none;box-shadow:0 4px 20px rgba(108,92,231,0.3);">Discuter de votre projet<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 
   <footer class="footer">
@@ -1092,26 +1158,6 @@
   </footer>
 
 <script src="/pulse-analytics.js" defer></script>
-<!-- Tawk.to Chat - Lazy loaded -->
-<script>
-(function(){
-  var loaded = false;
-  function loadTawk() {
-    if (loaded) return;
-    loaded = true;
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://embed.tawk.to/5f32e7b91e6c0725256062bc/default';
-    s.charset = 'UTF-8';
-    s.setAttribute('crossorigin', '*');
-    document.head.appendChild(s);
-  }
-  setTimeout(loadTawk, 3000);
-  ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(function(e) {
-    document.addEventListener(e, loadTawk, { once: true, passive: true });
-  });
-})();
-</script>
 <script src="/assets/js/nav-shared.js?v=2" defer></script>
 </body>
 </html>

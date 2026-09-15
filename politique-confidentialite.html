@@ -555,11 +555,6 @@
               <td>Supabase (analytics interne)</td>
               <td>Mesure d'audience anonymisée, amélioration du site</td>
             </tr>
-            <tr>
-              <td>Chat</td>
-              <td>Tawk.to</td>
-              <td>Service de messagerie en ligne pour le support</td>
-            </tr>
           </tbody>
         </table>
 
@@ -575,7 +570,6 @@
         <ul>
           <li><strong>Vercel Inc.</strong> (hébergement du site) — USA, couvert par les clauses contractuelles types (CCT)</li>
           <li><strong>Supabase Inc.</strong> (base de données et analytics) — USA, couvert par les CCT</li>
-          <li><strong>Tawk.to Inc.</strong> (chat en ligne) — données de conversation uniquement</li>
         </ul>
       </div>
 
@@ -623,7 +617,7 @@
       <!-- Transferts internationaux -->
       <div class="about-section">
         <h2>9. Transferts internationaux</h2>
-        <p>Certaines données peuvent être transférées vers les États-Unis dans le cadre de l'utilisation de nos sous-traitants (Vercel, Supabase, Tawk.to). Ces transferts sont encadrés par :</p>
+        <p>Certaines données peuvent être transférées vers les États-Unis dans le cadre de l'utilisation de nos sous-traitants (Vercel, Supabase). Ces transferts sont encadrés par :</p>
         <ul>
           <li>Les <strong>clauses contractuelles types</strong> (CCT) approuvées par la Commission européenne</li>
           <li>Le <strong>EU-US Data Privacy Framework</strong> lorsque applicable</li>
@@ -647,26 +641,6 @@
   </footer>
 
 <script src="/pulse-analytics.js" defer></script>
-<!-- Tawk.to Chat - Lazy loaded -->
-<script>
-(function(){
-  var loaded = false;
-  function loadTawk() {
-    if (loaded) return;
-    loaded = true;
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://embed.tawk.to/5f32e7b91e6c0725256062bc/default';
-    s.charset = 'UTF-8';
-    s.setAttribute('crossorigin', '*');
-    document.head.appendChild(s);
-  }
-  setTimeout(loadTawk, 3000);
-  ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'].forEach(function(e) {
-    document.addEventListener(e, loadTawk, { once: true, passive: true });
-  });
-})();
-</script>
 <script src="/assets/js/nav-shared.js?v=2" defer></script>
 </body>
 </html>
