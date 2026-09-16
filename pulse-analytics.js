@@ -91,6 +91,28 @@
     });
   }
 
+  /**
+   * Appelle une fonction serveur (RPC). Les mises à jour de session passent
+   * par là : la lecture des tables est fermée aux visiteurs — sans quoi
+   * n'importe qui pourrait lire l'historique de navigation de tous les
+   * autres — et un UPDATE direct ne trouverait donc aucune ligne à modifier.
+   */
+  function callRpc(fn, args, keepalive) {
+    var opts = {
+      method: 'POST',
+      headers: HEADERS,
+      body: JSON.stringify(args)
+    };
+    if (keepalive) opts.keepalive = true;
+    return fetch(REST + 'rpc/' + fn, opts).then(function(r) {
+      if (!r.ok && DEBUG) r.text().then(function(t) { logErr(fn + ' error:', t); });
+      else log(fn + ' \u2192 ' + r.status);
+      return r;
+    }).catch(function(e) {
+      if (DEBUG) logErr(fn + ' network error:', e.message);
+    });
+  }
+
   // ============================================
   // DATA HELPERS
   // ============================================
@@ -284,40 +306,39 @@
       is_bounce: true
     });
   } else {
-    patchRow('sessions', 'session_id=eq.' + encodeURIComponent(sessionId), {
-      last_seen_at: new Date().toISOString(),
-      exit_page: pagePath,
-      page_count: pageCount,
-      is_bounce: false
+    callRpc('touch_session', {
+      p_session_id: sessionId,
+      p_exit_page: pagePath,
+      p_page_count: pageCount
     });
   }
 
   // 3. Active visitor (real-time) — upsert on session_id
-  upsertRow('active_visitors', {
-    visitor_id: visitorId,
-    session_id: sessionId,
-    page_url: pagePath,
-    page_title: document.title,
-    last_seen: new Date().toISOString()
-  }, 'session_id');
+  callRpc('touch_visitor', {
+    p_session_id: sessionId,
+    p_visitor_id: visitorId,
+    p_page_url: pagePath,
+    p_page_title: document.title
+  });
 
   // 4. Heartbeat every 30s
   var heartbeat = setInterval(function() {
-    patchRow('active_visitors', 'session_id=eq.' + encodeURIComponent(sessionId), {
-      page_url: window.location.pathname || '/',
-      last_seen: new Date().toISOString()
+    var chemin = window.location.pathname || '/';
+    callRpc('touch_visitor', {
+      p_session_id: sessionId,
+      p_visitor_id: visitorId,
+      p_page_url: chemin,
+      p_page_title: document.title
     });
-    patchRow('sessions', 'session_id=eq.' + encodeURIComponent(sessionId), {
-      last_seen_at: new Date().toISOString()
-    });
+    callRpc('touch_session', { p_session_id: sessionId });
   }, HEARTBEAT_MS);
 
   // 5. Page unload
   function onLeave() {
     clearInterval(heartbeat);
-    patchRow('sessions', 'session_id=eq.' + encodeURIComponent(sessionId), {
-      last_seen_at: new Date().toISOString(),
-      exit_page: window.location.pathname || '/'
+    callRpc('touch_session', {
+      p_session_id: sessionId,
+      p_exit_page: window.location.pathname || '/'
     }, true);
   }
 
