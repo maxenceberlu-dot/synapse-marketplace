@@ -872,6 +872,8 @@
     }
   </style>
   <link rel="stylesheet" href="/assets/css/nav-shared.css?v=2">
+<link rel="stylesheet" href="/theme.css">
+<script src="/theme.js"></script>
 </head>
 <body>
 
@@ -1032,7 +1034,12 @@
       <li><a href="/contact.html">Tarifs</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="/contact.html" class="nav-cta">Demander une demo</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Basculer mode clair/sombre" title="Mode clair / sombre">
+<svg class="theme-toggle-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+<div class="theme-toggle-thumb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446A9 9 0 1 1 12 3Z" fill="white" opacity="0.9"/></svg></div>
+<svg class="theme-toggle-icon-moon" viewBox="0 0 24 24" fill="currentColor" style="color:var(--text-tertiary)"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446A9 9 0 1 1 12 3Z"/></svg>
+</button>
+<a href="/contact.html" class="nav-cta">Demander une demo</a>
     </div>
   </nav>
 

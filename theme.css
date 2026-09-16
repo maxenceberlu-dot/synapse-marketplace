@@ -1,0 +1,117 @@
+/* ============================================================
+ * Thème Pulse — clair par défaut, bascule vers le sombre
+ * ============================================================
+ * Source unique pour toutes les pages du site. Le thème repose sur la
+ * redéfinition des variables de couleur : les composants n'ont donc rien
+ * à savoir du thème actif, ils lisent simplement var(--bg-primary) & co.
+ *
+ * Usage :  <link rel="stylesheet" href="/theme.css">
+ *          <script src="/theme.js"></script>   (dans le <head>, sans defer)
+ * ============================================================ */
+
+[data-theme="light"] {
+  --bg-primary: #f8f9fc;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(0,0,0,0.02);
+  --bg-card-hover: rgba(0,0,0,0.04);
+  --glass: rgba(0,0,0,0.03);
+  --glass-border: rgba(0,0,0,0.08);
+  --text-primary: #1a1a2e;
+  --text-secondary: rgba(26,26,46,0.65);
+  --text-tertiary: rgba(26,26,46,0.4);
+  --accent-1: #5a4bd1;
+  --accent-2: #6c5ce7;
+  --accent-3: #00a8a8;
+  --accent-4: #e84393;
+  --accent-5: #e67e22;
+  --gradient-primary: linear-gradient(135deg, #5a4bd1, #6c5ce7, #00a8a8);
+  --gradient-hero: linear-gradient(160deg, #5a4bd1 0%, #6c5ce7 30%, #00a8a8 60%, #e84393 100%);
+  --shadow-glow: 0 4px 40px rgba(90,75,209,0.1);
+  --nav-bg: rgba(248,249,252,0.8);
+  --nav-bg-scrolled: rgba(248,249,252,0.95);
+  --logo-gradient: linear-gradient(135deg, #5a4bd1, #6c5ce7, #e84393);
+  --grid-line: rgba(0,0,0,0.025);
+  --trust-logo-color: rgba(0,0,0,0.12);
+  --star-color: #e67e22;
+  --input-bg: #ffffff;
+}
+
+[data-theme="light"] body::before {
+  opacity: 0.03;
+}
+
+[data-theme="light"] .nav-dropdown-inner {
+  background: rgba(255,255,255,0.97);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px var(--glass-border);
+}
+
+[data-theme="light"] .nav-dropdown-item:hover {
+  background: rgba(0,0,0,0.04);
+}
+
+[data-theme="light"] .nav-dropdown-link:hover { background: rgba(0,0,0,0.04); }
+
+[data-theme="light"] .theme-toggle-thumb {
+  transform: translateX(24px);
+}
+
+[data-theme="light"] .theme-toggle {
+  background: rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.12);
+}
+
+[data-theme="light"] .theme-toggle-icon-moon { opacity: 0.15; }
+
+[data-theme="light"] .theme-toggle-icon-sun { opacity: 0.6; }
+
+/* ---------- Bouton de bascule ---------- */
+.theme-toggle {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  border-radius: 100px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: var(--accent-1);
+  box-shadow: 0 0 12px rgba(108,92,231,0.2);
+}
+.theme-toggle-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.theme-toggle-thumb svg {
+  width: 12px;
+  height: 12px;
+  fill: white;
+  transition: transform 0.3s ease;
+}
+.theme-toggle-icon-moon,
+    .theme-toggle-icon-sun {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  transition: opacity 0.3s ease;
+}
+.theme-toggle-icon-moon {
+  right: 7px;
+  opacity: 0.4;
+}
+.theme-toggle-icon-sun {
+  left: 7px;
+  opacity: 0.4;
+}
