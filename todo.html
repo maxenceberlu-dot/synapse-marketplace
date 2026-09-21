@@ -392,12 +392,16 @@
     <div class="login-card">
       <div class="login-logo">Pulse To-Do</div>
       <p class="login-subtitle">Connectez-vous pour gérer vos tâches</p>
-      <form id="loginForm" autocomplete="off">
+      <form id="loginForm">
         <input type="email" class="login-input" id="loginEmail" placeholder="Email" required autocomplete="username">
         <input type="password" class="login-input" id="loginPassword" placeholder="Mot de passe" required autocomplete="current-password">
         <button type="submit" class="login-btn">Se connecter</button>
       </form>
       <p class="login-error" id="loginError">Email ou mot de passe incorrect</p>
+      <p style="margin:14px 0 0;text-align:center;font-size:13px;">
+        <a href="#" id="linkReset" style="color:rgba(255,255,255,0.55);text-decoration:none;">Mot de passe oublié ?</a>
+      </p>
+      <p class="login-subtitle" id="resetMsg" style="display:none;margin-top:10px;"></p>
     </div>
   </div>
 
@@ -487,7 +491,16 @@
     // ============================================
     var SUPABASE_URL = 'https://iaaeerenmfyatlbtqylp.supabase.co';
     var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhYWVlcmVubWZ5YXRsYnRxeWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMzA5NTMsImV4cCI6MjA4ODgwNjk1M30.TOwlijdWVUYZ3KxTB-c-aMaaJ0WszsxWQCnsvREQr3M';
-    var supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    // Session conservée par le navigateur et renouvelée automatiquement :
+    // on se connecte une fois par appareil, pas à chaque visite.
+    // (storageKey laissé par défaut pour ne pas invalider les sessions en cours)
+    var supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      auth: {
+        persistSession: true,     // survit à la fermeture de l'onglet et du navigateur
+        autoRefreshToken: true,   // le jeton se renouvelle seul en arrière-plan
+        detectSessionInUrl: true  // nécessaire au retour d'un lien de réinitialisation
+      }
+    });
 
     var POINTS_PER_LEVEL = 10;  // 1 pt par tâche terminée
     var CONFETTI_COLORS = ['#6c5ce7', '#a29bfe', '#00cec9', '#fd79a8', '#fdcb6e', '#00b894'];
@@ -502,6 +515,13 @@
     async function checkAuth() {
       var session = (await supabase.auth.getSession()).data.session;
       if (session) { showApp(); return true; }
+      // Pas de session active : elle a pu expirer alors que le jeton de
+      // renouvellement est encore valable. On tente de la réveiller avant
+      // de redemander le mot de passe.
+      try {
+        var refreshed = (await supabase.auth.refreshSession()).data.session;
+        if (refreshed) { showApp(); return true; }
+      } catch (e) { /* pas de jeton réutilisable : on affichera le login */ }
       return false;
     }
     async function login(email, password) {
@@ -530,6 +550,28 @@
       e.preventDefault();
       login(document.getElementById('loginEmail').value, document.getElementById('loginPassword').value);
     });
+    // Mot de passe oublié : Supabase envoie un lien de réinitialisation par email.
+    document.getElementById('linkReset').addEventListener('click', async function(e) {
+      e.preventDefault();
+      var msg = document.getElementById('resetMsg');
+      var email = document.getElementById('loginEmail').value.trim();
+      if (!email) {
+        msg.textContent = "Saisis d'abord ton email ci-dessus.";
+        msg.style.display = 'block';
+        document.getElementById('loginEmail').focus();
+        return;
+      }
+      msg.textContent = 'Envoi en cours…';
+      msg.style.display = 'block';
+      var res = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + '/todo.html'
+      });
+      // On ne révèle jamais si l'adresse existe : même message dans les deux cas.
+      msg.textContent = res.error
+        ? "Impossible d'envoyer l'email pour le moment."
+        : 'Si un compte existe pour cette adresse, un lien vient de partir.';
+    });
+
     document.getElementById('btnLogout').addEventListener('click', logout);
     document.getElementById('btnRefresh').addEventListener('click', function() { loadTasks(); });
 
