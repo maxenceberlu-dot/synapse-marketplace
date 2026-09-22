@@ -1428,19 +1428,22 @@
     .stack-card-cta .btn-preview { text-decoration: none; display: inline-flex; align-items: center; }
 
     .stack-card-media {
+      /* --nw/--nh : dimensions natives de la démo (chacune a les siennes —
+         posées en inline-style par carte, valeurs ci-dessous en secours). */
+      --nw: 1200; --nh: 800;
       position: relative;
-      aspect-ratio: 3 / 2;
+      aspect-ratio: var(--nw) / var(--nh);
       border-radius: var(--radius-lg);
       overflow: hidden;
       background: var(--bg-card);
       border: 1px solid var(--glass-border);
     }
-    /* Les démos sont dessinées pour 1200 × 800 px et ne se réduisent pas
-    d'elles-mêmes : on les rend à leur taille native, puis on les met à
-    l'échelle du cadre (variable --z posée par le script). */
+    /* Les démos ne se réduisent pas d'elles-mêmes : on les rend à leur
+       taille native (--nw/--nh), puis on les met à l'échelle du cadre
+       (variable --z posée par le script, calculée à partir de --nw). */
     .stack-card-media iframe {
       position: absolute; top: 0; left: 0;
-      width: 1200px; height: 800px;
+      width: calc(var(--nw) * 1px); height: calc(var(--nh) * 1px);
       transform: scale(var(--z, 0.5));
       transform-origin: 0 0;
       border: 0; display: block;
@@ -2383,49 +2386,7 @@
       <p class="section-subtitle">Trois applications à découvrir telles que vos collaborateurs les verront. Faites défiler.</p>
     </div>
     <div class="apps-stack" id="appsStack">
-      <article class="stack-card" style="--i:0" data-app="innovation">
-        <div class="stack-card-body">
-          <div class="stack-card-header">
-            <div class="app-icon" style="background: linear-gradient(135deg, #fdcb6e, #e17055);">&#x1F4A1;</div>
-            <div class="app-card-meta">
-              <h3 class="stack-card-name">Boîte à Idées</h3>
-              <div class="app-card-publisher">par Pulse</div>
-            </div>
-            <span class="app-card-badge badge-new">Nouveau</span>
-          </div>
-          <p class="stack-card-desc">Vos collaborateurs soumettent des idees, les collegues votent et commentent. Transformez la creativite collective en projets concrets. Gamification et suivi de la mise en oeuvre des meilleures idees.</p>
-          <div class="app-card-tags"><span class="app-tag">Innovation</span><span class="app-tag">Ideation</span><span class="app-tag">Vote</span></div>
-          <div class="stack-card-cta">
-            <a href="/boite-a-idees-innovation-entreprise.html" class="btn-install">Découvrir</a>
-            <a href="/contact.html" class="btn-preview">Demander une démo</a>
-          </div>
-        </div>
-        <div class="stack-card-media">
-          <iframe src="/embeds/boite-a-idees-animation.html" title="Démonstration animée de la Boîte à Idées : soumission, vote et pipeline d'innovation" loading="lazy" scrolling="no"></iframe>
-        </div>
-      </article>
-      <article class="stack-card" style="--i:1" data-app="feedback360">
-        <div class="stack-card-body">
-          <div class="stack-card-header">
-            <div class="app-icon" style="background: linear-gradient(135deg, #a29bfe, #6c5ce7);">&#x1F3AF;</div>
-            <div class="app-card-meta">
-              <h3 class="stack-card-name">360° Feedback</h3>
-              <div class="app-card-publisher">par Pulse</div>
-            </div>
-            <span class="app-card-badge badge-popular">Populaire</span>
-          </div>
-          <p class="stack-card-desc">Feedback 360° tourne vers l'avenir et la collaboration. Developpez la performance de vos collaborateurs grace a des retours constructifs multi-sources : managers, pairs, equipes transverses.</p>
-          <div class="app-card-tags"><span class="app-tag">Performance</span><span class="app-tag">Feedback</span><span class="app-tag">RH</span></div>
-          <div class="stack-card-cta">
-            <a href="/360-feedback-entreprise.html" class="btn-install">Découvrir</a>
-            <a href="/contact.html" class="btn-preview">Demander une démo</a>
-          </div>
-        </div>
-        <div class="stack-card-media">
-          <iframe src="/embeds/360-feedback-animation.html" title="Démonstration animée du 360° Feedback : campagne, réponses multi-sources et résultats" loading="lazy" scrolling="no"></iframe>
-        </div>
-      </article>
-      <article class="stack-card" style="--i:2" data-app="sentiment">
+      <article class="stack-card" style="--i:0" data-app="sentiment">
         <div class="stack-card-body">
           <div class="stack-card-header">
             <div class="app-icon" style="background: linear-gradient(135deg, #6c5ce7, #fd79a8);">&#x1F4CA;</div>
@@ -2442,8 +2403,92 @@
             <a href="/contact.html" class="btn-preview">Demander une démo</a>
           </div>
         </div>
-        <div class="stack-card-media">
-          <iframe src="/embeds/showcase-potel-chabot.html" title="Démonstration animée du Baromètre Social en situation" loading="lazy" scrolling="no"></iframe>
+        <div class="stack-card-media" style="--nw:1280; --nh:720;">
+          <iframe src="/embeds/showcase-pulse-work.html" title="Démonstration animée du Baromètre Social : carrousel du back-office" loading="lazy" scrolling="no"></iframe>
+        </div>
+      </article>
+      <article class="stack-card" style="--i:1" data-app="quiz">
+        <div class="stack-card-body">
+          <div class="stack-card-header">
+            <div class="app-icon" style="background: linear-gradient(135deg, #a29bfe, #6c5ce7);">&#x1F9E0;</div>
+            <div class="app-card-meta">
+              <h3 class="stack-card-name">Quiz Master</h3>
+              <div class="app-card-publisher">par Pulse</div>
+            </div>
+            <span class="app-card-badge badge-popular">Populaire</span>
+          </div>
+          <p class="stack-card-desc">Quiz interactifs sur l'entreprise, l'actualite et la culture generale. Creez vos propres quiz ou utilisez notre bibliotheque de milliers de questions. Classements individuels et par equipe.</p>
+          <div class="app-card-tags"><span class="app-tag">Quiz</span><span class="app-tag">Culture</span><span class="app-tag">Team building</span></div>
+          <div class="stack-card-cta">
+            <a href="/quiz-team-building-entreprise.html" class="btn-install">Découvrir</a>
+            <a href="/contact.html" class="btn-preview">Demander une démo</a>
+          </div>
+        </div>
+        <div class="stack-card-media" style="--nw:1180; --nh:860;">
+          <iframe src="/mockups/quiz-master.html" title="Démonstration animée de Quiz Master : duel, quiz d'équipe et classements" loading="lazy" scrolling="no"></iframe>
+        </div>
+      </article>
+      <article class="stack-card" style="--i:2" data-app="feedback360">
+        <div class="stack-card-body">
+          <div class="stack-card-header">
+            <div class="app-icon" style="background: linear-gradient(135deg, #a29bfe, #6c5ce7);">&#x1F3AF;</div>
+            <div class="app-card-meta">
+              <h3 class="stack-card-name">360° Feedback</h3>
+              <div class="app-card-publisher">par Pulse</div>
+            </div>
+            <span class="app-card-badge badge-popular">Populaire</span>
+          </div>
+          <p class="stack-card-desc">Feedback 360° tourne vers l'avenir et la collaboration. Developpez la performance de vos collaborateurs grace a des retours constructifs multi-sources : managers, pairs, equipes transverses.</p>
+          <div class="app-card-tags"><span class="app-tag">Performance</span><span class="app-tag">Feedback</span><span class="app-tag">RH</span></div>
+          <div class="stack-card-cta">
+            <a href="/360-feedback-entreprise.html" class="btn-install">Découvrir</a>
+            <a href="/contact.html" class="btn-preview">Demander une démo</a>
+          </div>
+        </div>
+        <div class="stack-card-media" style="--nw:1280; --nh:900;">
+          <iframe src="/mockups/feedback-360.html" title="Démonstration animée du 360° Feedback : campagne, réponses multi-sources et résultats" loading="lazy" scrolling="no"></iframe>
+        </div>
+      </article>
+      <article class="stack-card" style="--i:3" data-app="innovation">
+        <div class="stack-card-body">
+          <div class="stack-card-header">
+            <div class="app-icon" style="background: linear-gradient(135deg, #fdcb6e, #e17055);">&#x1F4A1;</div>
+            <div class="app-card-meta">
+              <h3 class="stack-card-name">Boîte à Idées</h3>
+              <div class="app-card-publisher">par Pulse</div>
+            </div>
+            <span class="app-card-badge badge-new">Nouveau</span>
+          </div>
+          <p class="stack-card-desc">Vos collaborateurs soumettent des idees, les collegues votent et commentent. Transformez la creativite collective en projets concrets. Gamification et suivi de la mise en oeuvre des meilleures idees.</p>
+          <div class="app-card-tags"><span class="app-tag">Innovation</span><span class="app-tag">Ideation</span><span class="app-tag">Vote</span></div>
+          <div class="stack-card-cta">
+            <a href="/boite-a-idees-innovation-entreprise.html" class="btn-install">Découvrir</a>
+            <a href="/contact.html" class="btn-preview">Demander une démo</a>
+          </div>
+        </div>
+        <div class="stack-card-media" style="--nw:1200; --nh:880;">
+          <iframe src="/mockups/boite-a-idees.html" title="Démonstration animée de la Boîte à Idées : soumission, vote et pipeline d'innovation" loading="lazy" scrolling="no"></iframe>
+        </div>
+      </article>
+      <article class="stack-card" style="--i:4" data-app="santa">
+        <div class="stack-card-body">
+          <div class="stack-card-header">
+            <div class="app-icon" style="background: linear-gradient(135deg, #fd79a8, #e84393);">&#x1F381;</div>
+            <div class="app-card-meta">
+              <h3 class="stack-card-name">Secret Santa</h3>
+              <div class="app-card-publisher">par Pulse</div>
+            </div>
+            <span class="app-card-badge badge-popular">Populaire</span>
+          </div>
+          <p class="stack-card-desc">Organisez votre Secret Santa d'entreprise sans effort. Tirage au sort automatique, liste de souhaits, messagerie anonyme, et rappels integres. La magie de Noel dans votre intranet.</p>
+          <div class="app-card-tags"><span class="app-tag">Social</span><span class="app-tag">Evenement</span><span class="app-tag">Noel</span></div>
+          <div class="stack-card-cta">
+            <a href="/secret-santa-entreprise.html" class="btn-install">Découvrir</a>
+            <a href="/contact.html" class="btn-preview">Demander une démo</a>
+          </div>
+        </div>
+        <div class="stack-card-media" style="--nw:1200; --nh:800;">
+          <iframe src="/embeds/showcase-secret-santa.html" title="Démonstration animée de Secret Santa : tirage, souhaits et Reveal Day" loading="lazy" scrolling="no"></iframe>
         </div>
       </article>
     </div>
@@ -3876,10 +3921,12 @@
       var ticking = false;
       var medias = Array.prototype.slice.call(stack.querySelectorAll('.stack-card-media'));
 
-      // Les démos sont rendues à 1200 px de large : on les réduit à la largeur du cadre.
+      // Chaque démo a sa propre largeur native (--nw, posée par carte) :
+      // on la réduit à la largeur réelle du cadre, pas une valeur fixe.
       function echelle() {
         medias.forEach(function (m) {
-          m.style.setProperty('--z', (m.clientWidth / 1200).toFixed(4));
+          var nw = parseFloat(getComputedStyle(m).getPropertyValue('--nw')) || 1200;
+          m.style.setProperty('--z', (m.clientWidth / nw).toFixed(4));
         });
       }
 
