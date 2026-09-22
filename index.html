@@ -1363,6 +1363,114 @@
     }
 
     /* ============================================
+       À LA UNE — pile de cartes au défilement
+       Chaque carte est collante ; la suivante vient se poser dessus et
+       la carte recouverte se rétracte (variable --p posée par le script).
+       ============================================ */
+    .apps-stack-section { padding-bottom: 24px; }
+
+    .apps-stack {
+      --stack-top: 96px;     /* nav fixe 72px + respiration */
+      --stack-offset: 14px;  /* bord des cartes recouvertes qui reste visible */
+      max-width: 1100px;
+      margin: 48px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .stack-card {
+      --p: 0;
+      position: sticky;
+      top: calc(var(--stack-top) + var(--i, 0) * var(--stack-offset));
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 40px;
+      align-items: center;
+      min-height: 520px;
+      padding: 40px;
+      background: var(--bg-secondary);   /* opaque : indispensable pour une pile */
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 24px 64px rgba(26,26,46,0.08);
+      transform-origin: center top;
+      transform: scale(calc(1 - var(--p) * 0.06));
+      filter: brightness(calc(1 - var(--p) * 0.10));
+      will-change: transform;
+    }
+
+    .stack-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .stack-card-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+      font-weight: 700;
+      letter-spacing: -0.6px;
+      line-height: 1.15;
+      margin: 0 0 4px;
+    }
+
+    .stack-card-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .stack-card-cta { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+    .stack-card-cta .btn-install { flex: 0 0 auto; padding: 12px 24px; text-decoration: none; }
+    .stack-card-cta .btn-preview { text-decoration: none; display: inline-flex; align-items: center; }
+
+    .stack-card-media {
+      /* --nw/--nh : dimensions natives de la démo (chacune a les siennes —
+         posées en inline-style par carte, valeurs ci-dessous en secours). */
+      --nw: 1200; --nh: 800;
+      position: relative;
+      aspect-ratio: var(--nw) / var(--nh);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+    }
+    /* Les démos ne se réduisent pas d'elles-mêmes : on les rend à leur
+       taille native (--nw/--nh), puis on les met à l'échelle du cadre
+       (variable --z posée par le script, calculée à partir de --nw). */
+    .stack-card-media iframe {
+      position: absolute; top: 0; left: 0;
+      width: calc(var(--nw) * 1px); height: calc(var(--nh) * 1px);
+      transform: scale(var(--z, 0.5));
+      transform-origin: 0 0;
+      border: 0; display: block;
+      background: transparent;
+    }
+
+    /* Sous 900px : une colonne, animation au-dessus, plus d'empilement
+       (une carte plus haute que l'écran ne peut pas rester collée proprement) */
+    @media (max-width: 900px) {
+      .apps-stack { gap: 20px; margin-top: 32px; }
+      .stack-card {
+        position: static;
+        grid-template-columns: 1fr;
+        min-height: 0;
+        padding: 24px;
+        gap: 24px;
+        transform: none;
+        filter: none;
+      }
+      .stack-card-media { order: -1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stack-card { transform: none; filter: none; }
+    }
+
+    /* ============================================
        HOW IT WORKS
        ============================================ */
     .steps-grid {
@@ -2270,8 +2378,124 @@
     </div>
   </section>
 
+  <!-- À la une : les applications en action, en pile de cartes au défilement -->
+  <section class="section apps-stack-section" id="apps" aria-label="Applications à la une">
+    <div class="section-header reveal">
+      <div class="section-label">À la une</div>
+      <h2 class="section-title">Nos applications, en action</h2>
+      <p class="section-subtitle">Trois applications à découvrir telles que vos collaborateurs les verront. Faites défiler.</p>
+    </div>
+    <div class="apps-stack" id="appsStack">
+      <article class="stack-card" style="--i:0" data-app="sentiment">
+        <div class="stack-card-body">
+          <div class="stack-card-header">
+            <div class="app-icon" style="background: linear-gradient(135deg, #F4BF4F, #C08A16);">&#x1F4CA;</div>
+            <div class="app-card-meta">
+              <h3 class="stack-card-name">Baromètre Social</h3>
+              <div class="app-card-publisher">par Pulse</div>
+            </div>
+            <span class="app-card-badge badge-popular">Populaire</span>
+          </div>
+          <p class="stack-card-desc">Mesurez le sentiment de vos collaborateurs en temps reel et de maniere anonyme sur un sujet, un projet ou une situation. Dashboards instantanes et alertes pour les managers et les RH.</p>
+          <div class="app-card-tags"><span class="app-tag">Sentiment</span><span class="app-tag">Anonyme</span><span class="app-tag">Analytics</span></div>
+          <div class="stack-card-cta">
+            <a href="/real-time-sentiment-entreprise.html" class="btn-install" style="background: linear-gradient(135deg, #F4BF4F, #C08A16);">Découvrir</a>
+            <a href="/contact.html" class="btn-preview">Demander une démo</a>
+          </div>
+        </div>
+        <div class="stack-card-media" style="--nw:1280; --nh:720;">
+          <iframe src="/embeds/showcase-pulse-work.html" title="Démonstration animée du Baromètre Social : carrousel du back-office" loading="lazy" scrolling="no"></iframe>
+        </div>
+      </article>
+      <article class="stack-card" style="--i:1" data-app="quiz">
+        <div class="stack-card-body">
+          <div class="stack-card-header">
+            <div class="app-icon" style="background: linear-gradient(135deg, #6b4fd8, #523aad);">&#x1F9E0;</div>
+            <div class="app-card-meta">
+              <h3 class="stack-card-name">Quiz Master</h3>
+              <div class="app-card-publisher">par Pulse</div>
+            </div>
+            <span class="app-card-badge badge-popular">Populaire</span>
+          </div>
+          <p class="stack-card-desc">Quiz interactifs sur l'entreprise, l'actualite et la culture generale. Creez vos propres quiz ou utilisez notre bibliotheque de milliers de questions. Classements individuels et par equipe.</p>
+          <div class="app-card-tags"><span class="app-tag">Quiz</span><span class="app-tag">Culture</span><span class="app-tag">Team building</span></div>
+          <div class="stack-card-cta">
+            <a href="/quiz-team-building-entreprise.html" class="btn-install" style="background: linear-gradient(135deg, #6b4fd8, #523aad);">Découvrir</a>
+            <a href="/contact.html" class="btn-preview">Demander une démo</a>
+          </div>
+        </div>
+        <div class="stack-card-media" style="--nw:1180; --nh:860;">
+          <iframe src="/mockups/quiz-master.html" title="Démonstration animée de Quiz Master : duel, quiz d'équipe et classements" loading="lazy" scrolling="no"></iframe>
+        </div>
+      </article>
+      <article class="stack-card" style="--i:2" data-app="feedback360">
+        <div class="stack-card-body">
+          <div class="stack-card-header">
+            <div class="app-icon" style="background: linear-gradient(135deg, #2f7d63, #164537);">&#x1F3AF;</div>
+            <div class="app-card-meta">
+              <h3 class="stack-card-name">360° Feedback</h3>
+              <div class="app-card-publisher">par Pulse</div>
+            </div>
+            <span class="app-card-badge badge-popular">Populaire</span>
+          </div>
+          <p class="stack-card-desc">Feedback 360° tourne vers l'avenir et la collaboration. Developpez la performance de vos collaborateurs grace a des retours constructifs multi-sources : managers, pairs, equipes transverses.</p>
+          <div class="app-card-tags"><span class="app-tag">Performance</span><span class="app-tag">Feedback</span><span class="app-tag">RH</span></div>
+          <div class="stack-card-cta">
+            <a href="/360-feedback-entreprise.html" class="btn-install" style="background: linear-gradient(135deg, #2f7d63, #164537);">Découvrir</a>
+            <a href="/contact.html" class="btn-preview">Demander une démo</a>
+          </div>
+        </div>
+        <div class="stack-card-media" style="--nw:1280; --nh:900;">
+          <iframe src="/mockups/feedback-360.html" title="Démonstration animée du 360° Feedback : campagne, réponses multi-sources et résultats" loading="lazy" scrolling="no"></iframe>
+        </div>
+      </article>
+      <article class="stack-card" style="--i:3" data-app="innovation">
+        <div class="stack-card-body">
+          <div class="stack-card-header">
+            <div class="app-icon" style="background: linear-gradient(135deg, #d9713f, #c2562a);">&#x1F4A1;</div>
+            <div class="app-card-meta">
+              <h3 class="stack-card-name">Boîte à Idées</h3>
+              <div class="app-card-publisher">par Pulse</div>
+            </div>
+            <span class="app-card-badge badge-new">Nouveau</span>
+          </div>
+          <p class="stack-card-desc">Vos collaborateurs soumettent des idees, les collegues votent et commentent. Transformez la creativite collective en projets concrets. Gamification et suivi de la mise en oeuvre des meilleures idees.</p>
+          <div class="app-card-tags"><span class="app-tag">Innovation</span><span class="app-tag">Ideation</span><span class="app-tag">Vote</span></div>
+          <div class="stack-card-cta">
+            <a href="/boite-a-idees-innovation-entreprise.html" class="btn-install" style="background: linear-gradient(135deg, #d9713f, #c2562a);">Découvrir</a>
+            <a href="/contact.html" class="btn-preview">Demander une démo</a>
+          </div>
+        </div>
+        <div class="stack-card-media" style="--nw:1200; --nh:880;">
+          <iframe src="/mockups/boite-a-idees.html" title="Démonstration animée de la Boîte à Idées : soumission, vote et pipeline d'innovation" loading="lazy" scrolling="no"></iframe>
+        </div>
+      </article>
+      <article class="stack-card" style="--i:4" data-app="santa">
+        <div class="stack-card-body">
+          <div class="stack-card-header">
+            <div class="app-icon" style="background: linear-gradient(135deg, #c0396c, #8c2350);">&#x1F381;</div>
+            <div class="app-card-meta">
+              <h3 class="stack-card-name">Secret Santa</h3>
+              <div class="app-card-publisher">par Pulse</div>
+            </div>
+            <span class="app-card-badge badge-popular">Populaire</span>
+          </div>
+          <p class="stack-card-desc">Organisez votre Secret Santa d'entreprise sans effort. Tirage au sort automatique, liste de souhaits, messagerie anonyme, et rappels integres. La magie de Noel dans votre intranet.</p>
+          <div class="app-card-tags"><span class="app-tag">Social</span><span class="app-tag">Evenement</span><span class="app-tag">Noel</span></div>
+          <div class="stack-card-cta">
+            <a href="/secret-santa-entreprise.html" class="btn-install" style="background: linear-gradient(135deg, #c0396c, #8c2350);">Découvrir</a>
+            <a href="/contact.html" class="btn-preview">Demander une démo</a>
+          </div>
+        </div>
+        <div class="stack-card-media" style="--nw:1200; --nh:800;">
+          <iframe src="/embeds/showcase-secret-santa.html" title="Démonstration animée de Secret Santa : tirage, souhaits et Reveal Day" loading="lazy" scrolling="no"></iframe>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <!-- Search & Filter -->
-  <div class="search-section" id="apps" role="search" aria-label="Rechercher une application">
+  <div class="search-section" id="catalogue" role="search" aria-label="Rechercher une application">
     <div class="search-container">
       <svg class="search-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="text" class="search-bar" placeholder="Rechercher une application..." id="searchInput" aria-label="Rechercher une application">
@@ -3682,6 +3906,57 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+
+    // ============================================
+    // À LA UNE — pile de cartes : progression de recouvrement
+    // Pour chaque carte, --p va de 0 (la suivante est encore en dessous)
+    // à 1 (la suivante l'a entièrement recouverte). Le CSS fait le reste.
+    // ============================================
+    (function () {
+      var stack = document.getElementById('appsStack');
+      if (!stack) return;
+      var cards = Array.prototype.slice.call(stack.querySelectorAll('.stack-card'));
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var ticking = false;
+      var medias = Array.prototype.slice.call(stack.querySelectorAll('.stack-card-media'));
+
+      // Chaque démo a sa propre largeur native (--nw, posée par carte) :
+      // on la réduit à la largeur réelle du cadre, pas une valeur fixe.
+      function echelle() {
+        medias.forEach(function (m) {
+          var nw = parseFloat(getComputedStyle(m).getPropertyValue('--nw')) || 1200;
+          m.style.setProperty('--z', (m.clientWidth / nw).toFixed(4));
+        });
+      }
+
+      function mesure() {
+        ticking = false;
+        var actif = !reduced.matches && window.innerWidth > 900;
+        var css = getComputedStyle(stack);
+        var top = parseFloat(css.getPropertyValue('--stack-top')) || 96;
+        var offset = parseFloat(css.getPropertyValue('--stack-offset')) || 14;
+        for (var i = 0; i < cards.length; i++) {
+          var p = 0;
+          if (actif && i < cards.length - 1) {
+            // hauteur non transformée et position collante théorique : le calcul
+            // ne dépend pas du scale déjà appliqué, donc pas de rétroaction.
+            var h = cards[i].offsetHeight;
+            var collePos = top + i * offset;
+            var suivanteTop = cards[i + 1].getBoundingClientRect().top;
+            p = (collePos + h - suivanteTop) / h;
+            p = Math.max(0, Math.min(1, p));
+          }
+          cards[i].style.setProperty('--p', p.toFixed(4));
+        }
+      }
+      function demande() { if (!ticking) { ticking = true; requestAnimationFrame(mesure); } }
+      window.addEventListener('scroll', demande, { passive: true });
+      window.addEventListener('resize', demande);
+      window.addEventListener('resize', echelle);
+      echelle();
+      mesure();
+    })();
 
     // ============================================
     // NAV SCROLL EFFECT
