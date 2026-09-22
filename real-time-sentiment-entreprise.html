@@ -514,6 +514,26 @@
   <section class="section" id="fonctionnalites">
     <h2>Tout ce qu'il faut pour mesurer le ressenti</h2>
     <p>Une application cle en main pour prendre le pouls de vos equipes en continu et de maniere anonyme.</p>
+
+    <!-- Démo animée Pulse Work — carrousel 6 écrans, autonome, ne pas modifier le fichier embarqué.
+         id distinct de l'iframe "pw-showcase" du haut de page (Potel & Chabot) : même id aurait
+         fait pointer getElementById vers le mauvais élément pour le redimensionnement. -->
+    <iframe
+      id="pw-showcase-carousel"
+      src="/embeds/showcase-pulse-work.html"
+      title="Démonstration de la plateforme Pulse Work"
+      style="width:100%;max-width:1240px;height:980px;border:0;display:block;margin:0 auto 48px;"
+      loading="lazy"
+      scrolling="no"></iframe>
+    <script>
+      window.addEventListener('message', function (e) {
+        if (e.data && e.data.pulseworkShowcaseHeight) {
+          var f = document.getElementById('pw-showcase-carousel');
+          if (f) f.style.height = e.data.pulseworkShowcaseHeight + 'px';
+        }
+      });
+    </script>
+
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon" style="color: var(--accent-1);">
