@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-10",
+  "generated": "2026-09-23",
   "source": "Google Search Console",
   "keywords": [
     {
@@ -56,9 +56,33 @@
         },
         {
           "week": "2026-08-24",
-          "position": 6.8,
-          "impressions": 4,
-          "jours": 2
+          "position": 7.2,
+          "impressions": 6,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-31",
+          "position": 8.9,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 7.2,
+          "impressions": 16,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 7.9,
+          "impressions": 15,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-21",
+          "position": 5.0,
+          "impressions": 1,
+          "jours": 1
         }
       ]
     },
@@ -128,8 +152,20 @@
         },
         {
           "week": "2026-09-07",
-          "position": 1.3,
-          "impressions": 3,
+          "position": 5.0,
+          "impressions": 14,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 13.1,
+          "impressions": 19,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-21",
+          "position": 37.3,
+          "impressions": 6,
           "jours": 1
         }
       ]
@@ -200,8 +236,20 @@
         },
         {
           "week": "2026-09-07",
-          "position": 10.0,
-          "impressions": 1,
+          "position": 11.7,
+          "impressions": 16,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 10.6,
+          "impressions": 7,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-21",
+          "position": 18.3,
+          "impressions": 6,
           "jours": 1
         }
       ]
@@ -239,6 +287,24 @@
           "position": 18.2,
           "impressions": 5,
           "jours": 4
+        },
+        {
+          "week": "2026-08-31",
+          "position": 19.8,
+          "impressions": 6,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 19.7,
+          "impressions": 6,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 19.8,
+          "impressions": 5,
+          "jours": 7
         }
       ]
     },
@@ -343,9 +409,15 @@
         },
         {
           "week": "2026-09-07",
-          "position": 20.0,
-          "impressions": 1,
-          "jours": 1
+          "position": 28.0,
+          "impressions": 10,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 51.0,
+          "impressions": 8,
+          "jours": 7
         }
       ]
     },
@@ -455,12 +527,876 @@
         },
         {
           "week": "2026-09-07",
-          "position": 35.2,
-          "impressions": 10,
+          "position": 33.9,
+          "impressions": 59,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 30.8,
+          "impressions": 36,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-21",
+          "position": 36.0,
+          "impressions": 1,
           "jours": 1
+        }
+      ]
+    },
+    {
+      "keyword": "pulse feedback",
+      "page": "/",
+      "history": [
+        {
+          "week": "2026-03-16",
+          "position": 9.9,
+          "impressions": 7,
+          "jours": 7
+        },
+        {
+          "week": "2026-03-23",
+          "position": 12.9,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-03-30",
+          "position": 12.4,
+          "impressions": 7,
+          "jours": 7
+        },
+        {
+          "week": "2026-04-06",
+          "position": 12.1,
+          "impressions": 11,
+          "jours": 7
+        },
+        {
+          "week": "2026-04-13",
+          "position": 11.8,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-04-20",
+          "position": 13.7,
+          "impressions": 7,
+          "jours": 7
+        },
+        {
+          "week": "2026-04-27",
+          "position": 13.3,
+          "impressions": 11,
+          "jours": 7
+        },
+        {
+          "week": "2026-05-04",
+          "position": 10.6,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-05-11",
+          "position": 12.0,
+          "impressions": 6,
+          "jours": 7
+        },
+        {
+          "week": "2026-05-18",
+          "position": 15.1,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-05-25",
+          "position": 14.7,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-06-01",
+          "position": 13.7,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-06-08",
+          "position": 13.2,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-06-15",
+          "position": 15.9,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-06-22",
+          "position": 15.1,
+          "impressions": 7,
+          "jours": 7
+        },
+        {
+          "week": "2026-06-29",
+          "position": 15.9,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-06",
+          "position": 13.7,
+          "impressions": 6,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-13",
+          "position": 13.8,
+          "impressions": 11,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-20",
+          "position": 15.9,
+          "impressions": 10,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-27",
+          "position": 20.6,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-03",
+          "position": 23.6,
+          "impressions": 10,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-10",
+          "position": 15.6,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 29.9,
+          "impressions": 12,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 30.9,
+          "impressions": 11,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-31",
+          "position": 21.0,
+          "impressions": 23,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 20.4,
+          "impressions": 11,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 26.8,
+          "impressions": 9,
+          "jours": 7
+        }
+      ]
+    },
+    {
+      "keyword": "plateforme pulse",
+      "page": "/",
+      "history": [
+        {
+          "week": "2026-06-22",
+          "position": 10.0,
+          "impressions": 1,
+          "jours": 7
+        },
+        {
+          "week": "2026-06-29",
+          "position": 8.0,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-06",
+          "position": 8.7,
+          "impressions": 6,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-13",
+          "position": 8.0,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-20",
+          "position": 9.8,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-27",
+          "position": 6.0,
+          "impressions": 6,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-03",
+          "position": 7.6,
+          "impressions": 5,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-10",
+          "position": 8.5,
+          "impressions": 2,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 7.2,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 8.5,
+          "impressions": 2,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-31",
+          "position": 7.8,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 7.8,
+          "impressions": 6,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 7.0,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-21",
+          "position": 6.5,
+          "impressions": 2,
+          "jours": 1
+        }
+      ]
+    },
+    {
+      "keyword": "sondage collaborateur",
+      "page": "/sondage-collaborateurs-entreprise.html",
+      "history": [
+        {
+          "week": "2026-06-01",
+          "position": 16.0,
+          "impressions": 1,
+          "jours": 7
+        },
+        {
+          "week": "2026-06-08",
+          "position": 17.0,
+          "impressions": 1,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-06",
+          "position": 7.0,
+          "impressions": 1,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-03",
+          "position": 13.0,
+          "impressions": 2,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-10",
+          "position": 13.8,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 13.4,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 13.5,
+          "impressions": 13,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-31",
+          "position": 13.1,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 11.3,
+          "impressions": 7,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 11.2,
+          "impressions": 5,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-21",
+          "position": 12.0,
+          "impressions": 1,
+          "jours": 1
+        }
+      ]
+    },
+    {
+      "keyword": "baromètre pulse rh",
+      "page": "/sondage-collaborateurs-entreprise.html",
+      "history": [
+        {
+          "week": "2026-08-03",
+          "position": 11.0,
+          "impressions": 7,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-10",
+          "position": 12.0,
+          "impressions": 7,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 11.1,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 13.9,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-31",
+          "position": 14.1,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 12.8,
+          "impressions": 6,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 27.4,
+          "impressions": 5,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-21",
+          "position": 35.0,
+          "impressions": 1,
+          "jours": 1
+        }
+      ]
+    },
+    {
+      "keyword": "sondage pulse rh",
+      "page": "/sondage-collaborateurs-entreprise.html",
+      "history": [
+        {
+          "week": "2026-08-17",
+          "position": 10.5,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 12.6,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-31",
+          "position": 12.0,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 8.3,
+          "impressions": 3,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 12.0,
+          "impressions": 3,
+          "jours": 7
+        }
+      ]
+    },
+    {
+      "keyword": "logiciel de feedback à 360 degrés",
+      "page": "/360-feedback-entreprise.html",
+      "history": [
+        {
+          "week": "2026-06-15",
+          "position": 25.0,
+          "impressions": 1,
+          "jours": 7
+        },
+        {
+          "week": "2026-06-22",
+          "position": 21.0,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-06-29",
+          "position": 20.0,
+          "impressions": 3,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-06",
+          "position": 19.5,
+          "impressions": 2,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-13",
+          "position": 17.2,
+          "impressions": 5,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-20",
+          "position": 21.0,
+          "impressions": 3,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-27",
+          "position": 32.5,
+          "impressions": 2,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-03",
+          "position": 40.0,
+          "impressions": 1,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-10",
+          "position": 35.5,
+          "impressions": 2,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 40.0,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-31",
+          "position": 45.0,
+          "impressions": 1,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 36.7,
+          "impressions": 3,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 39.0,
+          "impressions": 1,
+          "jours": 7
+        }
+      ]
+    },
+    {
+      "keyword": "outil de feedback anonyme des employés",
+      "page": "/sondage-collaborateurs-entreprise.html",
+      "history": [
+        {
+          "week": "2026-06-08",
+          "position": 13.2,
+          "impressions": 6,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-06",
+          "position": 14.3,
+          "impressions": 3,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-13",
+          "position": 14.0,
+          "impressions": 7,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-20",
+          "position": 15.0,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-27",
+          "position": 19.3,
+          "impressions": 6,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-03",
+          "position": 14.6,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-10",
+          "position": 17.5,
+          "impressions": 2,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 25.0,
+          "impressions": 1,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-31",
+          "position": 24.5,
+          "impressions": 2,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 22.0,
+          "impressions": 1,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 17.0,
+          "impressions": 2,
+          "jours": 7
+        }
+      ]
+    },
+    {
+      "keyword": "plateforme de mesure de l'engagement",
+      "page": "/",
+      "history": [
+        {
+          "week": "2026-08-10",
+          "position": 31.5,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 28.8,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 25.0,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-31",
+          "position": 25.8,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 24.3,
+          "impressions": 7,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 25.0,
+          "impressions": 1,
+          "jours": 7
+        }
+      ]
+    },
+    {
+      "keyword": "digital team building",
+      "page": "/blog/team-building-digital-animations-entreprise.html",
+      "history": [
+        {
+          "week": "2026-07-20",
+          "position": 14.0,
+          "impressions": 2,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-27",
+          "position": 12.0,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-03",
+          "position": 12.0,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-10",
+          "position": 13.0,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 13.0,
+          "impressions": 3,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 13.0,
+          "impressions": 3,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-31",
+          "position": 13.8,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 14.0,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 13.0,
+          "impressions": 3,
+          "jours": 7
+        }
+      ]
+    },
+    {
+      "keyword": "cultura amp",
+      "page": "/alternative-culture-amp.html",
+      "history": [
+        {
+          "week": "2026-07-06",
+          "position": 10.0,
+          "impressions": 1,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-13",
+          "position": 10.5,
+          "impressions": 79,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-20",
+          "position": 10.3,
+          "impressions": 27,
+          "jours": 7
+        }
+      ]
+    },
+    {
+      "keyword": "logiciel écoute des collaborateurs",
+      "page": "/sondage-collaborateurs-entreprise.html",
+      "history": [
+        {
+          "week": "2026-07-06",
+          "position": 16.4,
+          "impressions": 5,
+          "jours": 7
+        },
+        {
+          "week": "2026-07-27",
+          "position": 15.0,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-03",
+          "position": 15.2,
+          "impressions": 6,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-10",
+          "position": 15.0,
+          "impressions": 1,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 12.7,
+          "impressions": 3,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 11.5,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-31",
+          "position": 14.5,
+          "impressions": 2,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 20.0,
+          "impressions": 2,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 17.0,
+          "impressions": 2,
+          "jours": 7
+        }
+      ]
+    },
+    {
+      "keyword": "choisir un logiciel d'engagement collaborateur",
+      "page": "/blog/engagement-collaborateur-guide-complet.html",
+      "history": [
+        {
+          "week": "2026-08-10",
+          "position": 55.0,
+          "impressions": 1,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 17.8,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 14.9,
+          "impressions": 9,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-31",
+          "position": 14.7,
+          "impressions": 7,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 17.5,
+          "impressions": 10,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 18.5,
+          "impressions": 11,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-21",
+          "position": 17.7,
+          "impressions": 3,
+          "jours": 1
+        }
+      ]
+    },
+    {
+      "keyword": "application mesure engagement",
+      "page": "/",
+      "history": [
+        {
+          "week": "2026-08-10",
+          "position": 12.0,
+          "impressions": 2,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-17",
+          "position": 8.5,
+          "impressions": 14,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-24",
+          "position": 13.1,
+          "impressions": 8,
+          "jours": 7
+        },
+        {
+          "week": "2026-08-31",
+          "position": 12.7,
+          "impressions": 7,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-07",
+          "position": 12.8,
+          "impressions": 4,
+          "jours": 7
+        },
+        {
+          "week": "2026-09-14",
+          "position": 12.6,
+          "impressions": 5,
+          "jours": 7
         }
       ]
     }
   ],
-  "data_through": "2026-09-07"
+  "data_through": "2026-09-21"
 }
