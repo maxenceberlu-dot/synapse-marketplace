@@ -211,6 +211,69 @@ Plugin de reconnaissance entre pairs. Envoyez des remerciements publics ou prive
 
 ---
 
+### Reconnaissance & Recompenses
+**URL** : https://www.pulsework.app/reconnaissance-collaborateurs-recompenses-entreprise.html
+
+Plateforme de reconnaissance entre pairs avec systeme de points et catalogue de recompenses (cartes cadeaux, dons, experiences). Compatible Teams, Slack.
+
+---
+
+### Performance Review & 1:1
+**URL** : https://www.pulsework.app/performance-review-entretien-individuel-entreprise.html
+
+Entretiens annuels, semestriels et 1:1 hebdomadaires structures sur Teams ou Slack. Auto-evaluation, feedback 360°, OKR, suivi des actions.
+
+---
+
+### Ideation Machine
+**URL** : https://www.pulsework.app/ideation-machine-entreprise.html
+
+Idees soumises par office ou equipe, votees par les pairs, avec workflow de validation. Transforme les idees des collaborateurs en projets concrets.
+
+---
+
+### Microlearning
+**URL** : https://www.pulsework.app/microlearning-quiz-quotidien-entreprise.html
+
+Un quiz par jour (30 secondes) pour acculturer les collaborateurs aux valeurs, a la RGPD, a la securite ou aux produits de l'entreprise. Compatible Teams, Slack.
+
+---
+
+### Problem Solver
+**URL** : https://www.pulsework.app/problem-solver-entreprise.html
+
+Boite a idees collaborative orientee resolution de problemes : proposer des solutions, rejoindre un projet, voter. Compatible Teams, Slack.
+
+---
+
+### DEI — Diversite, Equite, Inclusion
+**URL** : https://www.pulsework.app/diversite-inclusion-dei-entreprise.html
+
+Mesure de l'inclusion ressentie, animation des groupes-reseaux d'affinite (ERG), reporting CSRD. Compatible Teams, Slack.
+
+---
+
+### RSE & Volontariat
+**URL** : https://www.pulsework.app/engagement-rse-volontariat-entreprise.html
+
+Missions associatives, suivi des heures de volontariat et du mecenat de competences, dons, reporting CSRD. Compatible Teams, Slack.
+
+---
+
+### Solutions CSE / Comite d'entreprise
+**URL** : https://www.pulsework.app/solutions-cse-comite-entreprise.html
+
+Pulse aide les CSE (ex-comites d'entreprise) a animer, ecouter et engager les salaries : quiz, pronostics, sondages, boite a idees, reconnaissance. Compatible Teams, Slack.
+
+---
+
+### Pronostics Sportifs (toutes disciplines)
+**URL** : https://www.pulsework.app/pronostics-sportifs-entreprise.html
+
+Version generaliste des pronostics sportifs Pulse : football, tennis, rugby et autres disciplines. Classements en temps reel, integration Teams et Slack. Voir aussi la section "Pronostics Sportifs" ci-dessus pour les evenements specifiques (Coupe du Monde, Roland-Garros, 6 Nations) et le calendrier complet de la Coupe du Monde 2026 (https://www.pulsework.app/calendrier-coupe-du-monde-2026.html).
+
+---
+
 ## Integrations
 
 Pulse s'integre nativement a plus de 20 plateformes :
@@ -292,6 +355,21 @@ Pages de comparaison detaillees entre Pulse et les principales plateformes concu
 - [Ice Breakers entreprise](https://www.pulsework.app/blog/ice-breaker-animation-reunion-entreprise.html) : 30+ ice breakers et animations pour reunions d'equipe.
 - [Team Building Digital](https://www.pulsework.app/blog/team-building-digital-animations-entreprise.html) : Guide des meilleures animations de team building digital.
 - [Guide Pronostics Coupe du Monde 2026](https://www.pulsework.app/blog/guide-complet-pronostics-coupe-du-monde-2026-entreprise.html) : Organiser un concours de pronostics en entreprise.
+- [Checklist Animation Coupe du Monde 2026 pour DRH](https://www.pulsework.app/blog/animation-coupe-du-monde-2026-entreprise-checklist-drh.html) : Checklist J-30 : calendrier, budget, communication, plateforme, lots, RGPD.
+- [Comparatif apps de pronostics entreprise](https://www.pulsework.app/blog/comparatif-application-pronostics-entreprise.html) : Pulse vs Excel vs WhatsApp vs MonProno vs Google Forms.
+- [Guide DEI et reporting CSRD](https://www.pulsework.app/blog/diversite-equite-inclusion-dei-csrd-guide-drh.html) : Mesure de l'inclusion, animation des ERG, reporting CSRD obligatoire 2026.
+- [eNPS : calcul et benchmark](https://www.pulsework.app/blog/enps-calcul-benchmark-entreprise.html) : Formule de calcul, exemple chiffre, benchmark sectoriel, 7 leviers d'amelioration.
+- [12 idees d'animation pour evenement sportif](https://www.pulsework.app/blog/idees-animation-entreprise-evenement-sportif.html) : Pronostics, quiz, diffusion de matchs pour CDM 2026, Euro, JO.
+- [Guide Microlearning](https://www.pulsework.app/blog/microlearning-formation-continue-collaborateurs-guide.html) : Methode 30 secondes/jour, cas d'usage RGPD, cybersecurite, valeurs.
+- [Organiser un concours de pronostics en entreprise](https://www.pulsework.app/blog/organiser-concours-pronostics-entreprise.html) : Etapes, erreurs a eviter, outils, pour CDM 2026, Euro, Ligue des Champions.
+- [Guide Performance Review et 1:1 meetings](https://www.pulsework.app/blog/performance-review-1on1-meetings-guide-drh.html) : Methode, calendrier, templates, outils pour structurer les entretiens.
+- [Comparatif prix des plateformes d'engagement](https://www.pulsework.app/blog/prix-plateforme-engagement-comparatif-officevibe-supermood.html) : Tarifs reels Officevibe, Supermood, Culture Amp, Leapsome, Pulse par taille d'entreprise.
+- [5 raisons d'organiser des pronostics CDM 2026 en entreprise](https://www.pulsework.app/blog/pronostics-coupe-du-monde-2026-entreprise-5-raisons.html) : Team building, engagement, ROI, deploiement rapide.
+- [Pronostics Euro de football en entreprise](https://www.pulsework.app/blog/pronostics-euro-football-entreprise.html) : Le 2e evenement sportif le plus suivi, app cle en main Teams & Slack.
+- [Pronostics Ligue des Champions en entreprise](https://www.pulsework.app/blog/pronostics-ligue-des-champions-entreprise.html) : Calendrier UCL, regles, classements, app cle en main.
+- [Reconnaissance entre pairs : comparatif Bonusly](https://www.pulsework.app/blog/reconnaissance-collaborateurs-bonusly-alternative-comparatif.html) : Guide pratique, ROI, comparatif Bonusly vs Achievers vs Pulse.
+- [RSE et volontariat des collaborateurs](https://www.pulsework.app/blog/rse-volontariat-collaborateurs-csrd-guide.html) : Volontariat, mecenat de competences, reporting CSRD obligatoire.
+- [ROI du team building sportif](https://www.pulsework.app/blog/team-building-sportif-entreprise-roi.html) : Metriques cles, resultats concrets, meilleures pratiques.
 - [Tous les articles](https://www.pulsework.app/blog.html)
 
 ---
