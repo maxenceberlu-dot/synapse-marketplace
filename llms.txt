@@ -68,6 +68,3 @@ Pulse aide les entreprises a ecouter, comprendre et engager leurs collaborateurs
 
 - **Integrations** : Microsoft Teams, Slack, Google Chat, SharePoint, Staffbase, LumApps, Workvivo, Okta, Microsoft Entra ID, Workday, BambooHR
 - **Securite** : RGPD, chiffrement AES-256, hebergement Europe, SSO (SAML/OIDC), audit logs
-- **Taux de participation moyen** : +85%
-- **Satisfaction client** : 98%
-- **Entreprises accompagnees** : 100+
