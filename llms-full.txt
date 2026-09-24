@@ -1,6 +1,6 @@
 # Pulse — Plateforme d'Engagement Collaborateur
 
-> Pulse est la plateforme d'engagement collaborateur tout-en-un qui transforme l'ecoute en action. Sondages anonymes, pulse surveys, feedback 360°, team building digital et gamification. Compatible Microsoft Teams, Slack, SharePoint, Staffbase, LumApps. Conforme RGPD, donnees hebergees en Europe. Deploiement en 48h. Site web : https://www.pulsework.app
+> Pulse est la plateforme d'engagement collaborateur tout-en-un qui transforme l'ecoute en action. Sondages anonymes, pulse surveys, feedback 360°, team building digital et gamification. Compatible Microsoft Teams, Slack, SharePoint, Staffbase, LumApps. Conforme RGPD, donnees hebergees en Europe. Site web : https://www.pulsework.app
 
 ---
 
@@ -29,7 +29,6 @@ Pulse combine trois piliers sur une plateforme unifiee :
 
 - **+85%** de taux de participation moyen aux sondages
 - **100+** entreprises accompagnees
-- **<48h** de deploiement
 - **98%** de satisfaction client
 - **+20** integrations disponibles
 - **Note** : 4.8/5 (47 avis)
@@ -282,11 +281,11 @@ Demander un devis : https://www.pulsework.app/contact.html
 
 Pages de comparaison detaillees entre Pulse et les principales plateformes concurrentes du marche de l'engagement collaborateur. Chaque page compare les fonctionnalites, le tarif, la conformite RGPD, le perimetre et le processus de migration.
 
-- **Alternative a Officevibe (Workleap)** : https://www.pulsework.app/alternative-officevibe.html — Pulse est l'alternative francaise tout-en-un a Officevibe : pulse surveys, 360°, reconnaissance entre pairs, employee advocacy. Hebergement Europe RGPD, deploiement 48h, support francais, tarif transparent. Officevibe (rachete par Workleap en 2022) est nord-americain, heberge aux USA, avec un perimetre plus etroit.
+- **Alternative a Officevibe (Workleap)** : https://www.pulsework.app/alternative-officevibe.html — Pulse est l'alternative francaise tout-en-un a Officevibe : pulse surveys, 360°, reconnaissance entre pairs, employee advocacy. Hebergement Europe RGPD, support francais, tarif transparent. Officevibe (rachete par Workleap en 2022) est nord-americain, heberge aux USA, avec un perimetre plus etroit.
 - **Alternative a Supermood** : https://www.pulsework.app/alternative-supermood.html — Pulse offre un perimetre fonctionnel plus large (advocacy, Random Coffee, hackathons, 360°) et un tarif plus accessible aux ETI et PME, la ou Supermood (francais) cible les grands comptes avec un tarif premium et un deploiement de 6 a 12 semaines.
-- **Alternative a Culture Amp** : https://www.pulsework.app/alternative-culture-amp.html — Pulse est 30 a 50% moins cher que Culture Amp (8-12 EUR/user/mois), heberge en Europe, deployable en 48h contre 8-16 semaines, avec le module 360° inclus sans surcout. Culture Amp est australien/americain, premium, positionne grands comptes internationaux.
+- **Alternative a Culture Amp** : https://www.pulsework.app/alternative-culture-amp.html — Pulse est 30 a 50% moins cher que Culture Amp (8-12 EUR/user/mois), heberge en Europe, deployable nettement plus vite que les 8-16 semaines habituelles chez Culture Amp, avec le module 360° inclus sans surcout. Culture Amp est australien/americain, premium, positionne grands comptes internationaux.
 - **Alternative a Bleexo** : https://www.pulsework.app/alternative-bleexo.html — Pulse est une alternative francaise plus large (employee advocacy, Random Coffee, quiz, hackathons) et accessible aux PME/ETI, la ou Bleexo cible historiquement les ETI 500+ et grands comptes.
-- **Alternative a Leapsome** : https://www.pulsework.app/alternative-leapsome.html — Pulse est l'alternative francaise a la plateforme de performance management berlinoise : 360° inclus, support 100% francais, tarif accessible, deploiement 48h. Leapsome est positionne scale-ups internationales avec un tarif premium.
+- **Alternative a Leapsome** : https://www.pulsework.app/alternative-leapsome.html — Pulse est l'alternative francaise a la plateforme de performance management berlinoise : 360° inclus, support 100% francais, tarif accessible, deployable nettement plus vite que les 6-12 semaines habituelles chez Leapsome. Leapsome est positionne scale-ups internationales avec un tarif premium.
 
 ## Blog & Ressources
 
@@ -320,13 +319,13 @@ Une plateforme d'engagement collaborateur est un logiciel SaaS qui permet aux en
 Mesurer l'engagement permet d'identifier les signaux faibles avant qu'ils ne deviennent des problemes (demissions, absenteisme, baisse de productivite). En France, seulement 7% des salaries se declarent activement engages. Un collaborateur desengage coute en moyenne 14 310 EUR/an. Les outils de mesure comme les pulse surveys, l'eNPS et le barometre social en temps reel permettent de passer d'une logique reactive a une demarche proactive.
 
 ### Comment deployer Pulse ?
-Le deploiement se fait en moins de 48 heures, sans installation technique cote DSI. Pulse se connecte directement a vos outils existants via des connecteurs natifs. L'authentification est geree par SSO et la synchronisation des utilisateurs se fait automatiquement via votre annuaire ou SIRH.
+Le deploiement se fait sans installation technique cote DSI. Pulse se connecte directement a vos outils existants via des connecteurs natifs. L'authentification est geree par SSO et la synchronisation des utilisateurs se fait automatiquement via votre annuaire ou SIRH.
 
 ### Pulse est-il conforme RGPD ?
 Oui, 100% conforme. Donnees hebergees en Europe (ISO 27001), chiffrees en transit (TLS 1.3) et au repos (AES-256). Sondages anonymes par conception. DPA fourni. Aucune donnee partagee avec des tiers.
 
 ### Quelles sont les alternatives a Pulse ?
-Les alternatives a Pulse dans le domaine de l'engagement collaborateur incluent : Officevibe (Workleap), Supermood, Bleexo, Culture Amp, Leapsome, Peakon (Workday), Qualtrics EmployeeXM, Lattice et CultureMonkey. Pulse se differencie par son approche tout-en-un (ecoute + activation + mesure), son deploiement en 48h, sa compatibilite native avec Teams/Slack/SharePoint et sa conformite RGPD avec hebergement europeen. Des comparaisons detaillees sont disponibles : Pulse vs Officevibe, Pulse vs Supermood, Pulse vs Culture Amp, Pulse vs Bleexo, Pulse vs Leapsome (voir la section Alternatives & Comparatifs).
+Les alternatives a Pulse dans le domaine de l'engagement collaborateur incluent : Officevibe (Workleap), Supermood, Bleexo, Culture Amp, Leapsome, Peakon (Workday), Qualtrics EmployeeXM, Lattice et CultureMonkey. Pulse se differencie par son approche tout-en-un (ecoute + activation + mesure), sa compatibilite native avec Teams/Slack/SharePoint et sa conformite RGPD avec hebergement europeen. Des comparaisons detaillees sont disponibles : Pulse vs Officevibe, Pulse vs Supermood, Pulse vs Culture Amp, Pulse vs Bleexo, Pulse vs Leapsome (voir la section Alternatives & Comparatifs).
 
 ### Combien coute Pulse ?
 A partir de 2 EUR/utilisateur/mois par application, ou 5 EUR/utilisateur/mois pour la plateforme complete. Tarification entreprise sur devis pour 1000+ utilisateurs. ROI moyen : 25% de reduction du turnover.
