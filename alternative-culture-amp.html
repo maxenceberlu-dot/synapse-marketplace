@@ -231,6 +231,15 @@
     .footer a { color: var(--text-secondary); text-decoration: none; }
     .footer a:hover { color: var(--text-primary); }
     @media (max-width: 768px) { .nav { padding: 12px 20px; } .hero { padding: 120px 20px 60px; } .section { padding: 40px 20px; } .stats { padding: 0 20px; } .cta-section { margin: 40px 20px; padding: 40px 24px; } .features-grid { grid-template-columns: 1fr; } .nav-actions .btn-ghost { display: none; } }
+  
+    .compare-table-wrap { overflow-x: auto; margin-top: 40px; border: 1px solid var(--glass-border); border-radius: var(--radius-md); }
+    .compare-table { width: 100%; border-collapse: collapse; background: var(--bg-card); font-size: 0.92rem; }
+    .compare-table caption { text-align: left; padding: 16px 20px 0; font-size: 0.85rem; color: var(--text-tertiary); }
+    .compare-table th, .compare-table td { padding: 16px 20px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--glass-border); line-height: 1.55; }
+    .compare-table thead th { font-family: var(--font-display); font-weight: 700; color: var(--text-primary); background: var(--glass); white-space: nowrap; }
+    .compare-table tbody th { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+    .compare-table tbody tr:last-child th, .compare-table tbody tr:last-child td { border-bottom: none; }
+    .compare-table tbody td:last-child { color: var(--text-secondary); }
   </style>
   <link rel="stylesheet" href="/assets/css/nav-shared.css?v=2">
 <link rel="stylesheet" href="/theme.css">
@@ -434,38 +443,46 @@
   <section class="section" id="comparatif">
     <h2>Pulse vs Culture Amp : comparatif fonctionnel détaillé</h2>
     <p>Culture Amp et Pulse couvrent tous deux l'engagement collaborateur, mais avec des positionnements et des prix très différents. Voici la comparaison fonctionnelle clé en 6 dimensions :</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">&#x1F4CA;</div>
-        <h3>Pulse Surveys</h3>
-        <p><strong>Culture Amp</strong> : module Engagement premium, AI-powered insights, cadence configurable.<br><strong>Pulse</strong> : pulse surveys équivalents avec dimensions configurables, alertes signaux faibles, intégration native Teams/Slack — pour 30-50 % moins cher.</p>
+    <div class="compare-table-wrap">
+        <table class="compare-table">
+          <caption>Comparatif fonctionnel Pulse vs Culture Amp, 6 dimensions</caption>
+          <thead>
+            <tr><th scope="col">Dimension</th><th scope="col">Culture Amp</th><th scope="col">Pulse</th></tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">&#x1F4CA; Pulse Surveys</th>
+            <td>module Engagement premium, AI-powered insights, cadence configurable.</td>
+            <td>pulse surveys équivalents avec dimensions configurables, alertes signaux faibles, intégration native Teams/Slack — pour 30-50 % moins cher.</td>
+          </tr>
+          <tr>
+            <th scope="row">&#x1F389; Reconnaissance entre pairs</th>
+            <td>feedback léger, plutôt axé développement individuel.</td>
+            <td>module reconnaissance entre pairs complet (Thank You Plugin), badges personnalisables, mur de gratitude public, gamification optionnelle.</td>
+          </tr>
+          <tr>
+            <th scope="row">&#x1F3AF; Feedback 360°</th>
+            <td>module 360° complet et puissant, mais facturé séparément (~5€/user/mois).</td>
+            <td>feedback 360° inclus dans la plateforme — 4 catégories de répondants, anonymat configurable, rapports avec radars de compétences. Pas de surcoût.</td>
+          </tr>
+          <tr>
+            <th scope="row">&#x1F4E3; Employee Advocacy</th>
+            <td>non disponible (Sociabble, Hootsuite Amplify sont les choix typiques).</td>
+            <td>module Employee Advocacy intégré — posts LinkedIn pré-rédigés, gamification, analytics par ambassadeur.</td>
+          </tr>
+          <tr>
+            <th scope="row">&#x2615; Random Coffee, Quiz, Hackathons</th>
+            <td>non disponible (outils séparés requis : Donut, Kahoot, Briq...).</td>
+            <td>modules natifs Random Coffee, Quiz Master, Hackathon, Secret Santa, défis bien-être, pronostics sportifs — dans la même plateforme.</td>
+          </tr>
+          <tr>
+            <th scope="row">&#x1F1EA;&#x1F1FA; Hébergement & RGPD</th>
+            <td>data centers Australie et USA, option Frankfurt en supplément.</td>
+            <td>100 % hébergement Europe par défaut, DPA inclus, chiffrement TLS 1.3 + AES-256, conforme CNIL — sans option payante.</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#x1F389;</div>
-        <h3>Reconnaissance entre pairs</h3>
-        <p><strong>Culture Amp Skills Coach</strong> : feedback léger, plutôt axé développement individuel.<br><strong>Pulse</strong> : module reconnaissance entre pairs complet (Thank You Plugin), badges personnalisables, mur de gratitude public, gamification optionnelle.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#x1F3AF;</div>
-        <h3>Feedback 360°</h3>
-        <p><strong>Culture Amp Performance</strong> : module 360° complet et puissant, mais facturé séparément (~5€/user/mois).<br><strong>Pulse</strong> : feedback 360° inclus dans la plateforme — 4 catégories de répondants, anonymat configurable, rapports avec radars de compétences. Pas de surcoût.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#x1F4E3;</div>
-        <h3>Employee Advocacy</h3>
-        <p><strong>Culture Amp</strong> : non disponible (Sociabble, Hootsuite Amplify sont les choix typiques).<br><strong>Pulse</strong> : module Employee Advocacy intégré — posts LinkedIn pré-rédigés, gamification, analytics par ambassadeur.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#x2615;</div>
-        <h3>Random Coffee, Quiz, Hackathons</h3>
-        <p><strong>Culture Amp</strong> : non disponible (outils séparés requis : Donut, Kahoot, Briq...).<br><strong>Pulse</strong> : modules natifs Random Coffee, Quiz Master, Hackathon, Secret Santa, défis bien-être, pronostics sportifs — dans la même plateforme.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#x1F1EA;&#x1F1FA;</div>
-        <h3>Hébergement & RGPD</h3>
-        <p><strong>Culture Amp</strong> : data centers Australie et USA, option Frankfurt en supplément.<br><strong>Pulse</strong> : 100 % hébergement Europe par défaut, DPA inclus, chiffrement TLS 1.3 + AES-256, conforme CNIL — sans option payante.</p>
-      </div>
-    </div>
   </section>
 
   <section class="section">

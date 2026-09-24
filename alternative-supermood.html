@@ -231,6 +231,15 @@
     .footer a { color: var(--text-secondary); text-decoration: none; }
     .footer a:hover { color: var(--text-primary); }
     @media (max-width: 768px) { .nav { padding: 12px 20px; } .hero { padding: 120px 20px 60px; } .section { padding: 40px 20px; } .stats { padding: 0 20px; } .cta-section { margin: 40px 20px; padding: 40px 24px; } .features-grid { grid-template-columns: 1fr; } .nav-actions .btn-ghost { display: none; } }
+  
+    .compare-table-wrap { overflow-x: auto; margin-top: 40px; border: 1px solid var(--glass-border); border-radius: var(--radius-md); }
+    .compare-table { width: 100%; border-collapse: collapse; background: var(--bg-card); font-size: 0.92rem; }
+    .compare-table caption { text-align: left; padding: 16px 20px 0; font-size: 0.85rem; color: var(--text-tertiary); }
+    .compare-table th, .compare-table td { padding: 16px 20px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--glass-border); line-height: 1.55; }
+    .compare-table thead th { font-family: var(--font-display); font-weight: 700; color: var(--text-primary); background: var(--glass); white-space: nowrap; }
+    .compare-table tbody th { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+    .compare-table tbody tr:last-child th, .compare-table tbody tr:last-child td { border-bottom: none; }
+    .compare-table tbody td:last-child { color: var(--text-secondary); }
   </style>
   <link rel="stylesheet" href="/assets/css/nav-shared.css?v=2">
 <link rel="stylesheet" href="/theme.css">
@@ -433,38 +442,46 @@
   <section class="section" id="comparatif">
     <h2>Pulse vs Supermood : comparatif fonctionnel détaillé</h2>
     <p>Supermood et Pulse sont tous deux français et leaders sur l'engagement collaborateur, mais avec des positionnements distincts. Voici la comparaison fonctionnelle clé en 6 dimensions :</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">&#x1F4CA;</div>
-        <h3>Pulse Surveys</h3>
-        <p><strong>Supermood</strong> : leader baromètre social grand compte, dimensions configurables.<br><strong>Pulse</strong> : couverture pulse survey équivalente, cadence configurable, alertes signaux faibles, intégration native Teams/Slack pour répondre sans portail externe.</p>
+    <div class="compare-table-wrap">
+        <table class="compare-table">
+          <caption>Comparatif fonctionnel Pulse vs Supermood, 6 dimensions</caption>
+          <thead>
+            <tr><th scope="col">Dimension</th><th scope="col">Supermood</th><th scope="col">Pulse</th></tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">&#x1F4CA; Pulse Surveys</th>
+            <td>leader baromètre social grand compte, dimensions configurables.</td>
+            <td>couverture pulse survey équivalente, cadence configurable, alertes signaux faibles, intégration native Teams/Slack pour répondre sans portail externe.</td>
+          </tr>
+          <tr>
+            <th scope="row">&#x1F389; Reconnaissance entre pairs</th>
+            <td>non disponible nativement (intégration tierce requise).</td>
+            <td>module reconnaissance entre pairs intégré, badges 100 % personnalisables alignés sur vos valeurs, mur de gratitude public, gamification optionnelle.</td>
+          </tr>
+          <tr>
+            <th scope="row">&#x1F3AF; Feedback 360°</th>
+            <td>non disponible nativement, périmètre limité au baromètre.</td>
+            <td>feedback 360° complet, 4 catégories de répondants (manager, pairs, équipes transverses, auto-évaluation), anonymat configurable, rapports avec radars de compétences.</td>
+          </tr>
+          <tr>
+            <th scope="row">&#x1F4E3; Employee Advocacy</th>
+            <td>non disponible (Sociabble ou Limber sont les choix typiques).</td>
+            <td>module Employee Advocacy intégré — posts LinkedIn pré-rédigés, gamification, analytics par ambassadeur.</td>
+          </tr>
+          <tr>
+            <th scope="row">&#x2615; Random Coffee, Quiz, Hackathons</th>
+            <td>non disponible (outils séparés requis : Donut, Kahoot, Briq...).</td>
+            <td>modules natifs Random Coffee, Quiz Master, Hackathon, Secret Santa, défis bien-être, pronostics sportifs — dans la même plateforme.</td>
+          </tr>
+          <tr>
+            <th scope="row">&#x1F1EA;&#x1F1FA; Hébergement & RGPD</th>
+            <td>hébergement Europe, conforme RGPD.</td>
+            <td>également 100 % hébergement Europe, DPA inclus, chiffrement TLS 1.3 + AES-256, conforme CNIL — équivalence sur ce point.</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#x1F389;</div>
-        <h3>Reconnaissance entre pairs</h3>
-        <p><strong>Supermood</strong> : non disponible nativement (intégration tierce requise).<br><strong>Pulse</strong> : module reconnaissance entre pairs intégré, badges 100 % personnalisables alignés sur vos valeurs, mur de gratitude public, gamification optionnelle.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#x1F3AF;</div>
-        <h3>Feedback 360°</h3>
-        <p><strong>Supermood</strong> : non disponible nativement, périmètre limité au baromètre.<br><strong>Pulse</strong> : feedback 360° complet, 4 catégories de répondants (manager, pairs, équipes transverses, auto-évaluation), anonymat configurable, rapports avec radars de compétences.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#x1F4E3;</div>
-        <h3>Employee Advocacy</h3>
-        <p><strong>Supermood</strong> : non disponible (Sociabble ou Limber sont les choix typiques).<br><strong>Pulse</strong> : module Employee Advocacy intégré — posts LinkedIn pré-rédigés, gamification, analytics par ambassadeur.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#x2615;</div>
-        <h3>Random Coffee, Quiz, Hackathons</h3>
-        <p><strong>Supermood</strong> : non disponible (outils séparés requis : Donut, Kahoot, Briq...).<br><strong>Pulse</strong> : modules natifs Random Coffee, Quiz Master, Hackathon, Secret Santa, défis bien-être, pronostics sportifs — dans la même plateforme.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#x1F1EA;&#x1F1FA;</div>
-        <h3>Hébergement & RGPD</h3>
-        <p><strong>Supermood</strong> : hébergement Europe, conforme RGPD.<br><strong>Pulse</strong> : également 100 % hébergement Europe, DPA inclus, chiffrement TLS 1.3 + AES-256, conforme CNIL — équivalence sur ce point.</p>
-      </div>
-    </div>
   </section>
 
   <section class="section">
