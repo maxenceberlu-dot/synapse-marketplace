@@ -51,6 +51,10 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
+# Cohere AI Search
+User-agent: cohere-ai
+Allow: /
+
 # ==============================================
 # AI Training Crawlers — BLOCKED
 # Block model training, keep search visibility
