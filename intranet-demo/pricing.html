@@ -61,6 +61,8 @@ h3{font-size:1.15rem;margin-bottom:8px;}
 .ms-tab:hover{color:var(--text-primary);}
 .ms-tab-active{background:var(--bg-card);color:var(--text-primary);box-shadow:var(--shadow-sm);}
 .ms-actions{display:flex;align-items:center;gap:10px;}
+.lang-toggle{width:40px;height:36px;border-radius:10px;border:1px solid var(--border-strong);background:var(--bg-card);color:var(--text-primary);font-weight:700;font-size:0.8rem;display:flex;align-items:center;justify-content:center;transition:var(--transition);}
+.lang-toggle:hover{background:var(--bg-subtle);}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 22px;border-radius:999px;font-weight:600;font-size:0.92rem;text-decoration:none;border:none;transition:var(--transition);white-space:nowrap;}
 .btn-primary{background:var(--gradient-brand);color:#fff;box-shadow:0 6px 20px rgba(216,31,120,0.25);}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(216,31,120,0.35);}
@@ -213,7 +215,6 @@ table.compare-table{width:100%;border-collapse:collapse;}
   .ms-logo span:last-child{display:none;}
   .ms-tabs{gap:2px;padding:3px;}
   .ms-tab{padding:7px 9px;font-size:0.74rem;white-space:nowrap;}
-  .ms-actions .btn{display:none;}
   .container{padding:0 18px;}
   .section{padding:52px 0;}
   .hero{padding:44px 0 40px;}
@@ -232,25 +233,28 @@ table.compare-table{width:100%;border-collapse:collapse;}
       <span>Pulse</span>
     </a>
     <nav class="ms-tabs" aria-label="Navigation du site de démonstration">
-      <a href="index.html" class="ms-tab">Démonstration</a>
-      <a href="pricing.html" class="ms-tab ms-tab-active" aria-current="page">Tarifs &amp; offres</a>
-      <a href="widgets.html" class="ms-tab">Widgets</a>
+      <a href="index.html" class="ms-tab" data-i18n="navDemo">Démonstration</a>
+      <a href="pricing.html" class="ms-tab ms-tab-active" aria-current="page" data-i18n="navPricing">Tarifs &amp; offres</a>
+      <a href="widgets.html" class="ms-tab" data-i18n="navWidgets">Widgets</a>
     </nav>
+    <div class="ms-actions">
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language / Changer de langue">EN</button>
+    </div>
   </div>
 </header>
 
 <main>
   <!-- ===================== 1. HERO ===================== -->
   <section class="hero container">
-    <h1>Un intranet à votre image, <span class="accent">pensé pour vos équipes</span></h1>
-    <p class="hero-sub">Un intranet sur mesure, livré et maintenu par Pulse, pour un prix comparable à une solution SaaS standard. Vous gardez la maîtrise du produit, de vos données et de votre roadmap.</p>
+    <h1><span data-i18n="heroTitle">Un intranet à votre image, </span><span class="accent" data-i18n="heroAccent">pensé pour vos équipes</span></h1>
+    <p class="hero-sub" data-i18n="heroSub">Un intranet sur mesure, livré et maintenu par Pulse, pour un prix comparable à une solution SaaS standard. Vous gardez la maîtrise du produit, de vos données et de votre roadmap.</p>
     <div class="hero-cta">
-      <a href="#comparatif" class="btn btn-primary">Comparer les offres</a>
+      <a href="#comparatif" class="btn btn-primary" data-i18n="heroCta">Comparer les offres</a>
     </div>
     <div class="reassurance">
-      <div class="reassurance-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18 13 13 0 0 1 0-18Z"/></svg> Hébergement en Union européenne</div>
-      <div class="reassurance-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg> Conforme RGPD</div>
-      <div class="reassurance-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4l-5 5a2 2 0 0 0 2.8 2.8l5-5a4 4 0 0 1 5.4-5.4l-2.7 2.7-2-2 2.7-2.7Z"/></svg> Maintenance et support inclus</div>
+      <div class="reassurance-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18 13 13 0 0 1 0-18Z"/></svg> <span data-i18n="reassuranceHosting">Hébergement en Union européenne</span></div>
+      <div class="reassurance-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg> <span data-i18n="reassuranceGDPR">Conforme RGPD</span></div>
+      <div class="reassurance-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4l-5 5a2 2 0 0 0 2.8 2.8l5-5a4 4 0 0 1 5.4-5.4l-2.7 2.7-2-2 2.7-2.7Z"/></svg> <span data-i18n="reassuranceSupport">Maintenance et support inclus</span></div>
     </div>
   </section>
 
@@ -260,17 +264,17 @@ table.compare-table{width:100%;border-collapse:collapse;}
       <div class="simulator reveal">
         <div class="simulator-head">
           <div>
-            <span class="eyebrow">Simulateur</span>
-            <h3 style="margin:0;">Combien de collaborateurs ?</h3>
+            <span class="eyebrow" data-i18n="simEyebrow">Simulateur</span>
+            <h3 style="margin:0;" data-i18n="simTitle">Combien de collaborateurs ?</h3>
           </div>
           <div class="simulator-input-group">
             <input type="number" id="usersInput" min="50" max="1000" value="200" aria-label="Nombre de collaborateurs">
-            <span class="simulator-input-suffix">collaborateurs</span>
+            <span class="simulator-input-suffix" data-i18n="simSuffix">collaborateurs</span>
           </div>
         </div>
         <input type="range" id="usersSlider" min="50" max="1000" step="10" value="200" aria-label="Curseur du nombre de collaborateurs">
         <div class="slider-scale"><span>50</span><span>1 000</span></div>
-        <p class="min-billing-note" id="minBillingNote">Minimum de facturation : 150 utilisateurs</p>
+        <p class="min-billing-note" id="minBillingNote" data-i18n="minBilling">Minimum de facturation : 150 utilisateurs</p>
       </div>
 
       <!-- ===================== 3. OFFRES ===================== -->
@@ -282,9 +286,9 @@ table.compare-table{width:100%;border-collapse:collapse;}
   <section class="section section-alt" id="comparatif">
     <div class="container">
       <div class="section-intro">
-        <span class="eyebrow">Comparatif</span>
-        <h2>Le détail complet, catégorie par catégorie</h2>
-        <p>Toutes les fonctionnalités incluses dans chaque offre, regroupées par thème.</p>
+        <span class="eyebrow" data-i18n="compareEyebrow">Comparatif</span>
+        <h2 data-i18n="compareTitle">Le détail complet, catégorie par catégorie</h2>
+        <p data-i18n="compareIntro">Toutes les fonctionnalités incluses dans chaque offre, regroupées par thème.</p>
       </div>
       <div class="compare-mobile-tabs" id="compareMobileTabs"></div>
       <div class="compare-table-wrap">
@@ -300,30 +304,30 @@ table.compare-table{width:100%;border-collapse:collapse;}
   <section class="section" id="inclus">
     <div class="container">
       <div class="section-intro">
-        <span class="eyebrow">Licence mensuelle</span>
-        <h2>Ce que couvre le prix récurrent</h2>
-        <p>La licence n'est pas qu'un droit d'usage : elle finance l'exploitation et l'amélioration continue de votre intranet.</p>
+        <span class="eyebrow" data-i18n="includedEyebrow">Licence mensuelle</span>
+        <h2 data-i18n="includedTitle">Ce que couvre le prix récurrent</h2>
+        <p data-i18n="includedIntro">La licence n'est pas qu'un droit d'usage : elle finance l'exploitation et l'amélioration continue de votre intranet.</p>
       </div>
       <div class="included-grid">
         <div class="included-card reveal">
           <div class="included-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><circle cx="7" cy="7.5" r=".6" fill="currentColor" stroke="none"/><circle cx="7" cy="16.5" r=".6" fill="currentColor" stroke="none"/></svg></div>
-          <h4>Hébergement &amp; sauvegardes</h4>
-          <p>Hébergement sécurisé en Union européenne et sauvegardes quotidiennes de l'ensemble de vos données.</p>
+          <h4 data-i18n="inc1Title">Hébergement &amp; sauvegardes</h4>
+          <p data-i18n="inc1Text">Hébergement sécurisé en Union européenne et sauvegardes quotidiennes de l'ensemble de vos données.</p>
         </div>
         <div class="included-card reveal">
           <div class="included-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z"/></svg></div>
-          <h4>Maintenance &amp; sécurité</h4>
-          <p>Correction des anomalies et mises à jour de sécurité appliquées en continu, sans intervention de votre part.</p>
+          <h4 data-i18n="inc2Title">Maintenance &amp; sécurité</h4>
+          <p data-i18n="inc2Text">Correction des anomalies et mises à jour de sécurité appliquées en continu, sans intervention de votre part.</p>
         </div>
         <div class="included-card reveal">
           <div class="included-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
-          <h4>Évolutions du produit</h4>
-          <p>Les évolutions mineures de la plateforme sont livrées automatiquement, sans surcoût ni nouveau projet.</p>
+          <h4 data-i18n="inc3Title">Évolutions du produit</h4>
+          <p data-i18n="inc3Text">Les évolutions mineures de la plateforme sont livrées automatiquement, sans surcoût ni nouveau projet.</p>
         </div>
         <div class="included-card reveal">
           <div class="included-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></div>
-          <h4>Support utilisateurs &amp; admins</h4>
-          <p>Un support dédié pour vos collaborateurs comme pour vos administrateurs, avec un niveau de priorité selon l'offre.</p>
+          <h4 data-i18n="inc4Title">Support utilisateurs &amp; admins</h4>
+          <p data-i18n="inc4Text">Un support dédié pour vos collaborateurs comme pour vos administrateurs, avec un niveau de priorité selon l'offre.</p>
         </div>
       </div>
     </div>
@@ -333,9 +337,9 @@ table.compare-table{width:100%;border-collapse:collapse;}
   <section class="section" id="deroule">
     <div class="container">
       <div class="section-intro">
-        <span class="eyebrow">Méthode</span>
-        <h2>Le déroulé de votre projet</h2>
-        <p>Cinq étapes, du cadrage au lancement, avec des points de validation réguliers.</p>
+        <span class="eyebrow" data-i18n="methodEyebrow">Méthode</span>
+        <h2 data-i18n="methodTitle">Le déroulé de votre projet</h2>
+        <p data-i18n="methodIntro">Cinq étapes, du cadrage au lancement, avec des points de validation réguliers.</p>
       </div>
       <div class="timeline" id="timeline" role="tablist" aria-label="Étapes du projet"></div>
       <div class="timeline-desc" id="timelineDesc"></div>
@@ -346,17 +350,12 @@ table.compare-table{width:100%;border-collapse:collapse;}
   <section class="section section-alt" id="conditions">
     <div class="container">
       <div class="section-intro">
-        <span class="eyebrow">Cadre contractuel</span>
-        <h2>Conditions générales</h2>
+        <span class="eyebrow" data-i18n="conditionsEyebrow">Cadre contractuel</span>
+        <h2 data-i18n="conditionsTitle">Conditions générales</h2>
       </div>
       <div class="conditions-box reveal">
-        <ul class="conditions-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span><strong>Engagement de 3 ans</strong>, aligné sur la durée d'amortissement du projet.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span><strong>Minimum de facturation : 150 utilisateurs</strong>, quel que soit votre effectif réel.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span><strong>Révision annuelle de la licence</strong> plafonnée à 3 % maximum.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span><strong>Évolutions hors périmètre</strong> traitées sur devis, au temps passé.</span></li>
-        </ul>
-        <p style="margin-top:18px;font-size:0.82rem;color:var(--text-tertiary);">Tous les prix indiqués sur cette page sont exprimés hors taxes (HT).</p>
+        <ul class="conditions-list" id="conditionsList"></ul>
+        <p style="margin-top:18px;font-size:0.82rem;color:var(--text-tertiary);" data-i18n="pricesHT">Tous les prix indiqués sur cette page sont exprimés hors taxes (HT).</p>
       </div>
     </div>
   </section>
@@ -365,8 +364,8 @@ table.compare-table{width:100%;border-collapse:collapse;}
   <section class="section" id="faq">
     <div class="container">
       <div class="section-intro">
-        <span class="eyebrow">Questions fréquentes</span>
-        <h2>Ce que nos clients nous demandent</h2>
+        <span class="eyebrow" data-i18n="faqEyebrow">Questions fréquentes</span>
+        <h2 data-i18n="faqTitle">Ce que nos clients nous demandent</h2>
       </div>
       <div class="faq-list" id="faqList"></div>
     </div>
@@ -381,133 +380,317 @@ table.compare-table{width:100%;border-collapse:collapse;}
       <span>Pulse</span>
     </a>
     <div class="footer-links">
-      <a href="#">Mentions légales</a>
+      <a href="#" data-i18n="legal">Mentions légales</a>
     </div>
   </div>
 </footer>
 
 <script>
 /* ============================================================
-   CONFIG — toutes les données modifiables de la page
+   TEXTES D'INTERFACE (hors CONFIG) — FR / EN
    ============================================================ */
-const CONFIG = {
-  company: { name: 'Pulse' },
-  users: { min: 50, max: 1000, default: 200, billingMinimum: 150 },
-  categories: ['Communication', 'Annuaire et organisation', 'Documents et recherche', 'Sécurité et accès', 'Mobile', 'Analytics', 'Intégrations', 'Accompagnement et support'],
-  plans: [
-    {
-      id: 'essentiel', name: 'Essentiel', tagline: 'Le socle pour informer et connecter vos équipes.',
-      setup: 15000, pricePerUser: 6, deadline: '6 à 8 semaines', recommended: false,
-      highlights: [
-        "Fil d'actualités avec ciblage par service ou site",
-        'Annuaire collaborateurs avec recherche',
-        'Bibliothèque documentaire avec droits par dossier',
-        "Pages par service, éditables par vos référents",
-        'Back-office de publication et gestion des rôles',
-        'Launchpad : bouton d’accès direct à vos outils',
-        'Application web installable (PWA) iOS et Android'
+const UI_STRINGS = {
+  fr: {
+    navDemo: 'Démonstration', navPricing: 'Tarifs & offres', navWidgets: 'Widgets',
+    heroTitle: 'Un intranet à votre image, ', heroAccent: 'pensé pour vos équipes',
+    heroSub: "Un intranet sur mesure, livré et maintenu par Pulse, pour un prix comparable à une solution SaaS standard. Vous gardez la maîtrise du produit, de vos données et de votre roadmap.",
+    heroCta: 'Comparer les offres',
+    reassuranceHosting: 'Hébergement en Union européenne', reassuranceGDPR: 'Conforme RGPD', reassuranceSupport: 'Maintenance et support inclus',
+    simEyebrow: 'Simulateur', simTitle: 'Combien de collaborateurs ?', simSuffix: 'collaborateurs',
+    minBilling: 'Minimum de facturation : 150 utilisateurs',
+    minBillingActive: 'Minimum de facturation : 150 utilisateurs. Le calcul ci-dessous est effectué sur cette base.',
+    compareEyebrow: 'Comparatif', compareTitle: 'Le détail complet, catégorie par catégorie',
+    compareIntro: 'Toutes les fonctionnalités incluses dans chaque offre, regroupées par thème.',
+    tableFeatureCol: 'Fonctionnalité', perUserMonth: '€ / util. / mois',
+    includedSR: ' inclus', notIncludedSR: ' non inclus', recommended: 'Recommandé',
+    setupLabel: 'Mise en place', setupFrom: 'à partir de', deadlineLabel: 'Mise en ligne estimée : ',
+    perMonth: '/ mois', perYear: function(n){ return 'soit ' + n + ' / an'; },
+    seeFullScope: 'Voir tout le périmètre', hideFullScope: 'Masquer le périmètre',
+    includedEyebrow: 'Licence mensuelle', includedTitle: 'Ce que couvre le prix récurrent',
+    includedIntro: "La licence n'est pas qu'un droit d'usage : elle finance l'exploitation et l'amélioration continue de votre intranet.",
+    inc1Title: 'Hébergement & sauvegardes', inc1Text: "Hébergement sécurisé en Union européenne et sauvegardes quotidiennes de l'ensemble de vos données.",
+    inc2Title: 'Maintenance & sécurité', inc2Text: 'Correction des anomalies et mises à jour de sécurité appliquées en continu, sans intervention de votre part.',
+    inc3Title: 'Évolutions du produit', inc3Text: 'Les évolutions mineures de la plateforme sont livrées automatiquement, sans surcoût ni nouveau projet.',
+    inc4Title: 'Support utilisateurs & admins', inc4Text: "Un support dédié pour vos collaborateurs comme pour vos administrateurs, avec un niveau de priorité selon l'offre.",
+    methodEyebrow: 'Méthode', methodTitle: 'Le déroulé de votre projet',
+    methodIntro: 'Cinq étapes, du cadrage au lancement, avec des points de validation réguliers.',
+    stepPrefix: 'Étape',
+    conditionsEyebrow: 'Cadre contractuel', conditionsTitle: 'Conditions générales',
+    cond1: "<strong>Engagement de 3 ans</strong>, aligné sur la durée d'amortissement du projet.",
+    cond2: '<strong>Minimum de facturation : 150 utilisateurs</strong>, quel que soit votre effectif réel.',
+    cond3: '<strong>Révision annuelle de la licence</strong> plafonnée à 3 % maximum.',
+    cond4: '<strong>Évolutions hors périmètre</strong> traitées sur devis, au temps passé.',
+    pricesHT: 'Tous les prix indiqués sur cette page sont exprimés hors taxes (HT).',
+    faqEyebrow: 'Questions fréquentes', faqTitle: 'Ce que nos clients nous demandent',
+    legal: 'Mentions légales'
+  },
+  en: {
+    navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets',
+    heroTitle: 'An intranet in your image, ', heroAccent: 'built around your teams',
+    heroSub: "A bespoke intranet, delivered and maintained by Pulse, for a price comparable to a standard SaaS solution. You keep full ownership of the product, your data and your roadmap.",
+    heroCta: 'Compare plans',
+    reassuranceHosting: 'Hosted in the European Union', reassuranceGDPR: 'GDPR compliant', reassuranceSupport: 'Maintenance and support included',
+    simEyebrow: 'Simulator', simTitle: 'How many employees?', simSuffix: 'employees',
+    minBilling: 'Minimum billing: 150 users',
+    minBillingActive: 'Minimum billing: 150 users. The calculation below is based on this figure.',
+    compareEyebrow: 'Comparison', compareTitle: 'The full breakdown, category by category',
+    compareIntro: 'Every feature included in each plan, grouped by theme.',
+    tableFeatureCol: 'Feature', perUserMonth: '€ / user / month',
+    includedSR: ' included', notIncludedSR: ' not included', recommended: 'Recommended',
+    setupLabel: 'Setup', setupFrom: 'from', deadlineLabel: 'Estimated go-live: ',
+    perMonth: '/ month', perYear: function(n){ return n + ' / year'; },
+    seeFullScope: 'View full scope', hideFullScope: 'Hide full scope',
+    includedEyebrow: 'Monthly licence', includedTitle: "What's covered by the recurring price",
+    includedIntro: "The licence isn't just a right to use the product: it funds the ongoing operation and improvement of your intranet.",
+    inc1Title: 'Hosting & backups', inc1Text: 'Secure hosting in the European Union and daily backups of all your data.',
+    inc2Title: 'Maintenance & security', inc2Text: 'Bug fixes and security updates applied continuously, with no action needed on your part.',
+    inc3Title: 'Product improvements', inc3Text: 'Minor platform improvements are delivered automatically, at no extra cost and with no new project.',
+    inc4Title: 'User & admin support', inc4Text: 'Dedicated support for both your employees and your administrators, with a priority level based on your plan.',
+    methodEyebrow: 'Method', methodTitle: 'How your project unfolds',
+    methodIntro: 'Five steps, from scoping to launch, with regular checkpoints.',
+    stepPrefix: 'Step',
+    conditionsEyebrow: 'Contractual framework', conditionsTitle: 'Terms and conditions',
+    cond1: '<strong>3-year commitment</strong>, aligned with the project’s amortisation period.',
+    cond2: '<strong>Minimum billing: 150 users</strong>, regardless of your actual headcount.',
+    cond3: '<strong>Annual licence review</strong> capped at 3% maximum.',
+    cond4: '<strong>Out-of-scope changes</strong> quoted separately, billed on a time-spent basis.',
+    pricesHT: 'All prices shown on this page are exclusive of tax.',
+    faqEyebrow: 'Frequently asked questions', faqTitle: 'What our clients ask us',
+    legal: 'Legal notice'
+  }
+};
+
+/* ============================================================
+   CONFIG — données par offre, catégorie, FAQ, etc. — FR / EN
+   ============================================================ */
+const CONFIG_BY_LANG = {
+  fr: {
+    users: { min: 50, max: 1000, default: 200, billingMinimum: 150 },
+    categories: ['Communication', 'Annuaire et organisation', 'Documents et recherche', 'Sécurité et accès', 'Mobile', 'Analytics', 'Intégrations', 'Accompagnement et support'],
+    plans: [
+      {
+        id: 'essentiel', name: 'Essentiel', tagline: 'Le socle pour informer et connecter vos équipes.',
+        setup: 15000, pricePerUser: 6, deadline: '6 à 8 semaines', recommended: false,
+        highlights: [
+          "Fil d'actualités avec ciblage par service ou site",
+          'Annuaire collaborateurs avec recherche',
+          'Bibliothèque documentaire avec droits par dossier',
+          "Pages par service, éditables par vos référents",
+          'Back-office de publication et gestion des rôles',
+          'Launchpad : bouton d’accès direct à vos outils',
+          'Application web installable (PWA) iOS et Android'
+        ]
+      },
+      {
+        id: 'standard', name: 'Standard', tagline: 'L’intranet complet, intégré à vos outils.',
+        setup: 25000, pricePerUser: 8, deadline: '8 à 12 semaines', recommended: true,
+        highlights: [
+          'Launchpad personnalisé par métier, avec connexion unique (SSO)',
+          'Synchronisation SIRH et organigramme interactif',
+          'Recherche transverse (actualités, documents, personnes)',
+          'Notifications email et push',
+          "Agenda des événements internes",
+          "Tableau de bord statistiques d'adoption",
+          'Support prioritaire sous 24 h ouvrées'
+        ]
+      },
+      {
+        id: 'premium', name: 'Premium', tagline: 'Une plateforme digitale sur mesure pour vos processus métier.',
+        setup: 40000, pricePerUser: 10, deadline: '12 à 16 semaines', recommended: false,
+        highlights: [
+          'Launchpad complet : intégrations SIRH, paie, ticketing, M365/Google Workspace',
+          'Formulaires et workflows de validation (RH, IT, notes de frais)',
+          'Sondages et baromètres internes',
+          "Parcours d'onboarding des nouveaux arrivants",
+          'Application mobile native iOS et Android',
+          'Interface multilingue',
+          'Interlocuteur dédié et comité de pilotage trimestriel'
+        ]
+      }
+    ],
+    scope: {
+      'Communication': [
+        { label: "Fil d'actualités", essentiel: true, standard: true, premium: true },
+        { label: 'Ciblage des publications par service ou site', essentiel: true, standard: true, premium: true },
+        { label: 'Commentaires et réactions', essentiel: true, standard: true, premium: true },
+        { label: 'Notifications email et push', essentiel: false, standard: true, premium: true },
+        { label: 'Agenda des événements internes', essentiel: false, standard: true, premium: true },
+        { label: 'Sondages et baromètres internes', essentiel: false, standard: false, premium: true },
+        { label: "Parcours d'onboarding des nouveaux arrivants", essentiel: false, standard: false, premium: true }
+      ],
+      'Annuaire et organisation': [
+        { label: 'Profils collaborateurs', essentiel: true, standard: true, premium: true },
+        { label: 'Recherche par nom, service et site', essentiel: true, standard: true, premium: true },
+        { label: "Synchronisation automatique avec le SIRH", essentiel: false, standard: true, premium: true },
+        { label: 'Organigramme interactif', essentiel: false, standard: true, premium: true }
+      ],
+      'Documents et recherche': [
+        { label: 'Bibliothèque documentaire avec droits par dossier', essentiel: true, standard: true, premium: true },
+        { label: 'Pages par service, éditables par vos référents', essentiel: true, standard: true, premium: true },
+        { label: 'Recherche transverse (actualités, documents, personnes)', essentiel: false, standard: true, premium: true },
+        { label: 'Interface multilingue', essentiel: false, standard: false, premium: true }
+      ],
+      'Sécurité et accès': [
+        { label: 'Back-office de publication', essentiel: true, standard: true, premium: true },
+        { label: 'Gestion des rôles (admin, éditeur, lecteur)', essentiel: true, standard: true, premium: true },
+        { label: 'Launchpad (bouton d’accès direct à vos outils)', essentiel: true, standard: true, premium: true },
+        { label: 'Launchpad personnalisé par métier', essentiel: false, standard: true, premium: true },
+        { label: 'Connexion unique (SSO) Entra ID ou Google Workspace', essentiel: false, standard: true, premium: true }
+      ],
+      'Mobile': [
+        { label: 'Application web installable (PWA) iOS et Android', essentiel: true, standard: true, premium: true },
+        { label: 'Application mobile native iOS et Android', essentiel: false, standard: false, premium: true }
+      ],
+      'Analytics': [
+        { label: 'Tableau de bord statistiques (lecture, contenus, adoption)', essentiel: false, standard: true, premium: true }
+      ],
+      'Intégrations': [
+        { label: 'Intégrations outils métier (SIRH, paie, ticketing, M365/Google Workspace)', essentiel: false, standard: false, premium: true },
+        { label: 'Formulaires et workflows de validation (RH, IT, notes de frais)', essentiel: false, standard: false, premium: true }
+      ],
+      'Accompagnement et support': [
+        { label: 'Charte graphique appliquée (logo, couleurs, typographie)', essentiel: true, standard: true, premium: true },
+        { label: 'Hébergement Union européenne', essentiel: true, standard: true, premium: true },
+        { label: 'Maintenance corrective et mises à jour de sécurité', essentiel: true, standard: true, premium: true },
+        { label: 'Formation des administrateurs et éditeurs', essentiel: false, standard: '2 sessions', premium: '2 sessions' },
+        { label: 'Support', essentiel: 'Email', standard: '< 24h ouvrées', premium: '< 4h ouvrées' },
+        { label: 'Interlocuteur dédié et comité de pilotage trimestriel', essentiel: false, standard: false, premium: true }
       ]
     },
-    {
-      id: 'standard', name: 'Standard', tagline: 'L’intranet complet, intégré à vos outils.',
-      setup: 25000, pricePerUser: 8, deadline: '8 à 12 semaines', recommended: true,
-      highlights: [
-        'Launchpad personnalisé par métier, avec connexion unique (SSO)',
-        'Synchronisation SIRH et organigramme interactif',
-        'Recherche transverse (actualités, documents, personnes)',
-        'Notifications email et push',
-        "Agenda des événements internes",
-        "Tableau de bord statistiques d'adoption",
-        'Support prioritaire sous 24 h ouvrées'
-      ]
-    },
-    {
-      id: 'premium', name: 'Premium', tagline: 'Une plateforme digitale sur mesure pour vos processus métier.',
-      setup: 40000, pricePerUser: 10, deadline: '12 à 16 semaines', recommended: false,
-      highlights: [
-        'Launchpad complet : intégrations SIRH, paie, ticketing, M365/Google Workspace',
-        'Formulaires et workflows de validation (RH, IT, notes de frais)',
-        'Sondages et baromètres internes',
-        "Parcours d'onboarding des nouveaux arrivants",
-        'Application mobile native iOS et Android',
-        'Interface multilingue',
-        'Interlocuteur dédié et comité de pilotage trimestriel'
-      ]
-    }
-  ],
-  // Détail complet par catégorie, pour l'accordéon des offres et le tableau comparatif.
-  // Valeur : true (inclus), false (non inclus), ou une chaîne (valeur textuelle).
-  scope: {
-    'Communication': [
-      { label: "Fil d'actualités", essentiel: true, standard: true, premium: true },
-      { label: 'Ciblage des publications par service ou site', essentiel: true, standard: true, premium: true },
-      { label: 'Commentaires et réactions', essentiel: true, standard: true, premium: true },
-      { label: 'Notifications email et push', essentiel: false, standard: true, premium: true },
-      { label: 'Agenda des événements internes', essentiel: false, standard: true, premium: true },
-      { label: 'Sondages et baromètres internes', essentiel: false, standard: false, premium: true },
-      { label: "Parcours d'onboarding des nouveaux arrivants", essentiel: false, standard: false, premium: true }
+    timeline: [
+      { title: 'Cadrage', desc: "Ateliers avec vos équipes pour définir les besoins, les rôles et l'arborescence de contenu. Ce cadrage pose les fondations du projet et sert de référence pour toutes les étapes suivantes." },
+      { title: 'Design', desc: 'Maquettes de l’interface présentées et validées avec vos équipes, à votre charte graphique. Chaque écran est validé avant le début du développement.' },
+      { title: 'Développement', desc: "Construction de l'intranet module par module, avec des démonstrations régulières pour suivre l'avancement et ajuster si besoin." },
+      { title: 'Pilote', desc: 'Test de la plateforme avec un groupe pilote de 10 à 20 collaborateurs pour recueillir les retours et ajuster avant le déploiement général.' },
+      { title: 'Déploiement et formation', desc: "Mise en ligne pour l'ensemble des collaborateurs, formation des équipes et accompagnement au lancement pour assurer une adoption réussie." }
     ],
-    'Annuaire et organisation': [
-      { label: 'Profils collaborateurs', essentiel: true, standard: true, premium: true },
-      { label: 'Recherche par nom, service et site', essentiel: true, standard: true, premium: true },
-      { label: "Synchronisation automatique avec le SIRH", essentiel: false, standard: true, premium: true },
-      { label: 'Organigramme interactif', essentiel: false, standard: true, premium: true }
-    ],
-    'Documents et recherche': [
-      { label: 'Bibliothèque documentaire avec droits par dossier', essentiel: true, standard: true, premium: true },
-      { label: 'Pages par service, éditables par vos référents', essentiel: true, standard: true, premium: true },
-      { label: 'Recherche transverse (actualités, documents, personnes)', essentiel: false, standard: true, premium: true },
-      { label: 'Interface multilingue', essentiel: false, standard: false, premium: true }
-    ],
-    'Sécurité et accès': [
-      { label: 'Back-office de publication', essentiel: true, standard: true, premium: true },
-      { label: 'Gestion des rôles (admin, éditeur, lecteur)', essentiel: true, standard: true, premium: true },
-      { label: 'Launchpad (bouton d’accès direct à vos outils)', essentiel: true, standard: true, premium: true },
-      { label: 'Launchpad personnalisé par métier', essentiel: false, standard: true, premium: true },
-      { label: 'Connexion unique (SSO) Entra ID ou Google Workspace', essentiel: false, standard: true, premium: true }
-    ],
-    'Mobile': [
-      { label: 'Application web installable (PWA) iOS et Android', essentiel: true, standard: true, premium: true },
-      { label: 'Application mobile native iOS et Android', essentiel: false, standard: false, premium: true }
-    ],
-    'Analytics': [
-      { label: 'Tableau de bord statistiques (lecture, contenus, adoption)', essentiel: false, standard: true, premium: true }
-    ],
-    'Intégrations': [
-      { label: 'Intégrations outils métier (SIRH, paie, ticketing, M365/Google Workspace)', essentiel: false, standard: false, premium: true },
-      { label: 'Formulaires et workflows de validation (RH, IT, notes de frais)', essentiel: false, standard: false, premium: true }
-    ],
-    'Accompagnement et support': [
-      { label: 'Charte graphique appliquée (logo, couleurs, typographie)', essentiel: true, standard: true, premium: true },
-      { label: 'Hébergement Union européenne', essentiel: true, standard: true, premium: true },
-      { label: 'Maintenance corrective et mises à jour de sécurité', essentiel: true, standard: true, premium: true },
-      { label: 'Formation des administrateurs et éditeurs', essentiel: false, standard: '2 sessions', premium: '2 sessions' },
-      { label: 'Support', essentiel: 'Email', standard: '< 24h ouvrées', premium: '< 4h ouvrées' },
-      { label: 'Interlocuteur dédié et comité de pilotage trimestriel', essentiel: false, standard: false, premium: true }
+    faq: [
+      { q: 'Pourquoi un intranet sur mesure plutôt qu’une solution SaaS du marché ?', a: 'Une solution SaaS standard vous fait payer une licence par utilisateur sans jamais vous appartenir : vous êtes locataire d’un outil générique, difficile à adapter à votre organisation. Avec Pulse, l’intranet est conçu autour de vos équipes, de votre arborescence et de vos outils, pour un prix de licence comparable à une offre SaaS classique.' },
+      { q: 'Qui est propriétaire des données ?', a: 'Vous. L’ensemble des contenus, documents et données collaborateurs saisis dans l’intranet vous appartiennent intégralement. Pulse agit comme hébergeur et mainteneur technique, jamais comme propriétaire de vos données.' },
+      { q: 'Où sont hébergées les données ?', a: 'Toutes les données sont hébergées sur des serveurs situés en Union européenne, chez un hébergeur certifié, avec des sauvegardes quotidiennes. Aucune donnée ne transite ou n’est stockée hors de l’UE.' },
+      { q: "Que se passe-t-il à la fin de l'engagement ?", a: 'Vous récupérez l’intégralité de vos données (contenus, documents, annuaire) dans un format standard et exploitable. Aucune donnée n’est retenue au-delà de la période contractuelle, et nous vous accompagnons dans la réversibilité si vous le souhaitez.' },
+      { q: "Peut-on passer d'une offre à l'autre ?", a: 'Oui, une montée de version (par exemple d’Essentiel vers Standard) est possible à tout moment du contrat. Le delta de fonctionnalités est chiffré et mis en œuvre sans repartir d’une nouvelle mise en place complète.' },
+      { q: 'Que comprend exactement la maintenance ?', a: 'La maintenance inclut la correction des anomalies, les mises à jour de sécurité, l’hébergement et les sauvegardes, ainsi que les évolutions mineures du produit. Les développements spécifiques hors périmètre initial sont traités sur devis, au temps passé.' },
+      { q: 'Combien de temps faut-il à nos équipes pour prendre l’outil en main ?', a: 'La prise en main est généralement immédiate pour un collaborateur, l’interface étant pensée pour ne nécessiter aucune formation. Pour les administrateurs et éditeurs de contenu, des sessions de formation sont prévues dès l’offre Standard.' }
     ]
   },
-  timeline: [
-    { title: 'Cadrage', desc: "Ateliers avec vos équipes pour définir les besoins, les rôles et l'arborescence de contenu. Ce cadrage pose les fondations du projet et sert de référence pour toutes les étapes suivantes." },
-    { title: 'Design', desc: 'Maquettes de l’interface présentées et validées avec vos équipes, à votre charte graphique. Chaque écran est validé avant le début du développement.' },
-    { title: 'Développement', desc: "Construction de l'intranet module par module, avec des démonstrations régulières pour suivre l'avancement et ajuster si besoin." },
-    { title: 'Pilote', desc: 'Test de la plateforme avec un groupe pilote de 10 à 20 collaborateurs pour recueillir les retours et ajuster avant le déploiement général.' },
-    { title: 'Déploiement et formation', desc: "Mise en ligne pour l'ensemble des collaborateurs, formation des équipes et accompagnement au lancement pour assurer une adoption réussie." }
-  ],
-  faq: [
-    { q: 'Pourquoi un intranet sur mesure plutôt qu’une solution SaaS du marché ?', a: 'Une solution SaaS standard vous fait payer une licence par utilisateur sans jamais vous appartenir : vous êtes locataire d’un outil générique, difficile à adapter à votre organisation. Avec Pulse, l’intranet est conçu autour de vos équipes, de votre arborescence et de vos outils, pour un prix de licence comparable à une offre SaaS classique.' },
-    { q: 'Qui est propriétaire des données ?', a: 'Vous. L’ensemble des contenus, documents et données collaborateurs saisis dans l’intranet vous appartiennent intégralement. Pulse agit comme hébergeur et mainteneur technique, jamais comme propriétaire de vos données.' },
-    { q: 'Où sont hébergées les données ?', a: 'Toutes les données sont hébergées sur des serveurs situés en Union européenne, chez un hébergeur certifié, avec des sauvegardes quotidiennes. Aucune donnée ne transite ou n’est stockée hors de l’UE.' },
-    { q: "Que se passe-t-il à la fin de l'engagement ?", a: 'Vous récupérez l’intégralité de vos données (contenus, documents, annuaire) dans un format standard et exploitable. Aucune donnée n’est retenue au-delà de la période contractuelle, et nous vous accompagnons dans la réversibilité si vous le souhaitez.' },
-    { q: "Peut-on passer d'une offre à l'autre ?", a: 'Oui, une montée de version (par exemple d’Essentiel vers Standard) est possible à tout moment du contrat. Le delta de fonctionnalités est chiffré et mis en œuvre sans repartir d’une nouvelle mise en place complète.' },
-    { q: 'Que comprend exactement la maintenance ?', a: 'La maintenance inclut la correction des anomalies, les mises à jour de sécurité, l’hébergement et les sauvegardes, ainsi que les évolutions mineures du produit. Les développements spécifiques hors périmètre initial sont traités sur devis, au temps passé.' },
-    { q: 'Combien de temps faut-il à nos équipes pour prendre l’outil en main ?', a: 'La prise en main est généralement immédiate pour un collaborateur, l’interface étant pensée pour ne nécessiter aucune formation. Pour les administrateurs et éditeurs de contenu, des sessions de formation sont prévues dès l’offre Standard.' }
-  ]
+  en: {
+    users: { min: 50, max: 1000, default: 200, billingMinimum: 150 },
+    categories: ['Communication', 'Directory & organisation', 'Documents & search', 'Security & access', 'Mobile', 'Analytics', 'Integrations', 'Onboarding & support'],
+    plans: [
+      {
+        id: 'essentiel', name: 'Essential', tagline: 'The foundation to inform and connect your teams.',
+        setup: 15000, pricePerUser: 6, deadline: '6 to 8 weeks', recommended: false,
+        highlights: [
+          'News feed with targeting by department or site',
+          'Employee directory with search',
+          'Document library with folder-level permissions',
+          'Department pages, editable by your content owners',
+          'Publishing back-office and role management',
+          'Launchpad: a direct-access button to your tools',
+          'Installable web app (PWA) for iOS and Android'
+        ]
+      },
+      {
+        id: 'standard', name: 'Standard', tagline: 'The complete intranet, integrated with your tools.',
+        setup: 25000, pricePerUser: 8, deadline: '8 to 12 weeks', recommended: true,
+        highlights: [
+          'Launchpad personalised by role, with single sign-on (SSO)',
+          'HRIS sync and interactive org chart',
+          'Cross-search (news, documents, people)',
+          'Email and push notifications',
+          'Internal events calendar',
+          'Adoption analytics dashboard',
+          'Priority support within 24 business hours'
+        ]
+      },
+      {
+        id: 'premium', name: 'Premium', tagline: 'A bespoke digital platform for your business processes.',
+        setup: 40000, pricePerUser: 10, deadline: '12 to 16 weeks', recommended: false,
+        highlights: [
+          'Full Launchpad: HRIS, payroll, ticketing, M365/Google Workspace integrations',
+          'Forms and approval workflows (HR, IT, expense reports)',
+          'Internal surveys and pulse checks',
+          'Onboarding journeys for new hires',
+          'Native mobile app for iOS and Android',
+          'Multilingual interface',
+          'Dedicated point of contact and quarterly steering committee'
+        ]
+      }
+    ],
+    scope: {
+      'Communication': [
+        { label: 'News feed', essentiel: true, standard: true, premium: true },
+        { label: 'Targeted posts by department or site', essentiel: true, standard: true, premium: true },
+        { label: 'Comments and reactions', essentiel: true, standard: true, premium: true },
+        { label: 'Email and push notifications', essentiel: false, standard: true, premium: true },
+        { label: 'Internal events calendar', essentiel: false, standard: true, premium: true },
+        { label: 'Internal surveys and pulse checks', essentiel: false, standard: false, premium: true },
+        { label: 'Onboarding journeys for new hires', essentiel: false, standard: false, premium: true }
+      ],
+      'Directory & organisation': [
+        { label: 'Employee profiles', essentiel: true, standard: true, premium: true },
+        { label: 'Search by name, department and site', essentiel: true, standard: true, premium: true },
+        { label: 'Automatic HRIS sync', essentiel: false, standard: true, premium: true },
+        { label: 'Interactive org chart', essentiel: false, standard: true, premium: true }
+      ],
+      'Documents & search': [
+        { label: 'Document library with folder-level permissions', essentiel: true, standard: true, premium: true },
+        { label: 'Department pages, editable by your content owners', essentiel: true, standard: true, premium: true },
+        { label: 'Cross-search (news, documents, people)', essentiel: false, standard: true, premium: true },
+        { label: 'Multilingual interface', essentiel: false, standard: false, premium: true }
+      ],
+      'Security & access': [
+        { label: 'Publishing back-office', essentiel: true, standard: true, premium: true },
+        { label: 'Role management (admin, editor, viewer)', essentiel: true, standard: true, premium: true },
+        { label: 'Launchpad (a direct-access button to your tools)', essentiel: true, standard: true, premium: true },
+        { label: 'Launchpad personalised by role', essentiel: false, standard: true, premium: true },
+        { label: 'Single sign-on (SSO) via Entra ID or Google Workspace', essentiel: false, standard: true, premium: true }
+      ],
+      'Mobile': [
+        { label: 'Installable web app (PWA) for iOS and Android', essentiel: true, standard: true, premium: true },
+        { label: 'Native mobile app for iOS and Android', essentiel: false, standard: false, premium: true }
+      ],
+      'Analytics': [
+        { label: 'Analytics dashboard (read rates, top content, adoption)', essentiel: false, standard: true, premium: true }
+      ],
+      'Integrations': [
+        { label: 'Business tool integrations (HRIS, payroll, ticketing, M365/Google Workspace)', essentiel: false, standard: false, premium: true },
+        { label: 'Forms and approval workflows (HR, IT, expense reports)', essentiel: false, standard: false, premium: true }
+      ],
+      'Onboarding & support': [
+        { label: 'Your brand identity applied (logo, colours, typography)', essentiel: true, standard: true, premium: true },
+        { label: 'EU hosting', essentiel: true, standard: true, premium: true },
+        { label: 'Bug fixes and security updates', essentiel: true, standard: true, premium: true },
+        { label: 'Training for admins and editors', essentiel: false, standard: '2 sessions', premium: '2 sessions' },
+        { label: 'Support', essentiel: 'Email', standard: '< 24 business hours', premium: '< 4 business hours' },
+        { label: 'Dedicated point of contact and quarterly steering committee', essentiel: false, standard: false, premium: true }
+      ]
+    },
+    timeline: [
+      { title: 'Scoping', desc: 'Workshops with your teams to define needs, roles and the content structure. This scoping phase lays the foundations for the project and serves as a reference for every step that follows.' },
+      { title: 'Design', desc: 'Interface mockups presented and validated with your teams, in your brand identity. Every screen is signed off before development begins.' },
+      { title: 'Development', desc: 'The intranet is built module by module, with regular demos to track progress and adjust as needed.' },
+      { title: 'Pilot', desc: 'The platform is tested with a pilot group of 10 to 20 employees to gather feedback and fine-tune it before the full rollout.' },
+      { title: 'Deployment & training', desc: 'Go-live for all employees, team training and launch support to ensure successful adoption.' }
+    ],
+    faq: [
+      { q: 'Why a bespoke intranet rather than an off-the-shelf SaaS solution?', a: 'A standard SaaS solution charges you a per-user licence without it ever belonging to you: you’re renting a generic tool that’s hard to adapt to your organisation. With Pulse, the intranet is built around your teams, your structure and your tools, for a licence price comparable to a standard SaaS offer.' },
+      { q: 'Who owns the data?', a: 'You do. All content, documents and employee data entered into the intranet belong entirely to you. Pulse acts as the host and technical maintainer, never as the owner of your data.' },
+      { q: 'Where is the data hosted?', a: 'All data is hosted on servers located in the European Union, with a certified host, with daily backups. No data transits through or is stored outside the EU.' },
+      { q: 'What happens at the end of the contract?', a: 'You get back all of your data (content, documents, directory) in a standard, usable format. No data is retained beyond the contractual period, and we support you through the transition if you wish.' },
+      { q: 'Can we switch between plans?', a: 'Yes, upgrading (for example from Essential to Standard) is possible at any point during the contract. The additional features are costed and implemented without starting a full new setup from scratch.' },
+      { q: 'What exactly does maintenance cover?', a: 'Maintenance includes bug fixes, security updates, hosting and backups, as well as minor product improvements. Specific development work outside the initial scope is quoted separately, billed on a time-spent basis.' },
+      { q: 'How long does it take our teams to get up to speed?', a: 'For an individual employee, getting started is generally immediate, as the interface is designed to require no training. For administrators and content editors, training sessions are included from the Standard plan onward.' }
+    ]
+  }
 };
 
 /* ============================================================
    UTILITAIRES
    ============================================================ */
-function formatEUR(n){
+function formatEUR(n, lang){
+  if(lang === 'en') return new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(Math.round(n));
   return new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 }).format(Math.round(n)) + ' €';
 }
 function effectiveUsers(u){
@@ -538,15 +721,18 @@ function animateCounter(el, from, to, formatFn, duration){
    ÉTAT GLOBAL
    ============================================================ */
 var state = {
-  users: CONFIG.users.default,
+  lang: 'fr',
+  users: CONFIG_BY_LANG.fr.users.default,
   activeTimelineStep: 0
 };
+var CONFIG = CONFIG_BY_LANG.fr;
 var prevPrices = {}; // pour animer les compteurs depuis leur valeur précédente
 
 /* ============================================================
    RENDU : CARTES D'OFFRES
    ============================================================ */
 function renderPlanCards(){
+  var t = UI_STRINGS[state.lang];
   var grid = document.getElementById('plansGrid');
   grid.innerHTML = CONFIG.plans.map(function(plan){
     var eff = effectiveUsers(state.users);
@@ -554,7 +740,7 @@ function renderPlanCards(){
     var annual = monthly * 12;
     prevPrices[plan.id] = { monthly: monthly, annual: annual };
     var recClass = plan.recommended ? ' is-recommended' : '';
-    var badge = plan.recommended ? '<span class="plan-badge">Recommandé</span>' : '';
+    var badge = plan.recommended ? '<span class="plan-badge">' + t.recommended + '</span>' : '';
     var highlightsHtml = plan.highlights.map(function(h){
       return '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>' + h + '</li>';
     }).join('');
@@ -569,19 +755,19 @@ function renderPlanCards(){
       return '<div class="plan-scope-cat"><div class="plan-scope-cat-title">' + cat + '</div><ul>' + liHtml + '</ul></div>';
     }).join('');
     return '' +
-      '<div class="plan-card' + recClass + ' reveal" data-plan-card="' + plan.id + '">' +
+      '<div class="plan-card' + recClass + ' reveal in-view" data-plan-card="' + plan.id + '">' +
         badge +
         '<div class="plan-name">' + plan.name + '</div>' +
         '<p class="plan-tagline">' + plan.tagline + '</p>' +
         '<div class="plan-price-block">' +
-          '<div class="plan-price-row"><span class="plan-price-amount" id="price-monthly-' + plan.id + '">' + formatEUR(monthly) + '</span><span class="plan-price-suffix">/ mois</span></div>' +
-          '<div class="plan-price-annual" id="price-annual-' + plan.id + '">soit ' + formatEUR(annual) + ' / an</div>' +
+          '<div class="plan-price-row"><span class="plan-price-amount" id="price-monthly-' + plan.id + '">' + formatEUR(monthly, state.lang) + '</span><span class="plan-price-suffix">' + t.perMonth + '</span></div>' +
+          '<div class="plan-price-annual" id="price-annual-' + plan.id + '">' + t.perYear(formatEUR(annual, state.lang)) + '</div>' +
         '</div>' +
-        '<div class="plan-setup"><span class="plan-setup-label">Mise en place</span><span class="plan-setup-value">à partir de ' + formatEUR(plan.setup) + '</span></div>' +
-        '<div class="plan-deadline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Mise en ligne estimée : ' + plan.deadline + '</div>' +
+        '<div class="plan-setup"><span class="plan-setup-label">' + t.setupLabel + '</span><span class="plan-setup-value">' + t.setupFrom + ' ' + formatEUR(plan.setup, state.lang) + '</span></div>' +
+        '<div class="plan-deadline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>' + t.deadlineLabel + plan.deadline + '</div>' +
         '<ul class="plan-highlights">' + highlightsHtml + '</ul>' +
         '<button class="plan-scope-toggle" aria-expanded="false" aria-controls="scope-' + plan.id + '" data-scope-toggle="' + plan.id + '">' +
-          'Voir tout le périmètre <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>' +
+          t.seeFullScope + ' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>' +
         '</button>' +
         '<div class="plan-scope-detail" id="scope-' + plan.id + '">' + scopeHtml + '</div>' +
       '</div>';
@@ -592,14 +778,15 @@ function renderPlanCards(){
       var id = btn.getAttribute('data-scope-toggle');
       var panel = document.getElementById('scope-' + id);
       var open = panel.classList.toggle('is-open');
+      var tt = UI_STRINGS[state.lang];
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.innerHTML = (open ? 'Masquer le périmètre' : 'Voir tout le périmètre') + ' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
+      btn.innerHTML = (open ? tt.hideFullScope : tt.seeFullScope) + ' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
     });
   });
-  observeReveals();
 }
 
 function updatePlanPrices(){
+  var t = UI_STRINGS[state.lang];
   CONFIG.plans.forEach(function(plan){
     var eff = effectiveUsers(state.users);
     var monthly = plan.pricePerUser * eff;
@@ -607,8 +794,8 @@ function updatePlanPrices(){
     var prev = prevPrices[plan.id] || { monthly: monthly, annual: annual };
     var monthlyEl = document.getElementById('price-monthly-' + plan.id);
     var annualEl = document.getElementById('price-annual-' + plan.id);
-    if(monthlyEl) animateCounter(monthlyEl, prev.monthly, monthly, formatEUR);
-    if(annualEl) animateCounter(annualEl, prev.annual, annual, function(v){ return 'soit ' + formatEUR(v) + ' / an'; });
+    if(monthlyEl) animateCounter(monthlyEl, prev.monthly, monthly, function(v){ return formatEUR(v, state.lang); });
+    if(annualEl) animateCounter(annualEl, prev.annual, annual, function(v){ return t.perYear(formatEUR(v, state.lang)); });
     prevPrices[plan.id] = { monthly: monthly, annual: annual };
   });
 }
@@ -617,11 +804,12 @@ function updatePlanPrices(){
    RENDU : TABLEAU COMPARATIF
    ============================================================ */
 function renderCompareTable(){
+  var t = UI_STRINGS[state.lang];
   var head = document.getElementById('compareTableHead');
-  head.innerHTML = '<th scope="col">Fonctionnalité</th>' + CONFIG.plans.map(function(plan, i){
-    return '<th scope="col" class="' + (i > 0 ? 'compare-col compare-col-' + plan.id : 'compare-col compare-col-' + plan.id) + '" data-col="' + plan.id + '">' +
+  head.innerHTML = '<th scope="col">' + t.tableFeatureCol + '</th>' + CONFIG.plans.map(function(plan){
+    return '<th scope="col" class="compare-col compare-col-' + plan.id + '" data-col="' + plan.id + '">' +
       '<div class="compare-th-name">' + plan.name + '</div>' +
-      '<div class="compare-th-price">' + plan.pricePerUser + ' € / util. / mois</div>' +
+      '<div class="compare-th-price">' + plan.pricePerUser + ' ' + t.perUserMonth + '</div>' +
     '</th>';
   }).join('');
 
@@ -639,8 +827,8 @@ function renderCompareTable(){
           var val = row[plan.id];
           var cellClass = 'compare-col-' + plan.id;
           var content;
-          if(val === true) content = '<span class="compare-check">✓</span><span class="visually-hidden"> inclus</span>';
-          else if(val === false) content = '<span class="compare-cross">✕</span><span class="visually-hidden"> non inclus</span>';
+          if(val === true) content = '<span class="compare-check">✓</span><span class="visually-hidden">' + t.includedSR + '</span>';
+          else if(val === false) content = '<span class="compare-cross">✕</span><span class="visually-hidden">' + t.notIncludedSR + '</span>';
           else content = '<span class="compare-text-value">' + val + '</span>';
           return '<td class="' + cellClass + '">' + content + '</td>';
         }).join('') +
@@ -733,25 +921,39 @@ function renderTimeline(){
   renderTimelineDesc();
 }
 function renderTimelineDesc(){
+  var t = UI_STRINGS[state.lang];
   var el = document.getElementById('timelineDesc');
   var step = CONFIG.timeline[state.activeTimelineStep];
-  el.innerHTML = '<strong style="color:var(--text-primary);">Étape ' + (state.activeTimelineStep + 1) + '. ' + step.title + '.</strong> ' + step.desc;
+  el.innerHTML = '<strong style="color:var(--text-primary);">' + t.stepPrefix + ' ' + (state.activeTimelineStep + 1) + '. ' + step.title + '.</strong> ' + step.desc;
+}
+
+/* ============================================================
+   RENDU : CONDITIONS
+   ============================================================ */
+function renderConditions(){
+  var t = UI_STRINGS[state.lang];
+  var checkSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>';
+  var list = document.getElementById('conditionsList');
+  list.innerHTML = [t.cond1, t.cond2, t.cond3, t.cond4].map(function(c){
+    return '<li>' + checkSvg + '<span>' + c + '</span></li>';
+  }).join('');
 }
 
 /* ============================================================
    SIMULATEUR D'UTILISATEURS
    ============================================================ */
 function setUsers(value){
+  var t = UI_STRINGS[state.lang];
   value = Math.min(CONFIG.users.max, Math.max(CONFIG.users.min, Math.round(value)));
   state.users = value;
   document.getElementById('usersSlider').value = value;
   document.getElementById('usersInput').value = value;
   var note = document.getElementById('minBillingNote');
   if(value < CONFIG.users.billingMinimum){
-    note.textContent = 'Minimum de facturation : 150 utilisateurs. Le calcul ci-dessous est effectué sur cette base.';
+    note.textContent = t.minBillingActive;
     note.classList.add('is-active');
   } else {
-    note.textContent = 'Minimum de facturation : 150 utilisateurs';
+    note.textContent = t.minBilling;
     note.classList.remove('is-active');
   }
   updatePlanPrices();
@@ -788,6 +990,44 @@ function observeReveals(){
 }
 
 /* ============================================================
+   LANGUE
+   ============================================================ */
+function applyStaticStrings(){
+  var t = UI_STRINGS[state.lang];
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    if(t[key] !== undefined) el.textContent = t[key];
+  });
+}
+function setLang(lang){
+  state.lang = lang;
+  CONFIG = CONFIG_BY_LANG[lang];
+  document.documentElement.lang = lang;
+  document.getElementById('langToggle').textContent = lang === 'fr' ? 'EN' : 'FR';
+  try { localStorage.setItem('pulse-microsite-lang', lang); } catch(e) {}
+  applyStaticStrings();
+  renderPlanCards();
+  renderCompareTable();
+  renderFAQ();
+  renderTimeline();
+  renderConditions();
+  var note = document.getElementById('minBillingNote');
+  note.textContent = state.users < CONFIG.users.billingMinimum ? t_minActive() : UI_STRINGS[lang].minBilling;
+  function t_minActive(){ return UI_STRINGS[lang].minBillingActive; }
+}
+function initLangToggle(){
+  var btn = document.getElementById('langToggle');
+  btn.addEventListener('click', function(){
+    setLang(state.lang === 'fr' ? 'en' : 'fr');
+  });
+  var saved = null;
+  try { saved = localStorage.getItem('pulse-microsite-lang'); } catch(e) {}
+  if(saved === 'en' || saved === 'fr'){
+    setLang(saved);
+  }
+}
+
+/* ============================================================
    INITIALISATION
    ============================================================ */
 document.addEventListener('DOMContentLoaded', function(){
@@ -795,7 +1035,9 @@ document.addEventListener('DOMContentLoaded', function(){
   renderCompareTable();
   renderFAQ();
   renderTimeline();
+  renderConditions();
   initSimulator();
+  initLangToggle();
   observeReveals();
 });
 </script>

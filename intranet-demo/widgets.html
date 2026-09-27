@@ -37,10 +37,14 @@ button{font-family:inherit;cursor:pointer;}
 .ms-tab{padding:8px 16px;border-radius:9px;font-size:0.88rem;font-weight:600;text-decoration:none;color:var(--text-secondary);transition:var(--transition);}
 .ms-tab:hover{color:var(--text-primary);}
 .ms-tab-active{background:var(--bg-card);color:var(--text-primary);box-shadow:var(--shadow-sm);}
+.ms-actions{display:flex;align-items:center;gap:10px;}
+.lang-toggle{width:40px;height:36px;border-radius:10px;border:1px solid var(--border-strong);background:var(--bg-card);color:var(--text-primary);font-weight:700;font-size:0.8rem;display:flex;align-items:center;justify-content:center;transition:var(--transition);}
+.lang-toggle:hover{background:var(--bg-subtle);}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 18px;border-radius:999px;font-weight:600;font-size:0.85rem;text-decoration:none;border:none;transition:var(--transition);white-space:nowrap;}
 .btn-primary{background:var(--gradient-brand);color:#fff;box-shadow:0 6px 20px rgba(216,31,120,0.25);}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(216,31,120,0.35);}
 
+.lang-note-bar{text-align:center;font-size:0.78rem;color:var(--text-tertiary);font-style:italic;padding:10px 16px 0;flex-shrink:0;min-height:0;}
 .demo-frame-wrap{flex:1;min-height:0;}
 .demo-frame-wrap iframe{width:100%;height:100%;border:none;display:block;background:#fff;}
 
@@ -62,13 +66,18 @@ button{font-family:inherit;cursor:pointer;}
       <span>Pulse</span>
     </a>
     <nav class="ms-tabs" aria-label="Navigation du site de démonstration">
-      <a href="index.html" class="ms-tab">Démonstration</a>
-      <a href="pricing.html" class="ms-tab">Tarifs &amp; offres</a>
-      <a href="widgets.html" class="ms-tab ms-tab-active" aria-current="page">Widgets</a>
+      <a href="index.html" class="ms-tab" data-i18n="navDemo">Démonstration</a>
+      <a href="pricing.html" class="ms-tab" data-i18n="navPricing">Tarifs &amp; offres</a>
+      <a href="widgets.html" class="ms-tab ms-tab-active" aria-current="page" data-i18n="navWidgets">Widgets</a>
     </nav>
-    <a href="pricing.html" class="btn btn-primary">Voir les tarifs</a>
+    <div class="ms-actions">
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language / Changer de langue">EN</button>
+      <a href="pricing.html" class="btn btn-primary" data-i18n="navCta">Voir les tarifs</a>
+    </div>
   </div>
 </header>
+
+<p class="lang-note-bar" id="langNote"></p>
 
 <div class="demo-frame-wrap">
   <iframe src="widgets-demo.html" title="Présentation des widgets Pulse" loading="eager" id="widgetsFrame"></iframe>
@@ -76,6 +85,30 @@ button{font-family:inherit;cursor:pointer;}
 
 <script>
 (function(){
+  var UI_STRINGS = {
+    fr: { navDemo: 'Démonstration', navPricing: 'Tarifs & offres', navWidgets: 'Widgets', navCta: 'Voir les tarifs', langNote: '' },
+    en: { navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets', navCta: 'View pricing', langNote: 'Note: the interactive preview below is currently available in French only.' }
+  };
+  function applyLang(lang){
+    var t = UI_STRINGS[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(t[key] !== undefined) el.textContent = t[key];
+    });
+    document.getElementById('langNote').textContent = t.langNote;
+    document.getElementById('langToggle').textContent = lang === 'fr' ? 'EN' : 'FR';
+    try { localStorage.setItem('pulse-microsite-lang', lang); } catch(e) {}
+  }
+  var toggle = document.getElementById('langToggle');
+  var current = 'fr';
+  try { current = localStorage.getItem('pulse-microsite-lang') || 'fr'; } catch(e) {}
+  applyLang(current);
+  toggle.addEventListener('click', function(){
+    current = current === 'fr' ? 'en' : 'fr';
+    applyLang(current);
+  });
+
   var iframe = document.getElementById('widgetsFrame');
 
   function findByText(doc, txt, exact){
