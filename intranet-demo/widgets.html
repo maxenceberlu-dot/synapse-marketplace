@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pulse Intranet · Widgets</title>
+<meta name="description" content="Les widgets d'engagement que vous pouvez ajouter à votre intranet Pulse : sondages, boîte à idées, baromètre social, et bien d'autres.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf8f4; --bg-subtle:#f5efe6; --bg-card:#ffffff;
+  --border:#e4dde8; --border-strong:#d8cee0;
+  --text-primary:#17152e; --text-secondary:#4a4760; --text-tertiary:#8a86a0;
+  --accent-1:#d81f78; --accent-2:#6a2a95;
+  --gradient-brand:linear-gradient(120deg,#d81f78,#6a2a95);
+  --shadow-sm:0 1px 2px rgba(40,25,50,0.06);
+  --font:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-display:'Newsreader',Georgia,serif;
+  --transition:all .25s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;}
+body{font-family:var(--font);background:var(--bg);color:var(--text-primary);display:flex;flex-direction:column;}
+a{color:inherit;}
+button{font-family:inherit;cursor:pointer;}
+:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px;}
+
+.microsite-bar{position:sticky;top:0;z-index:200;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);flex-shrink:0;}
+.microsite-bar-inner{max-width:1160px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.ms-logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;font-size:1.05rem;color:var(--text-primary);}
+.ms-logo-mark{width:30px;height:30px;border-radius:9px;background:var(--gradient-brand);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ms-logo-mark svg{width:16px;height:16px;}
+.ms-tabs{display:flex;gap:4px;background:var(--bg-subtle);padding:4px;border-radius:12px;border:1px solid var(--border);}
+.ms-tab{padding:8px 16px;border-radius:9px;font-size:0.88rem;font-weight:600;text-decoration:none;color:var(--text-secondary);transition:var(--transition);}
+.ms-tab:hover{color:var(--text-primary);}
+.ms-tab-active{background:var(--bg-card);color:var(--text-primary);box-shadow:var(--shadow-sm);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 18px;border-radius:999px;font-weight:600;font-size:0.85rem;text-decoration:none;border:none;transition:var(--transition);white-space:nowrap;}
+.btn-primary{background:var(--gradient-brand);color:#fff;box-shadow:0 6px 20px rgba(216,31,120,0.25);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(216,31,120,0.35);}
+
+.demo-frame-wrap{flex:1;min-height:0;}
+.demo-frame-wrap iframe{width:100%;height:100%;border:none;display:block;background:#fff;}
+
+@media (max-width:640px){
+  .microsite-bar-inner{padding:0 14px;gap:8px;}
+  .ms-logo span:last-child{display:none;}
+  .ms-tabs{gap:2px;padding:3px;}
+  .ms-tab{padding:7px 9px;font-size:0.74rem;white-space:nowrap;}
+  .microsite-bar .btn{display:none;}
+}
+</style>
+</head>
+<body>
+
+<header class="microsite-bar">
+  <div class="microsite-bar-inner">
+    <a href="index.html" class="ms-logo">
+      <span class="ms-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5h4l1.5-4 3 8 1.5-4h6"/></svg></span>
+      <span>Pulse</span>
+    </a>
+    <nav class="ms-tabs" aria-label="Navigation du site de démonstration">
+      <a href="index.html" class="ms-tab">Démonstration</a>
+      <a href="pricing.html" class="ms-tab">Tarifs &amp; offres</a>
+      <a href="widgets.html" class="ms-tab ms-tab-active" aria-current="page">Widgets</a>
+    </nav>
+    <a href="pricing.html" class="btn btn-primary">Voir les tarifs</a>
+  </div>
+</header>
+
+<div class="demo-frame-wrap">
+  <iframe src="widgets-demo.html" title="Présentation des widgets Pulse" loading="eager" id="widgetsFrame"></iframe>
+</div>
+
+<script>
+(function(){
+  var iframe = document.getElementById('widgetsFrame');
+
+  function findByText(doc, txt, exact){
+    var walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_ELEMENT);
+    var el, results = [];
+    while(el = walker.nextNode()){
+      if(el.children.length === 0){
+        var t = el.textContent.trim();
+        if(exact ? t === txt : t.indexOf(txt) !== -1) results.push(el);
+      }
+    }
+    return results;
+  }
+
+  function applyPatches(doc){
+    var didWork = false;
+
+    // Retire le bloc "S'intègre à votre intranet et à vos outils" (partenaires)
+    var integrations = doc.getElementById('integrations');
+    if(integrations){ integrations.remove(); didWork = true; }
+
+    // Retire la bande de navigation interne (pulse / Widgets / Mesure de l'engagement / Intégrations / Demander une démo)
+    var navLink = findByText(doc, 'Widgets', true)[0];
+    if(navLink){
+      var header = navLink.closest('header');
+      if(header){ header.remove(); didWork = true; }
+    }
+
+    // Retire le bandeau final "Prêt à composer votre intranet ?"
+    var ctaHeading = findByText(doc, 'Prêt à composer votre intranet', false)[0];
+    if(ctaHeading){
+      var ctaBox = ctaHeading.parentElement && ctaHeading.parentElement.parentElement;
+      if(ctaBox){ ctaBox.remove(); didWork = true; }
+    }
+
+    // Remplace la carte "0 ligne de code" par un message sur la personnalisation au pixel près
+    var statLabel = findByText(doc, 'ligne de code', true)[0];
+    if(statLabel){
+      var card = statLabel.parentElement;
+      if(card && !card.dataset.pulsePatched){
+        card.innerHTML =
+          '<span style="font-family: Newsreader, Georgia, serif; font-size: 44px; line-height: 1; color: rgb(216, 31, 120);">Au pixel près</span>' +
+          '<span style="font-size: 18px; font-weight: 700;">Personnalisation totale</span>' +
+          '<p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: rgb(74, 71, 96);">Chaque widget s’adapte aux couleurs, à la typographie et à la mise en page de votre intranet. Rien n’est figé.</p>';
+        card.dataset.pulsePatched = '1';
+        didWork = true;
+      }
+    }
+
+    return didWork;
+  }
+
+  iframe.addEventListener('load', function(){
+    try {
+      var doc = iframe.contentDocument;
+      if(!doc || !doc.body) return;
+      applyPatches(doc);
+      var observer = new MutationObserver(function(){ applyPatches(doc); });
+      observer.observe(doc.body, { childList: true, subtree: true });
+      setTimeout(function(){ observer.disconnect(); }, 15000);
+    } catch(e) {}
+  });
+})();
+</script>
+</body>
+</html>
