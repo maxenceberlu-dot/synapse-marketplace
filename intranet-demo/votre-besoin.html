@@ -179,7 +179,7 @@ main{flex:1;}
    · intégrations : IntegrationsView.tsx · repo ~/pulse-intranet)
    ============================================================ */
 var CATEGORIES = [
-  "Widgets d'engagement",
+  "Besoins spécifiques — projet Archimed",
   "Intelligence artificielle",
   "Contenu & communication",
   "Gestion des médias",
@@ -189,10 +189,12 @@ var CATEGORIES = [
   "Intégrations tierces",
   "Pilotage & mesure",
   "Mobile & accessibilité",
-  "Sécurité & gouvernance"
+  "Sécurité & gouvernance",
+  "Widgets d'engagement"
 ];
 
 var CAT_EN = {
+  "Besoins spécifiques — projet Archimed": "Specific requests — Archimed project",
   "Widgets d'engagement": "Engagement widgets",
   "Intelligence artificielle": "Artificial intelligence",
   "Contenu & communication": "Content & communication",
@@ -209,6 +211,13 @@ var CAT_EN = {
 var FAM_EN = { "Écouter": "Listen", "Mesurer": "Measure", "Activer": "Activate", "Gamifier": "Gamify" };
 
 var ITEMS = [
+  // --- Besoins spécifiques — projet Archimed (5) — issus du call démo du 05/10/2026 ---
+  { cat:"Besoins spécifiques — projet Archimed", label:"Widget marchés financiers (CAC 40, Nasdaq)", labelEn:"Financial markets widget (CAC 40, Nasdaq)", desc:"Affiche l'évolution des indices boursiers en direct sur l'intranet, via connexion API.", descEn:"Displays live stock index movements on the intranet, via API connection.", preset:"oui" },
+  { cat:"Besoins spécifiques — projet Archimed", label:"Intégration web view personnalisée (ex. graphique Salesforce)", labelEn:"Custom web view integration (e.g. Salesforce chart)", desc:"Affiche un graphique ou un KPI spécifique issu d'un outil tiers directement sur une page Pulse.", descEn:"Displays a specific chart or KPI from a third-party tool directly on a Pulse page.", preset:"oui" },
+  { cat:"Besoins spécifiques — projet Archimed", label:"Connexion Claude (Anthropic, via MCP) pour la génération de contenu", labelEn:"Claude (Anthropic, via MCP) connection for content generation", desc:"Connecte l'assistant de rédaction directement à Claude, avec accès aux documents déjà connectés (ex. SharePoint). Coût mensuel additionnel à chiffrer selon le volume de requêtes.", descEn:"Connects the writing assistant directly to Claude, with access to already-connected documents (e.g. SharePoint). Additional monthly cost to be quoted based on request volume.", preset:"oui" },
+  { cat:"Besoins spécifiques — projet Archimed", label:"Page dédiée bases de données & intelligence de marché", labelEn:"Dedicated databases & market intelligence page", desc:"Une page (ou sous-pages) listant vos ~15 bases de données internes, avec accès filtré par équipe et par site.", descEn:"A page (or sub-pages) listing your ~15 internal databases, with access filtered by team and by site.", preset:"oui" },
+  { cat:"Besoins spécifiques — projet Archimed", label:"Connexion DIL (nouveau SIRH) pour l'annuaire et l'organigramme", labelEn:"DIL (new HRIS) connection for the directory and org chart", desc:"Alimente automatiquement l'annuaire et l'organigramme depuis DIL, en plus ou à la place de l'Active Directory. À confirmer selon la documentation API de DIL.", descEn:"Automatically feeds the directory and org chart from DIL, in addition to or instead of Active Directory. To be confirmed based on DIL's API documentation.", preset:"oui" },
+
   // --- Widgets d'engagement (22) ---
   { cat:"Widgets d'engagement", fam:"Écouter", label:"Sondage Pulse", labelEn:"Pulse survey", desc:"Une question, une réponse en 10 secondes, sur le portail et le mobile.", descEn:"One question, one answer in 10 seconds, on the portal and mobile." },
   { cat:"Widgets d'engagement", fam:"Écouter", label:"Ask the Board", labelEn:"Ask the Board", desc:"Les collaborateurs posent leurs questions à la direction, anonymement s'ils le souhaitent.", descEn:"Employees ask their questions to leadership, anonymously if they wish." },
@@ -234,7 +243,7 @@ var ITEMS = [
   { cat:"Widgets d'engagement", fam:"Gamifier", label:"Hackathon interne", labelEn:"Internal hackathon", desc:"Organisez un hackathon avec équipes, jury et votes.", descEn:"Run a hackathon with teams, a jury and voting." },
 
   // --- Intelligence artificielle (4) ---
-  { cat:"Intelligence artificielle", label:"Assistant conversationnel", labelEn:"Conversational assistant", desc:"Un agent répond aux questions des collaborateurs en citant ses sources, sans jamais dépasser leurs droits de lecture.", descEn:"An agent answers employee questions citing its sources, never exceeding their reading rights." },
+  { cat:"Intelligence artificielle", label:"Assistant conversationnel", labelEn:"Conversational assistant", desc:"Un agent répond aux questions des collaborateurs en citant ses sources, sans jamais dépasser leurs droits de lecture.", descEn:"An agent answers employee questions citing its sources, never exceeding their reading rights.", preset:"oui" },
   { cat:"Intelligence artificielle", label:"Recherche intelligente (Deep Search)", labelEn:"Smart search (Deep Search)", desc:"Recherche approfondie sur tout le contenu autorisé, avec une synthèse IA pertinente — pas une liste de liens.", descEn:"In-depth search across all authorised content, with a relevant AI summary — not just a list of links." },
   { cat:"Intelligence artificielle", label:"Traduction automatique", labelEn:"Automatic translation", desc:"Traduisez vos contenus pour vos sites et filiales à l'international.", descEn:"Translate your content for your international sites and subsidiaries." },
   { cat:"Intelligence artificielle", label:"Assistant de rédaction", labelEn:"Writing assistant", desc:"Raccourcir, simplifier, générer un titre ou un chapô, adapter pour le terrain, rédiger le texte alternatif des images.", descEn:"Shorten, simplify, generate a title or intro, adapt for the field, write image alt text." },
@@ -242,14 +251,14 @@ var ITEMS = [
   // --- Contenu & communication (12) ---
   { cat:"Contenu & communication", label:"Chaînes & actualités ciblées", labelEn:"Channels & targeted news", desc:"Fil d'actualités avec ciblage par service, site ou population.", descEn:"News feed with targeting by department, site or population." },
   { cat:"Contenu & communication", label:"Notes officielles", labelEn:"Official notices", desc:"Communications obligatoires avec accusé de lecture et suivi des lecteurs.", descEn:"Mandatory communications with read receipts and reader tracking." },
-  { cat:"Contenu & communication", label:"Pages & constructeur de pages", labelEn:"Pages & page builder", desc:"Pages par service ou projet, construites par blocs, éditables par vos référents.", descEn:"Pages by department or project, built block by block, editable by your contributors." },
+  { cat:"Contenu & communication", label:"Pages & constructeur de pages", labelEn:"Pages & page builder", desc:"Pages par service ou projet, construites par blocs, éditables par vos référents.", descEn:"Pages by department or project, built block by block, editable by your contributors.", preset:"oui" },
   { cat:"Contenu & communication", label:"Modèles de pages", labelEn:"Page templates", desc:"Des gabarits réutilisables pour standardiser vos pages métier.", descEn:"Reusable templates to standardise your business pages." },
-  { cat:"Contenu & communication", label:"Bibliothèque documentaire / procédures", labelEn:"Document library / procedures", desc:"Documents avec gestion des versions, droits par dossier et accusés de lecture.", descEn:"Documents with version control, folder-level permissions and read receipts." },
+  { cat:"Contenu & communication", label:"Bibliothèque documentaire / procédures", labelEn:"Document library / procedures", desc:"Documents avec gestion des versions, droits par dossier et accusés de lecture.", descEn:"Documents with version control, folder-level permissions and read receipts.", preset:"oui" },
   { cat:"Contenu & communication", label:"Sondages", labelEn:"Surveys", desc:"Votes rapides sur le portail, résultats en direct.", descEn:"Quick votes on the portal, live results." },
   { cat:"Contenu & communication", label:"Événements", labelEn:"Events", desc:"Agenda avec inscriptions, jauge de participants et liste d'attente.", descEn:"Agenda with registrations, capacity tracking and a waiting list." },
   { cat:"Contenu & communication", label:"Annuaire collaborateurs", labelEn:"Employee directory", desc:"Fiches collaborateurs avec recherche, organigramme et coordonnées à jour.", descEn:"Employee profiles with search, org chart and up-to-date contact details." },
   { cat:"Contenu & communication", label:"Espaces / communautés", labelEn:"Spaces / communities", desc:"Des communautés d'intérêt ou de métier, avec leur propre fil et leurs membres.", descEn:"Interest or job-based communities, each with its own feed and members." },
-  { cat:"Contenu & communication", label:"Liens & applications (launchpad)", labelEn:"Links & apps (launchpad)", desc:"Un accès direct à vos outils du quotidien, avec leurs logos officiels.", descEn:"Direct access to your everyday tools, with their official logos." },
+  { cat:"Contenu & communication", label:"Liens & applications (launchpad)", labelEn:"Links & apps (launchpad)", desc:"Un accès direct à vos outils du quotidien, avec leurs logos officiels.", descEn:"Direct access to your everyday tools, with their official logos.", preset:"oui" },
   { cat:"Contenu & communication", label:"Fiches sites", labelEn:"Site pages", desc:"Une page par site ou établissement : horaires, contacts, infos pratiques.", descEn:"One page per site or facility: hours, contacts, practical info." },
   { cat:"Contenu & communication", label:"Menu du portail personnalisable", labelEn:"Customisable portal menu", desc:"Vous configurez vous-même la navigation vue par vos collaborateurs.", descEn:"You configure the navigation your employees see yourself." },
 
@@ -267,12 +276,12 @@ var ITEMS = [
   { cat:"Diffusion & campagnes", label:"Notifications multicanal", labelEn:"Multi-channel notifications", desc:"Push, email, SMS ou écrans d'affichage, avec heures de silence et quotas.", descEn:"Push, email, SMS or digital signage, with quiet hours and quotas." },
 
   // --- Audiences (3) ---
-  { cat:"Audiences", label:"Segments ciblés", labelEn:"Targeted segments", desc:"Construisez des audiences précises pour vos communications et vos widgets.", descEn:"Build precise audiences for your communications and widgets." },
-  { cat:"Audiences", label:"Rôles & permissions", labelEn:"Roles & permissions", desc:"Une matrice de droits fine, par rôle et par espace.", descEn:"A fine-grained rights matrix, by role and by space." },
-  { cat:"Audiences", label:"Synchronisation annuaire", labelEn:"Directory sync", desc:"Votre SIRH alimente automatiquement l'annuaire et les audiences.", descEn:"Your HRIS automatically feeds the directory and audiences." },
+  { cat:"Audiences", label:"Segments ciblés", labelEn:"Targeted segments", desc:"Construisez des audiences précises pour vos communications et vos widgets.", descEn:"Build precise audiences for your communications and widgets.", preset:"oui" },
+  { cat:"Audiences", label:"Rôles & permissions", labelEn:"Roles & permissions", desc:"Une matrice de droits fine, par rôle et par espace.", descEn:"A fine-grained rights matrix, by role and by space.", preset:"oui" },
+  { cat:"Audiences", label:"Synchronisation annuaire", labelEn:"Directory sync", desc:"Votre SIRH alimente automatiquement l'annuaire et les audiences.", descEn:"Your HRIS automatically feeds the directory and audiences.", preset:"oui" },
 
   // --- Intégrations tierces (7) ---
-  { cat:"Intégrations tierces", label:"Authentification unique (SSO)", labelEn:"Single sign-on (SSO)", desc:"Connexion unique via votre fournisseur d'identité (ex. Entra ID).", descEn:"One-click login via your identity provider (e.g. Entra ID)." },
+  { cat:"Intégrations tierces", label:"Authentification unique (SSO)", labelEn:"Single sign-on (SSO)", desc:"Connexion unique via votre fournisseur d'identité (ex. Entra ID).", descEn:"One-click login via your identity provider (e.g. Entra ID).", preset:"oui" },
   { cat:"Intégrations tierces", label:"RH", labelEn:"HR", desc:"Connexion à votre SIRH (ex. Workday, SAP SuccessFactors).", descEn:"Connection to your HRIS (e.g. Workday, SAP SuccessFactors)." },
   { cat:"Intégrations tierces", label:"Temps & activités", labelEn:"Time & attendance", desc:"Connexion à votre outil de gestion des temps (ex. Kelio).", descEn:"Connection to your time management tool (e.g. Kelio)." },
   { cat:"Intégrations tierces", label:"Paie", labelEn:"Payroll", desc:"Connexion à votre logiciel de paie (ex. Silae).", descEn:"Connection to your payroll software (e.g. Silae)." },
@@ -307,8 +316,11 @@ ITEMS.forEach(function(it, i){ it.id = slugify(it.cat) + '--' + slugify(it.label
    ÉTAT — localStorage
    ============================================================ */
 var STORAGE_KEY = 'pulse-besoin-answers-v1';
+/** Réponses déjà actées lors des échanges avec le prospect — pré-cochées à l'ouverture,
+ *  mais l'utilisateur garde la main : tout clic ultérieur est sauvegardé par-dessus. */
 var answers = {};
-try { answers = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) {}
+ITEMS.forEach(function(it){ if(it.preset) answers[it.id] = it.preset; });
+try { Object.assign(answers, JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')); } catch(e) {}
 function saveAnswers(){
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(answers)); } catch(e) {}
 }
