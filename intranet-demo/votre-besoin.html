@@ -87,6 +87,11 @@ main{flex:1;}
 .nb-row{display:flex;align-items:center;gap:14px;padding:13px 20px;border-top:1px solid var(--border);}
 .nb-row:first-of-type, .nb-family + .nb-row{border-top:none;}
 .nb-row-text{flex:1;min-width:0;}
+.nb-row-head{display:flex;align-items:center;gap:7px;}
+.nb-info-btn{width:18px;height:18px;flex-shrink:0;border-radius:50%;border:1px solid var(--border-strong);background:var(--bg-subtle);color:var(--text-tertiary);font-size:11px;font-style:italic;font-weight:700;font-family:Georgia,'Times New Roman',serif;line-height:1;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--transition);padding:0;}
+.nb-info-btn:hover, .nb-info-btn.is-active{background:var(--accent-2);border-color:var(--accent-2);color:#fff;}
+.nb-row-info{display:none;margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--bg-subtle);border-left:3px solid var(--accent-2);font-size:0.8rem;line-height:1.55;color:var(--text-secondary);}
+.nb-row-info.is-open{display:block;}
 .nb-row-label{font-weight:700;font-size:0.9rem;}
 .nb-row-desc{font-size:0.8rem;color:var(--text-secondary);line-height:1.45;margin-top:2px;}
 .nb-row-toggle{display:flex;gap:6px;flex-shrink:0;}
@@ -211,97 +216,233 @@ var CAT_EN = {
 var FAM_EN = { "Écouter": "Listen", "Mesurer": "Measure", "Activer": "Activate", "Gamifier": "Gamify" };
 
 var ITEMS = [
-  // --- Besoins spécifiques — projet Archimed (5) — issus du call démo du 05/10/2026 ---
-  { cat:"Besoins spécifiques — projet Archimed", label:"Widget marchés financiers (CAC 40, Nasdaq)", labelEn:"Financial markets widget (CAC 40, Nasdaq)", desc:"Affiche l'évolution des indices boursiers en direct sur l'intranet, via connexion API.", descEn:"Displays live stock index movements on the intranet, via API connection.", preset:"oui" },
-  { cat:"Besoins spécifiques — projet Archimed", label:"Intégration web view personnalisée (ex. graphique Salesforce)", labelEn:"Custom web view integration (e.g. Salesforce chart)", desc:"Affiche un graphique ou un KPI spécifique issu d'un outil tiers directement sur une page Pulse.", descEn:"Displays a specific chart or KPI from a third-party tool directly on a Pulse page.", preset:"oui" },
-  { cat:"Besoins spécifiques — projet Archimed", label:"Page dédiée bases de données & intelligence de marché", labelEn:"Dedicated databases & market intelligence page", desc:"Une page (ou sous-pages) listant vos ~15 bases de données internes, avec accès filtré par équipe et par site.", descEn:"A page (or sub-pages) listing your ~15 internal databases, with access filtered by team and by site.", preset:"oui" },
-  { cat:"Besoins spécifiques — projet Archimed", label:"Connexion Deel (nouveau SIRH) pour l'annuaire et l'organigramme", labelEn:"Deel (new HRIS) connection for the directory and org chart", desc:"Alimente automatiquement l'annuaire et l'organigramme depuis Deel, en plus ou à la place de l'Active Directory. À confirmer selon la documentation API de Deel.", descEn:"Automatically feeds the directory and org chart from Deel, in addition to or instead of Active Directory. To be confirmed based on Deel's API documentation.", preset:"oui" },
+  // --- Besoins spécifiques — projet Archimed (4) — issus du call démo du 05/10/2026 ---
+  { cat:"Besoins spécifiques — projet Archimed", label:"Widget marchés financiers (CAC 40, Nasdaq)", labelEn:"Financial markets widget (CAC 40, Nasdaq)", desc:"Affiche l'évolution des indices boursiers en direct sur l'intranet, via connexion API.", descEn:"Displays live stock index movements on the intranet, via API connection.", preset:"oui",
+    info:"Par exemple : un widget affiché sur la page d'accueil montre en direct le niveau du CAC 40 et du Nasdaq, comme un bandeau boursier. Les données se mettent à jour automatiquement, sans intervention de votre équipe.",
+    infoEn:"For example: a widget on the homepage shows the CAC 40 and Nasdaq levels live, like a stock ticker. The data updates automatically, with no action needed from your team." },
+  { cat:"Besoins spécifiques — projet Archimed", label:"Intégration web view personnalisée (ex. graphique Salesforce)", labelEn:"Custom web view integration (e.g. Salesforce chart)", desc:"Affiche un graphique ou un KPI spécifique issu d'un outil tiers directement sur une page Pulse.", descEn:"Displays a specific chart or KPI from a third-party tool directly on a Pulse page.", preset:"oui",
+    info:"Par exemple : le graphique d'évolution du pipeline commercial que vous avez déjà dans Salesforce s'affiche directement sur une page Pulse, sans que personne n'ait besoin de le recopier à la main.",
+    infoEn:"For example: the sales pipeline chart you already have in Salesforce is displayed directly on a Pulse page, with nobody having to copy it over by hand." },
+  { cat:"Besoins spécifiques — projet Archimed", label:"Page dédiée bases de données & intelligence de marché", labelEn:"Dedicated databases & market intelligence page", desc:"Une page (ou sous-pages) listant vos ~15 bases de données internes, avec accès filtré par équipe et par site.", descEn:"A page (or sub-pages) listing your ~15 internal databases, with access filtered by team and by site.", preset:"oui",
+    info:"Par exemple : une page «Bases de données» qui liste vos ~15 outils de recherche d'information (marché, contacts, etc.), chacun avec sa description — mais un analyste du site A ne verra que celles autorisées pour son équipe, pas forcément les mêmes que son collègue du site B.",
+    infoEn:"For example: a “Databases” page listing your ~15 information research tools (market, contacts, etc.), each with its description — but an analyst at site A only sees the ones their team is allowed to access, not necessarily the same as a colleague at site B." },
+  { cat:"Besoins spécifiques — projet Archimed", label:"Connexion Deel (nouveau SIRH) pour l'annuaire et l'organigramme", labelEn:"Deel (new HRIS) connection for the directory and org chart", desc:"Alimente automatiquement l'annuaire et l'organigramme depuis Deel, en plus ou à la place de l'Active Directory. À confirmer selon la documentation API de Deel.", descEn:"Automatically feeds the directory and org chart from Deel, in addition to or instead of Active Directory. To be confirmed based on Deel's API documentation.", preset:"oui",
+    info:"Concrètement : quand un collaborateur est recruté ou change de poste dans Deel, sa fiche et sa place dans l'organigramme se mettent à jour automatiquement sur l'intranet, sans ressaisie manuelle par les RH.",
+    infoEn:"In practice: when an employee is hired or changes role in Deel, their profile and position in the org chart update automatically on the intranet, with no manual re-entry by HR." },
 
   // --- Widgets d'engagement (22) ---
-  { cat:"Widgets d'engagement", fam:"Écouter", label:"Sondage Pulse", labelEn:"Pulse survey", desc:"Une question, une réponse en 10 secondes, sur le portail et le mobile.", descEn:"One question, one answer in 10 seconds, on the portal and mobile." },
-  { cat:"Widgets d'engagement", fam:"Écouter", label:"Ask the Board", labelEn:"Ask the Board", desc:"Les collaborateurs posent leurs questions à la direction, anonymement s'ils le souhaitent.", descEn:"Employees ask their questions to leadership, anonymously if they wish." },
-  { cat:"Widgets d'engagement", fam:"Écouter", label:"Feedback instantané", labelEn:"Instant feedback", desc:"Recueillez un avis à chaud après une réunion, une formation ou un événement.", descEn:"Collect hot feedback after a meeting, a training session or an event." },
-  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Baromètre social", labelEn:"Social barometer", desc:"Mesurez le climat social chaque trimestre sur 6 dimensions, avec un anonymat garanti.", descEn:"Measure social climate every quarter across 6 dimensions, with guaranteed anonymity." },
-  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Feedback 360°", labelEn:"360° Feedback", desc:"Des retours croisés entre pairs, managers et collaborateurs.", descEn:"Cross feedback between peers, managers and employees." },
-  { cat:"Widgets d'engagement", fam:"Mesurer", label:"eNPS", labelEn:"eNPS", desc:"Le score de recommandation employeur, suivi dans le temps et par population.", descEn:"The employer recommendation score, tracked over time and by population." },
-  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Performance Review & 1:1", labelEn:"Performance Review & 1:1", desc:"Préparez et suivez les entretiens et points individuels.", descEn:"Prepare and track performance reviews and 1:1 meetings." },
-  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Diversité Équité & Inclusion", labelEn:"Diversity, Equity & Inclusion", desc:"Mesurez le sentiment d'inclusion et suivez vos engagements DEI.", descEn:"Measure the sense of inclusion and track your DEI commitments." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Boîte à idées", labelEn:"Idea box", desc:"Les collaborateurs déposent et votent pour les idées, vous suivez leur mise en œuvre.", descEn:"Employees submit and vote on ideas, you track their implementation." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Microlearning", labelEn:"Microlearning", desc:"Des modules de 3 minutes, consultables depuis le mobile et les écrans d'atelier.", descEn:"3-minute modules, accessible from mobile and shop-floor screens." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Random Coffee", labelEn:"Random Coffee", desc:"Des rencontres aléatoires entre collègues de sites et de métiers différents.", descEn:"Random meetups between colleagues from different sites and roles." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Thank You", labelEn:"Thank You", desc:"Remerciez un collègue publiquement, en un geste.", descEn:"Thank a colleague publicly, in one gesture." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Reconnaissance & récompenses", labelEn:"Recognition & rewards", desc:"Valorisez les contributions avec des badges et des récompenses.", descEn:"Celebrate contributions with badges and rewards." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Ambassador Boost", labelEn:"Ambassador Boost", desc:"Aidez vos collaborateurs à partager les contenus de l'entreprise.", descEn:"Help your employees share company content." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Engagement RSE & volontariat", labelEn:"CSR & volunteering", desc:"Proposez des missions solidaires et suivez les heures d'engagement.", descEn:"Offer volunteer missions and track engagement hours." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Problem Solver", labelEn:"Problem Solver", desc:"Remontez et résolvez les irritants du quotidien, site par site.", descEn:"Surface and solve everyday irritants, site by site." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Ideation Machine", labelEn:"Ideation Machine", desc:"Lancez des campagnes d'idéation ciblées sur un défi précis.", descEn:"Launch targeted ideation campaigns around a specific challenge." },
-  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Pronostics sportifs", labelEn:"Sports predictions", desc:"Des pronostics entre collègues pendant les grandes compétitions.", descEn:"Predictions between colleagues during major competitions." },
-  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Secret Santa", labelEn:"Secret Santa", desc:"Organisez l'échange de cadeaux de fin d'année entre équipes.", descEn:"Organise the year-end gift exchange between teams." },
-  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Quiz Master", labelEn:"Quiz Master", desc:"Des quiz courts pour ancrer les messages clés et les consignes.", descEn:"Short quizzes to anchor key messages and guidelines." },
-  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Défis bien-être", labelEn:"Wellbeing challenges", desc:"Des défis collectifs de marche, de vélo et de sommeil.", descEn:"Collective walking, cycling and sleep challenges." },
-  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Hackathon interne", labelEn:"Internal hackathon", desc:"Organisez un hackathon avec équipes, jury et votes.", descEn:"Run a hackathon with teams, a jury and voting." },
+  { cat:"Widgets d'engagement", fam:"Écouter", label:"Sondage Pulse", labelEn:"Pulse survey", desc:"Une question, une réponse en 10 secondes, sur le portail et le mobile.", descEn:"One question, one answer in 10 seconds, on the portal and mobile.",
+    info:"Par exemple : chaque lundi, une notification demande «Comment vous sentez-vous cette semaine ?» avec une réponse en un clic — pas besoin d'ouvrir un formulaire, ça prend 10 secondes sur mobile.",
+    infoEn:"For example: every Monday, a notification asks “How are you feeling this week?” with a one-click answer — no form to open, it takes 10 seconds on mobile." },
+  { cat:"Widgets d'engagement", fam:"Écouter", label:"Ask the Board", labelEn:"Ask the Board", desc:"Les collaborateurs posent leurs questions à la direction, anonymement s'ils le souhaitent.", descEn:"Employees ask their questions to leadership, anonymously if they wish.",
+    info:"Par exemple : avant une réunion trimestrielle avec la direction, les collaborateurs déposent leurs questions à l'avance (anonymement s'ils le souhaitent), les autres votent pour les plus importantes, et la direction y répond publiquement.",
+    infoEn:"For example: ahead of a quarterly meeting with leadership, employees submit their questions in advance (anonymously if they wish), others vote for the most important ones, and leadership answers them publicly." },
+  { cat:"Widgets d'engagement", fam:"Écouter", label:"Feedback instantané", labelEn:"Instant feedback", desc:"Recueillez un avis à chaud après une réunion, une formation ou un événement.", descEn:"Collect hot feedback after a meeting, a training session or an event.",
+    info:"Par exemple : juste après une formation ou un webinaire interne, une petite fenêtre demande «Qu'avez-vous pensé de cette session ?» — pendant que c'est encore frais, plutôt qu'un sondage envoyé trois semaines plus tard.",
+    infoEn:"For example: right after a training session or an internal webinar, a small pop-up asks “What did you think of this session?” — while it's still fresh, rather than a survey sent three weeks later." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Baromètre social", labelEn:"Social barometer", desc:"Mesurez le climat social chaque trimestre sur 6 dimensions, avec un anonymat garanti.", descEn:"Measure social climate every quarter across 6 dimensions, with guaranteed anonymity.",
+    info:"Par exemple : une fois par trimestre, chaque collaborateur répond anonymement à une dizaine de questions sur son ressenti (charge de travail, reconnaissance, sécurité...). Vous obtenez un score par site et par équipe — jamais par individu, pour garantir l'anonymat.",
+    infoEn:"For example: once a quarter, every employee anonymously answers about ten questions on how they're feeling (workload, recognition, safety...). You get a score by site and by team — never by individual, to guarantee anonymity." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Feedback 360°", labelEn:"360° Feedback", desc:"Des retours croisés entre pairs, managers et collaborateurs.", descEn:"Cross feedback between peers, managers and employees.",
+    info:"Par exemple : avant l'entretien annuel d'un manager, ses pairs, son équipe et son propre manager sont sollicités pour donner un avis croisé sur ses points forts et ses axes de progrès.",
+    infoEn:"For example: ahead of a manager's annual review, their peers, their team and their own manager are asked to give cross feedback on their strengths and areas for improvement." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"eNPS", labelEn:"eNPS", desc:"Le score de recommandation employeur, suivi dans le temps et par population.", descEn:"The employer recommendation score, tracked over time and by population.",
+    info:"Par exemple : une question unique, «Recommanderiez-vous notre entreprise comme employeur, de 0 à 10 ?», envoyée chaque mois. Vous suivez l'évolution du score dans le temps, et pouvez le comparer entre deux sites.",
+    infoEn:"For example: a single question, “Would you recommend our company as an employer, from 0 to 10?”, sent every month. You track how the score evolves over time, and can compare it between two sites." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Performance Review & 1:1", labelEn:"Performance Review & 1:1", desc:"Préparez et suivez les entretiens et points individuels.", descEn:"Prepare and track performance reviews and 1:1 meetings.",
+    info:"Par exemple : un manager prépare son entretien annuel avec un collaborateur directement dans l'outil, avec les objectifs fixés l'année précédente déjà pré-remplis, et suit les points réguliers du mois en quelques clics.",
+    infoEn:"For example: a manager prepares their annual review with an employee directly in the tool, with last year's goals already pre-filled, and can track monthly 1:1s in a few clicks." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Diversité Équité & Inclusion", labelEn:"Diversity, Equity & Inclusion", desc:"Mesurez le sentiment d'inclusion et suivez vos engagements DEI.", descEn:"Measure the sense of inclusion and track your DEI commitments.",
+    info:"Par exemple : un sondage anonyme mesure si les collaborateurs se sentent inclus dans leur équipe, et vous suivez l'avancement de vos engagements DEI (ex. parité, accessibilité) sur un tableau de bord dédié.",
+    infoEn:"For example: an anonymous survey measures whether employees feel included in their team, and you track progress on your DEI commitments (e.g. gender balance, accessibility) on a dedicated dashboard." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Boîte à idées", labelEn:"Idea box", desc:"Les collaborateurs déposent et votent pour les idées, vous suivez leur mise en œuvre.", descEn:"Employees submit and vote on ideas, you track their implementation.",
+    info:"Par exemple : un collaborateur propose «Installer des bornes de recharge pour vélos électriques au siège», ses collègues votent pour, et vous suivez publiquement l'avancement de l'idée (étudiée, en cours, réalisée).",
+    infoEn:"For example: an employee suggests “Install e-bike charging stations at HQ”, colleagues vote for it, and you publicly track the idea's progress (under review, in progress, done)." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Microlearning", labelEn:"Microlearning", desc:"Des modules de 3 minutes, consultables depuis le mobile et les écrans d'atelier.", descEn:"3-minute modules, accessible from mobile and shop-floor screens.",
+    info:"Par exemple : chaque jour, un petit quiz de 3 minutes apparaît sur mobile ou sur les écrans d'atelier pour rappeler une consigne de sécurité ou une valeur de l'entreprise — une façon ludique de faire passer des messages importants sans réunion.",
+    infoEn:"For example: every day, a short 3-minute quiz appears on mobile or on shop-floor screens to reinforce a safety rule or a company value — a playful way to get important messages across without a meeting." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Random Coffee", labelEn:"Random Coffee", desc:"Des rencontres aléatoires entre collègues de sites et de métiers différents.", descEn:"Random meetups between colleagues from different sites and roles.",
+    info:"Par exemple : chaque mois, l'outil forme automatiquement des binômes entre collègues qui ne se connaissent pas forcément (quelqu'un du site de Lyon avec quelqu'un du site de Lille, par exemple), et les invite à prendre un café ensemble, en visio ou en vrai.",
+    infoEn:"For example: every month, the tool automatically pairs up colleagues who might not know each other (for example someone from the Lyon site with someone from the Lille site), and invites them to grab a coffee together, in person or on a call." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Thank You", labelEn:"Thank You", desc:"Remerciez un collègue publiquement, en un geste.", descEn:"Thank a colleague publicly, in one gesture.",
+    info:"Par exemple : un collaborateur remercie publiquement un collègue qui l'a aidé sur un dossier, en un clic — ça apparaît sur un mur visible de tous, un peu comme un fil d'actualité de reconnaissance.",
+    infoEn:"For example: an employee publicly thanks a colleague who helped them on a project, in one click — it shows up on a wall visible to everyone, a bit like a recognition news feed." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Reconnaissance & récompenses", labelEn:"Recognition & rewards", desc:"Valorisez les contributions avec des badges et des récompenses.", descEn:"Celebrate contributions with badges and rewards.",
+    info:"Par exemple : un collaborateur reçoit des points pour une contribution remarquée, qu'il peut ensuite échanger contre une carte cadeau ou un don à une association, dans un catalogue intégré.",
+    infoEn:"For example: an employee earns points for a notable contribution, which they can then redeem for a gift card or a donation to a charity, from a built-in catalogue." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Ambassador Boost", labelEn:"Ambassador Boost", desc:"Aidez vos collaborateurs à partager les contenus de l'entreprise.", descEn:"Help your employees share company content.",
+    info:"Par exemple : votre équipe com prépare un post LinkedIn sur un nouveau produit, et propose aux collaborateurs volontaires de le partager en un clic sur leur propre profil, avec un texte déjà suggéré.",
+    infoEn:"For example: your comms team prepares a LinkedIn post about a new product, and offers volunteer employees a one-click way to share it on their own profile, with suggested wording already in place." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Engagement RSE & volontariat", labelEn:"CSR & volunteering", desc:"Proposez des missions solidaires et suivez les heures d'engagement.", descEn:"Offer volunteer missions and track engagement hours.",
+    info:"Par exemple : vous publiez une mission de bénévolat (ramassage de déchets, tutorat scolaire), les collaborateurs s'inscrivent, et leurs heures de volontariat sont automatiquement comptabilisées pour votre reporting RSE.",
+    infoEn:"For example: you publish a volunteering mission (litter picking, school tutoring), employees sign up, and their volunteering hours are automatically logged for your CSR reporting." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Problem Solver", labelEn:"Problem Solver", desc:"Remontez et résolvez les irritants du quotidien, site par site.", descEn:"Surface and solve everyday irritants, site by site.",
+    info:"Par exemple : un collaborateur signale que «la machine à café du 3e étage est en panne depuis 2 semaines», d'autres confirment le problème, et l'équipe concernée voit immédiatement qu'il faut agir, site par site.",
+    infoEn:"For example: an employee flags that “the coffee machine on floor 3 has been broken for 2 weeks”, others confirm the issue, and the relevant team can see right away that action is needed, site by site." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Ideation Machine", labelEn:"Ideation Machine", desc:"Lancez des campagnes d'idéation ciblées sur un défi précis.", descEn:"Launch targeted ideation campaigns around a specific challenge.",
+    info:"Par exemple : vous lancez un appel à idées ciblé sur «comment réduire notre empreinte carbone en 2027 ?», les collaborateurs proposent et votent pendant 3 semaines, et vous retenez les meilleures propositions.",
+    infoEn:"For example: you launch a targeted call for ideas on “how do we reduce our carbon footprint in 2027?”, employees submit and vote for 3 weeks, and you shortlist the best proposals." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Pronostics sportifs", labelEn:"Sports predictions", desc:"Des pronostics entre collègues pendant les grandes compétitions.", descEn:"Predictions between colleagues during major competitions.",
+    info:"Par exemple : pendant la Coupe du monde, les collaborateurs pronostiquent les scores des matchs, un classement général s'affiche en direct, et ça crée une dynamique d'équipe autour d'un sujet léger.",
+    infoEn:"For example: during the World Cup, employees predict match scores, a live leaderboard is displayed, and it creates team spirit around a light-hearted topic." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Secret Santa", labelEn:"Secret Santa", desc:"Organisez l'échange de cadeaux de fin d'année entre équipes.", descEn:"Organise the year-end gift exchange between teams.",
+    info:"Par exemple : en décembre, l'outil tire au sort qui offre un cadeau à qui, chacun renseigne sa liste de souhaits, et les participants peuvent s'écrire anonymement pour affiner leurs idées de cadeau.",
+    infoEn:"For example: in December, the tool randomly pairs up who gives a gift to whom, everyone fills in their wish list, and participants can message each other anonymously to refine gift ideas." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Quiz Master", labelEn:"Quiz Master", desc:"Des quiz courts pour ancrer les messages clés et les consignes.", descEn:"Short quizzes to anchor key messages and guidelines.",
+    info:"Par exemple : après le lancement d'un nouveau produit, un quiz de 5 questions teste ce que les équipes ont retenu, avec un classement entre collègues pour un peu de compétition amicale.",
+    infoEn:"For example: after a new product launch, a 5-question quiz tests what teams have retained, with a leaderboard between colleagues to add some friendly competition." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Défis bien-être", labelEn:"Wellbeing challenges", desc:"Des défis collectifs de marche, de vélo et de sommeil.", descEn:"Collective walking, cycling and sleep challenges.",
+    info:"Par exemple : un défi «10 000 pas par jour pendant un mois» connecté à l'Apple Watch ou à l'appli Google Fit des collaborateurs, avec un cumul d'équipe affiché sur l'intranet.",
+    infoEn:"For example: a “10,000 steps a day for a month” challenge connected to employees' Apple Watch or Google Fit app, with a team total displayed on the intranet." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Hackathon interne", labelEn:"Internal hackathon", desc:"Organisez un hackathon avec équipes, jury et votes.", descEn:"Run a hackathon with teams, a jury and voting.",
+    info:"Par exemple : vous organisez un hackathon de 2 jours sur un sujet métier, les équipes s'inscrivent, pitchent leur projet à la fin, et un jury vote pour désigner les gagnants — tout est géré sur la plateforme.",
+    infoEn:"For example: you run a 2-day hackathon on a business topic, teams sign up, pitch their project at the end, and a jury votes to pick the winners — all managed on the platform." },
 
-  // --- Intelligence artificielle (4) ---
-  { cat:"Intelligence artificielle", label:"Assistant conversationnel", labelEn:"Conversational assistant", desc:"Un agent répond aux questions des collaborateurs en citant ses sources, sans jamais dépasser leurs droits de lecture.", descEn:"An agent answers employee questions citing its sources, never exceeding their reading rights.", preset:"oui" },
-  { cat:"Intelligence artificielle", label:"Recherche intelligente (Deep Search)", labelEn:"Smart search (Deep Search)", desc:"Recherche approfondie sur tout le contenu autorisé, avec une synthèse IA pertinente — pas une liste de liens.", descEn:"In-depth search across all authorised content, with a relevant AI summary — not just a list of links." },
-  { cat:"Intelligence artificielle", label:"Traduction automatique", labelEn:"Automatic translation", desc:"Traduisez vos contenus pour vos sites et filiales à l'international.", descEn:"Translate your content for your international sites and subsidiaries." },
+  // --- Intelligence artificielle (3) ---
+  { cat:"Intelligence artificielle", label:"Assistant conversationnel", labelEn:"Conversational assistant", desc:"Un agent répond aux questions des collaborateurs en citant ses sources, sans jamais dépasser leurs droits de lecture.", descEn:"An agent answers employee questions citing its sources, never exceeding their reading rights.", preset:"oui",
+    info:"Par exemple : un collaborateur tape «Comment je pose mes congés ?» dans la bulle de chat, et l'assistant répond en citant directement l'article de la procédure RH concernée — sans jamais montrer un document qu'il n'a pas le droit de lire.",
+    infoEn:"For example: an employee types “How do I request time off?” into the chat bubble, and the assistant replies by citing the relevant HR procedure article directly — without ever showing a document they're not allowed to read." },
+  { cat:"Intelligence artificielle", label:"Recherche intelligente (Deep Search)", labelEn:"Smart search (Deep Search)", desc:"Recherche approfondie sur tout le contenu autorisé, avec une synthèse IA pertinente — pas une liste de liens.", descEn:"In-depth search across all authorised content, with a relevant AI summary — not just a list of links.",
+    info:"Par exemple : un collaborateur cherche «politique télétravail», et au lieu d'une liste de 50 résultats approximatifs, il obtient directement les 2 documents pertinents, avec un résumé de ce qu'ils disent.",
+    infoEn:"For example: an employee searches “remote work policy”, and instead of a list of 50 loosely-related results, they get the 2 relevant documents directly, with a summary of what they say." },
+  { cat:"Intelligence artificielle", label:"Traduction automatique", labelEn:"Automatic translation", desc:"Traduisez vos contenus pour vos sites et filiales à l'international.", descEn:"Translate your content for your international sites and subsidiaries.",
+    info:"Par exemple : une actualité publiée en français par le siège est automatiquement disponible en anglais, espagnol ou polonais pour les collaborateurs des filiales, sans que votre équipe com n'ait à la retraduire elle-même.",
+    infoEn:"For example: a news article published in French by headquarters is automatically available in English, Spanish or Polish for employees at subsidiaries, without your comms team having to translate it themselves." },
 
-  // --- Contenu & communication (12) ---
-  { cat:"Contenu & communication", label:"Chaînes & actualités ciblées", labelEn:"Channels & targeted news", desc:"Fil d'actualités avec ciblage par service, site ou population.", descEn:"News feed with targeting by department, site or population." },
-  { cat:"Contenu & communication", label:"Notes officielles", labelEn:"Official notices", desc:"Communications obligatoires avec accusé de lecture et suivi des lecteurs.", descEn:"Mandatory communications with read receipts and reader tracking." },
-  { cat:"Contenu & communication", label:"Pages & constructeur de pages", labelEn:"Pages & page builder", desc:"Pages par service ou projet, construites par blocs, éditables par vos référents.", descEn:"Pages by department or project, built block by block, editable by your contributors.", preset:"oui" },
-  { cat:"Contenu & communication", label:"Modèles de pages", labelEn:"Page templates", desc:"Des gabarits réutilisables pour standardiser vos pages métier.", descEn:"Reusable templates to standardise your business pages." },
-  { cat:"Contenu & communication", label:"Sondages", labelEn:"Surveys", desc:"Votes rapides sur le portail, résultats en direct.", descEn:"Quick votes on the portal, live results." },
-  { cat:"Contenu & communication", label:"Événements", labelEn:"Events", desc:"Agenda avec inscriptions, jauge de participants et liste d'attente.", descEn:"Agenda with registrations, capacity tracking and a waiting list." },
-  { cat:"Contenu & communication", label:"Annuaire collaborateurs", labelEn:"Employee directory", desc:"Fiches collaborateurs avec recherche, organigramme et coordonnées à jour.", descEn:"Employee profiles with search, org chart and up-to-date contact details." },
-  { cat:"Contenu & communication", label:"Espaces / communautés", labelEn:"Spaces / communities", desc:"Des communautés d'intérêt ou de métier, avec leur propre fil et leurs membres.", descEn:"Interest or job-based communities, each with its own feed and members." },
-  { cat:"Contenu & communication", label:"Liens & applications (launchpad)", labelEn:"Links & apps (launchpad)", desc:"Un accès direct à vos outils du quotidien, avec leurs logos officiels.", descEn:"Direct access to your everyday tools, with their official logos.", preset:"oui" },
-  { cat:"Contenu & communication", label:"Fiches sites", labelEn:"Site pages", desc:"Une page par site ou établissement : horaires, contacts, infos pratiques.", descEn:"One page per site or facility: hours, contacts, practical info." },
-  { cat:"Contenu & communication", label:"Menu du portail personnalisable", labelEn:"Customisable portal menu", desc:"Vous configurez vous-même la navigation vue par vos collaborateurs.", descEn:"You configure the navigation your employees see yourself." },
+  // --- Contenu & communication (11) ---
+  { cat:"Contenu & communication", label:"Chaînes & actualités ciblées", labelEn:"Channels & targeted news", desc:"Fil d'actualités avec ciblage par service, site ou population.", descEn:"News feed with targeting by department, site or population.",
+    info:"Par exemple : une actualité sur un changement de process logistique est envoyée uniquement aux équipes concernées par ce service, pas à l'ensemble de l'entreprise — pour éviter de noyer les gens d'infos qui ne les concernent pas.",
+    infoEn:"For example: news about a logistics process change is sent only to the teams in that department, not to the entire company — to avoid drowning people in information that doesn't concern them." },
+  { cat:"Contenu & communication", label:"Notes officielles", labelEn:"Official notices", desc:"Communications obligatoires avec accusé de lecture et suivi des lecteurs.", descEn:"Mandatory communications with read receipts and reader tracking.",
+    info:"Par exemple : une nouvelle politique de sécurité doit être lue par tout le monde. Chaque collaborateur doit cliquer «J'ai lu et je confirme», et vous voyez en temps réel qui l'a déjà fait — utile pour la conformité.",
+    infoEn:"For example: a new security policy needs to be read by everyone. Each employee has to click “I've read and confirm”, and you can see in real time who already has — useful for compliance." },
+  { cat:"Contenu & communication", label:"Pages & constructeur de pages", labelEn:"Pages & page builder", desc:"Pages par service ou projet, construites par blocs, éditables par vos référents.", descEn:"Pages by department or project, built block by block, editable by your contributors.", preset:"oui",
+    info:"Par exemple : vous ajoutez vous-même un nouveau bloc photo ou un nouveau tableau sur la page «Espace RH», par glisser-déposer, sans avoir besoin de faire appel à un développeur à chaque petite modification.",
+    infoEn:"For example: you add a new photo block or a new table to the “HR Space” page yourself, by drag and drop, without needing a developer for every small change." },
+  { cat:"Contenu & communication", label:"Modèles de pages", labelEn:"Page templates", desc:"Des gabarits réutilisables pour standardiser vos pages métier.", descEn:"Reusable templates to standardise your business pages.",
+    info:"Par exemple : au lieu de reconstruire chaque page de site depuis zéro, vous créez un gabarit «fiche site» une fois, et chaque nouveau site n'a plus qu'à remplir les champs (adresse, horaires, contacts).",
+    infoEn:"For example: instead of rebuilding every site page from scratch, you create a “site page” template once, and each new site just needs to fill in the fields (address, hours, contacts)." },
+  { cat:"Contenu & communication", label:"Sondages", labelEn:"Surveys", desc:"Votes rapides sur le portail, résultats en direct.", descEn:"Quick votes on the portal, live results.",
+    info:"Par exemple : un vote rapide «Quel thème pour la fête de fin d'année ?» directement sur la page d'accueil, avec les résultats affichés en direct, sans passer par un outil externe comme Google Forms.",
+    infoEn:"For example: a quick vote “What theme for the end-of-year party?” directly on the homepage, with results shown live, without needing an external tool like Google Forms." },
+  { cat:"Contenu & communication", label:"Événements", labelEn:"Events", desc:"Agenda avec inscriptions, jauge de participants et liste d'attente.", descEn:"Agenda with registrations, capacity tracking and a waiting list.",
+    info:"Par exemple : vous publiez «Afterwork du 15 décembre», les collaborateurs s'inscrivent en un clic, une jauge montre les places restantes, et une liste d'attente se déclenche automatiquement une fois complet.",
+    infoEn:"For example: you publish “After-work on 15 December”, employees sign up in one click, a counter shows remaining spots, and a waiting list kicks in automatically once it's full." },
+  { cat:"Contenu & communication", label:"Annuaire collaborateurs", labelEn:"Employee directory", desc:"Fiches collaborateurs avec recherche, organigramme et coordonnées à jour.", descEn:"Employee profiles with search, org chart and up-to-date contact details.",
+    info:"Par exemple : un collaborateur cherche «qui travaille sur le dossier X à Lyon», trouve la bonne personne par son poste ou son service, voit sa photo, son équipe, et peut la contacter directement.",
+    infoEn:"For example: an employee searches “who's working on project X in Lyon”, finds the right person by role or department, sees their photo and team, and can contact them directly." },
+  { cat:"Contenu & communication", label:"Espaces / communautés", labelEn:"Spaces / communities", desc:"Des communautés d'intérêt ou de métier, avec leur propre fil et leurs membres.", descEn:"Interest or job-based communities, each with its own feed and members.",
+    info:"Par exemple : une communauté «Padel à Villeurbanne» rassemble les collaborateurs intéressés, avec son propre fil d'actualités, sa liste de membres, et un animateur identifié — comme un petit groupe Facebook mais interne et sécurisé.",
+    infoEn:"For example: a “Padel at Villeurbanne” community brings together interested employees, with its own news feed, member list, and a named community lead — like a small Facebook group, but internal and secure." },
+  { cat:"Contenu & communication", label:"Liens & applications (launchpad)", labelEn:"Links & apps (launchpad)", desc:"Un accès direct à vos outils du quotidien, avec leurs logos officiels.", descEn:"Direct access to your everyday tools, with their official logos.", preset:"oui",
+    info:"Par exemple : un commercial clique sur l'icône Salesforce dans son launchpad personnel et accède directement à l'outil, connecté automatiquement via son SSO — sans avoir à chercher le bon lien ou se reconnecter.",
+    infoEn:"For example: a salesperson clicks the Salesforce icon in their personal launchpad and goes straight into the tool, automatically signed in via SSO — no need to hunt for the right link or log in again." },
+  { cat:"Contenu & communication", label:"Fiches sites", labelEn:"Site pages", desc:"Une page par site ou établissement : horaires, contacts, infos pratiques.", descEn:"One page per site or facility: hours, contacts, practical info.",
+    info:"Par exemple : chaque site a sa propre page avec les horaires d'ouverture, le plan d'accès, les contacts RH locaux et les infos du restaurant d'entreprise — utile pour un collaborateur qui change de site ou un visiteur.",
+    infoEn:"For example: each site has its own page with opening hours, directions, local HR contacts and company restaurant info — useful for an employee changing sites or for a visitor." },
+  { cat:"Contenu & communication", label:"Menu du portail personnalisable", labelEn:"Customisable portal menu", desc:"Vous configurez vous-même la navigation vue par vos collaborateurs.", descEn:"You configure the navigation your employees see yourself.",
+    info:"Par exemple : si la rubrique «Événements» n'est pas pertinente pour vous, vous la retirez du menu vous-même, sans avoir besoin de nous recontacter — et vous pouvez en ajouter une nouvelle de la même façon.",
+    infoEn:"For example: if the “Events” section isn't relevant for you, you remove it from the menu yourself, without needing to contact us — and you can add a new one the same way." },
 
   // --- Gestion des médias (2) ---
-  { cat:"Gestion des médias", label:"Bibliothèque de médias", labelEn:"Media library", desc:"Pulse stocke et héberge les images et fichiers du groupe, organisés par dossiers.", descEn:"Pulse stores and hosts the group's images and files, organised into folders." },
-  { cat:"Gestion des médias", label:"Import glisser-déposer", labelEn:"Drag-and-drop import", desc:"Import en un geste avec recadrage et texte alternatif, directement dans l'éditeur.", descEn:"One-gesture import with cropping and alt text, directly in the editor." },
+  { cat:"Gestion des médias", label:"Bibliothèque de médias", labelEn:"Media library", desc:"Pulse stocke et héberge les images et fichiers du groupe, organisés par dossiers.", descEn:"Pulse stores and hosts the group's images and files, organised into folders.",
+    info:"Par exemple : toutes les photos officielles de vos locaux, logos et visuels de marque sont stockés au même endroit, accessibles à toute personne qui construit une page ou une actualité, plutôt que dispersés dans les boîtes mail de chacun.",
+    infoEn:"For example: all your official office photos, logos and brand visuals are stored in one place, accessible to anyone building a page or an article, instead of being scattered across everyone's inboxes." },
+  { cat:"Gestion des médias", label:"Import glisser-déposer", labelEn:"Drag-and-drop import", desc:"Import en un geste avec recadrage et texte alternatif, directement dans l'éditeur.", descEn:"One-gesture import with cropping and alt text, directly in the editor.",
+    info:"Par exemple : en rédigeant une actualité, vous glissez directement une photo depuis votre ordinateur, vous la recadrez sur place, et vous ajoutez son texte alternatif pour l'accessibilité — sans outil externe.",
+    infoEn:"For example: while writing a news article, you drag a photo straight from your computer, crop it on the spot, and add its alt text for accessibility — no external tool needed." },
 
   // --- Organisation (2) ---
-  { cat:"Organisation", label:"Tâches", labelEn:"Tasks", desc:"Assignez et suivez des tâches liées à la publication ou à la vie de l'intranet.", descEn:"Assign and track tasks related to publishing or intranet life." },
-  { cat:"Organisation", label:"Planification éditoriale", labelEn:"Editorial planning", desc:"Calendrier de publication, briefings et marronniers récurrents.", descEn:"Publishing calendar, briefings and recurring key dates." },
+  { cat:"Organisation", label:"Tâches", labelEn:"Tasks", desc:"Assignez et suivez des tâches liées à la publication ou à la vie de l'intranet.", descEn:"Assign and track tasks related to publishing or intranet life.",
+    info:"Par exemple : votre équipe com voit sur son tableau de bord qu'elle doit encore valider 4 contenus et traduire 2 articles avant vendredi — un peu comme une to-do list dédiée à la vie de l'intranet, pas besoin d'un outil séparé.",
+    infoEn:"For example: your comms team sees on their dashboard that they still need to approve 4 pieces of content and translate 2 articles before Friday — a bit like a dedicated to-do list for intranet life, no separate tool needed." },
+  { cat:"Organisation", label:"Planification éditoriale", labelEn:"Editorial planning", desc:"Calendrier de publication, briefings et marronniers récurrents.", descEn:"Publishing calendar, briefings and recurring key dates.",
+    info:"Par exemple : un calendrier vous montre que deux actualités sont prévues le même vendredi — pas idéal pour la visibilité de chacune, donc vous décalez l'une des deux de quelques jours.",
+    infoEn:"For example: a calendar shows you that two news articles are scheduled for the same Friday — not ideal for either one's visibility, so you move one of them a few days." },
 
   // --- Diffusion & campagnes (3) ---
-  { cat:"Diffusion & campagnes", label:"Campagnes de communication", labelEn:"Communication campaigns", desc:"Des campagnes multi-contenus avec portée mesurée.", descEn:"Multi-content campaigns with measured reach." },
-  { cat:"Diffusion & campagnes", label:"Parcours automatisés", labelEn:"Automated journeys", desc:"Des séquences déclenchées automatiquement, par exemple pour l'onboarding.", descEn:"Sequences triggered automatically, for example for onboarding." },
-  { cat:"Diffusion & campagnes", label:"Notifications multicanal", labelEn:"Multi-channel notifications", desc:"Push, email, SMS ou écrans d'affichage, avec heures de silence et quotas.", descEn:"Push, email, SMS or digital signage, with quiet hours and quotas." },
+  { cat:"Diffusion & campagnes", label:"Campagnes de communication", labelEn:"Communication campaigns", desc:"Des campagnes multi-contenus avec portée mesurée.", descEn:"Multi-content campaigns with measured reach.",
+    info:"Par exemple : pour le lancement d'un nouveau produit, vous programmez une série de 3 actualités sur 2 semaines, et vous suivez combien de personnes ont réellement vu et lu chacune d'entre elles.",
+    infoEn:"For example: for a new product launch, you schedule a series of 3 news articles over 2 weeks, and you track how many people actually saw and read each one." },
+  { cat:"Diffusion & campagnes", label:"Parcours automatisés", labelEn:"Automated journeys", desc:"Des séquences déclenchées automatiquement, par exemple pour l'onboarding.", descEn:"Sequences triggered automatically, for example for onboarding.",
+    info:"Par exemple : dès qu'un nouveau collaborateur est créé dans l'annuaire, il reçoit automatiquement un message de bienvenue le jour 1, une présentation des outils le jour 3, puis un point d'étape le jour 30 — sans action manuelle de votre part.",
+    infoEn:"For example: as soon as a new employee is added to the directory, they automatically receive a welcome message on day 1, a tools overview on day 3, and a check-in on day 30 — with no manual action from you." },
+  { cat:"Diffusion & campagnes", label:"Notifications multicanal", labelEn:"Multi-channel notifications", desc:"Push, email, SMS ou écrans d'affichage, avec heures de silence et quotas.", descEn:"Push, email, SMS or digital signage, with quiet hours and quotas.",
+    info:"Par exemple : une alerte de sécurité urgente part en push mobile ET par email, mais une info RH classique attend 9h du matin pour ne pas déranger en soirée — et il y a une limite au nombre de notifications par semaine pour ne pas saturer les gens.",
+    infoEn:"For example: an urgent security alert goes out as a mobile push AND by email, but a routine HR update waits until 9am so it doesn't disturb people in the evening — and there's a weekly cap on notifications so people aren't overwhelmed." },
 
   // --- Audiences (3) ---
-  { cat:"Audiences", label:"Segments ciblés", labelEn:"Targeted segments", desc:"Construisez des audiences précises pour vos communications et vos widgets.", descEn:"Build precise audiences for your communications and widgets.", preset:"oui" },
-  { cat:"Audiences", label:"Rôles & permissions", labelEn:"Roles & permissions", desc:"Une matrice de droits fine, par rôle et par espace.", descEn:"A fine-grained rights matrix, by role and by space.", preset:"oui" },
-  { cat:"Audiences", label:"Synchronisation annuaire", labelEn:"Directory sync", desc:"Votre SIRH alimente automatiquement l'annuaire et les audiences.", descEn:"Your HRIS automatically feeds the directory and audiences.", preset:"oui" },
+  { cat:"Audiences", label:"Segments ciblés", labelEn:"Targeted segments", desc:"Construisez des audiences précises pour vos communications et vos widgets.", descEn:"Build precise audiences for your communications and widgets.", preset:"oui",
+    info:"Par exemple : vous créez un groupe «Comité de Direction» de 18 personnes, et vous leur affichez un widget ou une actualité que personne d'autre ne verra sur sa page d'accueil.",
+    infoEn:"For example: you create an “Executive Committee” group of 18 people, and show them a widget or a news article that no one else will see on their homepage." },
+  { cat:"Audiences", label:"Rôles & permissions", labelEn:"Roles & permissions", desc:"Une matrice de droits fine, par rôle et par espace.", descEn:"A fine-grained rights matrix, by role and by space.", preset:"oui",
+    info:"Par exemple : un commercial voit automatiquement les raccourcis vers Salesforce sur sa page d'accueil, alors qu'un analyste verra plutôt les outils qu'il utilise au quotidien — chacun son affichage, selon son métier.",
+    infoEn:"For example: a salesperson automatically sees shortcuts to Salesforce on their homepage, while an analyst sees the tools they use day-to-day instead — everyone gets a different view, based on their role." },
+  { cat:"Audiences", label:"Synchronisation annuaire", labelEn:"Directory sync", desc:"Votre SIRH alimente automatiquement l'annuaire et les audiences.", descEn:"Your HRIS automatically feeds the directory and audiences.", preset:"oui",
+    info:"Par exemple : quand quelqu'un rejoint ou quitte l'entreprise dans votre SIRH, sa fiche apparaît ou disparaît automatiquement de l'annuaire Pulse le lendemain, sans ressaisie manuelle.",
+    infoEn:"For example: when someone joins or leaves the company in your HRIS, their profile automatically appears or disappears from the Pulse directory the next day, with no manual re-entry." },
 
   // --- Intégrations tierces (7) ---
-  { cat:"Intégrations tierces", label:"Authentification unique (SSO)", labelEn:"Single sign-on (SSO)", desc:"Connexion unique via votre fournisseur d'identité (ex. Entra ID).", descEn:"One-click login via your identity provider (e.g. Entra ID).", preset:"oui" },
-  { cat:"Intégrations tierces", label:"RH", labelEn:"HR", desc:"Connexion à votre SIRH (ex. Workday, SAP SuccessFactors).", descEn:"Connection to your HRIS (e.g. Workday, SAP SuccessFactors)." },
-  { cat:"Intégrations tierces", label:"Temps & activités", labelEn:"Time & attendance", desc:"Connexion à votre outil de gestion des temps (ex. Kelio).", descEn:"Connection to your time management tool (e.g. Kelio)." },
-  { cat:"Intégrations tierces", label:"Paie", labelEn:"Payroll", desc:"Connexion à votre logiciel de paie (ex. Silae).", descEn:"Connection to your payroll software (e.g. Silae)." },
-  { cat:"Intégrations tierces", label:"Communication", labelEn:"Communication", desc:"Connexion à Microsoft Teams ou Slack.", descEn:"Connection to Microsoft Teams or Slack." },
-  { cat:"Intégrations tierces", label:"Productivité", labelEn:"Productivity", desc:"Connexion à Microsoft 365 ou Google Workspace.", descEn:"Connection to Microsoft 365 or Google Workspace." },
-  { cat:"Intégrations tierces", label:"Automatisation", labelEn:"Automation", desc:"Connexion à Zapier pour relier l'intranet à vos autres outils.", descEn:"Connection to Zapier to link the intranet with your other tools." },
+  { cat:"Intégrations tierces", label:"Authentification unique (SSO)", labelEn:"Single sign-on (SSO)", desc:"Connexion unique via votre fournisseur d'identité (ex. Entra ID).", descEn:"One-click login via your identity provider (e.g. Entra ID).", preset:"oui",
+    info:"Par exemple : un collaborateur se connecte à Pulse avec le même identifiant et mot de passe que pour ses autres outils d'entreprise — pas de nouveau compte à créer ni de mot de passe supplémentaire à retenir.",
+    infoEn:"For example: an employee logs into Pulse with the same username and password as their other company tools — no new account to create, no extra password to remember." },
+  { cat:"Intégrations tierces", label:"RH", labelEn:"HR", desc:"Connexion à votre SIRH (ex. Workday, SAP SuccessFactors).", descEn:"Connection to your HRIS (e.g. Workday, SAP SuccessFactors).",
+    info:"Par exemple : si vos données RH sont dans Workday ou SAP SuccessFactors, elles peuvent alimenter automatiquement l'annuaire et l'organigramme de Pulse, sans double saisie entre les deux outils.",
+    infoEn:"For example: if your HR data lives in Workday or SAP SuccessFactors, it can automatically feed Pulse's directory and org chart, with no double entry between the two tools." },
+  { cat:"Intégrations tierces", label:"Temps & activités", labelEn:"Time & attendance", desc:"Connexion à votre outil de gestion des temps (ex. Kelio).", descEn:"Connection to your time management tool (e.g. Kelio).",
+    info:"Par exemple : un raccourci vers Kelio apparaît directement dans le launchpad, pour que les collaborateurs n'aient pas à chercher où pointer leurs heures ou poser un congé.",
+    infoEn:"For example: a shortcut to Kelio appears directly in the launchpad, so employees don't have to search for where to clock their hours or request time off." },
+  { cat:"Intégrations tierces", label:"Paie", labelEn:"Payroll", desc:"Connexion à votre logiciel de paie (ex. Silae).", descEn:"Connection to your payroll software (e.g. Silae).",
+    info:"Par exemple : un lien direct vers Silae permet à chaque collaborateur de retrouver facilement ses bulletins de paie depuis l'intranet, sans avoir à se souvenir d'une adresse à part.",
+    infoEn:"For example: a direct link to Silae lets each employee easily find their payslips from the intranet, without having to remember a separate address." },
+  { cat:"Intégrations tierces", label:"Communication", labelEn:"Communication", desc:"Connexion à Microsoft Teams ou Slack.", descEn:"Connection to Microsoft Teams or Slack.",
+    info:"Par exemple : l'assistant conversationnel de Pulse peut être rendu disponible directement dans Microsoft Teams, là où vos collaborateurs passent déjà leur journée.",
+    infoEn:"For example: Pulse's conversational assistant can be made available directly inside Microsoft Teams, where your employees already spend their day." },
+  { cat:"Intégrations tierces", label:"Productivité", labelEn:"Productivity", desc:"Connexion à Microsoft 365 ou Google Workspace.", descEn:"Connection to Microsoft 365 or Google Workspace.",
+    info:"Par exemple : le calendrier Pulse affiche directement les événements de votre Outlook ou Google Agenda, sans que personne n'ait à les recopier à la main des deux côtés.",
+    infoEn:"For example: the Pulse calendar directly shows events from your Outlook or Google Calendar, with no one having to copy them by hand on both sides." },
+  { cat:"Intégrations tierces", label:"Automatisation", labelEn:"Automation", desc:"Connexion à Zapier pour relier l'intranet à vos autres outils.", descEn:"Connection to Zapier to link the intranet with your other tools.",
+    info:"Par exemple : dès qu'une nouvelle idée est soumise dans la boîte à idées, un message peut être envoyé automatiquement dans un canal Slack dédié, via Zapier, sans développement spécifique.",
+    infoEn:"For example: as soon as a new idea is submitted in the idea box, a message can be sent automatically to a dedicated Slack channel, via Zapier, with no custom development needed." },
 
   // --- Pilotage & mesure (5) ---
-  { cat:"Pilotage & mesure", label:"Tableau de bord d'adoption", labelEn:"Adoption dashboard", desc:"Vue d'ensemble de l'usage réel de l'intranet par vos équipes.", descEn:"An overview of how your teams actually use the intranet." },
-  { cat:"Pilotage & mesure", label:"Statistiques détaillées", labelEn:"Detailed statistics", desc:"Actualités, pages, notifications, recherche, widgets, assistant IA — tout est mesuré.", descEn:"News, pages, notifications, search, widgets, AI assistant — everything is measured." },
-  { cat:"Pilotage & mesure", label:"Centre d'engagement", labelEn:"Engagement centre", desc:"Comparez vos sites et dimensions d'engagement, avec un anonymat garanti (seuil minimum de répondants).", descEn:"Compare your sites and engagement dimensions, with guaranteed anonymity (minimum respondent threshold)." },
-  { cat:"Pilotage & mesure", label:"Explorateur de données anonymisé", labelEn:"Anonymised data explorer", desc:"Croisez vos données sans jamais pouvoir identifier un individu.", descEn:"Cross-reference your data without ever being able to identify an individual." },
-  { cat:"Pilotage & mesure", label:"Rapports programmés", labelEn:"Scheduled reports", desc:"Des rapports envoyés automatiquement aux bonnes personnes.", descEn:"Reports automatically sent to the right people." },
+  { cat:"Pilotage & mesure", label:"Tableau de bord d'adoption", labelEn:"Adoption dashboard", desc:"Vue d'ensemble de l'usage réel de l'intranet par vos équipes.", descEn:"An overview of how your teams actually use the intranet.",
+    info:"Par exemple : vous voyez en un coup d'œil que 84 % de vos collaborateurs se sont connectés à l'intranet ce mois-ci — un bon indicateur pour savoir si la plateforme est vraiment utilisée au quotidien.",
+    infoEn:"For example: you see at a glance that 84% of your employees logged into the intranet this month — a good indicator of whether the platform is actually used day-to-day." },
+  { cat:"Pilotage & mesure", label:"Statistiques détaillées", labelEn:"Detailed statistics", desc:"Actualités, pages, notifications, recherche, widgets, assistant IA — tout est mesuré.", descEn:"News, pages, notifications, search, widgets, AI assistant — everything is measured.",
+    info:"Par exemple : vous savez précisément quelle actualité a été la plus lue ce mois-ci, combien de personnes ont utilisé l'assistant IA, ou quels widgets sont les plus consultés — pour ajuster votre stratégie de communication.",
+    infoEn:"For example: you know precisely which news article was read the most this month, how many people used the AI assistant, or which widgets get the most traffic — to adjust your communication strategy." },
+  { cat:"Pilotage & mesure", label:"Centre d'engagement", labelEn:"Engagement centre", desc:"Comparez vos sites et dimensions d'engagement, avec un anonymat garanti (seuil minimum de répondants).", descEn:"Compare your sites and engagement dimensions, with guaranteed anonymity (minimum respondent threshold).",
+    info:"Par exemple : vous comparez le score d'engagement du site de Lyon à celui du site de Lille — mais si une équipe compte moins de 5 répondants, le chiffre n'est pas affiché, pour qu'on ne puisse jamais remonter à une personne précise.",
+    infoEn:"For example: you compare the engagement score of the Lyon site to the Lille site — but if a team has fewer than 5 respondents, the figure isn't shown, so it can never be traced back to a specific person." },
+  { cat:"Pilotage & mesure", label:"Explorateur de données anonymisé", labelEn:"Anonymised data explorer", desc:"Croisez vos données sans jamais pouvoir identifier un individu.", descEn:"Cross-reference your data without ever being able to identify an individual.",
+    info:"Par exemple : vous croisez «ancienneté» et «satisfaction» pour voir si les nouveaux arrivants se sentent différemment des collaborateurs plus anciens — sans jamais voir le nom de qui que ce soit.",
+    infoEn:"For example: you cross-reference “tenure” and “satisfaction” to see if new joiners feel differently from longer-tenured employees — without ever seeing anyone's name." },
+  { cat:"Pilotage & mesure", label:"Rapports programmés", labelEn:"Scheduled reports", desc:"Des rapports envoyés automatiquement aux bonnes personnes.", descEn:"Reports automatically sent to the right people.",
+    info:"Par exemple : un rapport mensuel sur l'activité de l'intranet est envoyé automatiquement chaque premier lundi du mois à la direction com, sans que personne n'ait à penser à l'exporter manuellement.",
+    infoEn:"For example: a monthly report on intranet activity is automatically sent to the comms director every first Monday of the month, with no one needing to remember to export it manually." },
 
   // --- Mobile & accessibilité (2) ---
-  { cat:"Mobile & accessibilité", label:"Application web installable (PWA)", labelEn:"Installable web app (PWA)", desc:"Une app installable sur iOS et Android, sans passer par un store.", descEn:"An app installable on iOS and Android, no app store needed." },
-  { cat:"Mobile & accessibilité", label:"Navigation terrain simplifiée", labelEn:"Simplified field navigation", desc:"Pensée pour vos collaborateurs sans email professionnel.", descEn:"Designed for employees without a professional email address." },
+  { cat:"Mobile & accessibilité", label:"Application web installable (PWA)", labelEn:"Installable web app (PWA)", desc:"Une app installable sur iOS et Android, sans passer par un store.", descEn:"An app installable on iOS and Android, no app store needed.",
+    info:"Par exemple : un collaborateur ajoute Pulse sur l'écran d'accueil de son téléphone comme n'importe quelle autre application, sans passer par l'App Store ou le Play Store — pratique si votre entreprise ne veut pas gérer de déploiement d'app.",
+    infoEn:"For example: an employee adds Pulse to their phone's home screen like any other app, without going through the App Store or Play Store — handy if your company doesn't want to manage app deployment." },
+  { cat:"Mobile & accessibilité", label:"Navigation terrain simplifiée", labelEn:"Simplified field navigation", desc:"Pensée pour vos collaborateurs sans email professionnel.", descEn:"Designed for employees without a professional email address.",
+    info:"Par exemple : un opérateur en atelier qui n'a pas d'adresse email professionnelle peut quand même se connecter à Pulse (par exemple avec un badge ou un code), avec une interface simplifiée adaptée à un usage rapide sur borne ou tablette partagée.",
+    infoEn:"For example: a shop-floor operator without a professional email address can still log into Pulse (for example with a badge or a code), with a simplified interface designed for quick use on a shared kiosk or tablet." },
 
   // --- Sécurité & gouvernance (4) ---
-  { cat:"Sécurité & gouvernance", label:"Hébergement UE & conformité RGPD", labelEn:"EU hosting & GDPR compliance", desc:"Vos données restent en Europe, traitées conformément au RGPD.", descEn:"Your data stays in Europe, processed in line with GDPR." },
-  { cat:"Sécurité & gouvernance", label:"Journal d'audit", labelEn:"Audit log", desc:"Chaque action sensible est tracée : qui, quoi, quand.", descEn:"Every sensitive action is tracked: who, what, when." },
-  { cat:"Sécurité & gouvernance", label:"Modération des commentaires", labelEn:"Comment moderation", desc:"Gardez la main sur les échanges publics de votre intranet.", descEn:"Keep control of your intranet's public exchanges." },
-  { cat:"Sécurité & gouvernance", label:"Validation éditoriale", labelEn:"Editorial approval", desc:"Un workflow de relecture avant publication des contenus sensibles.", descEn:"A review workflow before publishing sensitive content." }
+  { cat:"Sécurité & gouvernance", label:"Hébergement UE & conformité RGPD", labelEn:"EU hosting & GDPR compliance", desc:"Vos données restent en Europe, traitées conformément au RGPD.", descEn:"Your data stays in Europe, processed in line with GDPR.",
+    info:"Concrètement : vos données ne quittent jamais l'Europe, elles sont hébergées chez un prestataire certifié, avec des sauvegardes régulières — un point souvent demandé par les équipes juridiques et IT.",
+    infoEn:"In practice: your data never leaves Europe, it's hosted with a certified provider, with regular backups — a point often requested by legal and IT teams." },
+  { cat:"Sécurité & gouvernance", label:"Journal d'audit", labelEn:"Audit log", desc:"Chaque action sensible est tracée : qui, quoi, quand.", descEn:"Every sensitive action is tracked: who, what, when.",
+    info:"Par exemple : si quelqu'un modifie les droits d'accès à un document sensible, vous pouvez retrouver qui l'a fait et à quelle heure précise — utile en cas de question de conformité ou d'audit interne.",
+    infoEn:"For example: if someone changes access rights to a sensitive document, you can find out exactly who did it and at what time — useful for compliance questions or an internal audit." },
+  { cat:"Sécurité & gouvernance", label:"Modération des commentaires", labelEn:"Comment moderation", desc:"Gardez la main sur les échanges publics de votre intranet.", descEn:"Keep control of your intranet's public exchanges.",
+    info:"Par exemple : un commentaire inapproprié posté sous une actualité peut être masqué par votre équipe com avant d'être vu par tout le monde, avec une trace de la modération effectuée.",
+    infoEn:"For example: an inappropriate comment posted under a news article can be hidden by your comms team before everyone sees it, with a record of the moderation action taken." },
+  { cat:"Sécurité & gouvernance", label:"Validation éditoriale", labelEn:"Editorial approval", desc:"Un workflow de relecture avant publication des contenus sensibles.", descEn:"A review workflow before publishing sensitive content.",
+    info:"Par exemple : une note officielle rédigée par un chargé de communication passe par la validation de son responsable avant publication — pour éviter qu'un contenu sensible parte sans relecture.",
+    infoEn:"For example: an official notice drafted by a comms officer goes through their manager's approval before publishing — to avoid sensitive content going out without a review." }
 ];
 
 function slugify(s){
@@ -367,12 +508,23 @@ function buildRow(it){
   var row = document.createElement('div');
   row.className = 'nb-row';
   row.dataset.id = it.id;
-  row.dataset.search = (it.label + ' ' + it.desc).toLowerCase();
+  row.dataset.search = (it.label + ' ' + it.desc + ' ' + it.info).toLowerCase();
 
   var text = document.createElement('div');
   text.className = 'nb-row-text';
-  text.innerHTML = '<div class="nb-row-label">' + it.label + '</div><div class="nb-row-desc">' + it.desc + '</div>';
+  text.innerHTML =
+    '<div class="nb-row-head"><span class="nb-row-label">' + it.label + '</span>' +
+    '<button type="button" class="nb-info-btn" aria-label="Plus d\'informations">i</button></div>' +
+    '<div class="nb-row-desc">' + it.desc + '</div>' +
+    '<div class="nb-row-info">' + it.info + '</div>';
   row.appendChild(text);
+
+  var infoBtn = text.querySelector('.nb-info-btn');
+  var infoPanel = text.querySelector('.nb-row-info');
+  infoBtn.addEventListener('click', function(){
+    infoPanel.classList.toggle('is-open');
+    infoBtn.classList.toggle('is-active');
+  });
 
   var toggle = document.createElement('div');
   toggle.className = 'nb-row-toggle';
@@ -542,9 +694,11 @@ document.getElementById('btnReset').addEventListener('click', function(){
       if(!it) return;
       var labelEl = rowEl.querySelector('.nb-row-label');
       var descEl = rowEl.querySelector('.nb-row-desc');
+      var infoEl = rowEl.querySelector('.nb-row-info');
       if(labelEl) labelEl.textContent = lang === 'en' ? it.labelEn : it.label;
       if(descEl) descEl.textContent = lang === 'en' ? it.descEn : it.desc;
-      rowEl.dataset.search = (lang === 'en' ? (it.labelEn + ' ' + it.descEn) : (it.label + ' ' + it.desc)).toLowerCase();
+      if(infoEl) infoEl.textContent = lang === 'en' ? it.infoEn : it.info;
+      rowEl.dataset.search = (lang === 'en' ? (it.labelEn + ' ' + it.descEn + ' ' + it.infoEn) : (it.label + ' ' + it.desc + ' ' + it.info)).toLowerCase();
     });
     document.querySelectorAll('.nb-opt').forEach(function(btn){
       var key = btn.dataset.v === 'oui' ? 'nbOptYes' : btn.dataset.v === 'v2' ? 'nbOptV2' : 'nbOptNo';
