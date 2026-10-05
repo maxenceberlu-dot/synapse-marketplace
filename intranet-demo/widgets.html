@@ -45,8 +45,24 @@ button{font-family:inherit;cursor:pointer;}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(216,31,120,0.35);}
 
 .lang-note-bar{text-align:center;font-size:0.78rem;color:var(--text-tertiary);font-style:italic;padding:10px 16px 0;flex-shrink:0;min-height:0;}
-.demo-frame-wrap{flex:1;min-height:0;}
+.demo-frame-wrap{flex:0 0 auto;height:calc(100vh - 64px);min-height:420px;}
 .demo-frame-wrap iframe{width:100%;height:100%;border:none;display:block;background:#fff;}
+
+.widget-library{padding:56px 24px 80px;max-width:1160px;margin:0 auto;}
+.wl-header{text-align:center;max-width:640px;margin:0 auto 40px;}
+.wl-eyebrow{display:inline-block;font-size:0.76rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-1);margin-bottom:8px;}
+.wl-header h2{font-family:var(--font-display);font-weight:500;font-size:clamp(1.5rem,3vw,2rem);margin:0 0 10px;}
+.wl-header p{font-size:0.95rem;color:var(--text-secondary);line-height:1.6;}
+.wl-category{margin-bottom:40px;}
+.wl-category:last-child{margin-bottom:0;}
+.wl-category-head{display:flex;align-items:baseline;gap:10px;margin-bottom:16px;}
+.wl-category-title{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:1.3rem;color:var(--accent-2);margin:0;}
+.wl-category-count{font-size:0.8rem;color:var(--text-tertiary);}
+.wl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;}
+.wl-card{display:flex;flex-direction:column;gap:6px;padding:18px;border-radius:14px;border:1px solid var(--border);background:var(--bg-card);box-shadow:var(--shadow-sm);text-decoration:none;color:inherit;transition:var(--transition);}
+a.wl-card:hover{transform:translateY(-2px);border-color:var(--border-strong);box-shadow:0 10px 24px rgba(40,25,50,0.1);}
+.wl-card-name{font-weight:700;font-size:0.95rem;color:var(--text-primary);}
+.wl-card-desc{margin:0;font-size:0.83rem;line-height:1.5;color:var(--text-secondary);}
 
 @media (max-width:640px){
   .microsite-bar-inner{padding:0 14px;gap:8px;}
@@ -54,6 +70,11 @@ button{font-family:inherit;cursor:pointer;}
   .ms-tabs{gap:2px;padding:3px;}
   .ms-tab{padding:7px 9px;font-size:0.74rem;white-space:nowrap;}
   .microsite-bar .btn{display:none;}
+  .widget-library{padding:40px 16px 56px;}
+  .wl-grid{grid-template-columns:1fr 1fr;gap:10px;}
+}
+@media (max-width:420px){
+  .wl-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -66,6 +87,8 @@ button{font-family:inherit;cursor:pointer;}
       <span>Pulse</span>
     </a>
     <nav class="ms-tabs" aria-label="Navigation du site de démonstration">
+      <a href="qui-sommes-nous.html" class="ms-tab" data-i18n="navAbout">Qui sommes-nous</a>
+      <a href="votre-besoin.html" class="ms-tab" data-i18n="navNeed">Votre besoin</a>
       <a href="index.html" class="ms-tab" data-i18n="navDemo">Démonstration</a>
       <a href="pricing.html" class="ms-tab" data-i18n="navPricing">Tarifs &amp; offres</a>
       <a href="widgets.html" class="ms-tab ms-tab-active" aria-current="page" data-i18n="navWidgets">Widgets</a>
@@ -83,11 +106,143 @@ button{font-family:inherit;cursor:pointer;}
   <iframe src="widgets-demo.html" title="Présentation des widgets Pulse" loading="eager" id="widgetsFrame"></iframe>
 </div>
 
+<section class="widget-library" aria-label="Bibliothèque des widgets Pulse">
+  <div class="wl-header">
+    <span class="wl-eyebrow">Bibliothèque</span>
+    <h2>Tous les widgets Pulse</h2>
+    <p>22 widgets prêts à l'emploi, classés par usage. Cliquez sur une carte pour en savoir plus.</p>
+  </div>
+
+  <div class="wl-category">
+    <div class="wl-category-head">
+      <h3 class="wl-category-title">Écouter</h3>
+      <span class="wl-category-count">3 widgets</span>
+    </div>
+    <div class="wl-grid">
+      <div class="wl-card">
+        <span class="wl-card-name">Pulse</span>
+        <p class="wl-card-desc">Micro-sondage continu en un clic, pour un pouls d'équipe en temps réel.</p>
+      </div>
+      <a class="wl-card" href="../sondage-collaborateurs-entreprise.html">
+        <span class="wl-card-name">Sondage</span>
+        <p class="wl-card-desc">Sondage pulse anonyme : questions courtes, résultats en temps réel, eNPS inclus.</p>
+      </a>
+      <a class="wl-card" href="../ask-the-board-entreprise.html">
+        <span class="wl-card-name">Ask the Board</span>
+        <p class="wl-card-desc">Questions anonymes à la direction façon AMA, avec vote des pairs et réponses officielles.</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="wl-category">
+    <div class="wl-category-head">
+      <h3 class="wl-category-title">Mesurer</h3>
+      <span class="wl-category-count">5 widgets</span>
+    </div>
+    <div class="wl-grid">
+      <a class="wl-card" href="../real-time-sentiment-entreprise.html">
+        <span class="wl-card-name">Baromètre social</span>
+        <p class="wl-card-desc">Mesurez le ressenti de vos équipes en temps réel et anonymement, avec dashboards instantanés.</p>
+      </a>
+      <a class="wl-card" href="../360-feedback-entreprise.html">
+        <span class="wl-card-name">Feedback 360°</span>
+        <p class="wl-card-desc">Retours anonymes managers, pairs et équipes, avec plans de développement individuels.</p>
+      </a>
+      <a class="wl-card" href="../enps-employee-net-promoter-score-entreprise.html">
+        <span class="wl-card-name">eNPS</span>
+        <p class="wl-card-desc">Employee Net Promoter Score : question unique 0-10, calcul automatique, benchmark sectoriel.</p>
+      </a>
+      <a class="wl-card" href="../performance-review-entretien-individuel-entreprise.html">
+        <span class="wl-card-name">Performance Review &amp; 1:1</span>
+        <p class="wl-card-desc">Entretiens annuels, semestriels et hebdo structurés, avec auto-évaluation, 360° et suivi des OKR.</p>
+      </a>
+      <a class="wl-card" href="../diversite-inclusion-dei-entreprise.html">
+        <span class="wl-card-name">Diversité, Équité &amp; Inclusion</span>
+        <p class="wl-card-desc">Mesure de l'inclusion ressentie, animation des ERG, reporting CSRD.</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="wl-category">
+    <div class="wl-category-head">
+      <h3 class="wl-category-title">Activer</h3>
+      <span class="wl-category-count">9 widgets</span>
+    </div>
+    <div class="wl-grid">
+      <a class="wl-card" href="../boite-a-idees-innovation-entreprise.html">
+        <span class="wl-card-name">Boîte à idées</span>
+        <p class="wl-card-desc">Innovation participative : soumission, vote et pipeline de l'idée au déploiement.</p>
+      </a>
+      <a class="wl-card" href="../microlearning-quiz-quotidien-entreprise.html">
+        <span class="wl-card-name">Microlearning</span>
+        <p class="wl-card-desc">Un quiz par jour, 30 secondes, pour acculturer aux valeurs, à la RGPD et à la sécurité.</p>
+      </a>
+      <a class="wl-card" href="../random-coffee-match-entreprise.html">
+        <span class="wl-card-name">Random Coffee</span>
+        <p class="wl-card-desc">L'algorithme connecte vos collaborateurs pour un café virtuel chaque semaine.</p>
+      </a>
+      <a class="wl-card" href="../thank-you-plugin-entreprise.html">
+        <span class="wl-card-name">Thank You</span>
+        <p class="wl-card-desc">Mur de gratitude collaboratif : remerciements publics et badges personnalisables.</p>
+      </a>
+      <a class="wl-card" href="../reconnaissance-collaborateurs-recompenses-entreprise.html">
+        <span class="wl-card-name">Reconnaissance &amp; récompenses</span>
+        <p class="wl-card-desc">Reconnaissance entre pairs avec système de points et catalogue de récompenses.</p>
+      </a>
+      <a class="wl-card" href="../ambassador-boost-entreprise.html">
+        <span class="wl-card-name">Ambassador Boost</span>
+        <p class="wl-card-desc">Transformez vos collaborateurs en ambassadeurs LinkedIn : posts prêts à l'emploi, gamification.</p>
+      </a>
+      <a class="wl-card" href="../engagement-rse-volontariat-entreprise.html">
+        <span class="wl-card-name">Engagement RSE &amp; volontariat</span>
+        <p class="wl-card-desc">Missions associatives, suivi des heures de volontariat, dons et reporting CSRD.</p>
+      </a>
+      <a class="wl-card" href="../problem-solver-entreprise.html">
+        <span class="wl-card-name">Problem Solver</span>
+        <p class="wl-card-desc">Résolution collaborative : proposez des solutions, rejoignez un projet, votez.</p>
+      </a>
+      <a class="wl-card" href="../ideation-machine-entreprise.html">
+        <span class="wl-card-name">Ideation Machine</span>
+        <p class="wl-card-desc">Des idées par site, votées par les pairs, jusqu'au workflow de validation en projet.</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="wl-category">
+    <div class="wl-category-head">
+      <h3 class="wl-category-title">Gamifier</h3>
+      <span class="wl-category-count">5 widgets</span>
+    </div>
+    <div class="wl-grid">
+      <a class="wl-card" href="../pronostics-sportifs-entreprise.html">
+        <span class="wl-card-name">Pronostics sportifs</span>
+        <p class="wl-card-desc">Football, rugby, tennis et plus : classements live entre collègues sur chaque compétition.</p>
+      </a>
+      <a class="wl-card" href="../secret-santa-entreprise.html">
+        <span class="wl-card-name">Secret Santa</span>
+        <p class="wl-card-desc">Tirage au sort automatique, listes de souhaits, messagerie anonyme — organisé en 5 minutes.</p>
+      </a>
+      <a class="wl-card" href="../quiz-team-building-entreprise.html">
+        <span class="wl-card-name">Quiz Master</span>
+        <p class="wl-card-desc">Plus de 10 000 questions, mode duel entre collègues, classements live.</p>
+      </a>
+      <a class="wl-card" href="../defi-sportif-bien-etre-entreprise.html">
+        <span class="wl-card-name">Défis bien-être</span>
+        <p class="wl-card-desc">Défis pas, running, vélo — connecté à Apple Health, Google Fit, Fitbit et Garmin.</p>
+      </a>
+      <a class="wl-card" href="../hackathon-interne-entreprise.html">
+        <span class="wl-card-name">Hackathon interne</span>
+        <p class="wl-card-desc">Formez des squads, pitchez des idées, prototypez en temps limité.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
 <script>
 (function(){
   var UI_STRINGS = {
-    fr: { navDemo: 'Démonstration', navPricing: 'Tarifs & offres', navWidgets: 'Widgets', navCta: 'Voir les tarifs', langNote: '' },
-    en: { navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets', navCta: 'View pricing', langNote: 'Note: the interactive preview below is currently available in French only.' }
+    fr: { navAbout: 'Qui sommes-nous', navNeed: 'Votre besoin', navDemo: 'Démonstration', navPricing: 'Tarifs & offres', navWidgets: 'Widgets', navCta: 'Voir les tarifs', langNote: '' },
+    en: { navAbout: 'About us', navNeed: 'Your needs', navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets', navCta: 'View pricing', langNote: 'Note: the interactive preview below is currently available in French only.' }
   };
   function applyLang(lang){
     var t = UI_STRINGS[lang];

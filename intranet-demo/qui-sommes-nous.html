@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pulse Intranet · Qui sommes-nous</title>
+<meta name="description" content="Pulse : 7 ans d'expérience, leader des solutions intranet pour les entreprises de 0 à 2 000 collaborateurs. Découvrez qui nous sommes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf8f4; --bg-subtle:#f5efe6; --bg-card:#ffffff;
+  --border:#e4dde8; --border-strong:#d8cee0;
+  --text-primary:#17152e; --text-secondary:#4a4760; --text-tertiary:#8a86a0;
+  --accent-1:#d81f78; --accent-2:#6a2a95;
+  --gradient-brand:linear-gradient(120deg,#d81f78,#6a2a95);
+  --gradient-text:linear-gradient(100deg,#d81f78 10%,#8c2a9c 55%,#4e2a8e 95%);
+  --shadow-sm:0 1px 2px rgba(40,25,50,0.06);
+  --font:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-display:'Newsreader',Georgia,serif;
+  --transition:all .25s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;}
+body{font-family:var(--font);background:var(--bg);color:var(--text-primary);display:flex;flex-direction:column;}
+a{color:inherit;}
+button{font-family:inherit;cursor:pointer;}
+:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px;}
+.gtext{font-style:italic;background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+.microsite-bar{position:sticky;top:0;z-index:200;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);flex-shrink:0;}
+.microsite-bar-inner{max-width:1160px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.ms-logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;font-size:1.05rem;color:var(--text-primary);}
+.ms-logo-mark{width:30px;height:30px;border-radius:9px;background:var(--gradient-brand);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ms-logo-mark svg{width:16px;height:16px;}
+.ms-tabs{display:flex;gap:4px;background:var(--bg-subtle);padding:4px;border-radius:12px;border:1px solid var(--border);}
+.ms-tab{padding:8px 16px;border-radius:9px;font-size:0.88rem;font-weight:600;text-decoration:none;color:var(--text-secondary);transition:var(--transition);}
+.ms-tab:hover{color:var(--text-primary);}
+.ms-tab-active{background:var(--bg-card);color:var(--text-primary);box-shadow:var(--shadow-sm);}
+.ms-actions{display:flex;align-items:center;gap:10px;}
+.lang-toggle{width:40px;height:36px;border-radius:10px;border:1px solid var(--border-strong);background:var(--bg-card);color:var(--text-primary);font-weight:700;font-size:0.8rem;display:flex;align-items:center;justify-content:center;transition:var(--transition);}
+.lang-toggle:hover{background:var(--bg-subtle);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 18px;border-radius:999px;font-weight:600;font-size:0.85rem;text-decoration:none;border:none;transition:var(--transition);white-space:nowrap;}
+.btn-primary{background:var(--gradient-brand);color:#fff;box-shadow:0 6px 20px rgba(216,31,120,0.25);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(216,31,120,0.35);}
+
+main{flex:1;}
+
+.ab-hero{text-align:center;padding:64px 24px 40px;max-width:760px;margin:0 auto;}
+.ab-eyebrow{display:inline-block;font-size:0.76rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-1);margin-bottom:10px;}
+.ab-hero h1{font-family:var(--font-display);font-weight:500;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.2;margin-bottom:16px;}
+.ab-hero p{font-size:1.02rem;color:var(--text-secondary);line-height:1.7;max-width:640px;margin:0 auto;}
+
+.ab-stats{max-width:1000px;margin:0 auto;padding:0 24px 56px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.ab-stat{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px 20px;text-align:center;box-shadow:var(--shadow-sm);}
+.ab-stat .num{font-family:var(--font-display);font-weight:500;font-size:1.7rem;color:var(--accent-2);margin-bottom:6px;}
+.ab-stat .label{font-size:0.85rem;color:var(--text-secondary);line-height:1.5;}
+
+.ab-section{max-width:760px;margin:0 auto;padding:0 24px 56px;}
+.ab-section h2{font-family:var(--font-display);font-weight:500;font-size:1.5rem;margin-bottom:14px;text-align:center;}
+.ab-section p{font-size:0.98rem;color:var(--text-secondary);line-height:1.75;text-align:center;}
+
+.ab-trust{background:var(--bg-subtle);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px 24px;}
+.ab-trust-inner{max-width:1000px;margin:0 auto;text-align:center;}
+.ab-trust-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-bottom:28px;}
+.ab-trust-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:18px;}
+.ab-logo-card{display:inline-flex;align-items:center;justify-content:center;height:68px;padding:0 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-sm);}
+.ab-logo-card img{height:26px;width:auto;max-width:130px;object-fit:contain;}
+.ab-logo-card.ab-logo-lg img{height:42px;}
+.ab-logo-card.ab-logo-text{font-weight:700;font-size:0.98rem;color:var(--text-primary);}
+
+.ab-partner{max-width:760px;margin:0 auto;padding:56px 24px;}
+.ab-partner-card{display:flex;align-items:center;gap:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:32px;box-shadow:var(--shadow-sm);}
+.ab-partner-icon{width:56px;height:56px;border-radius:14px;background:var(--gradient-brand);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1.3rem;}
+.ab-partner-card h3{font-family:var(--font-display);font-weight:500;font-size:1.15rem;margin-bottom:6px;}
+.ab-partner-card p{font-size:0.92rem;color:var(--text-secondary);line-height:1.6;}
+
+.ab-security{max-width:1000px;margin:0 auto;padding:0 24px 56px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.ab-security-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px;text-align:center;box-shadow:var(--shadow-sm);}
+.ab-security-card .ico{font-size:1.6rem;margin-bottom:8px;}
+.ab-security-card h4{font-size:0.95rem;font-weight:700;margin-bottom:4px;}
+.ab-security-card p{font-size:0.82rem;color:var(--text-secondary);line-height:1.5;}
+
+.ab-cta{text-align:center;padding:56px 24px 72px;}
+.ab-cta h2{font-family:var(--font-display);font-weight:500;font-size:1.6rem;margin-bottom:14px;}
+.ab-cta p{color:var(--text-secondary);margin-bottom:22px;font-size:0.98rem;}
+
+.ab-footer{text-align:center;padding:24px;font-size:0.78rem;color:var(--text-tertiary);border-top:1px solid var(--border);}
+
+@media (max-width:640px){
+  .microsite-bar-inner{padding:0 14px;gap:8px;}
+  .ms-logo span:last-child{display:none;}
+  .ms-tabs{gap:2px;padding:3px;}
+  .ms-tab{padding:7px 9px;font-size:0.74rem;white-space:nowrap;}
+  .microsite-bar .btn{display:none;}
+  .ab-stats{grid-template-columns:1fr;}
+  .ab-security{grid-template-columns:1fr;}
+  .ab-partner-card{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<header class="microsite-bar">
+  <div class="microsite-bar-inner">
+    <a href="index.html" class="ms-logo">
+      <span class="ms-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5h4l1.5-4 3 8 1.5-4h6"/></svg></span>
+      <span>Pulse</span>
+    </a>
+    <nav class="ms-tabs" aria-label="Navigation du site de démonstration">
+      <a href="qui-sommes-nous.html" class="ms-tab ms-tab-active" aria-current="page" data-i18n="navAbout">Qui sommes-nous</a>
+      <a href="votre-besoin.html" class="ms-tab" data-i18n="navNeed">Votre besoin</a>
+      <a href="index.html" class="ms-tab" data-i18n="navDemo">Démonstration</a>
+      <a href="pricing.html" class="ms-tab" data-i18n="navPricing">Tarifs &amp; offres</a>
+      <a href="widgets.html" class="ms-tab" data-i18n="navWidgets">Widgets</a>
+    </nav>
+    <div class="ms-actions">
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language / Changer de langue">EN</button>
+      <a href="pricing.html" class="btn btn-primary" data-i18n="navCta">Voir les tarifs</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="ab-hero">
+    <span class="ab-eyebrow">Qui sommes-nous</span>
+    <h1>L'intranet pensé pour que vos équipes <span class="gtext">y reviennent chaque jour</span></h1>
+    <p>Depuis 7 ans, Pulse est l'acteur de référence de l'intranet pour les entreprises de 0 à 2 000 collaborateurs — avec la bibliothèque de fonctionnalités et de widgets la plus large du marché.</p>
+  </div>
+
+  <div class="ab-stats">
+    <div class="ab-stat">
+      <div class="num">7 ans</div>
+      <div class="label">d'expérience sur le marché de l'intranet d'entreprise</div>
+    </div>
+    <div class="ab-stat">
+      <div class="num">0 → 2 000</div>
+      <div class="label">collaborateurs : notre terrain de jeu, de la PME à l'ETI</div>
+    </div>
+    <div class="ab-stat">
+      <div class="num">Le plus de widgets</div>
+      <div class="label">du marché intranet, pour maximiser l'adoption</div>
+    </div>
+  </div>
+
+  <div class="ab-section">
+    <h2>Pourquoi Pulse ?</h2>
+    <p>
+      Un intranet ne vaut que par son usage. C'est pourquoi Pulse a fait un choix structurant : proposer la bibliothèque de fonctionnalités et de widgets la plus large du marché intranet. Sondages, reconnaissance, quiz, pronostics, boîte à idées, et bien d'autres — chaque widget est une raison supplémentaire pour vos collaborateurs de revenir chaque jour sur la plateforme, de rester informés des actualités du groupe en continu, et de gagner en productivité grâce à un accès centralisé à l'information et aux outils du quotidien.
+    </p>
+  </div>
+
+  <section class="ab-trust">
+    <div class="ab-trust-inner">
+      <div class="ab-trust-label">Ils nous font confiance</div>
+      <div class="ab-trust-logos">
+        <div class="ab-logo-card"><img src="../assets/img/clients/airbus.png" alt="Airbus" loading="lazy"></div>
+        <div class="ab-logo-card ab-logo-lg"><img src="../assets/img/clients/potel-chabot.png" alt="Potel & Chabot" loading="lazy"></div>
+        <div class="ab-logo-card ab-logo-text">Eurogerm</div>
+        <div class="ab-logo-card ab-logo-text">Expertime</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ab-partner">
+    <div class="ab-partner-card">
+      <div class="ab-partner-icon">AI</div>
+      <div>
+        <h3>Notre partenaire : AI Partners</h3>
+        <p>AI Partners accompagne le groupe Pulse depuis ses tout débuts. Cette collaboration de longue date nous permet de livrer des intranets fiables, évolutifs et à la pointe de l'innovation.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ab-security">
+    <div class="ab-security-card">
+      <div class="ico">🇫🇷</div>
+      <h4>Entreprise française</h4>
+      <p>Conçu et exploité en France, au plus près de nos clients.</p>
+    </div>
+    <div class="ab-security-card">
+      <div class="ico">🔒</div>
+      <h4>Conforme RGPD</h4>
+      <p>Protection des données intégrée à chaque fonctionnalité.</p>
+    </div>
+    <div class="ab-security-card">
+      <div class="ico">🇪🇺</div>
+      <h4>Hébergement en Union européenne</h4>
+      <p>Vos données restent sur le sol européen.</p>
+    </div>
+  </div>
+
+  <div class="ab-cta">
+    <h2>Prêt à donner envie à vos équipes de revenir chaque jour ?</h2>
+    <p>Découvrez nos offres ou explorez la bibliothèque de widgets Pulse.</p>
+    <a href="pricing.html" class="btn btn-primary" data-i18n="navCta">Voir les tarifs</a>
+  </div>
+
+</main>
+
+<footer class="ab-footer">Pulse · Applications d'engagement collaborateur · Conforme RGPD · Hébergement en Europe</footer>
+
+<script>
+(function(){
+  var UI_STRINGS = {
+    fr: { navAbout: 'Qui sommes-nous', navNeed: 'Votre besoin', navDemo: 'Démonstration', navPricing: 'Tarifs & offres', navWidgets: 'Widgets', navCta: 'Voir les tarifs' },
+    en: { navAbout: 'About us', navNeed: 'Your needs', navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets', navCta: 'View pricing' }
+  };
+  function applyLang(lang){
+    var t = UI_STRINGS[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(t[key] !== undefined) el.textContent = t[key];
+    });
+    document.getElementById('langToggle').textContent = lang === 'fr' ? 'EN' : 'FR';
+    try { localStorage.setItem('pulse-microsite-lang', lang); } catch(e) {}
+  }
+  var toggle = document.getElementById('langToggle');
+  var current = 'fr';
+  try { current = localStorage.getItem('pulse-microsite-lang') || 'fr'; } catch(e) {}
+  applyLang(current);
+  toggle.addEventListener('click', function(){
+    current = current === 'fr' ? 'en' : 'fr';
+    applyLang(current);
+  });
+})();
+</script>
+</body>
+</html>

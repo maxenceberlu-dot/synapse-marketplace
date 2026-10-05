@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pulse Intranet · Votre besoin</title>
+<meta name="description" content="Co-construisons votre offre Pulse Intranet : passez en revue chaque fonctionnalité et indiquez ce dont vous avez besoin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf8f4; --bg-subtle:#f5efe6; --bg-card:#ffffff;
+  --border:#e4dde8; --border-strong:#d8cee0;
+  --text-primary:#17152e; --text-secondary:#4a4760; --text-tertiary:#8a86a0;
+  --accent-1:#d81f78; --accent-2:#6a2a95;
+  --gradient-brand:linear-gradient(120deg,#d81f78,#6a2a95);
+  --gradient-text:linear-gradient(100deg,#d81f78 10%,#8c2a9c 55%,#4e2a8e 95%);
+  --shadow-sm:0 1px 2px rgba(40,25,50,0.06);
+  --yes:#1a8f5e; --yes-bg:#e6f5ee;
+  --no:#8a86a0; --no-bg:#f0ede7;
+  --v2:#b4780f; --v2-bg:#fbf0dc;
+  --font:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-display:'Newsreader',Georgia,serif;
+  --transition:all .2s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;}
+body{font-family:var(--font);background:var(--bg);color:var(--text-primary);display:flex;flex-direction:column;}
+a{color:inherit;}
+button{font-family:inherit;cursor:pointer;}
+:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px;}
+.gtext{font-style:italic;background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+.microsite-bar{position:sticky;top:0;z-index:300;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);flex-shrink:0;}
+.microsite-bar-inner{max-width:1160px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.ms-logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:800;font-size:1.05rem;color:var(--text-primary);}
+.ms-logo-mark{width:30px;height:30px;border-radius:9px;background:var(--gradient-brand);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ms-logo-mark svg{width:16px;height:16px;}
+.ms-tabs{display:flex;gap:4px;background:var(--bg-subtle);padding:4px;border-radius:12px;border:1px solid var(--border);}
+.ms-tab{padding:8px 16px;border-radius:9px;font-size:0.88rem;font-weight:600;text-decoration:none;color:var(--text-secondary);transition:var(--transition);}
+.ms-tab:hover{color:var(--text-primary);}
+.ms-tab-active{background:var(--bg-card);color:var(--text-primary);box-shadow:var(--shadow-sm);}
+.ms-actions{display:flex;align-items:center;gap:10px;}
+.lang-toggle{width:40px;height:36px;border-radius:10px;border:1px solid var(--border-strong);background:var(--bg-card);color:var(--text-primary);font-weight:700;font-size:0.8rem;display:flex;align-items:center;justify-content:center;transition:var(--transition);}
+.lang-toggle:hover{background:var(--bg-subtle);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 18px;border-radius:999px;font-weight:600;font-size:0.85rem;text-decoration:none;border:none;transition:var(--transition);white-space:nowrap;}
+.btn-primary{background:var(--gradient-brand);color:#fff;box-shadow:0 6px 20px rgba(216,31,120,0.25);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(216,31,120,0.35);}
+
+main{flex:1;}
+
+.nb-hero{text-align:center;padding:48px 24px 8px;max-width:720px;margin:0 auto;}
+.nb-eyebrow{display:inline-block;font-size:0.76rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-1);margin-bottom:10px;}
+.nb-hero h1{font-family:var(--font-display);font-weight:500;font-size:clamp(1.6rem,3.4vw,2.2rem);line-height:1.25;margin-bottom:14px;}
+.nb-hero p{font-size:0.96rem;color:var(--text-secondary);line-height:1.65;}
+
+.nb-summary{position:sticky;top:64px;z-index:150;background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 24px;}
+.nb-summary-inner{max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:14px;}
+.nb-counts{display:flex;flex-wrap:wrap;gap:8px;flex:1;min-width:220px;}
+.nb-count{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;font-size:0.8rem;font-weight:700;border:1px solid var(--border);background:var(--bg-card);}
+.nb-count .dot{width:8px;height:8px;border-radius:50%;}
+.nb-count-yes .dot{background:var(--yes);}
+.nb-count-v2 .dot{background:var(--v2);}
+.nb-count-no .dot{background:var(--no);}
+.nb-count-left{color:var(--text-tertiary);}
+.nb-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.nb-search{padding:8px 14px;border-radius:999px;border:1px solid var(--border-strong);background:var(--bg-card);font-size:0.85rem;width:200px;max-width:100%;}
+.nb-btn-ghost{padding:8px 16px;border-radius:999px;border:1px solid var(--border-strong);background:var(--bg-card);font-size:0.82rem;font-weight:600;color:var(--text-secondary);transition:var(--transition);}
+.nb-btn-ghost:hover{background:var(--bg-subtle);color:var(--text-primary);}
+
+.nb-body{max-width:860px;margin:0 auto;padding:32px 24px 80px;}
+
+.nb-cat{border:1px solid var(--border);border-radius:16px;background:var(--bg-card);margin-bottom:16px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.nb-cat-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;background:none;border:none;text-align:left;}
+.nb-cat-title{font-family:var(--font-display);font-weight:500;font-size:1.1rem;}
+.nb-cat-meta{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.nb-cat-count{font-size:0.78rem;color:var(--text-tertiary);}
+.nb-cat-chevron{width:18px;height:18px;transition:transform .2s;color:var(--text-tertiary);flex-shrink:0;}
+.nb-cat.is-open .nb-cat-chevron{transform:rotate(180deg);}
+.nb-cat-rows{display:none;border-top:1px solid var(--border);}
+.nb-cat.is-open .nb-cat-rows{display:block;}
+
+.nb-family{padding:10px 20px 2px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-2);}
+
+.nb-row{display:flex;align-items:center;gap:14px;padding:13px 20px;border-top:1px solid var(--border);}
+.nb-row:first-of-type, .nb-family + .nb-row{border-top:none;}
+.nb-row-text{flex:1;min-width:0;}
+.nb-row-label{font-weight:700;font-size:0.9rem;}
+.nb-row-desc{font-size:0.8rem;color:var(--text-secondary);line-height:1.45;margin-top:2px;}
+.nb-row-toggle{display:flex;gap:6px;flex-shrink:0;}
+.nb-opt{padding:7px 12px;border-radius:999px;border:1px solid var(--border-strong);background:var(--bg-card);font-size:0.78rem;font-weight:700;color:var(--text-secondary);transition:var(--transition);}
+.nb-opt:hover{border-color:var(--text-tertiary);}
+.nb-opt[data-v="oui"].is-active{background:var(--yes-bg);border-color:var(--yes);color:var(--yes);}
+.nb-opt[data-v="v2"].is-active{background:var(--v2-bg);border-color:var(--v2);color:var(--v2);}
+.nb-opt[data-v="non"].is-active{background:var(--no-bg);border-color:var(--no);color:var(--text-primary);}
+.nb-row.is-hidden{display:none;}
+.nb-cat.is-hidden{display:none;}
+
+.nb-footer-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:8px 0 0;}
+.nb-toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--text-primary);color:#fff;padding:12px 22px;border-radius:999px;font-size:0.85rem;font-weight:600;opacity:0;pointer-events:none;transition:all .25s ease;z-index:400;}
+.nb-toast.is-visible{opacity:1;transform:translate(-50%,0);}
+
+@media (max-width:640px){
+  .microsite-bar-inner{padding:0 14px;gap:8px;}
+  .ms-logo span:last-child{display:none;}
+  .ms-tabs{gap:2px;padding:3px;}
+  .ms-tab{padding:7px 9px;font-size:0.74rem;white-space:nowrap;}
+  .microsite-bar .btn{display:none;}
+  .nb-summary{position:static;}
+  .nb-row{flex-direction:column;align-items:stretch;}
+  .nb-row-toggle{justify-content:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<header class="microsite-bar">
+  <div class="microsite-bar-inner">
+    <a href="index.html" class="ms-logo">
+      <span class="ms-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5h4l1.5-4 3 8 1.5-4h6"/></svg></span>
+      <span>Pulse</span>
+    </a>
+    <nav class="ms-tabs" aria-label="Navigation du site de démonstration">
+      <a href="qui-sommes-nous.html" class="ms-tab" data-i18n="navAbout">Qui sommes-nous</a>
+      <a href="votre-besoin.html" class="ms-tab ms-tab-active" aria-current="page" data-i18n="navNeed">Votre besoin</a>
+      <a href="index.html" class="ms-tab" data-i18n="navDemo">Démonstration</a>
+      <a href="pricing.html" class="ms-tab" data-i18n="navPricing">Tarifs &amp; offres</a>
+      <a href="widgets.html" class="ms-tab" data-i18n="navWidgets">Widgets</a>
+    </nav>
+    <div class="ms-actions">
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language / Changer de langue">EN</button>
+      <a href="pricing.html" class="btn btn-primary" data-i18n="navCta">Voir les tarifs</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="nb-hero">
+    <span class="nb-eyebrow" data-i18n="nbEyebrow">Votre besoin</span>
+    <h1 data-i18n="nbTitle">Co-construisons votre offre, fonctionnalité par fonctionnalité</h1>
+    <p data-i18n="nbSub">Pour chaque ligne, indiquez si c'est un besoin pour vous dès le lancement, plus tard, ou pas du tout. On en fait le récapitulatif à la fin.</p>
+  </div>
+
+  <div class="nb-summary">
+    <div class="nb-summary-inner">
+      <div class="nb-counts">
+        <span class="nb-count nb-count-yes"><span class="dot"></span><span data-i18n="nbCountYes">Retenu</span> : <span id="cntYes">0</span></span>
+        <span class="nb-count nb-count-v2"><span class="dot"></span><span data-i18n="nbCountV2">En V2</span> : <span id="cntV2">0</span></span>
+        <span class="nb-count nb-count-no"><span class="dot"></span><span data-i18n="nbCountNo">Écarté</span> : <span id="cntNo">0</span></span>
+        <span class="nb-count nb-count-left" id="cntLeftWrap"><span data-i18n="nbCountLeft">Restant</span> : <span id="cntLeft">0</span></span>
+      </div>
+      <div class="nb-controls">
+        <input type="text" class="nb-search" id="nbSearch" data-i18n-placeholder="nbSearchPh" placeholder="Rechercher une fonctionnalité…">
+        <button class="nb-btn-ghost" id="btnExpandAll" data-i18n="nbExpandAll" type="button">Tout déplier</button>
+        <button class="nb-btn-ghost" id="btnCollapseAll" data-i18n="nbCollapseAll" type="button">Tout replier</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="nb-body">
+    <div id="nbCategories"></div>
+    <div class="nb-footer-actions">
+      <button class="btn btn-primary" id="btnCopy" type="button">
+        <span data-i18n="nbCopy">Copier le récapitulatif</span>
+      </button>
+      <button class="btn nb-btn-ghost" id="btnReset" data-i18n="nbReset" type="button">Réinitialiser</button>
+    </div>
+  </div>
+</main>
+
+<div class="nb-toast" id="nbToast"></div>
+
+<script>
+/* ============================================================
+   DONNÉES — fonctionnalités réelles du produit Pulse Intranet
+   (widgets : prisma/seed/phase3.ts · modules : src/components/studio/nav.ts
+   · intégrations : IntegrationsView.tsx · repo ~/pulse-intranet)
+   ============================================================ */
+var CATEGORIES = [
+  "Widgets d'engagement",
+  "Intelligence artificielle",
+  "Contenu & communication",
+  "Gestion des médias",
+  "Organisation",
+  "Diffusion & campagnes",
+  "Audiences",
+  "Intégrations tierces",
+  "Pilotage & mesure",
+  "Mobile & accessibilité",
+  "Sécurité & gouvernance"
+];
+
+var ITEMS = [
+  // --- Widgets d'engagement (22) ---
+  { cat:"Widgets d'engagement", fam:"Écouter", label:"Sondage Pulse", desc:"Une question, une réponse en 10 secondes, sur le portail et le mobile." },
+  { cat:"Widgets d'engagement", fam:"Écouter", label:"Ask the Board", desc:"Les collaborateurs posent leurs questions à la direction, anonymement s'ils le souhaitent." },
+  { cat:"Widgets d'engagement", fam:"Écouter", label:"Feedback instantané", desc:"Recueillez un avis à chaud après une réunion, une formation ou un événement." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Baromètre social", desc:"Mesurez le climat social chaque trimestre sur 6 dimensions, avec un anonymat garanti." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Feedback 360°", desc:"Des retours croisés entre pairs, managers et collaborateurs." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"eNPS", desc:"Le score de recommandation employeur, suivi dans le temps et par population." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Performance Review & 1:1", desc:"Préparez et suivez les entretiens et points individuels." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Diversité Équité & Inclusion", desc:"Mesurez le sentiment d'inclusion et suivez vos engagements DEI." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Boîte à idées", desc:"Les collaborateurs déposent et votent pour les idées, vous suivez leur mise en œuvre." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Microlearning", desc:"Des modules de 3 minutes, consultables depuis le mobile et les écrans d'atelier." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Random Coffee", desc:"Des rencontres aléatoires entre collègues de sites et de métiers différents." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Thank You", desc:"Remerciez un collègue publiquement, en un geste." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Reconnaissance & récompenses", desc:"Valorisez les contributions avec des badges et des récompenses." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Ambassador Boost", desc:"Aidez vos collaborateurs à partager les contenus de l'entreprise." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Engagement RSE & volontariat", desc:"Proposez des missions solidaires et suivez les heures d'engagement." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Problem Solver", desc:"Remontez et résolvez les irritants du quotidien, site par site." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Ideation Machine", desc:"Lancez des campagnes d'idéation ciblées sur un défi précis." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Pronostics sportifs", desc:"Des pronostics entre collègues pendant les grandes compétitions." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Secret Santa", desc:"Organisez l'échange de cadeaux de fin d'année entre équipes." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Quiz Master", desc:"Des quiz courts pour ancrer les messages clés et les consignes." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Défis bien-être", desc:"Des défis collectifs de marche, de vélo et de sommeil." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Hackathon interne", desc:"Organisez un hackathon avec équipes, jury et votes." },
+
+  // --- Intelligence artificielle (4) ---
+  { cat:"Intelligence artificielle", label:"Assistant conversationnel", desc:"Un agent répond aux questions des collaborateurs en citant ses sources, sans jamais dépasser leurs droits de lecture." },
+  { cat:"Intelligence artificielle", label:"Recherche intelligente (Deep Search)", desc:"Recherche approfondie sur tout le contenu autorisé, avec une synthèse IA pertinente — pas une liste de liens." },
+  { cat:"Intelligence artificielle", label:"Traduction automatique", desc:"Traduisez vos contenus pour vos sites et filiales à l'international." },
+  { cat:"Intelligence artificielle", label:"Assistant de rédaction", desc:"Raccourcir, simplifier, générer un titre ou un chapô, adapter pour le terrain, rédiger le texte alternatif des images." },
+
+  // --- Contenu & communication (12) ---
+  { cat:"Contenu & communication", label:"Chaînes & actualités ciblées", desc:"Fil d'actualités avec ciblage par service, site ou population." },
+  { cat:"Contenu & communication", label:"Notes officielles", desc:"Communications obligatoires avec accusé de lecture et suivi des lecteurs." },
+  { cat:"Contenu & communication", label:"Pages & constructeur de pages", desc:"Pages par service ou projet, construites par blocs, éditables par vos référents." },
+  { cat:"Contenu & communication", label:"Modèles de pages", desc:"Des gabarits réutilisables pour standardiser vos pages métier." },
+  { cat:"Contenu & communication", label:"Bibliothèque documentaire / procédures", desc:"Documents avec gestion des versions, droits par dossier et accusés de lecture." },
+  { cat:"Contenu & communication", label:"Sondages", desc:"Votes rapides sur le portail, résultats en direct." },
+  { cat:"Contenu & communication", label:"Événements", desc:"Agenda avec inscriptions, jauge de participants et liste d'attente." },
+  { cat:"Contenu & communication", label:"Annuaire collaborateurs", desc:"Fiches collaborateurs avec recherche, organigramme et coordonnées à jour." },
+  { cat:"Contenu & communication", label:"Espaces / communautés", desc:"Des communautés d'intérêt ou de métier, avec leur propre fil et leurs membres." },
+  { cat:"Contenu & communication", label:"Liens & applications (launchpad)", desc:"Un accès direct à vos outils du quotidien, avec leurs logos officiels." },
+  { cat:"Contenu & communication", label:"Fiches sites", desc:"Une page par site ou établissement : horaires, contacts, infos pratiques." },
+  { cat:"Contenu & communication", label:"Menu du portail personnalisable", desc:"Vous configurez vous-même la navigation vue par vos collaborateurs." },
+
+  // --- Gestion des médias (2) ---
+  { cat:"Gestion des médias", label:"Bibliothèque de médias", desc:"Pulse stocke et héberge les images et fichiers du groupe, organisés par dossiers." },
+  { cat:"Gestion des médias", label:"Import glisser-déposer", desc:"Import en un geste avec recadrage et texte alternatif, directement dans l'éditeur." },
+
+  // --- Organisation (2) ---
+  { cat:"Organisation", label:"Tâches", desc:"Assignez et suivez des tâches liées à la publication ou à la vie de l'intranet." },
+  { cat:"Organisation", label:"Planification éditoriale", desc:"Calendrier de publication, briefings et marronniers récurrents." },
+
+  // --- Diffusion & campagnes (3) ---
+  { cat:"Diffusion & campagnes", label:"Campagnes de communication", desc:"Des campagnes multi-contenus avec portée mesurée." },
+  { cat:"Diffusion & campagnes", label:"Parcours automatisés", desc:"Des séquences déclenchées automatiquement, par exemple pour l'onboarding." },
+  { cat:"Diffusion & campagnes", label:"Notifications multicanal", desc:"Push, email, SMS ou écrans d'affichage, avec heures de silence et quotas." },
+
+  // --- Audiences (3) ---
+  { cat:"Audiences", label:"Segments ciblés", desc:"Construisez des audiences précises pour vos communications et vos widgets." },
+  { cat:"Audiences", label:"Rôles & permissions", desc:"Une matrice de droits fine, par rôle et par espace." },
+  { cat:"Audiences", label:"Synchronisation annuaire", desc:"Votre SIRH alimente automatiquement l'annuaire et les audiences." },
+
+  // --- Intégrations tierces (7) ---
+  { cat:"Intégrations tierces", label:"Authentification unique (SSO)", desc:"Connexion unique via votre fournisseur d'identité (ex. Entra ID)." },
+  { cat:"Intégrations tierces", label:"RH", desc:"Connexion à votre SIRH (ex. Workday, SAP SuccessFactors)." },
+  { cat:"Intégrations tierces", label:"Temps & activités", desc:"Connexion à votre outil de gestion des temps (ex. Kelio)." },
+  { cat:"Intégrations tierces", label:"Paie", desc:"Connexion à votre logiciel de paie (ex. Silae)." },
+  { cat:"Intégrations tierces", label:"Communication", desc:"Connexion à Microsoft Teams ou Slack." },
+  { cat:"Intégrations tierces", label:"Productivité", desc:"Connexion à Microsoft 365 ou Google Workspace." },
+  { cat:"Intégrations tierces", label:"Automatisation", desc:"Connexion à Zapier pour relier l'intranet à vos autres outils." },
+
+  // --- Pilotage & mesure (5) ---
+  { cat:"Pilotage & mesure", label:"Tableau de bord d'adoption", desc:"Vue d'ensemble de l'usage réel de l'intranet par vos équipes." },
+  { cat:"Pilotage & mesure", label:"Statistiques détaillées", desc:"Actualités, pages, notifications, recherche, widgets, assistant IA — tout est mesuré." },
+  { cat:"Pilotage & mesure", label:"Centre d'engagement", desc:"Comparez vos sites et dimensions d'engagement, avec un anonymat garanti (seuil minimum de répondants)." },
+  { cat:"Pilotage & mesure", label:"Explorateur de données anonymisé", desc:"Croisez vos données sans jamais pouvoir identifier un individu." },
+  { cat:"Pilotage & mesure", label:"Rapports programmés", desc:"Des rapports envoyés automatiquement aux bonnes personnes." },
+
+  // --- Mobile & accessibilité (2) ---
+  { cat:"Mobile & accessibilité", label:"Application web installable (PWA)", desc:"Une app installable sur iOS et Android, sans passer par un store." },
+  { cat:"Mobile & accessibilité", label:"Navigation terrain simplifiée", desc:"Pensée pour vos collaborateurs sans email professionnel." },
+
+  // --- Sécurité & gouvernance (4) ---
+  { cat:"Sécurité & gouvernance", label:"Hébergement UE & conformité RGPD", desc:"Vos données restent en Europe, traitées conformément au RGPD." },
+  { cat:"Sécurité & gouvernance", label:"Journal d'audit", desc:"Chaque action sensible est tracée : qui, quoi, quand." },
+  { cat:"Sécurité & gouvernance", label:"Modération des commentaires", desc:"Gardez la main sur les échanges publics de votre intranet." },
+  { cat:"Sécurité & gouvernance", label:"Validation éditoriale", desc:"Un workflow de relecture avant publication des contenus sensibles." }
+];
+
+function slugify(s){
+  return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+}
+ITEMS.forEach(function(it, i){ it.id = slugify(it.cat) + '--' + slugify(it.label) + '--' + i; });
+
+/* ============================================================
+   ÉTAT — localStorage
+   ============================================================ */
+var STORAGE_KEY = 'pulse-besoin-answers-v1';
+var answers = {};
+try { answers = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) {}
+function saveAnswers(){
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(answers)); } catch(e) {}
+}
+
+/* ============================================================
+   RENDU
+   ============================================================ */
+var root = document.getElementById('nbCategories');
+
+function buildCategory(catName){
+  var items = ITEMS.filter(function(it){ return it.cat === catName; });
+  var wrap = document.createElement('div');
+  wrap.className = 'nb-cat is-open';
+  wrap.dataset.cat = catName;
+
+  var head = document.createElement('button');
+  head.type = 'button';
+  head.className = 'nb-cat-head';
+  head.innerHTML =
+    '<span class="nb-cat-title">' + catName + '</span>' +
+    '<span class="nb-cat-meta"><span class="nb-cat-count" data-cat-count>' + items.length + ' fonctionnalités</span>' +
+    '<svg class="nb-cat-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>';
+  head.addEventListener('click', function(){ wrap.classList.toggle('is-open'); });
+  wrap.appendChild(head);
+
+  var rowsWrap = document.createElement('div');
+  rowsWrap.className = 'nb-cat-rows';
+
+  var lastFam = null;
+  items.forEach(function(it){
+    if(it.fam && it.fam !== lastFam){
+      var famEl = document.createElement('div');
+      famEl.className = 'nb-family';
+      famEl.textContent = it.fam;
+      rowsWrap.appendChild(famEl);
+      lastFam = it.fam;
+    }
+    rowsWrap.appendChild(buildRow(it));
+  });
+
+  wrap.appendChild(rowsWrap);
+  return wrap;
+}
+
+function buildRow(it){
+  var row = document.createElement('div');
+  row.className = 'nb-row';
+  row.dataset.id = it.id;
+  row.dataset.search = (it.label + ' ' + it.desc).toLowerCase();
+
+  var text = document.createElement('div');
+  text.className = 'nb-row-text';
+  text.innerHTML = '<div class="nb-row-label">' + it.label + '</div><div class="nb-row-desc">' + it.desc + '</div>';
+  row.appendChild(text);
+
+  var toggle = document.createElement('div');
+  toggle.className = 'nb-row-toggle';
+  [['oui','Oui'], ['v2','Oui, en V2'], ['non','Non']].forEach(function(pair){
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'nb-opt';
+    btn.dataset.v = pair[0];
+    btn.textContent = pair[1];
+    if(answers[it.id] === pair[0]) btn.classList.add('is-active');
+    btn.addEventListener('click', function(){
+      answers[it.id] = (answers[it.id] === pair[0]) ? null : pair[0];
+      if(answers[it.id] === null) delete answers[it.id];
+      saveAnswers();
+      toggle.querySelectorAll('.nb-opt').forEach(function(b){ b.classList.toggle('is-active', answers[it.id] === b.dataset.v); });
+      updateSummary();
+    });
+    toggle.appendChild(btn);
+  });
+  row.appendChild(toggle);
+  return row;
+}
+
+CATEGORIES.forEach(function(cat){ root.appendChild(buildCategory(cat)); });
+
+/* ============================================================
+   RÉSUMÉ
+   ============================================================ */
+function updateSummary(){
+  var yes = 0, v2 = 0, no = 0;
+  ITEMS.forEach(function(it){
+    var v = answers[it.id];
+    if(v === 'oui') yes++; else if(v === 'v2') v2++; else if(v === 'non') no++;
+  });
+  document.getElementById('cntYes').textContent = yes;
+  document.getElementById('cntV2').textContent = v2;
+  document.getElementById('cntNo').textContent = no;
+  document.getElementById('cntLeft').textContent = ITEMS.length - yes - v2 - no;
+}
+updateSummary();
+
+/* ============================================================
+   RECHERCHE
+   ============================================================ */
+document.getElementById('nbSearch').addEventListener('input', function(e){
+  var q = e.target.value.trim().toLowerCase();
+  document.querySelectorAll('.nb-cat').forEach(function(catEl){
+    var anyVisible = false;
+    catEl.querySelectorAll('.nb-row').forEach(function(rowEl){
+      var match = !q || rowEl.dataset.search.indexOf(q) !== -1;
+      rowEl.classList.toggle('is-hidden', !match);
+      if(match) anyVisible = true;
+    });
+    catEl.classList.toggle('is-hidden', !anyVisible);
+    if(q && anyVisible) catEl.classList.add('is-open');
+  });
+});
+
+/* ============================================================
+   DÉPLIER / REPLIER TOUT
+   ============================================================ */
+document.getElementById('btnExpandAll').addEventListener('click', function(){
+  document.querySelectorAll('.nb-cat').forEach(function(c){ c.classList.add('is-open'); });
+});
+document.getElementById('btnCollapseAll').addEventListener('click', function(){
+  document.querySelectorAll('.nb-cat').forEach(function(c){ c.classList.remove('is-open'); });
+});
+
+/* ============================================================
+   COPIER LE RÉCAPITULATIF
+   ============================================================ */
+function buildSummaryText(){
+  var lang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+  var SECTIONS = lang === 'en'
+    ? [['oui','Wanted at launch'], ['v2','Wanted later (V2)'], ['non','Not needed']]
+    : [['oui','Retenu dès le lancement'], ['v2','Souhaité plus tard (V2)'], ['non','Écarté']];
+  var lines = [lang === 'en' ? 'Pulse Intranet — scoping summary' : 'Pulse Intranet — récapitulatif de cadrage', ''];
+  SECTIONS.forEach(function(sec){
+    var matching = ITEMS.filter(function(it){ return answers[it.id] === sec[0]; });
+    if(matching.length === 0) return;
+    lines.push('# ' + sec[1] + ' (' + matching.length + ')');
+    var byCat = {};
+    matching.forEach(function(it){ (byCat[it.cat] = byCat[it.cat] || []).push(it.label); });
+    Object.keys(byCat).forEach(function(cat){
+      lines.push('- ' + cat + ' : ' + byCat[cat].join(', '));
+    });
+    lines.push('');
+  });
+  return lines.join('\n');
+}
+
+function showToast(msg){
+  var t = document.getElementById('nbToast');
+  t.textContent = msg;
+  t.classList.add('is-visible');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(function(){ t.classList.remove('is-visible'); }, 2600);
+}
+
+document.getElementById('btnCopy').addEventListener('click', function(){
+  var text = buildSummaryText();
+  var lang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+  var ok = lang === 'en' ? 'Summary copied to clipboard.' : 'Récapitulatif copié dans le presse-papiers.';
+  var fail = lang === 'en' ? 'Could not copy — nothing selected yet?' : 'Copie impossible — rien n’est sélectionné pour l’instant ?';
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){ showToast(ok); }, function(){ showToast(fail); });
+  } else {
+    showToast(fail);
+  }
+});
+
+/* ============================================================
+   RÉINITIALISER
+   ============================================================ */
+document.getElementById('btnReset').addEventListener('click', function(){
+  var lang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+  var msg = lang === 'en' ? 'Clear all answers and start over?' : 'Effacer toutes les réponses et repartir de zéro ?';
+  if(!confirm(msg)) return;
+  answers = {};
+  saveAnswers();
+  document.querySelectorAll('.nb-opt').forEach(function(b){ b.classList.remove('is-active'); });
+  updateSummary();
+});
+
+/* ============================================================
+   LANGUE (nav + interface uniquement — le contenu des lignes reste en FR)
+   ============================================================ */
+(function(){
+  var UI_STRINGS = {
+    fr: {
+      navAbout: 'Qui sommes-nous', navNeed: 'Votre besoin', navDemo: 'Démonstration', navPricing: 'Tarifs & offres', navWidgets: 'Widgets', navCta: 'Voir les tarifs',
+      nbEyebrow: 'Votre besoin', nbTitle: 'Co-construisons votre offre, fonctionnalité par fonctionnalité',
+      nbSub: "Pour chaque ligne, indiquez si c'est un besoin pour vous dès le lancement, plus tard, ou pas du tout. On en fait le récapitulatif à la fin.",
+      nbCountYes: 'Retenu', nbCountV2: 'En V2', nbCountNo: 'Écarté', nbCountLeft: 'Restant',
+      nbSearchPh: 'Rechercher une fonctionnalité…', nbExpandAll: 'Tout déplier', nbCollapseAll: 'Tout replier',
+      nbCopy: 'Copier le récapitulatif', nbReset: 'Réinitialiser'
+    },
+    en: {
+      navAbout: 'About us', navNeed: 'Your needs', navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets', navCta: 'View pricing',
+      nbEyebrow: 'Your needs', nbTitle: 'Let’s build your offer together, feature by feature',
+      nbSub: "For each line, tell us whether it's a need at launch, later, or not at all. We'll wrap up with a summary.",
+      nbCountYes: 'Wanted', nbCountV2: 'In V2', nbCountNo: 'Skipped', nbCountLeft: 'Remaining',
+      nbSearchPh: 'Search a feature…', nbExpandAll: 'Expand all', nbCollapseAll: 'Collapse all',
+      nbCopy: 'Copy summary', nbReset: 'Reset'
+    }
+  };
+  function applyLang(lang){
+    var t = UI_STRINGS[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(t[key] !== undefined) el.textContent = t[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-placeholder');
+      if(t[key] !== undefined) el.placeholder = t[key];
+    });
+    document.getElementById('langToggle').textContent = lang === 'fr' ? 'EN' : 'FR';
+    try { localStorage.setItem('pulse-microsite-lang', lang); } catch(e) {}
+  }
+  var toggle = document.getElementById('langToggle');
+  var current = 'fr';
+  try { current = localStorage.getItem('pulse-microsite-lang') || 'fr'; } catch(e) {}
+  applyLang(current);
+  toggle.addEventListener('click', function(){
+    current = current === 'fr' ? 'en' : 'fr';
+    applyLang(current);
+  });
+})();
+</script>
+</body>
+</html>

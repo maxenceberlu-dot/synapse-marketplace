@@ -111,6 +111,7 @@ input[type="range"]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;b
 .plan-tagline{color:var(--text-secondary);font-size:0.92rem;min-height:42px;margin-bottom:20px;}
 .plan-price-block{background:var(--bg-subtle);border-radius:var(--radius-md);padding:18px 20px;margin-bottom:18px;}
 .plan-price-row{display:flex;align-items:baseline;gap:6px;}
+.plan-price-from{color:var(--text-secondary);font-size:0.9rem;font-weight:600;}
 .plan-price-amount{font-size:1.9rem;font-weight:800;font-variant-numeric:tabular-nums;}
 .plan-price-suffix{color:var(--text-secondary);font-size:0.88rem;}
 .plan-price-annual{font-size:0.82rem;color:var(--text-tertiary);margin-top:4px;font-variant-numeric:tabular-nums;}
@@ -233,6 +234,8 @@ table.compare-table{width:100%;border-collapse:collapse;}
       <span>Pulse</span>
     </a>
     <nav class="ms-tabs" aria-label="Navigation du site de démonstration">
+      <a href="qui-sommes-nous.html" class="ms-tab" data-i18n="navAbout">Qui sommes-nous</a>
+      <a href="votre-besoin.html" class="ms-tab" data-i18n="navNeed">Votre besoin</a>
       <a href="index.html" class="ms-tab" data-i18n="navDemo">Démonstration</a>
       <a href="pricing.html" class="ms-tab ms-tab-active" aria-current="page" data-i18n="navPricing">Tarifs &amp; offres</a>
       <a href="widgets.html" class="ms-tab" data-i18n="navWidgets">Widgets</a>
@@ -391,7 +394,7 @@ table.compare-table{width:100%;border-collapse:collapse;}
    ============================================================ */
 const UI_STRINGS = {
   fr: {
-    navDemo: 'Démonstration', navPricing: 'Tarifs & offres', navWidgets: 'Widgets',
+    navAbout: 'Qui sommes-nous', navNeed: 'Votre besoin', navDemo: 'Démonstration', navPricing: 'Tarifs & offres', navWidgets: 'Widgets',
     heroTitle: 'Un intranet à votre image, ', heroAccent: 'pensé pour vos équipes',
     heroSub: "Un intranet sur mesure, livré et maintenu par Pulse, pour un prix comparable à une solution SaaS standard. Vous gardez la maîtrise du produit, de vos données et de votre roadmap.",
     heroCta: 'Comparer les offres',
@@ -425,7 +428,7 @@ const UI_STRINGS = {
     legal: 'Mentions légales'
   },
   en: {
-    navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets',
+    navAbout: 'About us', navNeed: 'Your needs', navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets',
     heroTitle: 'An intranet in your image, ', heroAccent: 'built around your teams',
     heroSub: "A bespoke intranet, delivered and maintained by Pulse, for a price comparable to a standard SaaS solution. You keep full ownership of the product, your data and your roadmap.",
     heroCta: 'Compare plans',
@@ -760,7 +763,7 @@ function renderPlanCards(){
         '<div class="plan-name">' + plan.name + '</div>' +
         '<p class="plan-tagline">' + plan.tagline + '</p>' +
         '<div class="plan-price-block">' +
-          '<div class="plan-price-row"><span class="plan-price-amount" id="price-monthly-' + plan.id + '">' + formatEUR(monthly, state.lang) + '</span><span class="plan-price-suffix">' + t.perMonth + '</span></div>' +
+          '<div class="plan-price-row"><span class="plan-price-from">' + t.setupFrom + ' </span><span class="plan-price-amount" id="price-monthly-' + plan.id + '">' + formatEUR(monthly, state.lang) + '</span><span class="plan-price-suffix">' + t.perMonth + '</span></div>' +
           '<div class="plan-price-annual" id="price-annual-' + plan.id + '">' + t.perYear(formatEUR(annual, state.lang)) + '</div>' +
         '</div>' +
         '<div class="plan-setup"><span class="plan-setup-label">' + t.setupLabel + '</span><span class="plan-setup-value">' + t.setupFrom + ' ' + formatEUR(plan.setup, state.lang) + '</span></div>' +
