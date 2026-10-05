@@ -69,11 +69,11 @@ main{flex:1;}
 .ab-logo-card{display:inline-flex;align-items:center;justify-content:center;height:68px;padding:0 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-sm);}
 .ab-logo-card img{height:26px;width:auto;max-width:130px;object-fit:contain;}
 .ab-logo-card.ab-logo-lg img{height:42px;}
-.ab-logo-card.ab-logo-text{font-weight:700;font-size:0.98rem;color:var(--text-primary);}
 
 .ab-partner{max-width:760px;margin:0 auto;padding:56px 24px;}
 .ab-partner-card{display:flex;align-items:center;gap:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:32px;box-shadow:var(--shadow-sm);}
-.ab-partner-icon{width:56px;height:56px;border-radius:14px;background:var(--gradient-brand);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1.3rem;}
+.ab-partner-icon{width:56px;height:56px;border-radius:14px;flex-shrink:0;overflow:hidden;}
+.ab-partner-icon img{width:100%;height:100%;object-fit:cover;}
 .ab-partner-card h3{font-family:var(--font-display);font-weight:500;font-size:1.15rem;margin-bottom:6px;}
 .ab-partner-card p{font-size:0.92rem;color:var(--text-secondary);line-height:1.6;}
 
@@ -83,9 +83,6 @@ main{flex:1;}
 .ab-security-card h4{font-size:0.95rem;font-weight:700;margin-bottom:4px;}
 .ab-security-card p{font-size:0.82rem;color:var(--text-secondary);line-height:1.5;}
 
-.ab-cta{text-align:center;padding:56px 24px 72px;}
-.ab-cta h2{font-family:var(--font-display);font-weight:500;font-size:1.6rem;margin-bottom:14px;}
-.ab-cta p{color:var(--text-secondary);margin-bottom:22px;font-size:0.98rem;}
 
 .ab-footer{text-align:center;padding:24px;font-size:0.78rem;color:var(--text-tertiary);border-top:1px solid var(--border);}
 
@@ -159,15 +156,16 @@ main{flex:1;}
       <div class="ab-trust-logos">
         <div class="ab-logo-card"><img src="../assets/img/clients/airbus.png" alt="Airbus" loading="lazy"></div>
         <div class="ab-logo-card ab-logo-lg"><img src="../assets/img/clients/potel-chabot.png" alt="Potel & Chabot" loading="lazy"></div>
-        <div class="ab-logo-card ab-logo-text">Eurogerm</div>
-        <div class="ab-logo-card ab-logo-text">Expertime</div>
+        <div class="ab-logo-card ab-logo-lg"><img src="../assets/img/clients/eurogerm.png" alt="Eurogerm" loading="lazy"></div>
+        <div class="ab-logo-card"><img src="../assets/img/clients/experteam.png" alt="Experteam by Everience" loading="lazy"></div>
+        <div class="ab-logo-card"><img src="../assets/img/clients/action-logement.png" alt="Action Logement" loading="lazy"></div>
       </div>
     </div>
   </section>
 
   <div class="ab-partner">
     <div class="ab-partner-card">
-      <div class="ab-partner-icon">AI</div>
+      <div class="ab-partner-icon"><img src="../assets/img/clients/ai-partners.png" alt="AI Partners" loading="lazy"></div>
       <div>
         <h3>Notre partenaire : AI Partners</h3>
         <p>AI Partners accompagne le groupe Pulse depuis ses tout débuts. Cette collaboration de longue date nous permet de livrer des intranets fiables, évolutifs et à la pointe de l'innovation.</p>
@@ -191,12 +189,6 @@ main{flex:1;}
       <h4>Hébergement en Union européenne</h4>
       <p>Vos données restent sur le sol européen.</p>
     </div>
-  </div>
-
-  <div class="ab-cta">
-    <h2>Prêt à donner envie à vos équipes de revenir chaque jour ?</h2>
-    <p>Découvrez nos offres ou explorez la bibliothèque de widgets Pulse.</p>
-    <a href="pricing.html" class="btn btn-primary" data-i18n="navCta">Voir les tarifs</a>
   </div>
 
 </main>
