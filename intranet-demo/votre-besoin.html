@@ -103,6 +103,25 @@ main{flex:1;}
 .nb-row.is-hidden{display:none;}
 .nb-cat.is-hidden{display:none;}
 
+.nb-row{flex-wrap:wrap;}
+.nb-comment-toggle{margin-left:4px;padding:3px 9px 3px 7px;border-radius:999px;border:1px solid var(--border-strong);background:var(--bg-card);color:var(--text-tertiary);font-size:0.72rem;font-weight:700;display:inline-flex;align-items:center;gap:4px;cursor:pointer;transition:var(--transition);}
+.nb-comment-toggle:hover, .nb-comment-toggle.is-active{background:var(--accent-1);border-color:var(--accent-1);color:#fff;}
+.nb-row-comments{flex-basis:100%;display:none;margin-top:10px;}
+.nb-row-comments.is-open{display:block;}
+.nb-comment-list{display:flex;flex-direction:column;gap:6px;margin-bottom:8px;}
+.nb-comment-empty{font-size:0.78rem;color:var(--text-tertiary);font-style:italic;margin-bottom:8px;}
+.nb-comment-item{background:var(--bg-subtle);border-radius:10px;padding:8px 12px;font-size:0.8rem;line-height:1.45;color:var(--text-primary);}
+.nb-comment-author{font-weight:700;color:var(--accent-2);}
+.nb-comment-time{color:var(--text-tertiary);font-size:0.7rem;margin-left:6px;}
+.nb-comment-form{display:flex;gap:8px;align-items:flex-start;}
+.nb-comment-input{flex:1;padding:8px 12px;border-radius:10px;border:1px solid var(--border-strong);font-size:0.82rem;font-family:inherit;resize:vertical;min-height:38px;background:var(--bg-card);color:var(--text-primary);}
+.nb-comment-send{flex-shrink:0;padding:8px 16px;border-radius:999px;border:none;background:var(--gradient-brand);color:#fff;font-size:0.8rem;font-weight:700;cursor:pointer;}
+.nb-comment-send:disabled{opacity:0.5;cursor:default;}
+.nb-whoami{display:flex;align-items:center;gap:8px;}
+.nb-whoami input{padding:7px 12px;border-radius:999px;border:1px solid var(--border-strong);background:var(--bg-card);font-size:0.8rem;width:150px;}
+.nb-general-remark{max-width:860px;margin:0 auto 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:var(--shadow-sm);}
+.nb-general-remark h3{font-family:var(--font-display);font-weight:500;font-size:1.1rem;margin-bottom:10px;}
+
 .nb-footer-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:8px 0 0;}
 .nb-toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--text-primary);color:#fff;padding:12px 22px;border-radius:999px;font-size:0.85rem;font-weight:600;opacity:0;pointer-events:none;transition:all .25s ease;z-index:400;}
 .nb-toast.is-visible{opacity:1;transform:translate(-50%,0);}
@@ -157,6 +176,10 @@ main{flex:1;}
         <span class="nb-count nb-count-left" id="cntLeftWrap"><span data-i18n="nbCountLeft">Restant</span> : <span id="cntLeft">0</span></span>
       </div>
       <div class="nb-controls">
+        <div class="nb-whoami">
+          <label for="nbWhoAmI" data-i18n="nbWhoAmILabel" style="font-size:0.8rem;color:var(--text-tertiary);">Vous êtes :</label>
+          <input type="text" id="nbWhoAmI" data-i18n-placeholder="nbWhoAmIPh" placeholder="Votre prénom">
+        </div>
         <input type="text" class="nb-search" id="nbSearch" data-i18n-placeholder="nbSearchPh" placeholder="Rechercher une fonctionnalité…">
         <button class="nb-btn-ghost" id="btnExpandAll" data-i18n="nbExpandAll" type="button">Tout déplier</button>
         <button class="nb-btn-ghost" id="btnCollapseAll" data-i18n="nbCollapseAll" type="button">Tout replier</button>
@@ -166,6 +189,12 @@ main{flex:1;}
 
   <div class="nb-body">
     <div id="nbCategories"></div>
+
+    <div class="nb-general-remark">
+      <h3 data-i18n="nbGeneralTitle">Autre remarque</h3>
+      <div id="generalComments"></div>
+    </div>
+
     <div class="nb-footer-actions">
       <button class="btn btn-primary" id="btnCopy" type="button">
         <span data-i18n="nbCopy">Copier le récapitulatif</span>
@@ -360,16 +389,10 @@ var ITEMS = [
     info:"Par exemple : un calendrier vous montre que deux actualités sont prévues le même vendredi — pas idéal pour la visibilité de chacune, donc vous décalez l'une des deux de quelques jours.",
     infoEn:"For example: a calendar shows you that two news articles are scheduled for the same Friday — not ideal for either one's visibility, so you move one of them a few days." },
 
-  // --- Diffusion & campagnes (3) ---
-  { cat:"Diffusion & campagnes", label:"Campagnes de communication", labelEn:"Communication campaigns", desc:"Des campagnes multi-contenus avec portée mesurée.", descEn:"Multi-content campaigns with measured reach.",
-    info:"Par exemple : pour le lancement d'un nouveau produit, vous programmez une série de 3 actualités sur 2 semaines, et vous suivez combien de personnes ont réellement vu et lu chacune d'entre elles.",
-    infoEn:"For example: for a new product launch, you schedule a series of 3 news articles over 2 weeks, and you track how many people actually saw and read each one." },
+  // --- Diffusion & campagnes (1) ---
   { cat:"Diffusion & campagnes", label:"Parcours automatisés", labelEn:"Automated journeys", desc:"Des séquences déclenchées automatiquement, par exemple pour l'onboarding.", descEn:"Sequences triggered automatically, for example for onboarding.",
     info:"Par exemple : dès qu'un nouveau collaborateur est créé dans l'annuaire, il reçoit automatiquement un message de bienvenue le jour 1, une présentation des outils le jour 3, puis un point d'étape le jour 30 — sans action manuelle de votre part.",
     infoEn:"For example: as soon as a new employee is added to the directory, they automatically receive a welcome message on day 1, a tools overview on day 3, and a check-in on day 30 — with no manual action from you." },
-  { cat:"Diffusion & campagnes", label:"Notifications multicanal", labelEn:"Multi-channel notifications", desc:"Push, email, SMS ou écrans d'affichage, avec heures de silence et quotas.", descEn:"Push, email, SMS or digital signage, with quiet hours and quotas.",
-    info:"Par exemple : une alerte de sécurité urgente part en push mobile ET par email, mais une info RH classique attend 9h du matin pour ne pas déranger en soirée — et il y a une limite au nombre de notifications par semaine pour ne pas saturer les gens.",
-    infoEn:"For example: an urgent security alert goes out as a mobile push AND by email, but a routine HR update waits until 9am so it doesn't disturb people in the evening — and there's a weekly cap on notifications so people aren't overwhelmed." },
 
   // --- Audiences (3) ---
   { cat:"Audiences", label:"Segments ciblés", labelEn:"Targeted segments", desc:"Construisez des audiences précises pour vos communications et vos widgets.", descEn:"Build precise audiences for your communications and widgets.", preset:"oui",
@@ -386,24 +409,12 @@ var ITEMS = [
   { cat:"Intégrations tierces", label:"Authentification unique (SSO)", labelEn:"Single sign-on (SSO)", desc:"Connexion unique via votre fournisseur d'identité (ex. Entra ID).", descEn:"One-click login via your identity provider (e.g. Entra ID).", preset:"oui",
     info:"Par exemple : un collaborateur se connecte à Pulse avec le même identifiant et mot de passe que pour ses autres outils d'entreprise — pas de nouveau compte à créer ni de mot de passe supplémentaire à retenir.",
     infoEn:"For example: an employee logs into Pulse with the same username and password as their other company tools — no new account to create, no extra password to remember." },
-  { cat:"Intégrations tierces", label:"RH", labelEn:"HR", desc:"Connexion à votre SIRH (ex. Workday, SAP SuccessFactors).", descEn:"Connection to your HRIS (e.g. Workday, SAP SuccessFactors).",
-    info:"Par exemple : si vos données RH sont dans Workday ou SAP SuccessFactors, elles peuvent alimenter automatiquement l'annuaire et l'organigramme de Pulse, sans double saisie entre les deux outils.",
-    infoEn:"For example: if your HR data lives in Workday or SAP SuccessFactors, it can automatically feed Pulse's directory and org chart, with no double entry between the two tools." },
-  { cat:"Intégrations tierces", label:"Temps & activités", labelEn:"Time & attendance", desc:"Connexion à votre outil de gestion des temps (ex. Kelio).", descEn:"Connection to your time management tool (e.g. Kelio).",
-    info:"Par exemple : un raccourci vers Kelio apparaît directement dans le launchpad, pour que les collaborateurs n'aient pas à chercher où pointer leurs heures ou poser un congé.",
-    infoEn:"For example: a shortcut to Kelio appears directly in the launchpad, so employees don't have to search for where to clock their hours or request time off." },
-  { cat:"Intégrations tierces", label:"Paie", labelEn:"Payroll", desc:"Connexion à votre logiciel de paie (ex. Silae).", descEn:"Connection to your payroll software (e.g. Silae).",
-    info:"Par exemple : un lien direct vers Silae permet à chaque collaborateur de retrouver facilement ses bulletins de paie depuis l'intranet, sans avoir à se souvenir d'une adresse à part.",
-    infoEn:"For example: a direct link to Silae lets each employee easily find their payslips from the intranet, without having to remember a separate address." },
-  { cat:"Intégrations tierces", label:"Communication", labelEn:"Communication", desc:"Connexion à Microsoft Teams ou Slack.", descEn:"Connection to Microsoft Teams or Slack.",
-    info:"Par exemple : l'assistant conversationnel de Pulse peut être rendu disponible directement dans Microsoft Teams, là où vos collaborateurs passent déjà leur journée.",
-    infoEn:"For example: Pulse's conversational assistant can be made available directly inside Microsoft Teams, where your employees already spend their day." },
-  { cat:"Intégrations tierces", label:"Productivité", labelEn:"Productivity", desc:"Connexion à Microsoft 365 ou Google Workspace.", descEn:"Connection to Microsoft 365 or Google Workspace.",
-    info:"Par exemple : le calendrier Pulse affiche directement les événements de votre Outlook ou Google Agenda, sans que personne n'ait à les recopier à la main des deux côtés.",
-    infoEn:"For example: the Pulse calendar directly shows events from your Outlook or Google Calendar, with no one having to copy them by hand on both sides." },
-  { cat:"Intégrations tierces", label:"Automatisation", labelEn:"Automation", desc:"Connexion à Zapier pour relier l'intranet à vos autres outils.", descEn:"Connection to Zapier to link the intranet with your other tools.",
-    info:"Par exemple : dès qu'une nouvelle idée est soumise dans la boîte à idées, un message peut être envoyé automatiquement dans un canal Slack dédié, via Zapier, sans développement spécifique.",
-    infoEn:"For example: as soon as a new idea is submitted in the idea box, a message can be sent automatically to a dedicated Slack channel, via Zapier, with no custom development needed." },
+  { cat:"Intégrations tierces", label:"RH", labelEn:"HR", desc:"Connexion à votre SIRH : Deel.", descEn:"Connection to your HRIS: Deel.",
+    info:"Concrètement : vos données RH dans Deel peuvent alimenter automatiquement l'annuaire et l'organigramme de Pulse, sans double saisie entre les deux outils.",
+    infoEn:"In practice: your HR data in Deel can automatically feed Pulse's directory and org chart, with no double entry between the two tools." },
+  { cat:"Intégrations tierces", label:"Base de connaissances SharePoint", labelEn:"SharePoint knowledge base", desc:"Connexion à votre bibliothèque documentaire SharePoint existante.", descEn:"Connection to your existing SharePoint document library.",
+    info:"Par exemple : vos documents restent dans SharePoint, mais un lien ou une recherche depuis Pulse y renvoie directement — pas besoin de tout migrer ni de ressaisir vos documents ailleurs.",
+    infoEn:"For example: your documents stay in SharePoint, but a link or a search from Pulse takes you straight there — no need to migrate everything or re-enter your documents elsewhere." },
 
   // --- Pilotage & mesure (5) ---
   { cat:"Pilotage & mesure", label:"Tableau de bord d'adoption", labelEn:"Adoption dashboard", desc:"Vue d'ensemble de l'usage réel de l'intranet par vos équipes.", descEn:"An overview of how your teams actually use the intranet.",
@@ -412,12 +423,6 @@ var ITEMS = [
   { cat:"Pilotage & mesure", label:"Statistiques détaillées", labelEn:"Detailed statistics", desc:"Actualités, pages, notifications, recherche, widgets, assistant IA — tout est mesuré.", descEn:"News, pages, notifications, search, widgets, AI assistant — everything is measured.",
     info:"Par exemple : vous savez précisément quelle actualité a été la plus lue ce mois-ci, combien de personnes ont utilisé l'assistant IA, ou quels widgets sont les plus consultés — pour ajuster votre stratégie de communication.",
     infoEn:"For example: you know precisely which news article was read the most this month, how many people used the AI assistant, or which widgets get the most traffic — to adjust your communication strategy." },
-  { cat:"Pilotage & mesure", label:"Centre d'engagement", labelEn:"Engagement centre", desc:"Comparez vos sites et dimensions d'engagement, avec un anonymat garanti (seuil minimum de répondants).", descEn:"Compare your sites and engagement dimensions, with guaranteed anonymity (minimum respondent threshold).",
-    info:"Par exemple : vous comparez le score d'engagement du site de Lyon à celui du site de Lille — mais si une équipe compte moins de 5 répondants, le chiffre n'est pas affiché, pour qu'on ne puisse jamais remonter à une personne précise.",
-    infoEn:"For example: you compare the engagement score of the Lyon site to the Lille site — but if a team has fewer than 5 respondents, the figure isn't shown, so it can never be traced back to a specific person." },
-  { cat:"Pilotage & mesure", label:"Explorateur de données anonymisé", labelEn:"Anonymised data explorer", desc:"Croisez vos données sans jamais pouvoir identifier un individu.", descEn:"Cross-reference your data without ever being able to identify an individual.",
-    info:"Par exemple : vous croisez «ancienneté» et «satisfaction» pour voir si les nouveaux arrivants se sentent différemment des collaborateurs plus anciens — sans jamais voir le nom de qui que ce soit.",
-    infoEn:"For example: you cross-reference “tenure” and “satisfaction” to see if new joiners feel differently from longer-tenured employees — without ever seeing anyone's name." },
   { cat:"Pilotage & mesure", label:"Rapports programmés", labelEn:"Scheduled reports", desc:"Des rapports envoyés automatiquement aux bonnes personnes.", descEn:"Reports automatically sent to the right people.",
     info:"Par exemple : un rapport mensuel sur l'activité de l'intranet est envoyé automatiquement chaque premier lundi du mois à la direction com, sans que personne n'ait à penser à l'exporter manuellement.",
     infoEn:"For example: a monthly report on intranet activity is automatically sent to the comms director every first Monday of the month, with no one needing to remember to export it manually." },
@@ -434,9 +439,6 @@ var ITEMS = [
   { cat:"Sécurité & gouvernance", label:"Hébergement UE & conformité RGPD", labelEn:"EU hosting & GDPR compliance", desc:"Vos données restent en Europe, traitées conformément au RGPD.", descEn:"Your data stays in Europe, processed in line with GDPR.",
     info:"Concrètement : vos données ne quittent jamais l'Europe, elles sont hébergées chez un prestataire certifié, avec des sauvegardes régulières — un point souvent demandé par les équipes juridiques et IT.",
     infoEn:"In practice: your data never leaves Europe, it's hosted with a certified provider, with regular backups — a point often requested by legal and IT teams." },
-  { cat:"Sécurité & gouvernance", label:"Journal d'audit", labelEn:"Audit log", desc:"Chaque action sensible est tracée : qui, quoi, quand.", descEn:"Every sensitive action is tracked: who, what, when.",
-    info:"Par exemple : si quelqu'un modifie les droits d'accès à un document sensible, vous pouvez retrouver qui l'a fait et à quelle heure précise — utile en cas de question de conformité ou d'audit interne.",
-    infoEn:"For example: if someone changes access rights to a sensitive document, you can find out exactly who did it and at what time — useful for compliance questions or an internal audit." },
   { cat:"Sécurité & gouvernance", label:"Modération des commentaires", labelEn:"Comment moderation", desc:"Gardez la main sur les échanges publics de votre intranet.", descEn:"Keep control of your intranet's public exchanges.",
     info:"Par exemple : un commentaire inapproprié posté sous une actualité peut être masqué par votre équipe com avant d'être vu par tout le monde, avec une trace de la modération effectuée.",
     infoEn:"For example: an inappropriate comment posted under a news article can be hidden by your comms team before everyone sees it, with a record of the moderation action taken." },
@@ -504,6 +506,120 @@ function buildCategory(catName){
   return wrap;
 }
 
+var UI_STRINGS = {
+  fr: {
+    navAbout: 'Qui sommes-nous', navNeed: 'Votre besoin', navDemo: 'Démonstration', navPricing: 'Tarifs & offres', navWidgets: 'Widgets', navCta: 'Voir les tarifs',
+    nbEyebrow: 'Votre besoin', nbTitle: 'Co-construisons votre offre, fonctionnalité par fonctionnalité',
+    nbSub: "Pour chaque ligne, indiquez si c'est un besoin pour vous dès le lancement, plus tard, ou pas du tout. On en fait le récapitulatif à la fin.",
+    nbCountYes: 'Retenu', nbCountV2: 'En V2', nbCountNo: 'Écarté', nbCountLeft: 'Restant',
+    nbSearchPh: 'Rechercher une fonctionnalité…', nbExpandAll: 'Tout déplier', nbCollapseAll: 'Tout replier',
+    nbCopy: 'Copier le récapitulatif', nbReset: 'Réinitialiser',
+    nbFeatureWord: 'fonctionnalités', nbOptYes: 'Oui', nbOptV2: 'Oui, en V2', nbOptNo: 'Non',
+    nbWhoAmILabel: 'Vous êtes :', nbWhoAmIPh: 'Votre prénom', nbGeneralTitle: 'Autre remarque',
+    nbCommentPh: 'Votre remarque…', nbCommentSend: 'Envoyer', nbCommentEmpty: "Aucun commentaire pour l'instant."
+  },
+  en: {
+    navAbout: 'About us', navNeed: 'Your needs', navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets', navCta: 'View pricing',
+    nbEyebrow: 'Your needs', nbTitle: 'Let’s build your offer together, feature by feature',
+    nbSub: "For each line, tell us whether it's a need at launch, later, or not at all. We'll wrap up with a summary.",
+    nbCountYes: 'Wanted', nbCountV2: 'In V2', nbCountNo: 'Skipped', nbCountLeft: 'Remaining',
+    nbSearchPh: 'Search a feature…', nbExpandAll: 'Expand all', nbCollapseAll: 'Collapse all',
+    nbCopy: 'Copy summary', nbReset: 'Reset',
+    nbFeatureWord: 'features', nbOptYes: 'Yes', nbOptV2: 'Yes, in V2', nbOptNo: 'No',
+    nbWhoAmILabel: 'You are:', nbWhoAmIPh: 'Your first name', nbGeneralTitle: 'Other remarks',
+    nbCommentPh: 'Your remark…', nbCommentSend: 'Send', nbCommentEmpty: 'No comments yet.'
+  }
+};
+
+/* ============================================================
+   COMMENTAIRES — stockage partagé Supabase (visible par vous et le prospect)
+   ============================================================ */
+var SB_URL = 'https://iaaeerenmfyatlbtqylp.supabase.co';
+var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhYWVlcmVubWZ5YXRsYnRxeWxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMzA5NTMsImV4cCI6MjA4ODgwNjk1M30.TOwlijdWVUYZ3KxTB-c-aMaaJ0WszsxWQCnsvREQr3M';
+var SB_REST = SB_URL + '/rest/v1/';
+var PAGE_KEY = 'archimed';
+var SB_HEADERS = { 'Content-Type': 'application/json', 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY };
+var GENERAL_ID = '__general__';
+var commentsByItem = {};
+
+function escHtml(s){ var d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+function fmtTime(iso){
+  var d = new Date(iso);
+  var locale = document.documentElement.lang === 'en' ? 'en-GB' : 'fr-FR';
+  return d.toLocaleDateString(locale, { day:'2-digit', month:'2-digit' }) + ' · ' + d.toLocaleTimeString(locale, { hour:'2-digit', minute:'2-digit' });
+}
+function whoAmI(){
+  var el = document.getElementById('nbWhoAmI');
+  var v = (el && el.value || '').trim();
+  if(v){ try { localStorage.setItem('pulse-besoin-whoami', v); } catch(e){} }
+  return v || (document.documentElement.lang === 'en' ? 'Anonymous' : 'Anonyme');
+}
+function fetchAllComments(){
+  return fetch(SB_REST + 'votre_besoin_comments?page_key=eq.' + encodeURIComponent(PAGE_KEY) + '&order=created_at.asc', { headers: SB_HEADERS })
+    .then(function(r){ return r.ok ? r.json() : []; })
+    .then(function(rows){
+      commentsByItem = {};
+      rows.forEach(function(row){ (commentsByItem[row.item_id] = commentsByItem[row.item_id] || []).push(row); });
+      return commentsByItem;
+    }).catch(function(){ return {}; });
+}
+function postComment(itemId, author, message){
+  return fetch(SB_REST + 'votre_besoin_comments', {
+    method: 'POST',
+    headers: Object.assign({}, SB_HEADERS, { 'Prefer': 'return=representation' }),
+    body: JSON.stringify({ page_key: PAGE_KEY, item_id: itemId, author: author, message: message })
+  }).then(function(r){ return r.ok ? r.json() : null; }).catch(function(){ return null; });
+}
+function renderCommentList(listEl){
+  var itemId = listEl.dataset.itemId;
+  var t = UI_STRINGS[document.documentElement.lang === 'en' ? 'en' : 'fr'];
+  var items = commentsByItem[itemId] || [];
+  if(items.length === 0){
+    listEl.innerHTML = '<p class="nb-comment-empty">' + t.nbCommentEmpty + '</p>';
+    return;
+  }
+  listEl.innerHTML = items.map(function(c){
+    return '<div class="nb-comment-item"><span class="nb-comment-author">' + escHtml(c.author) + '</span>' +
+      '<span class="nb-comment-time">' + fmtTime(c.created_at) + '</span><br>' + escHtml(c.message) + '</div>';
+  }).join('');
+}
+function updateCommentCount(itemId){
+  var n = (commentsByItem[itemId] || []).length;
+  document.querySelectorAll('.nb-comment-toggle[data-item-id="' + itemId + '"] .nb-comment-count').forEach(function(span){
+    span.textContent = n > 0 ? n : '';
+  });
+}
+function buildCommentThread(itemId){
+  var wrap = document.createElement('div');
+  var t = UI_STRINGS[document.documentElement.lang === 'en' ? 'en' : 'fr'];
+  wrap.innerHTML =
+    '<div class="nb-comment-list"></div>' +
+    '<div class="nb-comment-form">' +
+      '<textarea class="nb-comment-input" rows="1" placeholder="' + t.nbCommentPh + '"></textarea>' +
+      '<button type="button" class="nb-comment-send">' + t.nbCommentSend + '</button>' +
+    '</div>';
+  var listEl = wrap.querySelector('.nb-comment-list');
+  listEl.dataset.itemId = itemId;
+  renderCommentList(listEl);
+  var input = wrap.querySelector('.nb-comment-input');
+  var sendBtn = wrap.querySelector('.nb-comment-send');
+  sendBtn.addEventListener('click', function(){
+    var msg = input.value.trim();
+    if(!msg) return;
+    var who = whoAmI();
+    sendBtn.disabled = true;
+    postComment(itemId, who, msg).then(function(rows){
+      sendBtn.disabled = false;
+      input.value = '';
+      var created = (rows && rows[0] && rows[0].created_at) || new Date().toISOString();
+      (commentsByItem[itemId] = commentsByItem[itemId] || []).push({ author: who, message: msg, created_at: created });
+      renderCommentList(listEl);
+      updateCommentCount(itemId);
+    });
+  });
+  return wrap;
+}
+
 function buildRow(it){
   var row = document.createElement('div');
   row.className = 'nb-row';
@@ -514,7 +630,8 @@ function buildRow(it){
   text.className = 'nb-row-text';
   text.innerHTML =
     '<div class="nb-row-head"><span class="nb-row-label">' + it.label + '</span>' +
-    '<button type="button" class="nb-info-btn" aria-label="Plus d\'informations">i</button></div>' +
+    '<button type="button" class="nb-info-btn" aria-label="Plus d\'informations">i</button>' +
+    '<button type="button" class="nb-comment-toggle" data-item-id="' + it.id + '">💬 <span class="nb-comment-count"></span></button></div>' +
     '<div class="nb-row-desc">' + it.desc + '</div>' +
     '<div class="nb-row-info">' + it.info + '</div>';
   row.appendChild(text);
@@ -524,6 +641,15 @@ function buildRow(it){
   infoBtn.addEventListener('click', function(){
     infoPanel.classList.toggle('is-open');
     infoBtn.classList.toggle('is-active');
+  });
+
+  var commentWrap = document.createElement('div');
+  commentWrap.className = 'nb-row-comments';
+  commentWrap.appendChild(buildCommentThread(it.id));
+  var commentToggle = text.querySelector('.nb-comment-toggle');
+  commentToggle.addEventListener('click', function(){
+    commentWrap.classList.toggle('is-open');
+    commentToggle.classList.toggle('is-active');
   });
 
   var toggle = document.createElement('div');
@@ -545,10 +671,30 @@ function buildRow(it){
     toggle.appendChild(btn);
   });
   row.appendChild(toggle);
+  row.appendChild(commentWrap);
   return row;
 }
 
 CATEGORIES.forEach(function(cat){ root.appendChild(buildCategory(cat)); });
+
+var generalContainer = document.getElementById('generalComments');
+generalContainer.appendChild(buildCommentThread(GENERAL_ID));
+
+try {
+  var savedWho = localStorage.getItem('pulse-besoin-whoami');
+  if(savedWho) document.getElementById('nbWhoAmI').value = savedWho;
+} catch(e){}
+
+fetchAllComments().then(function(){
+  document.querySelectorAll('.nb-row').forEach(function(rowEl){
+    var itemId = rowEl.dataset.id;
+    var listEl = rowEl.querySelector('.nb-comment-list');
+    if(listEl) renderCommentList(listEl);
+    updateCommentCount(itemId);
+  });
+  var genList = generalContainer.querySelector('.nb-comment-list');
+  if(genList) renderCommentList(genList);
+});
 
 /* ============================================================
    RÉSUMÉ
@@ -657,26 +803,6 @@ document.getElementById('btnReset').addEventListener('click', function(){
    LANGUE (nav, interface ET contenu des 66 lignes)
    ============================================================ */
 (function(){
-  var UI_STRINGS = {
-    fr: {
-      navAbout: 'Qui sommes-nous', navNeed: 'Votre besoin', navDemo: 'Démonstration', navPricing: 'Tarifs & offres', navWidgets: 'Widgets', navCta: 'Voir les tarifs',
-      nbEyebrow: 'Votre besoin', nbTitle: 'Co-construisons votre offre, fonctionnalité par fonctionnalité',
-      nbSub: "Pour chaque ligne, indiquez si c'est un besoin pour vous dès le lancement, plus tard, ou pas du tout. On en fait le récapitulatif à la fin.",
-      nbCountYes: 'Retenu', nbCountV2: 'En V2', nbCountNo: 'Écarté', nbCountLeft: 'Restant',
-      nbSearchPh: 'Rechercher une fonctionnalité…', nbExpandAll: 'Tout déplier', nbCollapseAll: 'Tout replier',
-      nbCopy: 'Copier le récapitulatif', nbReset: 'Réinitialiser',
-      nbFeatureWord: 'fonctionnalités', nbOptYes: 'Oui', nbOptV2: 'Oui, en V2', nbOptNo: 'Non'
-    },
-    en: {
-      navAbout: 'About us', navNeed: 'Your needs', navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets', navCta: 'View pricing',
-      nbEyebrow: 'Your needs', nbTitle: 'Let’s build your offer together, feature by feature',
-      nbSub: "For each line, tell us whether it's a need at launch, later, or not at all. We'll wrap up with a summary.",
-      nbCountYes: 'Wanted', nbCountV2: 'In V2', nbCountNo: 'Skipped', nbCountLeft: 'Remaining',
-      nbSearchPh: 'Search a feature…', nbExpandAll: 'Expand all', nbCollapseAll: 'Collapse all',
-      nbCopy: 'Copy summary', nbReset: 'Reset',
-      nbFeatureWord: 'features', nbOptYes: 'Yes', nbOptV2: 'Yes, in V2', nbOptNo: 'No'
-    }
-  };
   function relabelContent(lang, t){
     document.querySelectorAll('.nb-cat').forEach(function(catEl){
       var cat = catEl.dataset.cat;
@@ -704,6 +830,9 @@ document.getElementById('btnReset').addEventListener('click', function(){
       var key = btn.dataset.v === 'oui' ? 'nbOptYes' : btn.dataset.v === 'v2' ? 'nbOptV2' : 'nbOptNo';
       btn.textContent = t[key];
     });
+    document.querySelectorAll('.nb-comment-input').forEach(function(el){ el.placeholder = t.nbCommentPh; });
+    document.querySelectorAll('.nb-comment-send').forEach(function(el){ el.textContent = t.nbCommentSend; });
+    document.querySelectorAll('.nb-comment-empty').forEach(function(el){ el.textContent = t.nbCommentEmpty; });
   }
   function applyLang(lang){
     var t = UI_STRINGS[lang];
