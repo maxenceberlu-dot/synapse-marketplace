@@ -123,36 +123,36 @@ main{flex:1;}
 <main>
 
   <div class="ab-hero">
-    <span class="ab-eyebrow">Qui sommes-nous</span>
-    <h1>L'intranet pensé pour que vos équipes <span class="gtext">y reviennent chaque jour</span></h1>
-    <p>Depuis 7 ans, Pulse est l'acteur de référence de l'intranet pour les entreprises de 0 à 2 000 collaborateurs — avec la bibliothèque de fonctionnalités et de widgets la plus large du marché.</p>
+    <span class="ab-eyebrow" data-i18n="abEyebrow">Qui sommes-nous</span>
+    <h1 data-i18n="abH1">L'intranet pensé pour que vos équipes <span class="gtext" data-i18n-inner="abH1Accent">y reviennent chaque jour</span></h1>
+    <p data-i18n="abHeroP">Depuis 7 ans, Pulse est l'acteur de référence de l'intranet pour les entreprises de 0 à 2 000 collaborateurs — avec la bibliothèque de fonctionnalités et de widgets la plus large du marché.</p>
   </div>
 
   <div class="ab-stats">
     <div class="ab-stat">
-      <div class="num">7 ans</div>
-      <div class="label">d'expérience sur le marché de l'intranet d'entreprise</div>
+      <div class="num" data-i18n="abStat1Num">7 ans</div>
+      <div class="label" data-i18n="abStat1Label">d'expérience sur le marché de l'intranet d'entreprise</div>
     </div>
     <div class="ab-stat">
-      <div class="num">0 → 2 000</div>
-      <div class="label">collaborateurs : notre terrain de jeu, de la PME à l'ETI</div>
+      <div class="num" data-i18n="abStat2Num">0 → 2 000</div>
+      <div class="label" data-i18n="abStat2Label">collaborateurs : notre terrain de jeu, de la PME à l'ETI</div>
     </div>
     <div class="ab-stat">
-      <div class="num">Le plus de widgets</div>
-      <div class="label">du marché intranet, pour maximiser l'adoption</div>
+      <div class="num" data-i18n="abStat3Num">Le plus de widgets</div>
+      <div class="label" data-i18n="abStat3Label">du marché intranet, pour maximiser l'adoption</div>
     </div>
   </div>
 
   <div class="ab-section">
-    <h2>Pourquoi Pulse ?</h2>
-    <p>
+    <h2 data-i18n="abWhyH2">Pourquoi Pulse ?</h2>
+    <p data-i18n="abWhyP">
       Un intranet ne vaut que par son usage. C'est pourquoi Pulse a fait un choix structurant : proposer la bibliothèque de fonctionnalités et de widgets la plus large du marché intranet. Sondages, reconnaissance, quiz, pronostics, boîte à idées, et bien d'autres — chaque widget est une raison supplémentaire pour vos collaborateurs de revenir chaque jour sur la plateforme, de rester informés des actualités du groupe en continu, et de gagner en productivité grâce à un accès centralisé à l'information et aux outils du quotidien.
     </p>
   </div>
 
   <section class="ab-trust">
     <div class="ab-trust-inner">
-      <div class="ab-trust-label">Ils nous font confiance</div>
+      <div class="ab-trust-label" data-i18n="abTrustLabel">Ils nous font confiance</div>
       <div class="ab-trust-logos">
         <div class="ab-logo-card"><img src="../assets/img/clients/airbus.png" alt="Airbus" loading="lazy"></div>
         <div class="ab-logo-card ab-logo-lg"><img src="../assets/img/clients/potel-chabot.png" alt="Potel & Chabot" loading="lazy"></div>
@@ -167,8 +167,8 @@ main{flex:1;}
     <div class="ab-partner-card">
       <div class="ab-partner-icon"><img src="../assets/img/clients/ai-partners.png" alt="AI Partners" loading="lazy"></div>
       <div>
-        <h3>Notre partenaire : AI Partners</h3>
-        <p>AI Partners accompagne le groupe Pulse depuis ses tout débuts. Cette collaboration de longue date nous permet de livrer des intranets fiables, évolutifs et à la pointe de l'innovation.</p>
+        <h3 data-i18n="abPartnerH3">Notre partenaire : AI Partners</h3>
+        <p data-i18n="abPartnerP">AI Partners accompagne le groupe Pulse depuis ses tout débuts. Cette collaboration de longue date nous permet de livrer des intranets fiables, évolutifs et à la pointe de l'innovation.</p>
       </div>
     </div>
   </div>
@@ -176,37 +176,79 @@ main{flex:1;}
   <div class="ab-security">
     <div class="ab-security-card">
       <div class="ico">🇫🇷</div>
-      <h4>Entreprise française</h4>
-      <p>Conçu et exploité en France, au plus près de nos clients.</p>
+      <h4 data-i18n="abSec1H4">Entreprise française</h4>
+      <p data-i18n="abSec1P">Conçu et exploité en France, au plus près de nos clients.</p>
     </div>
     <div class="ab-security-card">
       <div class="ico">🔒</div>
-      <h4>Conforme RGPD</h4>
-      <p>Protection des données intégrée à chaque fonctionnalité.</p>
+      <h4 data-i18n="abSec2H4">Conforme RGPD</h4>
+      <p data-i18n="abSec2P">Protection des données intégrée à chaque fonctionnalité.</p>
     </div>
     <div class="ab-security-card">
       <div class="ico">🇪🇺</div>
-      <h4>Hébergement en Union européenne</h4>
-      <p>Vos données restent sur le sol européen.</p>
+      <h4 data-i18n="abSec3H4">Hébergement en Union européenne</h4>
+      <p data-i18n="abSec3P">Vos données restent sur le sol européen.</p>
     </div>
   </div>
 
 </main>
 
-<footer class="ab-footer">Pulse · Applications d'engagement collaborateur · Conforme RGPD · Hébergement en Europe</footer>
+<footer class="ab-footer" data-i18n="abFooter">Pulse · Applications d'engagement collaborateur · Conforme RGPD · Hébergement en Europe</footer>
 
 <script>
 (function(){
   var UI_STRINGS = {
-    fr: { navAbout: 'Qui sommes-nous', navNeed: 'Votre besoin', navDemo: 'Démonstration', navPricing: 'Tarifs & offres', navWidgets: 'Widgets', navCta: 'Voir les tarifs' },
-    en: { navAbout: 'About us', navNeed: 'Your needs', navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets', navCta: 'View pricing' }
+    fr: {
+      navAbout: 'Qui sommes-nous', navNeed: 'Votre besoin', navDemo: 'Démonstration', navPricing: 'Tarifs & offres', navWidgets: 'Widgets', navCta: 'Voir les tarifs',
+      abEyebrow: 'Qui sommes-nous',
+      abH1: "L'intranet pensé pour que vos équipes ", abH1Accent: 'y reviennent chaque jour',
+      abHeroP: "Depuis 7 ans, Pulse est l'acteur de référence de l'intranet pour les entreprises de 0 à 2 000 collaborateurs — avec la bibliothèque de fonctionnalités et de widgets la plus large du marché.",
+      abStat1Num: '7 ans', abStat1Label: "d'expérience sur le marché de l'intranet d'entreprise",
+      abStat2Num: '0 → 2 000', abStat2Label: 'collaborateurs : notre terrain de jeu, de la PME à l’ETI',
+      abStat3Num: 'Le plus de widgets', abStat3Label: "du marché intranet, pour maximiser l'adoption",
+      abWhyH2: 'Pourquoi Pulse ?',
+      abWhyP: "Un intranet ne vaut que par son usage. C'est pourquoi Pulse a fait un choix structurant : proposer la bibliothèque de fonctionnalités et de widgets la plus large du marché intranet. Sondages, reconnaissance, quiz, pronostics, boîte à idées, et bien d'autres — chaque widget est une raison supplémentaire pour vos collaborateurs de revenir chaque jour sur la plateforme, de rester informés des actualités du groupe en continu, et de gagner en productivité grâce à un accès centralisé à l'information et aux outils du quotidien.",
+      abTrustLabel: 'Ils nous font confiance',
+      abPartnerH3: 'Notre partenaire : AI Partners',
+      abPartnerP: "AI Partners accompagne le groupe Pulse depuis ses tout débuts. Cette collaboration de longue date nous permet de livrer des intranets fiables, évolutifs et à la pointe de l'innovation.",
+      abSec1H4: 'Entreprise française', abSec1P: 'Conçu et exploité en France, au plus près de nos clients.',
+      abSec2H4: 'Conforme RGPD', abSec2P: 'Protection des données intégrée à chaque fonctionnalité.',
+      abSec3H4: 'Hébergement en Union européenne', abSec3P: 'Vos données restent sur le sol européen.',
+      abFooter: "Pulse · Applications d'engagement collaborateur · Conforme RGPD · Hébergement en Europe"
+    },
+    en: {
+      navAbout: 'About us', navNeed: 'Your needs', navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets', navCta: 'View pricing',
+      abEyebrow: 'About us',
+      abH1: 'The intranet designed to make your teams ', abH1Accent: 'come back every day',
+      abHeroP: 'For 7 years, Pulse has been the go-to intranet provider for companies with 0 to 2,000 employees — with the widest library of features and widgets on the market.',
+      abStat1Num: '7 years', abStat1Label: 'of experience in the corporate intranet market',
+      abStat2Num: '0 → 2,000', abStat2Label: 'employees: our sweet spot, from SMBs to large enterprises',
+      abStat3Num: 'The most widgets', abStat3Label: 'on the intranet market, to maximise adoption',
+      abWhyH2: 'Why Pulse?',
+      abWhyP: "An intranet is only as good as its usage. That's why Pulse made a defining choice: offering the widest library of features and widgets on the intranet market. Surveys, recognition, quizzes, predictions, idea boxes, and many more — every widget gives your employees one more reason to come back to the platform every day, stay continuously informed of company news, and become more productive thanks to centralised access to information and everyday tools.",
+      abTrustLabel: 'Trusted by',
+      abPartnerH3: 'Our partner: AI Partners',
+      abPartnerP: 'AI Partners has supported the Pulse group since its very beginnings. This long-standing partnership lets us deliver intranets that are reliable, scalable and at the cutting edge of innovation.',
+      abSec1H4: 'French company', abSec1P: 'Designed and operated in France, close to our customers.',
+      abSec2H4: 'GDPR compliant', abSec2P: 'Data protection built into every feature.',
+      abSec3H4: 'Hosted in the European Union', abSec3P: 'Your data stays on European soil.',
+      abFooter: 'Pulse · Employee engagement applications · GDPR compliant · Hosted in Europe'
+    }
   };
   function applyLang(lang){
     var t = UI_STRINGS[lang];
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-i18n]').forEach(function(el){
       var key = el.getAttribute('data-i18n');
-      if(t[key] !== undefined) el.textContent = t[key];
+      if(t[key] === undefined) return;
+      var inner = el.querySelector('[data-i18n-inner]');
+      if(inner){
+        el.firstChild.textContent = t[key];
+        var innerKey = inner.getAttribute('data-i18n-inner');
+        if(t[innerKey] !== undefined) inner.textContent = t[innerKey];
+      } else {
+        el.textContent = t[key];
+      }
     });
     document.getElementById('langToggle').textContent = lang === 'fr' ? 'EN' : 'FR';
     try { localStorage.setItem('pulse-microsite-lang', lang); } catch(e) {}

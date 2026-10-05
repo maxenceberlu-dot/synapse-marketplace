@@ -192,94 +192,110 @@ var CATEGORIES = [
   "Sécurité & gouvernance"
 ];
 
+var CAT_EN = {
+  "Widgets d'engagement": "Engagement widgets",
+  "Intelligence artificielle": "Artificial intelligence",
+  "Contenu & communication": "Content & communication",
+  "Gestion des médias": "Media management",
+  "Organisation": "Organisation",
+  "Diffusion & campagnes": "Broadcast & campaigns",
+  "Audiences": "Audiences",
+  "Intégrations tierces": "Third-party integrations",
+  "Pilotage & mesure": "Monitoring & measurement",
+  "Mobile & accessibilité": "Mobile & accessibility",
+  "Sécurité & gouvernance": "Security & governance"
+};
+
+var FAM_EN = { "Écouter": "Listen", "Mesurer": "Measure", "Activer": "Activate", "Gamifier": "Gamify" };
+
 var ITEMS = [
   // --- Widgets d'engagement (22) ---
-  { cat:"Widgets d'engagement", fam:"Écouter", label:"Sondage Pulse", desc:"Une question, une réponse en 10 secondes, sur le portail et le mobile." },
-  { cat:"Widgets d'engagement", fam:"Écouter", label:"Ask the Board", desc:"Les collaborateurs posent leurs questions à la direction, anonymement s'ils le souhaitent." },
-  { cat:"Widgets d'engagement", fam:"Écouter", label:"Feedback instantané", desc:"Recueillez un avis à chaud après une réunion, une formation ou un événement." },
-  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Baromètre social", desc:"Mesurez le climat social chaque trimestre sur 6 dimensions, avec un anonymat garanti." },
-  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Feedback 360°", desc:"Des retours croisés entre pairs, managers et collaborateurs." },
-  { cat:"Widgets d'engagement", fam:"Mesurer", label:"eNPS", desc:"Le score de recommandation employeur, suivi dans le temps et par population." },
-  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Performance Review & 1:1", desc:"Préparez et suivez les entretiens et points individuels." },
-  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Diversité Équité & Inclusion", desc:"Mesurez le sentiment d'inclusion et suivez vos engagements DEI." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Boîte à idées", desc:"Les collaborateurs déposent et votent pour les idées, vous suivez leur mise en œuvre." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Microlearning", desc:"Des modules de 3 minutes, consultables depuis le mobile et les écrans d'atelier." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Random Coffee", desc:"Des rencontres aléatoires entre collègues de sites et de métiers différents." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Thank You", desc:"Remerciez un collègue publiquement, en un geste." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Reconnaissance & récompenses", desc:"Valorisez les contributions avec des badges et des récompenses." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Ambassador Boost", desc:"Aidez vos collaborateurs à partager les contenus de l'entreprise." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Engagement RSE & volontariat", desc:"Proposez des missions solidaires et suivez les heures d'engagement." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Problem Solver", desc:"Remontez et résolvez les irritants du quotidien, site par site." },
-  { cat:"Widgets d'engagement", fam:"Activer", label:"Ideation Machine", desc:"Lancez des campagnes d'idéation ciblées sur un défi précis." },
-  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Pronostics sportifs", desc:"Des pronostics entre collègues pendant les grandes compétitions." },
-  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Secret Santa", desc:"Organisez l'échange de cadeaux de fin d'année entre équipes." },
-  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Quiz Master", desc:"Des quiz courts pour ancrer les messages clés et les consignes." },
-  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Défis bien-être", desc:"Des défis collectifs de marche, de vélo et de sommeil." },
-  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Hackathon interne", desc:"Organisez un hackathon avec équipes, jury et votes." },
+  { cat:"Widgets d'engagement", fam:"Écouter", label:"Sondage Pulse", labelEn:"Pulse survey", desc:"Une question, une réponse en 10 secondes, sur le portail et le mobile.", descEn:"One question, one answer in 10 seconds, on the portal and mobile." },
+  { cat:"Widgets d'engagement", fam:"Écouter", label:"Ask the Board", labelEn:"Ask the Board", desc:"Les collaborateurs posent leurs questions à la direction, anonymement s'ils le souhaitent.", descEn:"Employees ask their questions to leadership, anonymously if they wish." },
+  { cat:"Widgets d'engagement", fam:"Écouter", label:"Feedback instantané", labelEn:"Instant feedback", desc:"Recueillez un avis à chaud après une réunion, une formation ou un événement.", descEn:"Collect hot feedback after a meeting, a training session or an event." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Baromètre social", labelEn:"Social barometer", desc:"Mesurez le climat social chaque trimestre sur 6 dimensions, avec un anonymat garanti.", descEn:"Measure social climate every quarter across 6 dimensions, with guaranteed anonymity." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Feedback 360°", labelEn:"360° Feedback", desc:"Des retours croisés entre pairs, managers et collaborateurs.", descEn:"Cross feedback between peers, managers and employees." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"eNPS", labelEn:"eNPS", desc:"Le score de recommandation employeur, suivi dans le temps et par population.", descEn:"The employer recommendation score, tracked over time and by population." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Performance Review & 1:1", labelEn:"Performance Review & 1:1", desc:"Préparez et suivez les entretiens et points individuels.", descEn:"Prepare and track performance reviews and 1:1 meetings." },
+  { cat:"Widgets d'engagement", fam:"Mesurer", label:"Diversité Équité & Inclusion", labelEn:"Diversity, Equity & Inclusion", desc:"Mesurez le sentiment d'inclusion et suivez vos engagements DEI.", descEn:"Measure the sense of inclusion and track your DEI commitments." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Boîte à idées", labelEn:"Idea box", desc:"Les collaborateurs déposent et votent pour les idées, vous suivez leur mise en œuvre.", descEn:"Employees submit and vote on ideas, you track their implementation." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Microlearning", labelEn:"Microlearning", desc:"Des modules de 3 minutes, consultables depuis le mobile et les écrans d'atelier.", descEn:"3-minute modules, accessible from mobile and shop-floor screens." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Random Coffee", labelEn:"Random Coffee", desc:"Des rencontres aléatoires entre collègues de sites et de métiers différents.", descEn:"Random meetups between colleagues from different sites and roles." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Thank You", labelEn:"Thank You", desc:"Remerciez un collègue publiquement, en un geste.", descEn:"Thank a colleague publicly, in one gesture." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Reconnaissance & récompenses", labelEn:"Recognition & rewards", desc:"Valorisez les contributions avec des badges et des récompenses.", descEn:"Celebrate contributions with badges and rewards." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Ambassador Boost", labelEn:"Ambassador Boost", desc:"Aidez vos collaborateurs à partager les contenus de l'entreprise.", descEn:"Help your employees share company content." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Engagement RSE & volontariat", labelEn:"CSR & volunteering", desc:"Proposez des missions solidaires et suivez les heures d'engagement.", descEn:"Offer volunteer missions and track engagement hours." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Problem Solver", labelEn:"Problem Solver", desc:"Remontez et résolvez les irritants du quotidien, site par site.", descEn:"Surface and solve everyday irritants, site by site." },
+  { cat:"Widgets d'engagement", fam:"Activer", label:"Ideation Machine", labelEn:"Ideation Machine", desc:"Lancez des campagnes d'idéation ciblées sur un défi précis.", descEn:"Launch targeted ideation campaigns around a specific challenge." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Pronostics sportifs", labelEn:"Sports predictions", desc:"Des pronostics entre collègues pendant les grandes compétitions.", descEn:"Predictions between colleagues during major competitions." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Secret Santa", labelEn:"Secret Santa", desc:"Organisez l'échange de cadeaux de fin d'année entre équipes.", descEn:"Organise the year-end gift exchange between teams." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Quiz Master", labelEn:"Quiz Master", desc:"Des quiz courts pour ancrer les messages clés et les consignes.", descEn:"Short quizzes to anchor key messages and guidelines." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Défis bien-être", labelEn:"Wellbeing challenges", desc:"Des défis collectifs de marche, de vélo et de sommeil.", descEn:"Collective walking, cycling and sleep challenges." },
+  { cat:"Widgets d'engagement", fam:"Gamifier", label:"Hackathon interne", labelEn:"Internal hackathon", desc:"Organisez un hackathon avec équipes, jury et votes.", descEn:"Run a hackathon with teams, a jury and voting." },
 
   // --- Intelligence artificielle (4) ---
-  { cat:"Intelligence artificielle", label:"Assistant conversationnel", desc:"Un agent répond aux questions des collaborateurs en citant ses sources, sans jamais dépasser leurs droits de lecture." },
-  { cat:"Intelligence artificielle", label:"Recherche intelligente (Deep Search)", desc:"Recherche approfondie sur tout le contenu autorisé, avec une synthèse IA pertinente — pas une liste de liens." },
-  { cat:"Intelligence artificielle", label:"Traduction automatique", desc:"Traduisez vos contenus pour vos sites et filiales à l'international." },
-  { cat:"Intelligence artificielle", label:"Assistant de rédaction", desc:"Raccourcir, simplifier, générer un titre ou un chapô, adapter pour le terrain, rédiger le texte alternatif des images." },
+  { cat:"Intelligence artificielle", label:"Assistant conversationnel", labelEn:"Conversational assistant", desc:"Un agent répond aux questions des collaborateurs en citant ses sources, sans jamais dépasser leurs droits de lecture.", descEn:"An agent answers employee questions citing its sources, never exceeding their reading rights." },
+  { cat:"Intelligence artificielle", label:"Recherche intelligente (Deep Search)", labelEn:"Smart search (Deep Search)", desc:"Recherche approfondie sur tout le contenu autorisé, avec une synthèse IA pertinente — pas une liste de liens.", descEn:"In-depth search across all authorised content, with a relevant AI summary — not just a list of links." },
+  { cat:"Intelligence artificielle", label:"Traduction automatique", labelEn:"Automatic translation", desc:"Traduisez vos contenus pour vos sites et filiales à l'international.", descEn:"Translate your content for your international sites and subsidiaries." },
+  { cat:"Intelligence artificielle", label:"Assistant de rédaction", labelEn:"Writing assistant", desc:"Raccourcir, simplifier, générer un titre ou un chapô, adapter pour le terrain, rédiger le texte alternatif des images.", descEn:"Shorten, simplify, generate a title or intro, adapt for the field, write image alt text." },
 
   // --- Contenu & communication (12) ---
-  { cat:"Contenu & communication", label:"Chaînes & actualités ciblées", desc:"Fil d'actualités avec ciblage par service, site ou population." },
-  { cat:"Contenu & communication", label:"Notes officielles", desc:"Communications obligatoires avec accusé de lecture et suivi des lecteurs." },
-  { cat:"Contenu & communication", label:"Pages & constructeur de pages", desc:"Pages par service ou projet, construites par blocs, éditables par vos référents." },
-  { cat:"Contenu & communication", label:"Modèles de pages", desc:"Des gabarits réutilisables pour standardiser vos pages métier." },
-  { cat:"Contenu & communication", label:"Bibliothèque documentaire / procédures", desc:"Documents avec gestion des versions, droits par dossier et accusés de lecture." },
-  { cat:"Contenu & communication", label:"Sondages", desc:"Votes rapides sur le portail, résultats en direct." },
-  { cat:"Contenu & communication", label:"Événements", desc:"Agenda avec inscriptions, jauge de participants et liste d'attente." },
-  { cat:"Contenu & communication", label:"Annuaire collaborateurs", desc:"Fiches collaborateurs avec recherche, organigramme et coordonnées à jour." },
-  { cat:"Contenu & communication", label:"Espaces / communautés", desc:"Des communautés d'intérêt ou de métier, avec leur propre fil et leurs membres." },
-  { cat:"Contenu & communication", label:"Liens & applications (launchpad)", desc:"Un accès direct à vos outils du quotidien, avec leurs logos officiels." },
-  { cat:"Contenu & communication", label:"Fiches sites", desc:"Une page par site ou établissement : horaires, contacts, infos pratiques." },
-  { cat:"Contenu & communication", label:"Menu du portail personnalisable", desc:"Vous configurez vous-même la navigation vue par vos collaborateurs." },
+  { cat:"Contenu & communication", label:"Chaînes & actualités ciblées", labelEn:"Channels & targeted news", desc:"Fil d'actualités avec ciblage par service, site ou population.", descEn:"News feed with targeting by department, site or population." },
+  { cat:"Contenu & communication", label:"Notes officielles", labelEn:"Official notices", desc:"Communications obligatoires avec accusé de lecture et suivi des lecteurs.", descEn:"Mandatory communications with read receipts and reader tracking." },
+  { cat:"Contenu & communication", label:"Pages & constructeur de pages", labelEn:"Pages & page builder", desc:"Pages par service ou projet, construites par blocs, éditables par vos référents.", descEn:"Pages by department or project, built block by block, editable by your contributors." },
+  { cat:"Contenu & communication", label:"Modèles de pages", labelEn:"Page templates", desc:"Des gabarits réutilisables pour standardiser vos pages métier.", descEn:"Reusable templates to standardise your business pages." },
+  { cat:"Contenu & communication", label:"Bibliothèque documentaire / procédures", labelEn:"Document library / procedures", desc:"Documents avec gestion des versions, droits par dossier et accusés de lecture.", descEn:"Documents with version control, folder-level permissions and read receipts." },
+  { cat:"Contenu & communication", label:"Sondages", labelEn:"Surveys", desc:"Votes rapides sur le portail, résultats en direct.", descEn:"Quick votes on the portal, live results." },
+  { cat:"Contenu & communication", label:"Événements", labelEn:"Events", desc:"Agenda avec inscriptions, jauge de participants et liste d'attente.", descEn:"Agenda with registrations, capacity tracking and a waiting list." },
+  { cat:"Contenu & communication", label:"Annuaire collaborateurs", labelEn:"Employee directory", desc:"Fiches collaborateurs avec recherche, organigramme et coordonnées à jour.", descEn:"Employee profiles with search, org chart and up-to-date contact details." },
+  { cat:"Contenu & communication", label:"Espaces / communautés", labelEn:"Spaces / communities", desc:"Des communautés d'intérêt ou de métier, avec leur propre fil et leurs membres.", descEn:"Interest or job-based communities, each with its own feed and members." },
+  { cat:"Contenu & communication", label:"Liens & applications (launchpad)", labelEn:"Links & apps (launchpad)", desc:"Un accès direct à vos outils du quotidien, avec leurs logos officiels.", descEn:"Direct access to your everyday tools, with their official logos." },
+  { cat:"Contenu & communication", label:"Fiches sites", labelEn:"Site pages", desc:"Une page par site ou établissement : horaires, contacts, infos pratiques.", descEn:"One page per site or facility: hours, contacts, practical info." },
+  { cat:"Contenu & communication", label:"Menu du portail personnalisable", labelEn:"Customisable portal menu", desc:"Vous configurez vous-même la navigation vue par vos collaborateurs.", descEn:"You configure the navigation your employees see yourself." },
 
   // --- Gestion des médias (2) ---
-  { cat:"Gestion des médias", label:"Bibliothèque de médias", desc:"Pulse stocke et héberge les images et fichiers du groupe, organisés par dossiers." },
-  { cat:"Gestion des médias", label:"Import glisser-déposer", desc:"Import en un geste avec recadrage et texte alternatif, directement dans l'éditeur." },
+  { cat:"Gestion des médias", label:"Bibliothèque de médias", labelEn:"Media library", desc:"Pulse stocke et héberge les images et fichiers du groupe, organisés par dossiers.", descEn:"Pulse stores and hosts the group's images and files, organised into folders." },
+  { cat:"Gestion des médias", label:"Import glisser-déposer", labelEn:"Drag-and-drop import", desc:"Import en un geste avec recadrage et texte alternatif, directement dans l'éditeur.", descEn:"One-gesture import with cropping and alt text, directly in the editor." },
 
   // --- Organisation (2) ---
-  { cat:"Organisation", label:"Tâches", desc:"Assignez et suivez des tâches liées à la publication ou à la vie de l'intranet." },
-  { cat:"Organisation", label:"Planification éditoriale", desc:"Calendrier de publication, briefings et marronniers récurrents." },
+  { cat:"Organisation", label:"Tâches", labelEn:"Tasks", desc:"Assignez et suivez des tâches liées à la publication ou à la vie de l'intranet.", descEn:"Assign and track tasks related to publishing or intranet life." },
+  { cat:"Organisation", label:"Planification éditoriale", labelEn:"Editorial planning", desc:"Calendrier de publication, briefings et marronniers récurrents.", descEn:"Publishing calendar, briefings and recurring key dates." },
 
   // --- Diffusion & campagnes (3) ---
-  { cat:"Diffusion & campagnes", label:"Campagnes de communication", desc:"Des campagnes multi-contenus avec portée mesurée." },
-  { cat:"Diffusion & campagnes", label:"Parcours automatisés", desc:"Des séquences déclenchées automatiquement, par exemple pour l'onboarding." },
-  { cat:"Diffusion & campagnes", label:"Notifications multicanal", desc:"Push, email, SMS ou écrans d'affichage, avec heures de silence et quotas." },
+  { cat:"Diffusion & campagnes", label:"Campagnes de communication", labelEn:"Communication campaigns", desc:"Des campagnes multi-contenus avec portée mesurée.", descEn:"Multi-content campaigns with measured reach." },
+  { cat:"Diffusion & campagnes", label:"Parcours automatisés", labelEn:"Automated journeys", desc:"Des séquences déclenchées automatiquement, par exemple pour l'onboarding.", descEn:"Sequences triggered automatically, for example for onboarding." },
+  { cat:"Diffusion & campagnes", label:"Notifications multicanal", labelEn:"Multi-channel notifications", desc:"Push, email, SMS ou écrans d'affichage, avec heures de silence et quotas.", descEn:"Push, email, SMS or digital signage, with quiet hours and quotas." },
 
   // --- Audiences (3) ---
-  { cat:"Audiences", label:"Segments ciblés", desc:"Construisez des audiences précises pour vos communications et vos widgets." },
-  { cat:"Audiences", label:"Rôles & permissions", desc:"Une matrice de droits fine, par rôle et par espace." },
-  { cat:"Audiences", label:"Synchronisation annuaire", desc:"Votre SIRH alimente automatiquement l'annuaire et les audiences." },
+  { cat:"Audiences", label:"Segments ciblés", labelEn:"Targeted segments", desc:"Construisez des audiences précises pour vos communications et vos widgets.", descEn:"Build precise audiences for your communications and widgets." },
+  { cat:"Audiences", label:"Rôles & permissions", labelEn:"Roles & permissions", desc:"Une matrice de droits fine, par rôle et par espace.", descEn:"A fine-grained rights matrix, by role and by space." },
+  { cat:"Audiences", label:"Synchronisation annuaire", labelEn:"Directory sync", desc:"Votre SIRH alimente automatiquement l'annuaire et les audiences.", descEn:"Your HRIS automatically feeds the directory and audiences." },
 
   // --- Intégrations tierces (7) ---
-  { cat:"Intégrations tierces", label:"Authentification unique (SSO)", desc:"Connexion unique via votre fournisseur d'identité (ex. Entra ID)." },
-  { cat:"Intégrations tierces", label:"RH", desc:"Connexion à votre SIRH (ex. Workday, SAP SuccessFactors)." },
-  { cat:"Intégrations tierces", label:"Temps & activités", desc:"Connexion à votre outil de gestion des temps (ex. Kelio)." },
-  { cat:"Intégrations tierces", label:"Paie", desc:"Connexion à votre logiciel de paie (ex. Silae)." },
-  { cat:"Intégrations tierces", label:"Communication", desc:"Connexion à Microsoft Teams ou Slack." },
-  { cat:"Intégrations tierces", label:"Productivité", desc:"Connexion à Microsoft 365 ou Google Workspace." },
-  { cat:"Intégrations tierces", label:"Automatisation", desc:"Connexion à Zapier pour relier l'intranet à vos autres outils." },
+  { cat:"Intégrations tierces", label:"Authentification unique (SSO)", labelEn:"Single sign-on (SSO)", desc:"Connexion unique via votre fournisseur d'identité (ex. Entra ID).", descEn:"One-click login via your identity provider (e.g. Entra ID)." },
+  { cat:"Intégrations tierces", label:"RH", labelEn:"HR", desc:"Connexion à votre SIRH (ex. Workday, SAP SuccessFactors).", descEn:"Connection to your HRIS (e.g. Workday, SAP SuccessFactors)." },
+  { cat:"Intégrations tierces", label:"Temps & activités", labelEn:"Time & attendance", desc:"Connexion à votre outil de gestion des temps (ex. Kelio).", descEn:"Connection to your time management tool (e.g. Kelio)." },
+  { cat:"Intégrations tierces", label:"Paie", labelEn:"Payroll", desc:"Connexion à votre logiciel de paie (ex. Silae).", descEn:"Connection to your payroll software (e.g. Silae)." },
+  { cat:"Intégrations tierces", label:"Communication", labelEn:"Communication", desc:"Connexion à Microsoft Teams ou Slack.", descEn:"Connection to Microsoft Teams or Slack." },
+  { cat:"Intégrations tierces", label:"Productivité", labelEn:"Productivity", desc:"Connexion à Microsoft 365 ou Google Workspace.", descEn:"Connection to Microsoft 365 or Google Workspace." },
+  { cat:"Intégrations tierces", label:"Automatisation", labelEn:"Automation", desc:"Connexion à Zapier pour relier l'intranet à vos autres outils.", descEn:"Connection to Zapier to link the intranet with your other tools." },
 
   // --- Pilotage & mesure (5) ---
-  { cat:"Pilotage & mesure", label:"Tableau de bord d'adoption", desc:"Vue d'ensemble de l'usage réel de l'intranet par vos équipes." },
-  { cat:"Pilotage & mesure", label:"Statistiques détaillées", desc:"Actualités, pages, notifications, recherche, widgets, assistant IA — tout est mesuré." },
-  { cat:"Pilotage & mesure", label:"Centre d'engagement", desc:"Comparez vos sites et dimensions d'engagement, avec un anonymat garanti (seuil minimum de répondants)." },
-  { cat:"Pilotage & mesure", label:"Explorateur de données anonymisé", desc:"Croisez vos données sans jamais pouvoir identifier un individu." },
-  { cat:"Pilotage & mesure", label:"Rapports programmés", desc:"Des rapports envoyés automatiquement aux bonnes personnes." },
+  { cat:"Pilotage & mesure", label:"Tableau de bord d'adoption", labelEn:"Adoption dashboard", desc:"Vue d'ensemble de l'usage réel de l'intranet par vos équipes.", descEn:"An overview of how your teams actually use the intranet." },
+  { cat:"Pilotage & mesure", label:"Statistiques détaillées", labelEn:"Detailed statistics", desc:"Actualités, pages, notifications, recherche, widgets, assistant IA — tout est mesuré.", descEn:"News, pages, notifications, search, widgets, AI assistant — everything is measured." },
+  { cat:"Pilotage & mesure", label:"Centre d'engagement", labelEn:"Engagement centre", desc:"Comparez vos sites et dimensions d'engagement, avec un anonymat garanti (seuil minimum de répondants).", descEn:"Compare your sites and engagement dimensions, with guaranteed anonymity (minimum respondent threshold)." },
+  { cat:"Pilotage & mesure", label:"Explorateur de données anonymisé", labelEn:"Anonymised data explorer", desc:"Croisez vos données sans jamais pouvoir identifier un individu.", descEn:"Cross-reference your data without ever being able to identify an individual." },
+  { cat:"Pilotage & mesure", label:"Rapports programmés", labelEn:"Scheduled reports", desc:"Des rapports envoyés automatiquement aux bonnes personnes.", descEn:"Reports automatically sent to the right people." },
 
   // --- Mobile & accessibilité (2) ---
-  { cat:"Mobile & accessibilité", label:"Application web installable (PWA)", desc:"Une app installable sur iOS et Android, sans passer par un store." },
-  { cat:"Mobile & accessibilité", label:"Navigation terrain simplifiée", desc:"Pensée pour vos collaborateurs sans email professionnel." },
+  { cat:"Mobile & accessibilité", label:"Application web installable (PWA)", labelEn:"Installable web app (PWA)", desc:"Une app installable sur iOS et Android, sans passer par un store.", descEn:"An app installable on iOS and Android, no app store needed." },
+  { cat:"Mobile & accessibilité", label:"Navigation terrain simplifiée", labelEn:"Simplified field navigation", desc:"Pensée pour vos collaborateurs sans email professionnel.", descEn:"Designed for employees without a professional email address." },
 
   // --- Sécurité & gouvernance (4) ---
-  { cat:"Sécurité & gouvernance", label:"Hébergement UE & conformité RGPD", desc:"Vos données restent en Europe, traitées conformément au RGPD." },
-  { cat:"Sécurité & gouvernance", label:"Journal d'audit", desc:"Chaque action sensible est tracée : qui, quoi, quand." },
-  { cat:"Sécurité & gouvernance", label:"Modération des commentaires", desc:"Gardez la main sur les échanges publics de votre intranet." },
-  { cat:"Sécurité & gouvernance", label:"Validation éditoriale", desc:"Un workflow de relecture avant publication des contenus sensibles." }
+  { cat:"Sécurité & gouvernance", label:"Hébergement UE & conformité RGPD", labelEn:"EU hosting & GDPR compliance", desc:"Vos données restent en Europe, traitées conformément au RGPD.", descEn:"Your data stays in Europe, processed in line with GDPR." },
+  { cat:"Sécurité & gouvernance", label:"Journal d'audit", labelEn:"Audit log", desc:"Chaque action sensible est tracée : qui, quoi, quand.", descEn:"Every sensitive action is tracked: who, what, when." },
+  { cat:"Sécurité & gouvernance", label:"Modération des commentaires", labelEn:"Comment moderation", desc:"Gardez la main sur les échanges publics de votre intranet.", descEn:"Keep control of your intranet's public exchanges." },
+  { cat:"Sécurité & gouvernance", label:"Validation éditoriale", labelEn:"Editorial approval", desc:"Un workflow de relecture avant publication des contenus sensibles.", descEn:"A review workflow before publishing sensitive content." }
 ];
 
 function slugify(s){
@@ -312,8 +328,8 @@ function buildCategory(catName){
   head.type = 'button';
   head.className = 'nb-cat-head';
   head.innerHTML =
-    '<span class="nb-cat-title">' + catName + '</span>' +
-    '<span class="nb-cat-meta"><span class="nb-cat-count" data-cat-count>' + items.length + ' fonctionnalités</span>' +
+    '<span class="nb-cat-title" data-cat-title>' + catName + '</span>' +
+    '<span class="nb-cat-meta"><span class="nb-cat-count" data-cat-count data-count="' + items.length + '">' + items.length + ' fonctionnalités</span>' +
     '<svg class="nb-cat-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>';
   head.addEventListener('click', function(){ wrap.classList.toggle('is-open'); });
   wrap.appendChild(head);
@@ -327,6 +343,7 @@ function buildCategory(catName){
       var famEl = document.createElement('div');
       famEl.className = 'nb-family';
       famEl.textContent = it.fam;
+      famEl.dataset.fam = it.fam;
       rowsWrap.appendChild(famEl);
       lastFam = it.fam;
     }
@@ -429,7 +446,11 @@ function buildSummaryText(){
     if(matching.length === 0) return;
     lines.push('# ' + sec[1] + ' (' + matching.length + ')');
     var byCat = {};
-    matching.forEach(function(it){ (byCat[it.cat] = byCat[it.cat] || []).push(it.label); });
+    matching.forEach(function(it){
+      var catLabel = lang === 'en' ? (CAT_EN[it.cat] || it.cat) : it.cat;
+      var itemLabel = lang === 'en' ? it.labelEn : it.label;
+      (byCat[catLabel] = byCat[catLabel] || []).push(itemLabel);
+    });
     Object.keys(byCat).forEach(function(cat){
       lines.push('- ' + cat + ' : ' + byCat[cat].join(', '));
     });
@@ -472,7 +493,7 @@ document.getElementById('btnReset').addEventListener('click', function(){
 });
 
 /* ============================================================
-   LANGUE (nav + interface uniquement — le contenu des lignes reste en FR)
+   LANGUE (nav, interface ET contenu des 66 lignes)
    ============================================================ */
 (function(){
   var UI_STRINGS = {
@@ -482,7 +503,8 @@ document.getElementById('btnReset').addEventListener('click', function(){
       nbSub: "Pour chaque ligne, indiquez si c'est un besoin pour vous dès le lancement, plus tard, ou pas du tout. On en fait le récapitulatif à la fin.",
       nbCountYes: 'Retenu', nbCountV2: 'En V2', nbCountNo: 'Écarté', nbCountLeft: 'Restant',
       nbSearchPh: 'Rechercher une fonctionnalité…', nbExpandAll: 'Tout déplier', nbCollapseAll: 'Tout replier',
-      nbCopy: 'Copier le récapitulatif', nbReset: 'Réinitialiser'
+      nbCopy: 'Copier le récapitulatif', nbReset: 'Réinitialiser',
+      nbFeatureWord: 'fonctionnalités', nbOptYes: 'Oui', nbOptV2: 'Oui, en V2', nbOptNo: 'Non'
     },
     en: {
       navAbout: 'About us', navNeed: 'Your needs', navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets', navCta: 'View pricing',
@@ -490,9 +512,36 @@ document.getElementById('btnReset').addEventListener('click', function(){
       nbSub: "For each line, tell us whether it's a need at launch, later, or not at all. We'll wrap up with a summary.",
       nbCountYes: 'Wanted', nbCountV2: 'In V2', nbCountNo: 'Skipped', nbCountLeft: 'Remaining',
       nbSearchPh: 'Search a feature…', nbExpandAll: 'Expand all', nbCollapseAll: 'Collapse all',
-      nbCopy: 'Copy summary', nbReset: 'Reset'
+      nbCopy: 'Copy summary', nbReset: 'Reset',
+      nbFeatureWord: 'features', nbOptYes: 'Yes', nbOptV2: 'Yes, in V2', nbOptNo: 'No'
     }
   };
+  function relabelContent(lang, t){
+    document.querySelectorAll('.nb-cat').forEach(function(catEl){
+      var cat = catEl.dataset.cat;
+      var titleEl = catEl.querySelector('[data-cat-title]');
+      if(titleEl) titleEl.textContent = lang === 'en' ? (CAT_EN[cat] || cat) : cat;
+      var countEl = catEl.querySelector('[data-cat-count]');
+      if(countEl) countEl.textContent = countEl.dataset.count + ' ' + t.nbFeatureWord;
+    });
+    document.querySelectorAll('.nb-family').forEach(function(famEl){
+      var fam = famEl.dataset.fam;
+      famEl.textContent = lang === 'en' ? (FAM_EN[fam] || fam) : fam;
+    });
+    document.querySelectorAll('.nb-row').forEach(function(rowEl){
+      var it = ITEMS.filter(function(i){ return i.id === rowEl.dataset.id; })[0];
+      if(!it) return;
+      var labelEl = rowEl.querySelector('.nb-row-label');
+      var descEl = rowEl.querySelector('.nb-row-desc');
+      if(labelEl) labelEl.textContent = lang === 'en' ? it.labelEn : it.label;
+      if(descEl) descEl.textContent = lang === 'en' ? it.descEn : it.desc;
+      rowEl.dataset.search = (lang === 'en' ? (it.labelEn + ' ' + it.descEn) : (it.label + ' ' + it.desc)).toLowerCase();
+    });
+    document.querySelectorAll('.nb-opt').forEach(function(btn){
+      var key = btn.dataset.v === 'oui' ? 'nbOptYes' : btn.dataset.v === 'v2' ? 'nbOptV2' : 'nbOptNo';
+      btn.textContent = t[key];
+    });
+  }
   function applyLang(lang){
     var t = UI_STRINGS[lang];
     document.documentElement.lang = lang;
@@ -504,6 +553,7 @@ document.getElementById('btnReset').addEventListener('click', function(){
       var key = el.getAttribute('data-i18n-placeholder');
       if(t[key] !== undefined) el.placeholder = t[key];
     });
+    relabelContent(lang, t);
     document.getElementById('langToggle').textContent = lang === 'fr' ? 'EN' : 'FR';
     try { localStorage.setItem('pulse-microsite-lang', lang); } catch(e) {}
   }
