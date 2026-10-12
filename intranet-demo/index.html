@@ -52,11 +52,16 @@ button{font-family:inherit;cursor:pointer;}
 .demo-intro p{font-size:0.92rem;color:var(--text-secondary);max-width:620px;margin:0 auto;line-height:1.55;}
 .demo-intro .demo-intro-cta{font-size:0.85rem;color:var(--text-tertiary);margin-top:12px;font-weight:600;}
 .demo-intro .lang-note{font-size:0.78rem;color:var(--text-tertiary);margin-top:6px;font-style:italic;}
-.demo-frame-wrap{flex:1;padding:16px 24px 24px;min-height:0;}
-.demo-frame-shell{max-width:1280px;height:100%;margin:0 auto;border-radius:16px;border:1px solid var(--border-strong);box-shadow:0 20px 60px rgba(40,25,50,0.12);overflow:hidden;background:#fff;display:flex;flex-direction:column;}
-.demo-frame-chrome{height:38px;background:var(--bg-subtle);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px;padding:0 14px;flex-shrink:0;}
-.demo-frame-chrome span{width:10px;height:10px;border-radius:50%;background:var(--border-strong);}
-.demo-frame-wrap iframe{flex:1;width:100%;border:none;display:block;background:#fff;}
+.demo-video-wrap{flex:1;padding:16px 24px 32px;display:flex;justify-content:center;align-items:flex-start;}
+.demo-video-shell{position:relative;width:min(1180px,100%,calc((100vh - 310px) * 16 / 9));min-width:min(100%,560px);aspect-ratio:16/9;border-radius:16px;border:1px solid var(--border-strong);box-shadow:0 20px 60px rgba(40,25,50,0.12);overflow:hidden;background:#0f2236;}
+.demo-video-shell video{width:100%;height:100%;display:block;object-fit:contain;background:#0f2236;}
+.demo-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border:none;background:rgba(15,34,54,0.18);transition:var(--transition);}
+.demo-play:hover{background:rgba(15,34,54,0.28);}
+.demo-play span{width:84px;height:84px;border-radius:50%;background:var(--gradient-brand);box-shadow:0 12px 36px rgba(216,31,120,0.4);display:flex;align-items:center;justify-content:center;transition:var(--transition);}
+.demo-play:hover span{transform:scale(1.06);}
+.demo-play svg{width:30px;height:30px;margin-left:5px;}
+.demo-play[hidden]{display:none;}
+.demo-duration{position:absolute;right:16px;bottom:14px;padding:4px 10px;border-radius:999px;background:rgba(15,34,54,0.72);color:#fff;font-size:0.76rem;font-weight:600;pointer-events:none;}
 
 @media (max-width:640px){
   .microsite-bar-inner{padding:0 14px;gap:8px;}
@@ -65,8 +70,10 @@ button{font-family:inherit;cursor:pointer;}
   .ms-tab{padding:7px 9px;font-size:0.74rem;white-space:nowrap;}
   .microsite-bar .btn{display:none;}
   .demo-intro{padding:16px 16px 2px;}
-  .demo-frame-wrap{padding:12px;}
-  .demo-frame-shell{border-radius:12px;}
+  .demo-video-wrap{padding:12px 12px 24px;}
+  .demo-video-shell{width:100%;min-width:0;border-radius:12px;}
+  .demo-play span{width:64px;height:64px;}
+  .demo-play svg{width:24px;height:24px;}
 }
 </style>
 </head>
@@ -99,10 +106,15 @@ button{font-family:inherit;cursor:pointer;}
   <p class="lang-note" data-i18n="langNote"></p>
 </div>
 
-<div class="demo-frame-wrap">
-  <div class="demo-frame-shell">
-    <div class="demo-frame-chrome"><span></span><span></span><span></span></div>
-    <iframe src="demo.html" title="Démonstration interactive de l'intranet Pulse" loading="eager"></iframe>
+<div class="demo-video-wrap">
+  <div class="demo-video-shell">
+    <video id="demoVideo" playsinline preload="metadata" poster="video/pulse-archimed-fr.jpg" title="Pulse : le portail ARCHIMED et Pulse Studio">
+      <source src="video/pulse-archimed-fr.mp4" type="video/mp4">
+    </video>
+    <button class="demo-play" id="demoPlay" type="button" aria-label="Lire la vidéo">
+      <span><svg viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l12.5-7.5z"/></svg></span>
+    </button>
+    <span class="demo-duration" id="demoDuration">2:18</span>
   </div>
 </div>
 
@@ -112,16 +124,38 @@ button{font-family:inherit;cursor:pointer;}
     fr: {
       navAbout: 'Qui sommes-nous', navNeed: 'Votre besoin', navDemo: 'Démonstration', navPricing: 'Tarifs & offres', navWidgets: 'Widgets', navCta: 'Voir les tarifs',
       pitchAccent: 'pensé pour être le plus personnalisable du marché',
-      pitchCta: 'Voici à quoi ressemble concrètement votre futur intranet :',
-      langNote: ''
+      pitchCta: 'Découvrez votre futur intranet en un peu plus de deux minutes :',
+      langNote: '',
+      play: 'Lire la vidéo'
     },
     en: {
       navAbout: 'About us', navNeed: 'Your needs', navDemo: 'Demo', navPricing: 'Pricing & Plans', navWidgets: 'Widgets', navCta: 'View pricing',
       pitchAccent: 'built to be the most customisable on the market',
-      pitchCta: "Here's what your future intranet actually looks like:",
-      langNote: 'Note: the interactive preview below is currently available in French only.'
+      pitchCta: 'Discover your future intranet in just over two minutes:',
+      langNote: 'The product screens in the film are shown in French.',
+      play: 'Play the video'
     }
   };
+  var video = document.getElementById('demoVideo');
+  var playBtn = document.getElementById('demoPlay');
+  var duration = document.getElementById('demoDuration');
+
+  // Une vidéo par langue : on change la source quand la langue change (la lecture repart du début).
+  function setVideo(lang){
+    var src = 'video/pulse-archimed-' + lang + '.mp4';
+    if(video.querySelector('source').getAttribute('src') === src) return;
+    video.pause();
+    video.querySelector('source').setAttribute('src', src);
+    video.setAttribute('poster', 'video/pulse-archimed-' + lang + '.jpg');
+    video.removeAttribute('controls');
+    video.load();
+    playBtn.hidden = false; duration.hidden = false;
+  }
+  playBtn.addEventListener('click', function(){
+    video.setAttribute('controls', '');
+    playBtn.hidden = true; duration.hidden = true;
+    video.play();
+  });
   var pitchTitlePrefix = { fr: "Un acteur majeur de l'intranet et de l'engagement collaborateur, ", en: 'A major player in intranets and employee engagement, ' };
 
   function applyLang(lang){
@@ -138,6 +172,8 @@ button{font-family:inherit;cursor:pointer;}
       }
     });
     document.getElementById('langToggle').textContent = lang === 'fr' ? 'EN' : 'FR';
+    playBtn.setAttribute('aria-label', t.play);
+    setVideo(lang);
     try { localStorage.setItem('pulse-microsite-lang', lang); } catch(e) {}
   }
 
