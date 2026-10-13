@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -251,11 +251,11 @@ main{flex:1;}
       }
     });
     document.getElementById('langToggle').textContent = lang === 'fr' ? 'EN' : 'FR';
-    try { localStorage.setItem('pulse-microsite-lang', lang); } catch(e) {}
+    try { localStorage.setItem('pulse-microsite-lang-v2', lang); } catch(e) {}
   }
   var toggle = document.getElementById('langToggle');
-  var current = 'fr';
-  try { current = localStorage.getItem('pulse-microsite-lang') || 'fr'; } catch(e) {}
+  var current = 'en';
+  try { current = localStorage.getItem('pulse-microsite-lang-v2') || 'en'; } catch(e) {}
   applyLang(current);
   toggle.addEventListener('click', function(){
     current = current === 'fr' ? 'en' : 'fr';

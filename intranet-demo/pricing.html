@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1007,7 +1007,7 @@ function setLang(lang){
   CONFIG = CONFIG_BY_LANG[lang];
   document.documentElement.lang = lang;
   document.getElementById('langToggle').textContent = lang === 'fr' ? 'EN' : 'FR';
-  try { localStorage.setItem('pulse-microsite-lang', lang); } catch(e) {}
+  try { localStorage.setItem('pulse-microsite-lang-v2', lang); } catch(e) {}
   applyStaticStrings();
   renderPlanCards();
   renderCompareTable();
@@ -1024,10 +1024,9 @@ function initLangToggle(){
     setLang(state.lang === 'fr' ? 'en' : 'fr');
   });
   var saved = null;
-  try { saved = localStorage.getItem('pulse-microsite-lang'); } catch(e) {}
-  if(saved === 'en' || saved === 'fr'){
-    setLang(saved);
-  }
+  try { saved = localStorage.getItem('pulse-microsite-lang-v2'); } catch(e) {}
+  // Anglais par défaut ; le français reste à un clic (bouton FR).
+  setLang(saved === 'fr' ? 'fr' : 'en');
 }
 
 /* ============================================================
